@@ -1,0 +1,64 @@
+{
+	"name": "@temporal-ui/react",
+	"version": "0.1.0",
+	"description": "React bindings for Temporal UI components.",
+	"license": "MIT",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": "./src/index.ts",
+		"./*": "./src/components/*/index.ts",
+		"./styles.css": "./src/styles.css",
+		"./package.json": "./package.json"
+	},
+	"bugs": {
+		"url": "https://github.com/temporal-app/temporal-ui/issues"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsup",
+		"dev": "bun run storybook",
+		"lint": "biome lint ./src",
+		"test": "vitest",
+		"test:coverage": "vitest run --coverage",
+		"test:ci": "vitest --run",
+		"typecheck": "tsc",
+		"clean": "rimraf dist node_modules",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"sideEffects": [
+		"**/*.css"
+	],
+	"dependencies": {
+		"@temporal-ui/core": "workspace:*"
+	},
+	"devDependencies": {
+		"@storybook/addon-docs": "9.0.6",
+		"@storybook/addon-onboarding": "9.0.6",
+		"@storybook/react-vite": "9.0.6",
+		"@tailwindcss/vite": "4.1.8",
+		"@types/react": "19.1.6",
+		"@types/react-dom": "19.1.6",
+		"@vitejs/plugin-react": "4.5.1",
+		"react": "19.1.0",
+		"react-dom": "19.1.0",
+		"rimraf": "6.0.1",
+		"storybook": "9.0.6",
+		"tailwindcss": "4.1.8",
+		"tsup": "8.5.0",
+		"typescript": "5.8.3",
+		"vite": "6.3.5",
+		"vitest": "3.2.2"
+	},
+	"peerDependencies": {
+		"react": ">=18.0.0",
+		"react-dom": ">=18.0.0"
+	}
+}

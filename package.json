@@ -1,0 +1,35 @@
+{
+	"name": "temporal-ui",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Monorepo for Temporal UI Design System (React, Solid bindings)",
+	"author": "Temporal",
+	"license": "MIT",
+	"scripts": {
+		"postinstall": "lefthook install",
+		"build": "turbo run build",
+		"dev": "turbo run dev",
+		"clean": "rimraf node_modules",
+		"test": "turbo run test",
+		"typecheck": "turbo run typecheck",
+		"react": "turbo run dev -F=@temporal-ui/react...",
+		"solid": "turbo run dev -F=@temporal-ui/solid...",
+		"lint": "biome lint --apply .",
+		"format": "biome format --write .",
+		"check": "biome check --apply ."
+	},
+	"workspaces": [
+		"packages/*"
+	],
+	"devDependencies": {
+		"@biomejs/biome": "2.0.0-beta.6",
+		"@storybook/addon-themes": "9.0.5",
+		"@types/bun": "1.2.15",
+		"@types/node": "22.15.29",
+		"lefthook": "1.11.13",
+		"rimraf": "6.0.1",
+		"turbo": "2.5.4",
+		"typescript": "5.8.3"
+	},
+	"packageManager": "bun@1.2.15"
+}

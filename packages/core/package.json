@@ -1,0 +1,41 @@
+{
+	"name": "@temporal-ui/core",
+	"version": "0.1.0",
+	"description": "Framework-agnostic core definitions for Temporal UI components.",
+	"license": "MIT",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			}
+		},
+		"./styles.css": "./dist/index.css"
+	},
+	"files": [
+		"dist"
+	],
+	"sideEffects": [
+		"**/*.css"
+	],
+	"scripts": {
+		"test": "vitest",
+		"build": "tsup",
+		"typecheck": "tsc --noEmit",
+		"dev": "tsup --watch",
+		"clean": "rimraf dist"
+	},
+	"devDependencies": {
+		"rimraf": "6.0.1",
+		"tsup": "^8.5.0",
+		"typescript": "^5.8.3",
+		"vitest": "3.2.1"
+	}
+}

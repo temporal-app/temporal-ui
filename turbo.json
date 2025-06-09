@@ -1,0 +1,32 @@
+{
+	"$schema": "https://turborepo.com/schema.json",
+	"tasks": {
+		"build": {
+			"dependsOn": ["^build", "^build:css"],
+			"inputs": [
+				"!src/**/*.test.ts",
+				"!src/**/*.test.tsx",
+				"!src/**/*.stories.ts"
+			],
+			"outputs": ["dist/**"]
+		},
+		"test": {
+			"dependsOn": ["lint", "build"],
+			"inputs": ["src/**/*.test.ts", "src/**/*.test.tsx"]
+		},
+		"clean": {
+			"cache": false
+		},
+		"dev": {
+			"persistent": true,
+			"cache": false
+		},
+		"dev:css": {
+			"persistent": true,
+			"cache": false
+		},
+		"@temporal-ui/core#dev": {
+			"with": ["dev:css"]
+		}
+	}
+}

@@ -1,0 +1,23 @@
+@layer components {
+
+	.loader,
+	.loader-xs,
+	.loader-sm,
+	.loader-lg,
+	.loader-xl {
+		@apply size-5 rounded-full border-3 border-transparent border-r-foreground border-b-foreground animate-spin;
+	}
+	.loader-xs {
+		@apply size-3 border-2;
+	}
+	.loader-sm {
+		@apply size-4;
+	}
+	.loader-lg {
+		@apply size-6;
+	}
+	.loader-xl {
+		@apply size-8 border-4;
+	}
+
+}

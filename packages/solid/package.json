@@ -1,7 +1,7 @@
 {
-	"name": "@temporal-ui/react",
+	"name": "@temporal-ui/solid",
 	"version": "0.1.0",
-	"description": "React bindings for Temporal UI components.",
+	"description": "Solid.JS bindings for Temporal UI components.",
 	"license": "MIT",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
@@ -27,7 +27,7 @@
 		"test:ci": "vitest --run",
 		"typecheck": "tsc",
 		"clean": "rimraf dist node_modules",
-		"storybook": "storybook dev -p 6006",
+		"storybook": "storybook dev -p 6007",
 		"build-storybook": "storybook build"
 	},
 	"publishConfig": {
@@ -40,25 +40,20 @@
 		"@temporal-ui/core": "workspace:*"
 	},
 	"devDependencies": {
+		"@chromatic-com/storybook": "4.0.0",
+		"@kachurun/storybook-solid-vite": "9.0.11",
+		"@storybook/addon-a11y": "9.0.8",
 		"@storybook/addon-docs": "9.0.8",
+		"@storybook/addon-links": "9.0.8",
 		"@storybook/addon-onboarding": "9.0.8",
 		"@storybook/addon-themes": "9.0.8",
-		"@storybook/react-vite": "9.0.8",
-		"@tailwindcss/vite": "4.1.8",
-		"@types/react": "19.1.7",
-		"@types/react-dom": "19.1.6",
-		"@vitejs/plugin-react": "4.5.2",
-		"react": "19.1.0",
-		"react-dom": "19.1.0",
-		"rimraf": "6.0.1",
+		"@storybook/addon-vitest": "9.0.8",
+		"playwright": "1.53.0",
 		"storybook": "9.0.8",
-		"tailwindcss": "4.1.8",
-		"tsup": "8.5.0",
-		"typescript": "5.8.3",
-		"vite": "7.0.0-beta.1"
+		"vite": "6.3.5",
+		"vite-plugin-solid": "2.11.6"
 	},
 	"peerDependencies": {
-		"react": ">=18.0.0",
-		"react-dom": ">=18.0.0"
+		"solid-js": ">=1.0.0"
 	}
 }

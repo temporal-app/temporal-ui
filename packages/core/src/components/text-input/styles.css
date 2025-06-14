@@ -1,17 +1,17 @@
 @layer components {
-	.input[type='text'],
-	.input[type='email'],
-	.input[type='password'],
-	.input[type='number'],
-	.input[type='file'],
-	.input[type='tel'],
-	.input[type='url'],
-	.input[type='search'],
-	.input[type='date'],
-	.input[type='datetime-local'],
-	.input[type='month'],
-	.input[type='week'],
-	.input[type='time'] {
+	.input[type="text"],
+	.input[type="email"],
+	.input[type="password"],
+	.input[type="number"],
+	.input[type="file"],
+	.input[type="tel"],
+	.input[type="url"],
+	.input[type="search"],
+	.input[type="date"],
+	.input[type="datetime-local"],
+	.input[type="month"],
+	.input[type="week"],
+	.input[type="time"] {
 		@apply appearance-none placeholder:text-muted-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0;
 		@apply rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition;
 		@apply selection:bg-primary selection:text-primary-foreground outline-none md:text-sm;
@@ -24,9 +24,32 @@
 		@apply flex flex-col gap-1;
 	}
 	.input-description {
-		@apply text-sm text-muted-foreground dark:text-muted-foreground;
+		@apply text-xs text-muted-foreground dark:text-muted-foreground;
+		&[aria-disabled] {
+			@apply opacity-50 pointer-events-none;
+		}
 	}
+
 	.input-error {
-		@apply text-sm text-destructive;
+		@apply text-xs text-destructive;
 	}
+	.input-wrapper {
+		@apply relative;
+
+		&[data-start-section] .input {
+			@apply ps-9;
+		}
+
+		&[data-end-section] .input {
+			@apply pe-9;
+		}
+	}
+	.input-start-section,
+	.input-end-section {
+		@apply absolute text-muted-foreground pointer-events-none flex justify-center items-center h-9 w-9;
+	}
+	.input-end-section {
+		@apply end-0;
+	}
+
 }

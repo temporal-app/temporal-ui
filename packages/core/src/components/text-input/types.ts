@@ -4,17 +4,15 @@ export interface TextInputProps {
 	/** The ID of the input. */
 	id?: string;
 	/** The visual variant of the input. */
-	variant?: "primary" | "secondary" | "outline" | "ghost";
+	variant?: "default";
 	/** The type of the input. */
 	type?: "text" | "email" | "password" | "tel" | "url" | "search";
 	/** The label for the input. */
 	label?: string
 	/** The description of the input. */
 	description?: string;
-	/** Whether the input has an error. */
-	hasError?: boolean;
 	/** The error message to display. */
-	errorText?: string;
+	error?: string;
 	/** Whether the input is disabled. */
 	disabled?: boolean
 	/** The placeholder text for the input. */

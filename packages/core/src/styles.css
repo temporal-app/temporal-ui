@@ -3,3 +3,5 @@
 
 @import "./components/button/styles.css";
 @import "./components/loader/styles.css";
+@import "./components/text-input/styles.css";
+@import "./components/label/styles.css";

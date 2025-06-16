@@ -1,0 +1,16 @@
+@layer components {
+	.stack,
+	.stack-column {
+		@apply flex flex-col;
+	}
+	.stack-row {
+		@apply flex flex-row;
+	}
+	.stack-row-reverse {
+		@apply flex flex-row-reverse;
+	}
+	.stack-reverse,
+	.stack-column-reverse {
+		@apply flex flex-col-reverse;
+	}
+}

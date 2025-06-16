@@ -8,7 +8,8 @@ export interface StackProps extends CoreStackProps {
 
 export function Stack(props: StackProps) {
 
-	const baseClass = [ "stack", props.row && "row", props.reverse && "reverse" ].filter(Boolean).join("-");
+	const baseClass = props.center ? "stack-center"
+		: [ "stack", props.row && "row", props.reverse && "reverse" ].filter(Boolean).join("-");
 
 	const style: JSX.CSSProperties = {};
 
@@ -46,10 +47,10 @@ export function Stack(props: StackProps) {
 		style["margin-bottom"] = `calc(var(--spacing) * ${props.mb ?? props.my})`;
 	}
 	if (props.w) {
-		style.width = `calc(var(--spacing) * ${props.w})`;
+		style.width = `${props.w}px`;
 	}
 	if (props.h) {
-		style.height = `calc(var(--spacing) * ${props.h})`;
+		style.height = `${props.h}px`;
 	}
 	if (props.align) {
 		style["align-items"] = props.align;

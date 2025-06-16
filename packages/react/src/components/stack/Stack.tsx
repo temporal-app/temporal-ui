@@ -8,7 +8,8 @@ export interface StackProps extends CoreStackProps {
 
 export function Stack(props: StackProps) {
 
-	const baseClass = [ "stack", props.row && "row", props.reverse && "reverse" ].filter(Boolean).join("-");
+	const baseClass = props.center ? "stack-center"
+		: [ "stack", props.row && "row", props.reverse && "reverse" ].filter(Boolean).join("-");
 
 	const style: React.CSSProperties = {};
 
@@ -46,23 +47,23 @@ export function Stack(props: StackProps) {
 		style.marginBottom = `calc(var(--spacing) * ${props.mb ?? props.my})`;
 	}
 	if (props.w) {
-		style.width = `calc(var(--spacing) * ${props.w})`;
+		style.width = `c${props.w}px`;
 	}
 	if (props.h) {
-		style.height = `calc(var(--spacing) * ${props.h})`;
+		style.height = `${props.h}px`;
 	}
 	if (props.align) {
 		style.alignItems = props.align;
 	}
 	if (props.justify) {
-		style.justifyContent = ["evenly", "between", "around"].includes(props.justify) ? `space-${props.justify}`
+		style.justifyContent = [ "evenly", "between", "around" ].includes(props.justify) ? `space-${props.justify}`
 			: props.justify;
 	}
 
 	return (
 		<div
 			className={cx(baseClass, props.class)}
-			style={{ ...style, ...props.style}}
+			style={{ ...style, ...props.style }}
 		>
 			{props.children}
 		</div>

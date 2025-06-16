@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 const Block = (props: StackProps)=> {
 	return (
 		<Stack
-			h={10}
+			h={40}
 			{...props}
 			style={{
 				border: "2px solid oklch(70.4% 0.191 22.216)",
@@ -28,7 +28,7 @@ const Block = (props: StackProps)=> {
 const Wrapper = (props: StackProps) => {
 	return (
 		<Stack
-			h={20}
+			h={80}
 			{...props}
 			style={{
 				border: "2px solid oklch(67.3% 0.182 276.935)",
@@ -87,13 +87,21 @@ export const MarginAxis: Story = {
 	),
 }
 
+export const Centered: Story = {
+	render: () => (
+		<Wrapper center>
+			<Block w={50}/>
+		</Wrapper>
+	),
+}
+
 export const GapVertical: Story = {
 	render: () => (
 		<Wrapper gap={4} h={50}>
-			<Block h={5} />
-			<Block h={5} />
-			<Block h={5} />
-			<Block h={5} />
+			<Block h={20} />
+			<Block h={20} />
+			<Block h={20} />
+			<Block h={20} />
 		</Wrapper>
 	),
 }
@@ -101,54 +109,54 @@ export const GapVertical: Story = {
 export const GapHorizontal: Story = {
 	render: () => (
 		<Wrapper row gap={4}>
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
 		</Wrapper>
 	),
 }
 
 export const AlignStart: Story = {
 	render: () => (
-		<Wrapper row gap={4} align={"start"} h={30}>
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
+		<Wrapper row gap={4} align={"start"} h={120}>
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
 		</Wrapper>
 	),
 }
 
 export const AlignCenter: Story = {
 	render: () => (
-		<Wrapper row gap={4} align={"center"} h={30}>
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
+		<Wrapper row gap={4} align={"center"} h={120}>
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
 		</Wrapper>
 	),
 }
 
 export const AlignStretch: Story = {
 	render: () => (
-		<Wrapper row gap={4} align={"stretch"} h={30}>
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
+		<Wrapper row gap={4} align={"stretch"} h={120}>
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
 		</Wrapper>
 	),
 }
 
 export const AlignEnd: Story = {
 	render: () => (
-		<Wrapper row gap={4} align={"end"} h={30}>
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
+		<Wrapper row gap={4} align={"end"} h={120}>
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
 		</Wrapper>
 	),
 }
@@ -156,10 +164,10 @@ export const AlignEnd: Story = {
 export const JustifyStart: Story = {
 	render: () => (
 		<Wrapper row gap={4} justify={"start"}>
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
 		</Wrapper>
 	),
 }
@@ -167,10 +175,10 @@ export const JustifyStart: Story = {
 export const JustifyCenter: Story = {
 	render: () => (
 		<Wrapper row gap={4} justify={"center"}>
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
 		</Wrapper>
 	),
 }
@@ -178,10 +186,10 @@ export const JustifyCenter: Story = {
 export const JustifyEvenly: Story = {
 	render: () => (
 		<Wrapper row gap={4} justify={"evenly"}>
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
 		</Wrapper>
 	),
 }
@@ -189,10 +197,10 @@ export const JustifyEvenly: Story = {
 export const JustifyBetween: Story = {
 	render: () => (
 		<Wrapper row gap={4} justify={"between"}>
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
 		</Wrapper>
 	),
 }
@@ -200,10 +208,10 @@ export const JustifyBetween: Story = {
 export const JustifyAround: Story = {
 	render: () => (
 		<Wrapper row gap={4} justify={"around"}>
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
 		</Wrapper>
 	),
 }

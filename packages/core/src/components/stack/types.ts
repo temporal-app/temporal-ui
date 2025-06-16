@@ -2,7 +2,9 @@ export interface StackProps {
 	/** Whether the direction is row, if false, the direction is then column */
 	row?: boolean;
 	/** Whether the children are reversed */
-	reverse?: boolean
+	reverse?: boolean;
+	/** Whether the children are centered */
+	center?: boolean;
 	/** The gap between the children */
 	gap?: number;
 	/** Padding */
@@ -33,9 +35,9 @@ export interface StackProps {
 	mb?: number;
 	/** Left margin */
 	ml?: number;
-	/** Width */
+	/** Width in px */
 	w?: number;
-	/** Height */
+	/** Height in px */
 	h?: number;
 	/** Controls align-items CSS property */
 	align?: "start" | "center" | "end" | "baseline" | "stretch";

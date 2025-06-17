@@ -6,13 +6,16 @@
 			"inputs": [
 				"!src/**/*.test.ts",
 				"!src/**/*.test.tsx",
-				"!src/**/*.stories.ts"
+				"!src/**/*.stories.ts",
+				"!src/**/*.stories.tsx"
 			],
 			"outputs": ["dist/**"]
 		},
-		"test": {
-			"dependsOn": ["lint", "build"],
-			"inputs": ["src/**/*.test.ts", "src/**/*.test.tsx"]
+		"lint": {
+			"dependsOn": ["^build"]
+		},
+		"typecheck": {
+			"dependsOn": ["^build"]
 		},
 		"clean": {
 			"cache": false

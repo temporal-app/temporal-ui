@@ -7,6 +7,7 @@ version: 2
 updates:
   - package-ecosystem: "bun"
     directories:
+      - "/"
       - "/packages/*"
     schedule:
       interval: "weekly"

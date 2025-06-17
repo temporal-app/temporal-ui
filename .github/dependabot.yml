@@ -5,22 +5,13 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" 
-    directory: "/" 
+  - package-ecosystem: "npm"
+    directories: "/packages/*"
     schedule:
       interval: "weekly"
-      
-  - package-ecosystem: "npm" 
-    directory: "/packages/core"
-    schedule:
-      interval: "weekly"
-      
-  - package-ecosystem: "npm" 
-    directory: "/packages/react"
-    schedule:
-      interval: "weekly"
-      
-  - package-ecosystem: "npm" 
-    directory: "/packages/solid"
-    schedule:
-      interval: "weekly"
+    groups:
+      npm-non-major-updates:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"

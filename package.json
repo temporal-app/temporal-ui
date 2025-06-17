@@ -8,15 +8,14 @@
 	"scripts": {
 		"postinstall": "lefthook install",
 		"build": "turbo run build",
-		"dev": "turbo run dev",
-		"clean": "rimraf node_modules",
-		"test": "turbo run test",
+		"clean": "rimraf node_modules && turbo run clean",
+		"test": "vitest run",
 		"typecheck": "turbo run typecheck",
 		"react": "turbo run dev -F=@temporal-ui/react...",
 		"solid": "turbo run dev -F=@temporal-ui/solid...",
-		"lint": "biome lint --apply .",
-		"format": "biome format --write .",
-		"check": "biome check --apply ."
+		"lint": "turbo run lint",
+		"format": "turbo run write",
+		"check": "turbo run check"
 	},
 	"workspaces": [
 		"packages/*"

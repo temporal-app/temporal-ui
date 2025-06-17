@@ -28,6 +28,7 @@
 	"scripts": {
 		"test": "vitest",
 		"build": "tsup",
+		"lint": "biome lint ./src",
 		"typecheck": "tsc --noEmit",
 		"dev": "tsup --watch",
 		"clean": "rimraf dist"

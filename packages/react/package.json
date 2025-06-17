@@ -25,7 +25,7 @@
 		"test": "vitest",
 		"test:coverage": "vitest run --coverage",
 		"test:ci": "vitest --run",
-		"typecheck": "tsc",
+		"typecheck": "tsc --noEmit",
 		"clean": "rimraf dist node_modules",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"

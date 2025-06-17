@@ -45,7 +45,7 @@
 		"@storybook/addon-a11y": "9.0.8",
 		"@storybook/addon-docs": "9.0.8",
 		"@storybook/addon-links": "9.0.8",
-		"@storybook/addon-themes": "9.0.8",
+		"@storybook/addon-themes": "9.0.11",
 		"@storybook/addon-vitest": "9.0.8",
 		"lucide-solid": "0.515.0",
 		"playwright": "1.53.0",

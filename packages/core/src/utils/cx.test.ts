@@ -1,4 +1,4 @@
-import { cx } from './cx';
+import { cx } from './cx.ts';
 
 describe('cx utility', () => {
 	it('should handle simple strings', () => {

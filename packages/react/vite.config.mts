@@ -7,12 +7,4 @@ export default defineConfig({
 		tailwindcss(),
 		react(),
 	],
-	test: {
-		setupFiles: "src/setup-test.ts",
-		globals: true,
-		environment: "happy-dom",
-		coverage: {
-			provider: "v8",
-		},
-	},
 });

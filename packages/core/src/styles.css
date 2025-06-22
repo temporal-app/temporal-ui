@@ -3,6 +3,7 @@
 
 @import "./components/badge/styles.css";
 @import "./components/button/styles.css";
+@import "./components/card/styles.css";
 @import "./components/loader/styles.css";
 @import "./components/text-input/styles.css";
 @import "./components/label/styles.css";

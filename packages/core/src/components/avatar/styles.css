@@ -1,0 +1,13 @@
+@layer components {
+	.avatar,
+	.avatar-sm,
+	.avatar-lg {
+		@apply size-8 shrink-0 object-cover rounded-full border-1 bg-muted flex items-center justify-center text-primary overflow-hidden;
+	}
+	.avatar-sm {
+		@apply size-6 text-xs;
+	}
+	.avatar-lg {
+		@apply size-10 text-lg;
+	}
+}

@@ -37,6 +37,7 @@
 		"**/*.css"
 	],
 	"dependencies": {
+		"@ark-ui/react": "5.15.1",
 		"@temporal-ui/core": "workspace:*"
 	},
 	"devDependencies": {
@@ -58,7 +59,7 @@
 		"tailwindcss": "4.1.10",
 		"tsup": "8.5.0",
 		"typescript": "5.8.3",
-		"vite": "6.3.5"
+		"vite": "7.0.0"
 	},
 	"peerDependencies": {
 		"react": ">=18.0.0",

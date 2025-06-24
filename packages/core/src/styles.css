@@ -1,6 +1,7 @@
-@import "css/base.css";
-@import "css/theme.css";
+@import "./css/base.css";
+@import "./css/theme.css";
 
+@import "./components/avatar/styles.css";
 @import "./components/badge/styles.css";
 @import "./components/button/styles.css";
 @import "./components/card/styles.css";

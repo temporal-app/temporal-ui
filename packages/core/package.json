@@ -17,7 +17,7 @@
 				"default": "./dist/index.js"
 			}
 		},
-		"./styles.css": "./dist/index.css"
+		"./styles.css": "./src/styles.css"
 	},
 	"files": [
 		"dist"

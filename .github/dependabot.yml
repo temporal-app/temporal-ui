@@ -6,10 +6,6 @@
 version: 2
 updates:
   - package-ecosystem: bun
-    assignees:
-      - dryu
-    reviewers:
-      - dryu
     directories:
       - /
       - /packages/*

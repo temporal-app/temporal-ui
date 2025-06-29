@@ -1,6 +1,7 @@
 import type { HTMLProps } from "@ark-ui/solid";
 import { type StackProps as CoreStackProps, cx } from "@temporal-ui/core";
 import { children, splitProps, type JSX } from "solid-js";
+import { Box } from "../box";
 
 export interface StackProps extends CoreStackProps<JSX.Element>, HTMLProps<"div"> {}
 
@@ -14,22 +15,6 @@ export function Stack(_props: StackProps) {
 			"reverse",
 			"center",
 			"gap",
-			"p",
-			"px",
-			"pl",
-			"pr",
-			"pt",
-			"pb",
-			"py",
-			"m",
-			"mx",
-			"ml",
-			"mr",
-			"mt",
-			"mb",
-			"my",
-			"h",
-			"w",
 			"align",
 			"justify",
 			"className",
@@ -38,49 +23,13 @@ export function Stack(_props: StackProps) {
 		]
 	)
 
-	const baseClass = props.center ? "stack-center"
-		: [ "stack", props.row && "row", props.reverse && "reverse" ].filter(Boolean).join("-");
+	const baseClass = props.center ? "stack-center" : [ "stack", props.row && "row", props.reverse && "reverse" ]
+		.filter(Boolean).join("-");
 
 	const style: JSX.CSSProperties = {};
 
 	if (props.gap) {
 		style.gap = `calc(var(--spacing) * ${props.gap})`;
-	}
-	if (props.p) {
-		style.padding = `calc(var(--spacing) * ${props.p})`;
-	}
-	if (props.px || props.pl) {
-		style["padding-left"] = `calc(var(--spacing) * ${props.pl ?? props.px})`;
-	}
-	if (props.pr || props.px) {
-		style["padding-right"] = `calc(var(--spacing) * ${props.pr ?? props.px})`;
-	}
-	if (props.pt || props.py) {
-		style["padding-top"] = `calc(var(--spacing) * ${props.pt ?? props.py})`;
-	}
-	if (props.pb || props.py) {
-		style["padding-bottom"] = `calc(var(--spacing) * ${props.pb ?? props.py})`;
-	}
-	if (props.m) {
-		style.margin = `calc(var(--spacing) * ${props.m})`;
-	}
-	if (props.mx || props.ml) {
-		style["margin-left"] = `calc(var(--spacing) * ${props.ml ?? props.mx})`;
-	}
-	if (props.mr || props.mx) {
-		style["margin-right"] = `calc(var(--spacing) * ${props.mr ?? props.mx})`;
-	}
-	if (props.mt || props.my) {
-		style["margin-top"] = `calc(var(--spacing) * ${props.mt ?? props.my})`;
-	}
-	if (props.mb || props.my) {
-		style["margin-bottom"] = `calc(var(--spacing) * ${props.mb ?? props.my})`;
-	}
-	if (props.w) {
-		style.width = `${props.w}px`;
-	}
-	if (props.h) {
-		style.height = `${props.h}px`;
 	}
 	if (props.align) {
 		style["align-items"] = props.align;
@@ -90,7 +39,7 @@ export function Stack(_props: StackProps) {
 	}
 
 	return (
-		<div
+		<Box
 			{...elementProps}
 			class={cx(baseClass, props.className, props.class)}
 			style={{
@@ -99,6 +48,6 @@ export function Stack(_props: StackProps) {
 			}}
 		>
 			{children(() => props.children)}
-		</div>
+		</Box>
 	);
 }

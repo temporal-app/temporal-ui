@@ -1,24 +1,24 @@
 import { Avatar as ArkAvatar } from "@ark-ui/solid/avatar";
-import { type AvatarProps as AvatarPropsCore, cx, getInitials } from "@temporal-ui/core";
+import { type AvatarProps as CoreAvatarProps, cx, getInitials } from "@temporal-ui/core";
 import { UserIcon } from "lucide-solid";
 import { Show, splitProps } from "solid-js";
 
-export interface AvatarProps extends AvatarPropsCore {
+export interface AvatarProps extends CoreAvatarProps { }
 
-}
-
-export const Avatar = (props: AvatarProps & ArkAvatar.RootProps) => {
-	const [localProps, rootProps] = splitProps(props, ['name', 'src', 'size', 'class'])
-	const size = localProps.size !== "md" ? localProps.size : "";
-	const baseClass = ["avatar", size].filter(Boolean).join("-");
+export const Avatar = (_props: AvatarProps & ArkAvatar.RootProps) => {
+	const [ props, rootProps ] = splitProps(_props, [ 'name', 'src', 'size', 'className', 'class' ]);
+	const baseClass = [ "avatar", props.size !== "md" ? props.size : "" ].filter(Boolean).join("-");
 	return (
-		<ArkAvatar.Root {...rootProps} class={cx(baseClass, localProps.class)}>
+		<ArkAvatar.Root
+			class={cx(baseClass, props.className, props.class)}
+			{...rootProps}
+		>
 			<ArkAvatar.Fallback>
-				<Show when={localProps.name} fallback={<UserIcon />}>
-					{getInitials(localProps.name)}
+				<Show when={props.name} fallback={<UserIcon />}>
+					{getInitials(props.name)}
 				</Show>
 			</ArkAvatar.Fallback>
-			<ArkAvatar.Image src={localProps.src} alt={localProps.name} />
+			<ArkAvatar.Image src={props.src} alt={props.name} />
 		</ArkAvatar.Root>
-	)
-}
+	);
+};

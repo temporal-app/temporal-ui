@@ -1,31 +1,29 @@
 import { type ButtonProps as CoreButtonProps, cx } from "@temporal-ui/core";
 import type { JSX } from "solid-js";
-import { children, mergeProps } from "solid-js";
+import { children, mergeProps, splitProps } from "solid-js";
 import { Loader } from "../loader";
+import type { HTMLProps } from "@ark-ui/solid";
 
-interface ButtonProps extends CoreButtonProps {
-	children?: JSX.Element;
-	onClick?: () => void;
-}
+interface ButtonProps extends CoreButtonProps<JSX.Element>, HTMLProps<'button'> { }
 
 export function Button(_props: ButtonProps) {
-	const props = mergeProps(
-		{ size: "md", variant: "primary", icon: false } as ButtonProps,
-		_props
-	)
+	
+	const [ props, elementProps ] = splitProps(
+		mergeProps<ButtonProps[]>({ size: "md", variant: "primary", icon: false }, _props),
+		[ "size", "variant", "icon", "loading", "disabled", "children", "className", "class" ]
+	);
 
 	const baseClass = [ "btn", props.size !== "md" ? props.size : "", props.icon && "icon", props.variant ]
 		.filter(Boolean).join("-");
 
 	return (
 		<button
-			{...props}
-			class={cx(baseClass, props.class)}
+			class={cx(baseClass, props.className, props.class)}
 			disabled={props.disabled || props.loading}
-			onClick={props.onClick}
 			data-loading={props.loading || undefined}
+			{...elementProps}
 		>
-			{props.loading && <Loader size={props.size} class={"loading"} />}
+			{props.loading && <Loader size={props.size} className={"loading"} />}
 			<span class={"inner"}>
 				{children(() => props.children)}
 			</span>

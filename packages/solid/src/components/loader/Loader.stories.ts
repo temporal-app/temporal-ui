@@ -1,34 +1,39 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { Loader } from "./Loader.tsx";
+import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
+import { Loader } from "./Loader";
 
-export default {
+const meta = {
 	title: "Solid/Loader",
 	component: Loader,
 	tags: [ "autodocs" ],
-};
+} satisfies Meta<typeof Loader>;
 
-export const StandardSize = {};
+type Story = StoryObj<typeof meta>;
 
-export const SizeXS = {
+export default meta;
+
+export const StandardSize: Story = {};
+
+export const SizeXS: Story = {
 	args: {
 		size: "xs",
 	}
 }
 
-export const SizeSM = {
+export const SizeSM: Story = {
 	args: {
 		size: "sm",
 	}
 }
 
-export const SizeLG = {
+export const SizeLG: Story = {
 	args: {
 		size: "lg",
 	}
 }
 
-export const SizeXL = {
+export const SizeXL: Story = {
 	args: {
 		size: "xl",
 	}

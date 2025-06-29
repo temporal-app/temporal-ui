@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "../button";
 import { Stack } from "../stack";
 import { TextInput } from "../text-input";
-import { Card } from "./Card.tsx";
+import { Card } from "./Card";
 
 const meta = {
 	title: "React/Card",
@@ -36,7 +36,7 @@ export const Default: Story = {
 
 export const LoginForm: Story = {
 	args: {
-		class: "w-sm",
+		className: "w-sm",
 		children: (
 			<>
 				<header>
@@ -50,7 +50,7 @@ export const LoginForm: Story = {
 					</Stack>
 				</section>
 				<footer>
-					<Stack gap={2} class={"w-full"}>
+					<Stack gap={2} className={"w-full"}>
 						<Button>Login</Button>
 						<Button variant={"secondary"}>Login with Google</Button>
 						<p className="mt-4 text-center text-sm">

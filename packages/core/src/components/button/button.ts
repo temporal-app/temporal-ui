@@ -1,6 +1,8 @@
 // noinspection JSUnusedGlobalSymbols
 
-export interface ButtonProps {
+import type { BaseComponent } from "../base";
+
+export interface ButtonProps<T> extends BaseComponent<T> {
 	/** The visual variant of the button. */
 	variant?: "primary" | "secondary" | "destructive" | "outline" | "ghost";
 	/** Whether the button should be disabled. */
@@ -8,9 +10,7 @@ export interface ButtonProps {
 	/** Whether the button is loading. */
 	loading?: boolean;
 	/** The size of the button. */
-	size?: "xs" | "sm" | "md" | "lg" | "xl"
-	/** Custom CSS classes to apply to the button. */
-	class?: string
+	size?: "xs" | "sm" | "md" | "lg" | "xl";
 	/** Whether the button renders icon only. */
-	icon?: boolean
+	icon?: boolean;
 }

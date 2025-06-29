@@ -75,7 +75,7 @@ describe('Button Component', () => {
 	});
 
 	it('applies custom className alongside base classes', () => {
-		render(<Button {...defaultProps} class="custom-class another-custom" />);
+		render(<Button {...defaultProps} className="custom-class another-custom" />);
 		const buttonElement = screen.getByRole('button', { name: 'Test Button' });
 		expect(buttonElement).toHaveClass('btn-primary');
 		expect(buttonElement).toHaveClass('custom-class');

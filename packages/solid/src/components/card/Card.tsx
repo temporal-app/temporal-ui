@@ -1,19 +1,18 @@
+import type { HTMLProps } from "@ark-ui/solid";
 import { type CardProps as CoreCardProps, cx } from "@temporal-ui/core";
-import { children, type JSX } from "solid-js";
+import { children, splitProps, type JSX } from "solid-js";
 
-export interface CardProps extends CoreCardProps {
-	children?: JSX.Element | JSX.Element[];
-	style?: JSX.CSSProperties
+export interface CardProps extends CoreCardProps<JSX.Element>, HTMLProps<"div"> { }
+export function Card(_props: CardProps) {
 
-}
-export function Card(props: CardProps) {
+	const [ props, elementProps ] = splitProps(_props, [ "className", "class", "children" ]);
 
 	return (
 		<div
-			class={cx("card", props.class)}
-			style={props.style}
+			class={cx("card", props.className, props.class)}
+			{...elementProps}
 		>
 			{children(() => props.children)}
 		</div>
-	)
+	);
 }

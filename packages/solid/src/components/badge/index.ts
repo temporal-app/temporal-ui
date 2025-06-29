@@ -1,1 +1,1 @@
-export { Badge } from "./Badge.tsx";
+export { Badge } from "./Badge";

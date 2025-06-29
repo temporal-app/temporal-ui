@@ -33,7 +33,7 @@ describe('Badge Component', () => {
 	});
 
 	it('applies custom className', () => {
-		render(<Badge {...defaultProps} class="custom-class" />);
+		render(<Badge {...defaultProps} className="custom-class" />);
 		const badgeElement = screen.getByText('Test Badge');
 		expect(badgeElement).toHaveClass('badge');
 		expect(badgeElement).toHaveClass('custom-class');
@@ -59,7 +59,7 @@ describe('Badge Component', () => {
 	});
 
 	it('handles variant and custom class together', () => {
-		render(<Badge {...defaultProps} variant="secondary" class="extra-style" />);
+		render(<Badge {...defaultProps} variant="secondary" className="extra-style" />);
 		const badgeElement = screen.getByText('Test Badge');
 		expect(badgeElement).toHaveClass('badge-secondary');
 		expect(badgeElement).toHaveClass('extra-style');

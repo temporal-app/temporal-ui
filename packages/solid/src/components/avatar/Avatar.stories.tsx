@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
 import { Avatar } from "./Avatar";
 
 const meta = {

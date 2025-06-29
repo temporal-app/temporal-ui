@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { AtSign } from "lucide-react";
-import { TextInput } from "./TextInput.tsx";
+import { TextInput } from "./TextInput";
 
 const meta = {
 	title: "React/Text Input",
@@ -18,9 +18,9 @@ export const CompleteExample: Story = {
 	args: {
 		label: "Email",
 		placeholder: "Input your email address...",
-		description: "We'll never share your email with anyone else.",
+		hint: "We'll never share your email with anyone else.",
 	}
-}
+};
 
 export const Invalid: Story = {
 	args: {
@@ -41,7 +41,7 @@ export const WithStartSection: Story = {
 		label: "Email",
 		placeholder: "Input your email address...",
 		startSection: <AtSign size={18} />
-}
+	}
 };
 
 export const WithEndSection: Story = {
@@ -49,7 +49,7 @@ export const WithEndSection: Story = {
 		label: "Email",
 		placeholder: "Input your email address...",
 		endSection: <AtSign size={18} />
-}
+	}
 };
 
 export const ReadOnly: Story = {
@@ -57,4 +57,4 @@ export const ReadOnly: Story = {
 		...CompleteExample.args,
 		readOnly: true
 	}
-}
+};

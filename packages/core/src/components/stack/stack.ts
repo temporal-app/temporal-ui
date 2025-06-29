@@ -1,4 +1,6 @@
-export interface StackProps {
+import type { BaseComponent } from "../base";
+
+export interface StackProps<T> extends BaseComponent<T> {
 	/** Whether the direction is row, if false, the direction is then column */
 	row?: boolean;
 	/** Whether the children are reversed */
@@ -40,13 +42,7 @@ export interface StackProps {
 	/** Height in px */
 	h?: number;
 	/** Controls align-items CSS property */
-	align?: "start" | "center" | "end" | "baseline" | "stretch";
+	align?: "flex-start" | "center" | "flex-end" | "baseline" | "stretch";
 	/** Controls justify-content CSS property */
-	justify?: "start" | "center" | "end" | "baseline" | "stretch" | "normal" | "between" | "around" | "evenly";
-	/** Custom CSS classes to apply to the element. */
-	class?: string;
-	/** The children to render. */
-	children?: unknown,
-	/** The style to apply to the element. */
-	style?: unknown
+	justify?: "flex-start" | "center" | "flex-end" | "baseline" | "stretch" | "normal" | "space-between" | "space-around" | "space-evenly";
 }

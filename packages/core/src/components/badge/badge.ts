@@ -1,10 +1,8 @@
 // noinspection JSUnusedGlobalSymbols
 
-export interface BadgeProps {
+import type { BaseComponent } from "../base";
+
+export interface BadgeProps<T> extends BaseComponent<T> {
 	/** The visual variant of the badge */
 	variant?: "primary" | "secondary" | "destructive" | "outline";
-	/** Additional CSS classes */
-	class?: string;
-	/** The content of the badge */
-	children?: unknown;
 }

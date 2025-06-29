@@ -1,71 +1,93 @@
 import { type StackProps as CoreStackProps, cx } from "@temporal-ui/core";
 import type React from "react";
 
-export interface StackProps extends CoreStackProps {
-	children?: React.ReactNode | React.ReactNode[];
-	style?: React.CSSProperties;
-}
+export interface StackProps extends CoreStackProps<React.ReactNode>, React.HTMLAttributes<HTMLDivElement> { }
 
-export function Stack(props: StackProps) {
+export function Stack({
+	className,
+	children,
+	row = false,
+	reverse = false,
+	center = false,
+	gap,
+	p,
+	px,
+	pl,
+	pr,
+	pt,
+	pb,
+	py,
+	m,
+	mx,
+	ml,
+	mr,
+	mt,
+	mb,
+	my,
+	w,
+	h,
+	align,
+	justify,
+	...rest
+}: StackProps) {
 
-	const baseClass = props.center ? "stack-center"
-		: [ "stack", props.row && "row", props.reverse && "reverse" ].filter(Boolean).join("-");
+	const baseClass = center ? "stack-center" : [ "stack", row && "row", reverse && "reverse" ].filter(Boolean).join("-");
 
 	const style: React.CSSProperties = {};
 
-	if (props.gap) {
-		style.gap = `calc(var(--spacing) * ${props.gap})`;
+	if (gap) {
+		style.gap = `calc(var(--spacing) * ${ gap })`;
 	}
-	if (props.p) {
-		style.padding = `calc(var(--spacing) * ${props.p})`;
+	if (p) {
+		style.padding = `calc(var(--spacing) * ${ p })`;
 	}
-	if (props.px || props.pl) {
-		style.paddingLeft = `calc(var(--spacing) * ${props.pl ?? props.px})`;
+	if (px || pl) {
+		style.paddingLeft = `calc(var(--spacing) * ${ pl ?? px })`;
 	}
-	if (props.pr || props.px) {
-		style.paddingRight = `calc(var(--spacing) * ${props.pr ?? props.px})`;
+	if (pr || px) {
+		style.paddingRight = `calc(var(--spacing) * ${ pr ?? px })`;
 	}
-	if (props.pt || props.py) {
-		style.paddingTop = `calc(var(--spacing) * ${props.pt ?? props.py})`;
+	if (pt || py) {
+		style.paddingTop = `calc(var(--spacing) * ${ pt ?? py })`;
 	}
-	if (props.pb || props.py) {
-		style.paddingBottom = `calc(var(--spacing) * ${props.pb ?? props.py})`;
+	if (pb || py) {
+		style.paddingBottom = `calc(var(--spacing) * ${ pb ?? py })`;
 	}
-	if (props.m) {
-		style.margin = `calc(var(--spacing) * ${props.m})`;
+	if (m) {
+		style.margin = `calc(var(--spacing) * ${ m })`;
 	}
-	if (props.mx || props.ml) {
-		style.marginLeft = `calc(var(--spacing) * ${props.ml ?? props.mx})`;
+	if (mx || ml) {
+		style.marginLeft = `calc(var(--spacing) * ${ ml ?? mx })`;
 	}
-	if (props.mr || props.mx) {
-		style.marginRight = `calc(var(--spacing) * ${props.mr ?? props.mx})`;
+	if (mr || mx) {
+		style.marginRight = `calc(var(--spacing) * ${ mr ?? mx })`;
 	}
-	if (props.mt || props.my) {
-		style.marginTop = `calc(var(--spacing) * ${props.mt ?? props.my})`;
+	if (mt || my) {
+		style.marginTop = `calc(var(--spacing) * ${ mt ?? my })`;
 	}
-	if (props.mb || props.my) {
-		style.marginBottom = `calc(var(--spacing) * ${props.mb ?? props.my})`;
+	if (mb || my) {
+		style.marginBottom = `calc(var(--spacing) * ${ mb ?? my })`;
 	}
-	if (props.w) {
-		style.width = `c${props.w}px`;
+	if (w) {
+		style.width = `${ w }px`;
 	}
-	if (props.h) {
-		style.height = `${props.h}px`;
+	if (h) {
+		style.height = `${ h }px`;
 	}
-	if (props.align) {
-		style.alignItems = props.align;
+	if (align) {
+		style.alignItems = align;
 	}
-	if (props.justify) {
-		style.justifyContent = [ "evenly", "between", "around" ].includes(props.justify) ? `space-${props.justify}`
-			: props.justify;
+	if (justify) {
+		style.justifyContent = justify;
 	}
 
 	return (
 		<div
-			className={cx(baseClass, props.class)}
-			style={{ ...style, ...props.style }}
+			{...rest}
+			className={cx(baseClass, className)}
+			style={{ ...style, ...rest.style }}
 		>
-			{props.children}
+			{children}
 		</div>
 	);
 }

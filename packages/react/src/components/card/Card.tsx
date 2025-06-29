@@ -1,17 +1,15 @@
 import { type CardProps as CoreCardProps, cx } from "@temporal-ui/core";
 import type React from "react";
 
-export interface CardProps extends CoreCardProps {
-	children?: React.ReactNode | React.ReactNode[];
-	style?: React.CSSProperties;
-
-}
+export interface CardProps extends CoreCardProps<React.ReactNode>, React.HTMLAttributes<HTMLDivElement>  {}
 export function Card(props: CardProps) {
+
+	const { className, ...rest } = props;
 
 	return (
 		<div
-			className={cx("card", props.class)}
-			style={props.style}
+			{...rest}
+			className={cx("card", className)}
 		>
 			{props.children}
 		</div>

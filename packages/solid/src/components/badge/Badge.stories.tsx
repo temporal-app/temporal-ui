@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ArrowRight, Trash } from "lucide-solid";
-import { Badge } from "./Badge.tsx";
+import { Badge } from "./Badge";
 
 const meta = {
 	title: "Solid/Badge",

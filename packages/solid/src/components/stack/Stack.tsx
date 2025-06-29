@@ -1,12 +1,42 @@
+import type { HTMLProps } from "@ark-ui/solid";
 import { type StackProps as CoreStackProps, cx } from "@temporal-ui/core";
-import { children, type JSX } from "solid-js";
+import { children, splitProps, type JSX } from "solid-js";
 
-export interface StackProps extends CoreStackProps {
-	children?: JSX.Element | JSX.Element[];
-	style?: JSX.CSSProperties;
-}
+export interface StackProps extends CoreStackProps<JSX.Element>, HTMLProps<"div"> {}
 
-export function Stack(props: StackProps) {
+export function Stack(_props: StackProps) {
+
+	const [ props, elementProps ] = splitProps(
+		_props,
+		[
+			"children",
+			"row",
+			"reverse",
+			"center",
+			"gap",
+			"p",
+			"px",
+			"pl",
+			"pr",
+			"pt",
+			"pb",
+			"py",
+			"m",
+			"mx",
+			"ml",
+			"mr",
+			"mt",
+			"mb",
+			"my",
+			"h",
+			"w",
+			"align",
+			"justify",
+			"className",
+			"class",
+			"style"
+		]
+	)
 
 	const baseClass = props.center ? "stack-center"
 		: [ "stack", props.row && "row", props.reverse && "reverse" ].filter(Boolean).join("-");
@@ -56,16 +86,16 @@ export function Stack(props: StackProps) {
 		style["align-items"] = props.align;
 	}
 	if (props.justify) {
-		style["justify-content"] = ["evenly", "between", "around"].includes(props.justify) ? `space-${props.justify}`
-			: props.justify;
+		style["justify-content"] = props.justify;
 	}
 
 	return (
 		<div
-			class={cx(baseClass, props.class)}
+			{...elementProps}
+			class={cx(baseClass, props.className, props.class)}
 			style={{
 				...style,
-				...props.style
+				...(props.style as JSX.CSSProperties)
 			}}
 		>
 			{children(() => props.children)}

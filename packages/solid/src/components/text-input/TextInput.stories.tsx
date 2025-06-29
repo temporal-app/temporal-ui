@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
 import { AtSign } from "lucide-solid";
-import { TextInput } from "./TextInput.tsx";
+import { TextInput } from "./TextInput";
 
 const meta = {
 	title: "Solid/Text Input",
@@ -18,7 +18,7 @@ export const CompleteExample: Story = {
 	args: {
 		label: "Email",
 		placeholder: "Input your email address...",
-		description: "We'll never share your email with anyone else.",
+		hint: "We'll never share your email with anyone else.",
 	}
 };
 
@@ -38,16 +38,14 @@ export const Disabled: Story = {
 
 export const WithStartSection: Story = {
 	args: {
-		label: "Email",
-		placeholder: "Input your email address...",
+		...CompleteExample.args,
 		startSection: <AtSign size={18} />
 	}
 };
 
 export const WithEndSection: Story = {
 	args: {
-		label: "Email",
-		placeholder: "Input your email address...",
+		...CompleteExample.args,
 		endSection: <AtSign size={18} />
 	}
 };

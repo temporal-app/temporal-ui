@@ -1,13 +1,22 @@
-import { cx, type LoaderProps } from "@temporal-ui/core";
+import type { HTMLProps } from "@ark-ui/solid";
+import { cx, type LoaderProps as CoreLoaderProps } from "@temporal-ui/core";
+import { mergeProps, splitProps, type JSX } from "solid-js";
 
-export function Loader(props: LoaderProps) {
+export interface LoaderProps extends CoreLoaderProps<JSX.Element>, HTMLProps<"div"> {};
+export function Loader(_props: LoaderProps) {
+
+	const [ props, elementProps ] = splitProps(
+		mergeProps<LoaderProps[]>({ size: "md" }, _props),
+		[ "size", "className", "class" ]
+	);
 
 	const size = props.size !== "md" ? props.size : "";
 	const baseClass = ["loader", size].filter(Boolean).join("-");
 
 	return (
 		<div
-			class={cx("loader", baseClass, props.class)}
+			{...elementProps}
+			class={cx("loader", baseClass, props.className, props.class)}
 		/>
 	)
 }

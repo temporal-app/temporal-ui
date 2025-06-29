@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Stack, type StackProps } from "./Stack.tsx";
+import { Stack, type StackProps } from "./Stack";
 
 const meta = {
 	title: "React/Stack",
@@ -97,7 +97,7 @@ export const Centered: Story = {
 
 export const GapVertical: Story = {
 	render: () => (
-		<Wrapper gap={4} h={50}>
+		<Wrapper gap={4} h={150}>
 			<Block h={20} />
 			<Block h={20} />
 			<Block h={20} />
@@ -119,7 +119,7 @@ export const GapHorizontal: Story = {
 
 export const AlignStart: Story = {
 	render: () => (
-		<Wrapper row gap={4} align={"start"} h={120}>
+		<Wrapper row gap={4} align={"flex-start"} h={120}>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
@@ -152,7 +152,7 @@ export const AlignStretch: Story = {
 
 export const AlignEnd: Story = {
 	render: () => (
-		<Wrapper row gap={4} align={"end"} h={120}>
+		<Wrapper row gap={4} align={"flex-end"} h={120}>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
@@ -163,7 +163,7 @@ export const AlignEnd: Story = {
 
 export const JustifyStart: Story = {
 	render: () => (
-		<Wrapper row gap={4} justify={"start"}>
+		<Wrapper row gap={4} justify={"flex-start"}>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
@@ -185,7 +185,7 @@ export const JustifyCenter: Story = {
 
 export const JustifyEvenly: Story = {
 	render: () => (
-		<Wrapper row gap={4} justify={"evenly"}>
+		<Wrapper row gap={4} justify={"space-evenly"}>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
@@ -196,7 +196,7 @@ export const JustifyEvenly: Story = {
 
 export const JustifyBetween: Story = {
 	render: () => (
-		<Wrapper row gap={4} justify={"between"}>
+		<Wrapper row gap={4} justify={"space-between"}>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
@@ -207,7 +207,7 @@ export const JustifyBetween: Story = {
 
 export const JustifyAround: Story = {
 	render: () => (
-		<Wrapper row gap={4} justify={"around"}>
+		<Wrapper row gap={4} justify={"space-around"}>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
@@ -218,11 +218,11 @@ export const JustifyAround: Story = {
 
 export const JustifyEnd: Story = {
 	render: () => (
-		<Wrapper row gap={4} justify={"end"}>
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
-			<Block w={20} />
+		<Wrapper row gap={4} justify={"flex-end"}>
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
+			<Block w={80} />
 		</Wrapper>
 	),
 }

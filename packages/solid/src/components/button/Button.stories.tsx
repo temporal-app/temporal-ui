@@ -27,7 +27,7 @@ const meta = {
 		icon: {
 			control: "boolean"
 		},
-		class: {
+		className: {
 			control: "text"
 		}
 	}

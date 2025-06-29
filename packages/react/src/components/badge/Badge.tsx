@@ -1,19 +1,18 @@
 import { type BadgeProps as CoreBadgeProps, cx } from "@temporal-ui/core";
 import type React from "react";
 
-export interface BadgeProps extends CoreBadgeProps {
-	children?: React.ReactNode | React.ReactNode[];
-	style?: React.CSSProperties;
-}
+export interface BadgeProps extends CoreBadgeProps<React.ReactNode>, React.HTMLAttributes<HTMLSpanElement> { }
 
 export function Badge(props: BadgeProps) {
 
-	const baseClass = [ "badge", props.variant ].filter(Boolean).join("-");
+	const { variant = "primary", className, ...rest } = props;
+
+	const baseClass = [ "badge", variant ].filter(Boolean).join("-");
 
 	return (
 		<span
-			className={cx( baseClass, props.class)}
-			style={props.style}
+			className={cx(baseClass, className)}
+			{...rest}
 		>
 			{props.children}
 		</span>

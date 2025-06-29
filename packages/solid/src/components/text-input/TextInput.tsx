@@ -1,67 +1,58 @@
-import { type TextInputProps as CoreTextInputProps, cx, getSafeString } from "@temporal-ui/core";
-import type { JSX } from "solid-js";
+import { type TextInputProps as CoreTextInputProps, cx } from "@temporal-ui/core";
+import { type JSX, splitProps } from "solid-js";
+import type { HTMLProps } from "@ark-ui/solid";
+import { Field as ArkField } from '@ark-ui/solid/field';
+import { Field } from "../field";
 
-export interface TextInputProps extends CoreTextInputProps {
-	startSection?: JSX.Element;
-	endSection?: JSX.Element;
-}
+export interface TextInputProps extends CoreTextInputProps<JSX.Element>, HTMLProps<"input"> {}
 
-export function TextInput(props: TextInputProps) {
-
-	const inputId = props.id ?? getSafeString(8);
-	const baseClass = [ "input", props.size !== "md" ? props.size : "" ].filter(Boolean).join("-");
+export function TextInput(_props: TextInputProps & HTMLProps<"input">) {
+	const [ fieldProps, inputProps, restProps ] = splitProps(_props, [
+		"label",
+		"hint",
+		"error",
+		"required",
+		"readOnly",
+		"disabled",
+		"classes",
+	], [
+		"startSection",
+		"endSection",
+		"className",
+		"class",
+	]);
 
 	return (
-		<div
-			class={cx("input-root", props.rootClass)}
-			aria-disabled={props.disabled}
+		<Field
+			label={fieldProps.label}
+			hint={fieldProps.hint}
+			classes={fieldProps.classes}
+			required={fieldProps.required}
+			readOnly={fieldProps.readOnly}
+			error={fieldProps.error}
+			disabled={fieldProps.disabled}
 		>
-			{props.label && (
-				<label
-					class={cx("label", props.labelClass)}
-					for={inputId}
-				>
-					{props.label}
-				</label>
-			)}
 			<div
 				class={"input-wrapper"}
-				data-start-section={props.startSection ? true : undefined}
-				data-end-section={props.endSection ? true : undefined}
+				data-start-section={inputProps.startSection ? true : undefined}
+				data-end-section={inputProps.endSection ? true : undefined}
 			>
-				{props.startSection && (
+				{inputProps.startSection && (
 					<div class={"input-start-section"} data-position={"start"}>
-						{props.startSection}
+						{inputProps.startSection}
 					</div>
 				)}
-				{props.endSection && (
+				{inputProps.endSection && (
 					<div class={"input-end-section"} data-position={"end"}>
-						{props.endSection}
+						{inputProps.endSection}
 					</div>
 				)}
-				<input
-					id={inputId}
-					class={cx(baseClass, props.inputClass)}
-					type={props.type ?? "text"}
-					disabled={props.disabled}
-					placeholder={props.placeholder}
-					aria-invalid={props.error ? true : undefined}
-					readOnly={props.readOnly}
+				<ArkField.Input
+					{...restProps}
+					class={cx("input", inputProps.className, inputProps.class)}
+					aria-invalid={fieldProps.error ? true : undefined}
 				/>
 			</div>
-			{props.description && (
-				<div
-					class={cx("input-description", props.descriptionClass)}
-					aria-disabled={props.disabled}
-				>
-					{props.description}
-				</div>
-			)}
-			{props.error && (
-				<div class={cx("input-error", props.errorClass)}>
-					{props.error}
-				</div>
-			)}
-		</div>
+		</Field>
 	);
 }

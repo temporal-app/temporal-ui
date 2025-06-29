@@ -1,0 +1,135 @@
+@layer components {
+	/* Foundation styles */
+	[class*="btn"],
+  	[class*="btn-"] {
+		@apply inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive cursor-pointer rounded-md relative;
+		.inner, .loading {
+			transition: transform .15s ease, opacity .1s ease;
+		}
+		&[data-loading] {
+			@apply disabled:opacity-100;
+			.inner {
+				opacity: 0;
+				transform: translateY(100%);
+			}
+		}
+		.loading {
+			@apply absolute;
+		}
+
+	}
+	/* Default button size (medium) */
+	[class*="btn"]:not([class*="btn-xs"]):not([class*="btn-sm"]):not([class*="btn-lg"]):not([class*="btn-xl"]):not([class*="btn-icon"]) {
+		@apply gap-2 h-9 px-4 py-2 has-[>svg]:px-3;
+	}
+	
+	/* Icon buttons - default size */
+	[class*="btn-icon"]:not([class*="btn-xs"]):not([class*="btn-sm"]):not([class*="btn-lg"]):not([class*="btn-xl"]) {
+		@apply size-9;
+	}
+	
+	/* Extra small buttons */
+	[class*="btn-xs"]:not([class*="btn-icon"]) {
+		@apply gap-1.5 text-xs rounded-sm h-7 px-2.5 has-[>svg]:px-2;
+	}
+	
+	/* Extra small icon buttons */
+	[class*="btn-xs-icon"] {
+		@apply size-8;
+	}
+	
+	/* Small buttons */
+	[class*="btn-sm"]:not([class*="btn-icon"]) {
+		@apply gap-1.5 h-8 px-3 has-[>svg]:px-2.5;
+	}
+	
+	/* Small icon buttons */
+	[class*="btn-sm-icon"] {
+		@apply size-8;
+	}
+	
+	/* Large buttons */
+	[class*="btn-lg"]:not([class*="btn-icon"]) {
+		@apply gap-2 h-10 px-6 has-[>svg]:px-4;
+	}
+	
+	/* Large icon buttons */
+	[class*="btn-lg-icon"] {
+		@apply size-10;
+	}
+	
+	/* Extra large buttons */
+	[class*="btn-xl"]:not([class*="btn-icon"]) {
+		@apply text-lg gap-2 h-12 px-8 has-[>svg]:px-5;
+	}
+	
+	/* Extra large icon buttons */
+	[class*="btn-xl-icon"] {
+		@apply size-12;
+	}
+	/* Primary buttons (default and explicit primary) */
+	[class*="btn"]:not([class*="secondary"]):not([class*="outline"]):not([class*="ghost"]):not([class*="link"]):not([class*="destructive"]),
+	[class*="btn-primary"] {
+		@apply bg-primary text-primary-foreground shadow-xs hover:bg-primary/90;
+		&[aria-pressed="true"] {
+			@apply bg-primary/90;
+		}
+		.loading {
+			@apply border-b-primary-foreground border-r-primary-foreground;
+		}
+	}
+	/* Secondary buttons */
+	[class*="btn-"][class*="-secondary"] {
+		@apply bg-secondary text-secondary-foreground shadow-xs;
+		&:hover,
+		&[aria-pressed="true"] {
+			@apply bg-secondary/80;
+		}
+		.loading {
+			@apply border-b-secondary-foreground border-r-secondary-foreground;
+		}
+	}
+	/* Outline buttons */
+	[class*="btn-"][class*="-outline"] {
+		@apply border bg-background shadow-xs dark:bg-input/30 dark:border-input;
+		&:hover,
+		&[aria-pressed="true"] {
+			@apply bg-accent text-accent-foreground dark:bg-accent/50;
+		}
+		.loading {
+			@apply border-b-secondary-foreground border-r-secondary-foreground;
+		}
+	}
+	/* Ghost buttons */
+	[class*="btn-"][class*="-ghost"] {
+		&:hover,
+		&[aria-pressed="true"] {
+			@apply bg-accent text-accent-foreground dark:bg-accent/50;
+		}
+		.loading {
+			@apply border-b-accent-foreground border-r-accent-foreground;
+		}
+	}
+	/* Link buttons */
+	[class*="btn-"][class*="-link"] {
+		@apply text-primary underline-offset-4;
+		&:hover,
+		&[aria-pressed="true"] {
+			@apply hover:underline;
+		}
+		.loading {
+			@apply border-b-primary border-r-primary;
+		}
+	}
+	/* Destructive buttons */
+	[class*="btn-"][class*="-destructive"] {
+		@apply bg-destructive text-white shadow-xs focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60;
+		&:hover,
+		&[aria-pressed="true"] {
+			@apply bg-destructive/90 dark:bg-destructive/50;
+		}
+		.loading {
+			@apply border-b-white border-r-white;
+		}
+	}
+}

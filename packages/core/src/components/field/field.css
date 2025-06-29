@@ -1,0 +1,18 @@
+@layer components {
+
+	.field-root {
+		@apply flex flex-col gap-1;
+	}
+
+	.field-hint {
+		@apply text-xs text-muted-foreground dark:text-muted-foreground;
+
+		&[aria-disabled] {
+			@apply opacity-50 pointer-events-none;
+		}
+	}
+
+	.field-error {
+		@apply text-xs text-destructive;
+	}
+}

@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Loader } from "./Loader.tsx";
+import { Loader } from "./Loader";
 
 const meta = {
 	title: "React/Loader",

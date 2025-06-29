@@ -1,1 +1,1 @@
-export { TextInput } from "./TextInput.tsx";
+export { TextInput, type TextInputProps } from "./TextInput";

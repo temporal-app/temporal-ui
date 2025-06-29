@@ -1,4 +1,5 @@
 @layer components {
+	.input,
 	.input[type="text"],
 	.input[type="email"],
 	.input[type="password"],
@@ -20,19 +21,7 @@
 		@apply focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px];
 		@apply aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive;
 	}
-	.input-root {
-		@apply flex flex-col gap-1;
-	}
-	.input-description {
-		@apply text-xs text-muted-foreground dark:text-muted-foreground;
-		&[aria-disabled] {
-			@apply opacity-50 pointer-events-none;
-		}
-	}
 
-	.input-error {
-		@apply text-xs text-destructive;
-	}
 	.input-wrapper {
 		@apply relative;
 
@@ -43,13 +32,14 @@
 		&[data-end-section] .input {
 			@apply pe-9;
 		}
-	}
-	.input-start-section,
-	.input-end-section {
-		@apply absolute text-muted-foreground pointer-events-none flex justify-center items-center h-9 w-9;
-	}
-	.input-end-section {
-		@apply end-0;
-	}
 
+		.input-start-section,
+		.input-end-section {
+			@apply absolute text-muted-foreground pointer-events-none flex justify-center items-center h-9 w-9;
+		}
+	
+		.input-end-section {
+			@apply end-0;
+		}
+	}
 }

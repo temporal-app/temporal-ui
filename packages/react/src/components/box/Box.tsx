@@ -57,10 +57,10 @@ export function Box({
 		style.marginBottom = `calc(var(--spacing) * ${ mb ?? my })`;
 	}
 	if (w) {
-		style.width = `${ w }px`;
+		style.width = typeof w === 'string' ? w : `${ w }px`;
 	}
 	if (h) {
-		style.height = `${ h }px`;
+		style.height = typeof h === 'string' ? h : `${ h }px`;
 	}
 
 	return (

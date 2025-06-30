@@ -29,8 +29,8 @@ export interface BoxProps<T> extends BaseComponent<T> {
 	mb?: number;
 	/** Left margin */
 	ml?: number;
-	/** Width in px */
-	w?: number;
-	/** Height in px */
-	h?: number;
+	/** Width in px (if numeric) or literal */
+	w?: string | number;
+	/** Height in px (if numeric) or literal */
+	h?: string | number;
 }

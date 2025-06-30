@@ -46,10 +46,10 @@ export function Box(_props: BoxProps) {
 		style[ "margin-bottom" ] = `calc(var(--spacing) * ${ props.mb ?? props.my })`;
 	}
 	if (props.w) {
-		style.width = `${ props.w }px`;
+		style.width = typeof props.w === 'string' ? props.w : `${ props.w }px`;
 	}
 	if (props.h) {
-		style.height = `${ props.h }px`;
+		style.height = typeof props.h === 'string' ? props.h : `${ props.h }px`;
 	}
 
 

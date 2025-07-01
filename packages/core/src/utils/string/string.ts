@@ -13,7 +13,8 @@ export function getSafeString(length: number, letterBank: string = "ABCDEFGHIJKL
 
 export const getInitials = (name = "") =>
 	name.split(" ")
-		.map((part) => part[0])
-		.splice(0, 2)
+		.filter((part) => part.length > 0)
+		.map((part) => part[ 0 ])
+		.slice(0, 2)
 		.join("")
 		.toUpperCase();

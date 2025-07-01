@@ -9,5 +9,5 @@ export * from './components/stack';
 export * from './components/text-input';
 export * from './components/textarea';
 
-export * from './utils/cx';
-export * from './utils/string';
+export * from './utils/cx/cx';
+export * from './utils/string/string';

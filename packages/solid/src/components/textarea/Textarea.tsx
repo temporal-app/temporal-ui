@@ -1,8 +1,9 @@
-import { cx, type TextareaProps as CoreTextareaProps } from "@temporal-ui/core";
+import type { TextareaProps as CoreTextareaProps } from "@temporal-ui/core/textarea";
 import { Field as ArkField } from "@ark-ui/solid/field";
 import { Field } from "../field";
 import type { HTMLProps } from "@ark-ui/solid";
 import { splitProps, type JSX } from 'solid-js';
+import { cx } from "@temporal-ui/core/utils/cx";
 
 export interface TextareaProps extends CoreTextareaProps<JSX.Element>, HTMLProps<"textarea"> {}
 

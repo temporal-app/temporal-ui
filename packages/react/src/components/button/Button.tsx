@@ -1,6 +1,7 @@
-import { type ButtonProps as CoreButtonProps, cx } from "@temporal-ui/core";
+import type { ButtonProps as CoreButtonProps } from "@temporal-ui/core/button";
 import type React from "react";
 import { Loader } from "../loader";
+import { cx } from "@temporal-ui/core/utils/cx";
 
 interface ButtonProps extends CoreButtonProps<React.ReactNode>, React.ButtonHTMLAttributes<HTMLButtonElement> {
 }

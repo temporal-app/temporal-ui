@@ -1,8 +1,9 @@
-import { type TextInputProps as CoreTextInputProps, cx } from "@temporal-ui/core";
+import type { TextInputProps as CoreTextInputProps } from "@temporal-ui/core/text-input";
 import { type JSX, splitProps } from "solid-js";
 import type { HTMLProps } from "@ark-ui/solid";
 import { Field as ArkField } from '@ark-ui/solid/field';
 import { Field } from "../field";
+import { cx } from "@temporal-ui/core/utils/cx";
 
 export interface TextInputProps extends CoreTextInputProps<JSX.Element>, HTMLProps<"input"> {}
 

@@ -1,4 +1,4 @@
-import type { BoxProps as CoreBoxProps } from "@temporal-ui/core";
+import type { BoxProps as CoreBoxProps } from "@temporal-ui/core/box";
 import type React from "react";
 
 export interface BoxProps extends CoreBoxProps<React.ReactNode>, React.HTMLAttributes<HTMLDivElement> { }

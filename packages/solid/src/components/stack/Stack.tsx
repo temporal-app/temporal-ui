@@ -1,7 +1,8 @@
 import type { HTMLProps } from "@ark-ui/solid";
-import { type StackProps as CoreStackProps, cx } from "@temporal-ui/core";
+import type { StackProps as CoreStackProps } from "@temporal-ui/core/stack";
 import { children, splitProps, type JSX } from "solid-js";
 import { Box } from "../box";
+import { cx } from "@temporal-ui/core/utils/cx";
 
 export interface StackProps extends CoreStackProps<JSX.Element>, HTMLProps<"div"> {}
 

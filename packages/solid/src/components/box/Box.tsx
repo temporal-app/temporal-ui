@@ -1,5 +1,6 @@
 import type { HTMLProps } from "@ark-ui/solid";
-import { cx, type BoxProps as CoreBoxProps } from "@temporal-ui/core";
+import type { BoxProps as CoreBoxProps } from "@temporal-ui/core/box";
+import { cx } from "@temporal-ui/core/utils/cx";
 import {splitProps, type JSX, children} from 'solid-js';
 
 export interface BoxProps extends CoreBoxProps<JSX.Element>, HTMLProps<'div'> { }

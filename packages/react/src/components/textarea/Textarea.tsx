@@ -1,8 +1,9 @@
 import { Field as ArkField } from "@ark-ui/react/field";
-import { cx, type TextareaProps as CoreTextareaProps } from "@temporal-ui/core";
+import type { TextareaProps as CoreTextareaProps } from "@temporal-ui/core/textarea";
 import type React from "react";
 import { forwardRef } from "react";
 import { Field } from "../field";
+import { cx } from "@temporal-ui/core/utils/cx";
 
 export type TextareaProps = CoreTextareaProps<React.ReactNode> & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 

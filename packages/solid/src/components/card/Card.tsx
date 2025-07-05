@@ -1,5 +1,6 @@
 import type { HTMLProps } from "@ark-ui/solid";
-import { type CardProps as CoreCardProps, cx } from "@temporal-ui/core";
+import type { CardProps as CoreCardProps } from "@temporal-ui/core/card";
+import { cx } from "@temporal-ui/core/utils/cx";
 import { children, splitProps, type JSX } from "solid-js";
 
 export interface CardProps extends CoreCardProps<JSX.Element>, HTMLProps<"div"> { }

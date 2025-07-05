@@ -1,8 +1,9 @@
 import type { HTMLProps } from "@ark-ui/solid";
-import { cx, type LoaderProps as CoreLoaderProps } from "@temporal-ui/core";
+import type { LoaderProps as CoreLoaderProps } from "@temporal-ui/core/loader";
+import { cx } from "@temporal-ui/core/utils/cx";
 import { mergeProps, splitProps, type JSX } from "solid-js";
 
-export interface LoaderProps extends CoreLoaderProps<JSX.Element>, HTMLProps<"div"> {};
+export interface LoaderProps extends CoreLoaderProps<JSX.Element>, HTMLProps<"div"> {}
 export function Loader(_props: LoaderProps) {
 
 	const [ props, elementProps ] = splitProps(

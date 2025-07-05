@@ -1,5 +1,6 @@
 import type { HTMLProps } from "@ark-ui/solid";
-import { type BadgeProps as CoreBadgeProps, cx } from "@temporal-ui/core";
+import type { BadgeProps as CoreBadgeProps } from "@temporal-ui/core/badge";
+import { cx } from "@temporal-ui/core/utils/cx";
 import { children, splitProps, type JSX } from "solid-js";
 
 export interface BadgeProps extends CoreBadgeProps<JSX.Element>, HTMLProps<'span'> { }

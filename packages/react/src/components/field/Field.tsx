@@ -1,5 +1,6 @@
 import { Field as ArkField } from "@ark-ui/react/field";
-import { type FieldProps as CoreFieldProps, cx } from "@temporal-ui/core";
+import type { FieldProps as CoreFieldProps } from "@temporal-ui/core/field";
+import { cx } from "@temporal-ui/core/utils/cx";
 import type React from "react";
 
 export type FieldProps = CoreFieldProps<React.ReactNode>;

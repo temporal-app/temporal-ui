@@ -1,4 +1,6 @@
-import { cx, type LoaderProps as CoreLoaderProps } from "@temporal-ui/core";
+import type React from "react";
+import type { LoaderProps as CoreLoaderProps } from "@temporal-ui/core/loader";
+import { cx } from "@temporal-ui/core/utils/cx";
 
 export interface LoaderProps extends CoreLoaderProps<React.ReactNode>, React.HTMLAttributes<HTMLDivElement> { }
 

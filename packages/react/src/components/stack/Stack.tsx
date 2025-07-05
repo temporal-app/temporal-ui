@@ -1,6 +1,7 @@
-import { type StackProps as CoreStackProps, cx } from "@temporal-ui/core";
+import type { StackProps as CoreStackProps } from "@temporal-ui/core/stack";
 import type React from "react";
 import { Box } from "../box";
+import { cx } from "@temporal-ui/core/utils/cx";
 
 export interface StackProps extends CoreStackProps<React.ReactNode>, React.HTMLAttributes<HTMLDivElement> { }
 

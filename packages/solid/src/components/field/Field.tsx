@@ -1,13 +1,14 @@
 import { Field as ArkField } from "@ark-ui/solid/field";
-import { type FieldProps as CoreFieldProps, cx } from "@temporal-ui/core";
+import type { FieldProps as CoreFieldProps } from "@temporal-ui/core/field";
+import { cx } from "@temporal-ui/core/utils/cx";
 import { children, type JSX, splitProps } from 'solid-js';
 
 export type FieldProps = CoreFieldProps<JSX.Element>;
 
 export function Field(_props: FieldProps) {
-	
+
 	const [ props ] = splitProps(
-		_props, 
+		_props,
 		[ "label", "hint", "error", "children", "disabled", "readOnly", "required", "classes" ]
 	);
 

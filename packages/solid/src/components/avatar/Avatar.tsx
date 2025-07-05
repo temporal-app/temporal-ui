@@ -1,5 +1,7 @@
 import { Avatar as ArkAvatar } from "@ark-ui/solid/avatar";
-import { type AvatarProps as CoreAvatarProps, cx, getInitials } from "@temporal-ui/core";
+import type { AvatarProps as CoreAvatarProps } from "@temporal-ui/core/avatar";
+import { cx } from "@temporal-ui/core/utils/cx";
+import { getInitials } from "@temporal-ui/core/utils/string";
 import { UserIcon } from "lucide-solid";
 import { Show, splitProps } from "solid-js";
 

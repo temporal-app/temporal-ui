@@ -5,7 +5,7 @@ export interface BadgeProps extends CoreBadgeProps<React.ReactNode>, React.HTMLA
 
 export function Badge(props: BadgeProps) {
 
-	const { variant = "primary", className, ...rest } = props;
+	const { variant, className, ...rest } = props;
 
 	const baseClass = [ "badge", variant ].filter(Boolean).join("-");
 

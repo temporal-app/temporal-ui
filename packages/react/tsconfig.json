@@ -4,7 +4,12 @@
 		"jsx": "react-jsx",
 		"outDir": "./dist",
 		"rootDir": "./src",
-		"noEmit": false
+		"noEmit": false,
+		"types": [
+			"vite/client",
+			"vitest/globals",
+			"@testing-library/jest-dom/vitest"
+		]
 	},
 	"include": [
 		"src"

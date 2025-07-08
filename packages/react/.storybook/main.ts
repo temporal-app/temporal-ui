@@ -17,7 +17,6 @@ const config: StorybookConfig = {
 		"../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
 	],
 	addons: [
-		getAbsolutePath("@storybook/addon-onboarding"),
 		getAbsolutePath("@storybook/addon-docs"),
 		getAbsolutePath("@storybook/addon-themes"),
 	],

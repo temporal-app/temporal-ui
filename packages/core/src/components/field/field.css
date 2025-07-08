@@ -5,9 +5,9 @@
 	}
 
 	.field-hint {
-		@apply text-xs text-muted-foreground dark:text-muted-foreground;
+		@apply text-sm text-muted-foreground dark:text-muted-foreground;
 
-		&[aria-disabled] {
+		&[aria-disabled="true"] {
 			@apply opacity-50 pointer-events-none;
 		}
 	}

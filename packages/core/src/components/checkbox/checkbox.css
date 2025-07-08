@@ -1,0 +1,36 @@
+@layer components {
+	[data-scope="checkbox"] {
+		&[data-part="root"] {
+			@apply flex flex-row items-center gap-2 cursor-pointer data-disabled:cursor-default data-readonly:cursor-default;
+		}
+		&[data-part="label"] {
+			@apply transition-all data-disabled:text-muted-foreground;
+		}
+		&[data-part="control"] {
+			@apply border-input dark:bg-input/30 size-4 shrink-0 rounded-[4px] border shadow-xs outline-none transition-all;
+			&[data-disabled] {
+				@apply cursor-not-allowed opacity-50;
+			}
+			&[data-invalid] {
+				@apply border-destructive ring-destructive/20 dark:ring-destructive/40;
+			}
+			&[data-focus-visible] {
+				@apply border-ring ring-ring/50 ring-[3px];
+			}
+			&[data-hover]:not([data-readonly]) {
+				&:not([data-state="checked"]) {
+					@apply bg-primary/5 dark:bg-primary/5;
+				}
+				&[data-state="checked"] {
+					@apply bg-primary/80 dark:bg-primary/80;
+				}
+			}
+			&[data-state="checked"] {
+				@apply bg-primary dark:bg-primary border-primary;
+			}
+			svg {
+				@apply size-[.9em] text-primary-foreground;
+			}
+		}
+	}
+  }

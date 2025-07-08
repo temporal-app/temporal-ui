@@ -3,8 +3,10 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-	plugins: [
-		tailwindcss(),
-		react(),
-	],
+	plugins: [tailwindcss(), react()],
+	test: {
+		globals: true,
+		environment: "happy-dom",
+		setupFiles: "../../node_modules/@testing-library/jest-dom/vitest",
+	},
 });

@@ -1,0 +1,31 @@
+@layer components {
+	[data-scope="radio-group"] {
+		&[data-part="root"] {
+			@apply flex flex-col gap-0 data-disabled:cursor-default data-readonly:cursor-default;
+			&[data-orientation="horizontal"] {
+				@apply flex flex-row gap-3;
+			}
+		}
+		&[data-part="item"] {
+			@apply flex flex-row gap-2 items-center cursor-pointer;
+			&[data-disabled] {
+				@apply opacity-50 pointer-events-none;
+			}
+		}		
+		&[data-part="item-control"] {
+			@apply border-input text-primary dark:bg-input/30 aspect-square size-4 shrink-0 rounded-full border shadow-xs transition-[color,box-shadow] outline-none relative;
+			&[data-focus-visible] {
+				@apply border-ring ring-ring/50 ring-[3px];
+			}
+			&[data-disabled] {
+				@apply cursor-not-allowed opacity-50;
+			}
+			&[data-invalid] {
+				@apply ring-destructive/20 dark:ring-destructive/40 border-destructive;
+			}
+			&[data-state="checked"]:before {
+				@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 content-[''] rounded-full size-2 bg-primary;
+			}
+		}
+	}
+}

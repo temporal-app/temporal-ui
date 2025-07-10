@@ -8,6 +8,7 @@
 @import "./components/checkbox/checkbox.css";
 @import "./components/field/field.css";
 @import "./components/loader/loader.css";
+@import "./components/radio-group/radio.css";
 @import "./components/text-input/text-input.css";
 @import "./components/textarea/textarea.css";
 @import "./components/label/label.css";

@@ -21,7 +21,7 @@ const items: RadioGroupItem[] = [
 	},
 ];
 
-describe("CheckboxGroup", () => {
+describe("RadioGroup", () => {
 	it("should render all items", () => {
 		render(() => <RadioGroup label="Select options" items={items} />);
 		expect(screen.getByText("Select options")).toBeInTheDocument();

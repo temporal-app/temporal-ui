@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
-import  { RadioGroup, type RadioGroupItem } from "./RadioGroup";
+import { RadioGroup, type RadioGroupItem } from "./RadioGroup";
 
 const meta = {
 	title: "React/Radio Group",
@@ -48,7 +48,6 @@ export const Default: Story = {
 export const Horizontal: Story = {
 	args: {
 		...Default.args,
-		items: sampleItems,
 		orientation: 'horizontal'
 	},
 };

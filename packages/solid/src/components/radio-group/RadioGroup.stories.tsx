@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
 import { fn } from "storybook/test";
-import  { RadioGroup, type RadioGroupItem } from "./RadioGroup";
+import { RadioGroup, type RadioGroupItem } from "./RadioGroup";
 
 const meta = {
 	title: "Solid/Radio Group",

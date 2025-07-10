@@ -30,6 +30,8 @@ export function RadioGroup(props: RadioGroupProps) {
 			value={value}
 			onValueChange={(details) => onValueChange?.(details.value)}
 			orientation={orientation}
+			readOnly={props.readOnly}
+			aria-required={props.required}
 		>
 			{label && (
 				<ArkRadioGroup.Label className={cx("field-label", classes?.label)}>

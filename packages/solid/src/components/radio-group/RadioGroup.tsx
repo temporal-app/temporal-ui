@@ -32,6 +32,8 @@ export function RadioGroup(_props: RadioGroupProps) {
 			defaultValue={groupProps.defaultValue}
 			value={groupProps.value}
 			disabled={fieldProps.disabled}
+			aria-required={fieldProps.required}
+			readOnly={fieldProps.readOnly}
 			onValueChange={(details) => groupProps.onValueChange?.(details.value)}
 			orientation={groupProps.orientation}
 		>

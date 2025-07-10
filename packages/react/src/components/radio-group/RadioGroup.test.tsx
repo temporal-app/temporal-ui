@@ -19,7 +19,7 @@ const items: RadioGroupItem[] = [
 		value: "option4",
 		label: "Option 4",
 	},
-]
+];
 
 describe("RadioGroup", () => {
 	it("should render all items", () => {

@@ -9,7 +9,6 @@ export interface PopoverProps extends CorePopoverProps<React.ReactNode> {
 };
 
 export function Popover(props: PopoverProps) {
-
 	const {
 		trigger,
 		portal = true, 

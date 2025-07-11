@@ -9,7 +9,6 @@ export interface PopoverProps extends CorePopoverProps<JSX.Element> {
 };
 
 export function Popover(props: PopoverProps) {
-
 	const [ rootProps, contentProps ] = splitProps(
 		mergeProps({ portal: true }, props),
 		[

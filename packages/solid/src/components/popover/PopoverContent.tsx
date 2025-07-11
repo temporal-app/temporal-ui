@@ -13,11 +13,11 @@ export interface PopoverContentProps extends BoxProps {
 }
 
 export function PopoverContent(props: PopoverContentProps) {
-
 	const [ contentProps, boxProps ] = splitProps(props, [
 		"title",
 		"description",
 		"classes",
+		"children"
 	]);
 
 	return (
@@ -38,7 +38,7 @@ export function PopoverContent(props: PopoverContentProps) {
 							{contentProps.description}
 						</ArkPopover.Description>
 					)}
-					{children(() => boxProps.children)}
+					{children(() => contentProps.children)}
 				</Box>
 			</ArkPopover.Content>
 		</ArkPopover.Positioner>

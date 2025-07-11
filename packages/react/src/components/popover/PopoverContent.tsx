@@ -12,7 +12,6 @@ export interface PopoverContentProps extends BoxProps {
 }
 
 export function PopoverContent(props: PopoverContentProps) {
-
 	const { title, description, classes, children, ...boxProps } = props;
 	
 	return (

@@ -37,13 +37,13 @@
 		"**/*.css"
 	],
 	"dependencies": {
-		"@ark-ui/react": "5.15.4",
+		"@ark-ui/react": "5.16.1",
 		"@temporal-ui/core": "workspace:*"
 	},
 	"devDependencies": {
-		"@storybook/addon-docs": "9.0.14",
-		"@storybook/addon-themes": "9.0.14",
-		"@storybook/react-vite": "9.0.14",
+		"@storybook/addon-docs": "9.0.16",
+		"@storybook/addon-themes": "9.0.16",
+		"@storybook/react-vite": "9.0.16",
 		"@tailwindcss/vite": "4.1.11",
 		"@testing-library/jest-dom": "6.6.3",
 		"@testing-library/react": "16.3.0",
@@ -56,11 +56,11 @@
 		"react": "19.1.0",
 		"react-dom": "19.1.0",
 		"rimraf": "6.0.1",
-		"storybook": "9.0.14",
+		"storybook": "9.0.16",
 		"tailwindcss": "4.1.11",
 		"tsup": "8.5.0",
 		"typescript": "5.8.3",
-		"vite": "7.0.0",
+		"vite": "7.0.4",
 		"vitest": "3.2.4"
 	},
 	"peerDependencies": {

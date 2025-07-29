@@ -1,5 +1,6 @@
 import { cleanup, render, screen, waitFor } from '@solidjs/testing-library';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 import { Menu, type MenuProps } from './Menu';
 import { MenuRadioItem } from './MenuRadioItem';
 import { MenuRadioItemGroup } from './MenuRadioItemGroup';

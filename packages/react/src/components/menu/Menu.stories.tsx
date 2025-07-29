@@ -115,16 +115,16 @@ function SampleCheckboxMenuItems() {
 	return (
 		<>
 			<MenuItemGroup label="View Options">
-				<MenuCheckboxItem value="sidebar" checked={true} onCheckedChange={fn()}>Show Sidebar</MenuCheckboxItem>
-				<MenuCheckboxItem value="toolbar" checked={false} onCheckedChange={fn()}>Show Toolbar</MenuCheckboxItem>
-				<MenuCheckboxItem value="statusbar" checked={true} onCheckedChange={fn()}>Show Status Bar</MenuCheckboxItem>
-				<MenuCheckboxItem value="minimap" checked={false} onCheckedChange={fn()}>Show Minimap</MenuCheckboxItem>
+				<MenuCheckboxItem value="sidebar" checked={true} onCheckedChange={() => fn()}>Show Sidebar</MenuCheckboxItem>
+				<MenuCheckboxItem value="toolbar" checked={false} onCheckedChange={() => fn()}>Show Toolbar</MenuCheckboxItem>
+				<MenuCheckboxItem value="statusbar" checked={true} onCheckedChange={() => fn()}>Show Status Bar</MenuCheckboxItem>
+				<MenuCheckboxItem value="minimap" checked={false} onCheckedChange={() => fn()}>Show Minimap</MenuCheckboxItem>
 			</MenuItemGroup>
 			<MenuItemSeparator />
 			<MenuItemGroup label="Editor Options">
-				<MenuCheckboxItem value="wordwrap" checked={false} onCheckedChange={fn()}>Word Wrap</MenuCheckboxItem>
-				<MenuCheckboxItem value="linenumbers" checked={true} onCheckedChange={fn()}>Line Numbers</MenuCheckboxItem>
-				<MenuCheckboxItem value="autocomplete" checked={true} onCheckedChange={fn()}>Auto Complete</MenuCheckboxItem>
+				<MenuCheckboxItem value="wordwrap" checked={false} onCheckedChange={() => fn()}>Word Wrap</MenuCheckboxItem>
+				<MenuCheckboxItem value="linenumbers" checked={true} onCheckedChange={() => fn()}>Line Numbers</MenuCheckboxItem>
+				<MenuCheckboxItem value="autocomplete" checked={true} onCheckedChange={() => fn()}>Auto Complete</MenuCheckboxItem>
 			</MenuItemGroup>
 		</>
 	);

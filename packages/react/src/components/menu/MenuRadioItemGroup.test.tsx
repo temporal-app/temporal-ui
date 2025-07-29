@@ -1,5 +1,6 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 import { Menu, type MenuProps } from './Menu';
 import { MenuRadioItem } from './MenuRadioItem';
 import { MenuRadioItemGroup } from './MenuRadioItemGroup';
@@ -10,10 +11,6 @@ describe('MenuRadioItemGroup Component', () => {
 			{children}
 		</Menu>
 	);
-
-	beforeEach(() => {
-		cleanup();
-	});
 
 	it('renders radio group with label', async () => {
 		const user = userEvent.setup();

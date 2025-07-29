@@ -1,8 +1,8 @@
 import { cleanup, render, screen, waitFor } from '@solidjs/testing-library';
 import userEvent from '@testing-library/user-event';
+import { Button } from '../button';
 import { Menu, type MenuProps } from './Menu';
 import { MenuItem } from './MenuItem';
-import { Button } from '../button';
 
 describe('MenuItem Component', () => {
 	const MenuWrapper = (props: Omit<MenuProps, 'trigger'>) => (
@@ -45,8 +45,10 @@ describe('MenuItem Component', () => {
 		const menuItem = screen.getByRole('menuitem', { name: 'Disabled Item' });
 		expect(menuItem).toBeVisible();
 		expect(menuItem).toHaveAttribute('data-disabled');
-	});
 
+		await user.click(menuItem);
+		expect(onSelect).not.toHaveBeenCalled();
+	});
 	it('accepts additional props', async () => {
 		const user = userEvent.setup();
 		render(

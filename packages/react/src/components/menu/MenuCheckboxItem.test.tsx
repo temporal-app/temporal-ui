@@ -1,8 +1,9 @@
 import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
+import { Button } from '../button';
 import { Menu, type MenuProps } from './Menu';
 import { MenuCheckboxItem } from './MenuCheckboxItem';
-import { Button } from '../button';
 
 describe('MenuCheckboxItem Component', () => {
 	const MenuWrapper = ({ children, ...props }: Omit<MenuProps, 'trigger'>) => (
@@ -18,12 +19,12 @@ describe('MenuCheckboxItem Component', () => {
 	it('renders checkbox menu item correctly', async () => {
 		const user = userEvent.setup();
 		const onCheckedChange = vi.fn();
-		
+
 		render(
 			<MenuWrapper>
-				<MenuCheckboxItem 
-					value="checkbox" 
-					checked={false} 
+				<MenuCheckboxItem
+					value="checkbox"
+					checked={false}
 					onCheckedChange={onCheckedChange}
 				>
 					Checkbox Item
@@ -41,12 +42,12 @@ describe('MenuCheckboxItem Component', () => {
 	it('shows check indicator when checked', async () => {
 		const user = userEvent.setup();
 		const onCheckedChange = vi.fn();
-		
+
 		render(
 			<MenuWrapper>
-				<MenuCheckboxItem 
-					value="checkbox" 
-					checked={true} 
+				<MenuCheckboxItem
+					value="checkbox"
+					checked={true}
 					onCheckedChange={onCheckedChange}
 				>
 					Checked Item
@@ -66,12 +67,12 @@ describe('MenuCheckboxItem Component', () => {
 	it('toggles checked state when clicked', async () => {
 		const user = userEvent.setup();
 		const onCheckedChange = vi.fn();
-		
+
 		render(
 			<MenuWrapper closeOnSelect={false}>
-				<MenuCheckboxItem 
-					value="checkbox" 
-					checked={false} 
+				<MenuCheckboxItem
+					value="checkbox"
+					checked={false}
 					onCheckedChange={onCheckedChange}
 				>
 					Toggle Item
@@ -94,12 +95,12 @@ describe('MenuCheckboxItem Component', () => {
 	it('accepts additional props', async () => {
 		const user = userEvent.setup();
 		const onCheckedChange = vi.fn();
-		
+
 		render(
 			<MenuWrapper>
-				<MenuCheckboxItem 
-					value="checkbox" 
-					checked={false} 
+				<MenuCheckboxItem
+					value="checkbox"
+					checked={false}
 					onCheckedChange={onCheckedChange}
 					data-testid="custom-checkbox-item"
 				>

@@ -1,7 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
 import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
-import { children } from "solid-js";
 import { fn } from "storybook/test";
 import { Button } from "../button";
 import { Stack } from "../stack";
@@ -65,7 +64,7 @@ function SampleForm() {
 export const Default: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		children: children(() => <SampleForm />),
+		children: () => <SampleForm />,
 		p: 3
 	}
 };

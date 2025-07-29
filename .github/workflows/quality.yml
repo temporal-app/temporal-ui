@@ -37,6 +37,9 @@ jobs:
       - name: Install
         uses: ./.github/actions/install
 
+      - name: Run tests
+        run: bun run test
+
   lint:
     name: Lint
     runs-on: ubuntu-latest

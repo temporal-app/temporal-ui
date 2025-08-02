@@ -5,7 +5,7 @@ import { Loader } from "../loader";
 import type { HTMLProps } from "@ark-ui/solid";
 import { cx } from "@temporal-ui/core/utils/cx";
 
-interface ButtonProps extends CoreButtonProps<JSX.Element>, HTMLProps<'button'> { }
+export interface ButtonProps extends CoreButtonProps<JSX.Element>, HTMLProps<'button'> { }
 
 export function Button(_props: ButtonProps) {
 

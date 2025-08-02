@@ -3,8 +3,7 @@ import type React from "react";
 import { Loader } from "../loader";
 import { cx } from "@temporal-ui/core/utils/cx";
 
-interface ButtonProps extends CoreButtonProps<React.ReactNode>, React.ButtonHTMLAttributes<HTMLButtonElement> {
-}
+export interface ButtonProps extends CoreButtonProps<React.ReactNode>, React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 export function Button(props: ButtonProps) {
 	const { variant = 'primary', size = 'md', icon = false, className, children, disabled, loading, ...rest } = props;

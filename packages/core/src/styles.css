@@ -1,6 +1,7 @@
 @import "./css/base.css";
 @import "./css/theme.css";
 
+@import "./components/alert/alert.css";
 @import "./components/avatar/avatar.css";
 @import "./components/badge/badge.css";
 @import "./components/button/button.css";

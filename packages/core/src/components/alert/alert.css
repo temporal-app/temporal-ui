@@ -1,0 +1,73 @@
+@layer components {
+	.alert,
+	.alert-default,
+	.alert-info,
+	.alert-success,
+	.alert-warning,
+	.alert-error {
+		@apply relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current;
+		
+		h2 {
+			@apply col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight;
+		}
+		section {
+			@apply text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed;
+
+			ul {
+				@apply list-inside list-disc text-sm;
+			}
+		}
+	}
+	.alert,
+	.alert-default {
+		@apply bg-card text-card-foreground;
+	}
+	.alert-info {
+		@apply bg-sky-100 border-sky-200 dark:bg-sky-950 dark:border-sky-800;
+		svg {
+			@apply text-sky-900 dark:text-sky-300;
+		}
+		h2 {
+			@apply text-sky-900 dark:text-sky-300;
+		}
+		section {
+			@apply text-sky-700 dark:text-sky-200;
+		}
+	}
+	.alert-success {
+		@apply bg-green-100 border-green-200 dark:bg-green-950 dark:border-green-800;
+		svg {
+			@apply text-green-900 dark:text-green-300;
+		}
+		h2 {
+			@apply text-green-900 dark:text-green-300;
+		}
+		section {
+			@apply text-green-700 dark:text-green-200;
+		}
+	}
+	.alert-warning {
+		@apply bg-yellow-100 border-yellow-200 dark:bg-yellow-950 dark:border-yellow-800;
+		svg {
+			@apply text-yellow-900 dark:text-yellow-300;
+		}
+		h2 {
+			@apply text-yellow-900 dark:text-yellow-300;
+		}
+		section {
+			@apply text-yellow-700 dark:text-yellow-200;
+		}
+	}
+	.alert-error {
+		@apply bg-red-100 border-red-200 dark:bg-red-950 dark:border-red-800;
+		svg {
+			@apply text-red-900 dark:text-red-300;
+		}
+		h2 {
+			@apply text-red-900 dark:text-red-300;
+		}
+		section {
+			@apply text-red-700 dark:text-red-200;
+		}
+	}
+}

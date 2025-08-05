@@ -25,7 +25,6 @@ export function Field(_props: FieldProps) {
 					{props.label}
 				</ArkField.Label>
 			)}
-			{children(() => props.children)}
 			{props.hint && (
 				<ArkField.HelperText
 					class={cx("field-hint", props.classes?.hint)}
@@ -34,6 +33,7 @@ export function Field(_props: FieldProps) {
 					{props.hint}
 				</ArkField.HelperText>
 			)}
+			{children(() => props.children)}
 			{props.error && (
 				<ArkField.ErrorText class={cx("field-error", props.classes?.error)}>
 					{props.error}

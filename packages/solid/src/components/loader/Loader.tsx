@@ -8,7 +8,7 @@ export function Loader(_props: LoaderProps) {
 
 	const [ props, elementProps ] = splitProps(
 		mergeProps<LoaderProps[]>({ size: "md" }, _props),
-		[ "size", "className", "class" ]
+		[ "size", "className", "class", "testId" ]
 	);
 
 	const size = props.size !== "md" ? props.size : "";
@@ -18,6 +18,7 @@ export function Loader(_props: LoaderProps) {
 		<div
 			{...elementProps}
 			class={cx("loader", baseClass, props.className, props.class)}
+			data-testid={props.testId}
 		/>
 	)
 }

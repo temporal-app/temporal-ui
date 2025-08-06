@@ -17,6 +17,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, r
 		readOnly,
 		className,
 		classes,
+		testId,
 		...rest
 	} = props;
 
@@ -29,11 +30,13 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, r
 			disabled={disabled}
 			readOnly={readOnly}
 			classes={classes}
+			testId={testId ? `${testId}-field` : undefined}
 		>
 			<ArkField.Textarea
 				ref={ref}
 				{...rest}
 				className={cx("textarea", className)}
+				data-testid={testId ? `${testId}--textarea` : undefined}
 			/>
 		</Field>
 	);

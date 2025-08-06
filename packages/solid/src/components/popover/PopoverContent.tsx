@@ -1,6 +1,6 @@
-import { children, splitProps } from "solid-js";
+import { Popover as ArkPopover } from "@ark-ui/solid/popover";
+import { splitProps } from "solid-js";
 import { Box, type BoxProps } from "../box";
-import { Popover as ArkPopover } from '@ark-ui/solid/popover';
 
 export interface PopoverContentProps extends BoxProps {
 	title?: string;
@@ -13,20 +13,26 @@ export interface PopoverContentProps extends BoxProps {
 }
 
 export function PopoverContent(props: PopoverContentProps) {
-	const [ contentProps, boxProps ] = splitProps(props, [
+	const [contentProps, boxProps] = splitProps(props, [
 		"title",
 		"description",
 		"classes",
-		"children"
+		"children",
+		"testId",
 	]);
 
 	return (
-		<ArkPopover.Positioner>
-			<ArkPopover.Content>
+		<ArkPopover.Positioner
+			data-testid={props.testId ? `${props.testId}--positioner` : undefined}
+		>
+			<ArkPopover.Content data-testid={props.testId ? `${props.testId}--content` : undefined}>
 				<Box {...boxProps}>
 					{contentProps.title && (
 						<ArkPopover.Title
 							class={contentProps.classes?.title}
+							data-testid={
+								contentProps.testId ? `${contentProps.testId}--title` : undefined
+							}
 						>
 							{contentProps.title}
 						</ArkPopover.Title>
@@ -34,11 +40,16 @@ export function PopoverContent(props: PopoverContentProps) {
 					{contentProps.description && (
 						<ArkPopover.Description
 							class={contentProps.classes?.description}
+							data-testid={
+								contentProps.testId
+									? `${contentProps.testId}--description`
+									: undefined
+							}
 						>
 							{contentProps.description}
 						</ArkPopover.Description>
 					)}
-					{children(() => contentProps.children)}
+					{contentProps.children}
 				</Box>
 			</ArkPopover.Content>
 		</ArkPopover.Positioner>

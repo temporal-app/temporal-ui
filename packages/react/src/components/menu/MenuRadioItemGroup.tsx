@@ -5,18 +5,23 @@ import type { Assign } from "@ark-ui/react";
 import type { ComponentPropsWithoutRef } from "react";
 
 interface BaseMenuRadioItemGroupProps extends CoreMenuRadioItemGroupProps<React.ReactNode> {}
-export interface MenuRadioItemGroupProps extends Assign<ComponentPropsWithoutRef<'div'>, BaseMenuRadioItemGroupProps> {}
+export interface MenuRadioItemGroupProps
+	extends Assign<ComponentPropsWithoutRef<"div">, BaseMenuRadioItemGroupProps> {}
 
 export function MenuRadioItemGroup(props: MenuRadioItemGroupProps) {
-
-	const { label, onValueChange, ...restProps } = props;
+	const { label, onValueChange, testId, ...restProps } = props;
 
 	return (
 		<ArkMenu.RadioItemGroup
-			onValueChange={details => onValueChange?.(details.value)}
+			onValueChange={(details) => onValueChange?.(details.value)}
 			{...restProps}
+			data-testid={testId}
 		>
-			{label && <ArkMenu.ItemGroupLabel>{label}</ArkMenu.ItemGroupLabel>}
+			{label && (
+				<ArkMenu.ItemGroupLabel data-testid={testId ? `${testId}--label` : undefined}>
+					{label}
+				</ArkMenu.ItemGroupLabel>
+			)}
 			{props.children}
 		</ArkMenu.RadioItemGroup>
 	);

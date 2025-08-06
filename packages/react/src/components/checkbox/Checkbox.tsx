@@ -5,11 +5,9 @@ import type React from "react";
 import { forwardRef } from "react";
 import { Field } from "../field";
 
-export interface CheckboxProps extends CoreCheckboxProps<React.ReactNode> {
-}
+export interface CheckboxProps extends CoreCheckboxProps<React.ReactNode> {}
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
-
 	const {
 		label,
 		hint,
@@ -21,6 +19,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref)
 		defaultChecked,
 		checked,
 		onCheckedChange,
+		testId,
 		...rest
 	} = props;
 
@@ -33,20 +32,27 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref)
 			readOnly={readOnly}
 			error={error}
 			disabled={disabled}
+			testId={testId ? `${testId}-field` : undefined}
 		>
 			<ArkCheckbox.Root
 				ref={ref}
 				defaultChecked={defaultChecked}
 				checked={checked}
 				onCheckedChange={(details) => onCheckedChange?.(details.checked)}
+				data-testid={testId ? `${testId}--root` : undefined}
 			>
-				<ArkCheckbox.Control>
-					<ArkCheckbox.Indicator>
+				<ArkCheckbox.Control data-testid={testId ? `${testId}--control` : undefined}>
+					<ArkCheckbox.Indicator data-testid={testId ? `${testId}--indicator` : undefined}>
 						<CheckIcon />
 					</ArkCheckbox.Indicator>
 				</ArkCheckbox.Control>
-				<ArkCheckbox.Label>{label}</ArkCheckbox.Label>
-				<ArkCheckbox.HiddenInput {...rest} />
+				<ArkCheckbox.Label data-testid={testId ? `${testId}--label` : undefined}>
+					{label}
+				</ArkCheckbox.Label>
+				<ArkCheckbox.HiddenInput
+					data-testid={testId ? `${testId}--input` : undefined}
+					{...rest}
+				/>
 			</ArkCheckbox.Root>
 		</Field>
 	);

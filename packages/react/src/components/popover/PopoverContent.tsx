@@ -1,5 +1,5 @@
 import { Box, type BoxProps } from "../box";
-import { Popover as ArkPopover } from '@ark-ui/react/popover';
+import { Popover as ArkPopover } from "@ark-ui/react/popover";
 
 export interface PopoverContentProps extends BoxProps {
 	title?: string;
@@ -12,15 +12,19 @@ export interface PopoverContentProps extends BoxProps {
 }
 
 export function PopoverContent(props: PopoverContentProps) {
-	const { title, description, classes, children, ...boxProps } = props;
-	
+	const { title, description, classes, children, testId, ...boxProps } = props;
+
 	return (
-		<ArkPopover.Positioner>
-			<ArkPopover.Content>
-				<Box {...boxProps} className={classes?.content}>
+		<ArkPopover.Positioner data-testid={testId ? `${testId}--positioner` : undefined}>
+			<ArkPopover.Content data-testid={testId ? `${testId}--content` : undefined}>
+				<Box
+					{...boxProps}
+					className={classes?.content}
+				>
 					{title && (
 						<ArkPopover.Title
 							className={classes?.title}
+							data-testid={testId ? `${testId}--title` : undefined}
 						>
 							{title}
 						</ArkPopover.Title>
@@ -28,6 +32,7 @@ export function PopoverContent(props: PopoverContentProps) {
 					{description && (
 						<ArkPopover.Description
 							className={classes?.description}
+							data-testid={testId ? `${testId}--description` : undefined}
 						>
 							{description}
 						</ArkPopover.Description>

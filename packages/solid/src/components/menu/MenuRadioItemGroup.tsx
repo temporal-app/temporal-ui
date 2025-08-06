@@ -4,18 +4,25 @@ import type { JSX } from "solid-js";
 import type { Assign } from "@ark-ui/solid";
 import type { ComponentProps } from "solid-js";
 
-interface BaseMenuRadioItemGroupProps extends CoreMenuRadioItemGroupProps<JSX.Element> { }
-export interface MenuRadioItemGroupProps extends Assign<ComponentProps<'div'>, BaseMenuRadioItemGroupProps> { }
+interface BaseMenuRadioItemGroupProps extends CoreMenuRadioItemGroupProps<JSX.Element> {}
+export interface MenuRadioItemGroupProps
+	extends Assign<ComponentProps<"div">, BaseMenuRadioItemGroupProps> {}
 
 export function MenuRadioItemGroup(props: MenuRadioItemGroupProps) {
-
 	return (
 		<ArkMenu.RadioItemGroup
 			{...props}
 			class={props.className}
-			onValueChange={details => props.onValueChange?.(details.value)}
+			onValueChange={(details) => props.onValueChange?.(details.value)}
+			data-testid={props.testId}
 		>
-			{props.label && <ArkMenu.ItemGroupLabel>{props.label}</ArkMenu.ItemGroupLabel>}
+			{props.label && (
+				<ArkMenu.ItemGroupLabel
+					data-testid={props.testId ? `${props.testId}--label` : undefined}
+				>
+					{props.label}
+				</ArkMenu.ItemGroupLabel>
+			)}
 			{props.children}
 		</ArkMenu.RadioItemGroup>
 	);

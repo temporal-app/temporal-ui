@@ -1,13 +1,16 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { vi } from 'vitest';
-import { Button } from '../button';
-import { Menu, type MenuProps } from './Menu';
-import { MenuCheckboxItem } from './MenuCheckboxItem';
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { vi } from "vitest";
+import { Button } from "../button";
+import { Menu, type MenuProps } from "./Menu";
+import { MenuCheckboxItem } from "./MenuCheckboxItem";
 
-describe('MenuCheckboxItem Component', () => {
-	const MenuWrapper = ({ children, ...props }: Omit<MenuProps, 'trigger'>) => (
-		<Menu {...props} trigger={<Button>Trigger</Button>}>
+describe("MenuCheckboxItem Component", () => {
+	const MenuWrapper = ({ children, ...props }: Omit<MenuProps, "trigger">) => (
+		<Menu
+			{...props}
+			trigger={<Button>Trigger</Button>}
+		>
 			{children}
 		</Menu>
 	);
@@ -16,7 +19,7 @@ describe('MenuCheckboxItem Component', () => {
 		cleanup();
 	});
 
-	it('renders checkbox menu item correctly', async () => {
+	it("renders checkbox menu item correctly", async () => {
 		const user = userEvent.setup();
 		const onCheckedChange = vi.fn();
 
@@ -29,17 +32,17 @@ describe('MenuCheckboxItem Component', () => {
 				>
 					Checkbox Item
 				</MenuCheckboxItem>
-			</MenuWrapper>
+			</MenuWrapper>,
 		);
 
-		await user.click(screen.getByRole('button'));
+		await user.click(screen.getByRole("button"));
 
 		await waitFor(() => {
-			expect(screen.getByRole('menuitemcheckbox', { name: 'Checkbox Item' })).toBeVisible();
+			expect(screen.getByRole("menuitemcheckbox", { name: "Checkbox Item" })).toBeVisible();
 		});
 	});
 
-	it('shows check indicator when checked', async () => {
+	it("shows check indicator when checked", async () => {
 		const user = userEvent.setup();
 		const onCheckedChange = vi.fn();
 
@@ -52,19 +55,19 @@ describe('MenuCheckboxItem Component', () => {
 				>
 					Checked Item
 				</MenuCheckboxItem>
-			</MenuWrapper>
+			</MenuWrapper>,
 		);
 
-		await user.click(screen.getByRole('button'));
+		await user.click(screen.getByRole("button"));
 
 		await waitFor(() => {
-			const checkboxItem = screen.getByRole('menuitemcheckbox', { name: 'Checked Item' });
+			const checkboxItem = screen.getByRole("menuitemcheckbox", { name: "Checked Item" });
 			expect(checkboxItem).toBeVisible();
-			expect(checkboxItem).toHaveAttribute('data-state', 'checked');
+			expect(checkboxItem).toHaveAttribute("data-state", "checked");
 		});
 	});
 
-	it('toggles checked state when clicked', async () => {
+	it("toggles checked state when clicked", async () => {
 		const user = userEvent.setup();
 		const onCheckedChange = vi.fn();
 
@@ -77,22 +80,22 @@ describe('MenuCheckboxItem Component', () => {
 				>
 					Toggle Item
 				</MenuCheckboxItem>
-			</MenuWrapper>
+			</MenuWrapper>,
 		);
 
-		await user.click(screen.getByRole('button'));
+		await user.click(screen.getByRole("button"));
 
 		await waitFor(() => {
-			expect(screen.getByRole('menuitemcheckbox', { name: 'Toggle Item' })).toBeVisible();
+			expect(screen.getByRole("menuitemcheckbox", { name: "Toggle Item" })).toBeVisible();
 		});
 
-		const checkboxItem = screen.getByRole('menuitemcheckbox', { name: 'Toggle Item' });
+		const checkboxItem = screen.getByRole("menuitemcheckbox", { name: "Toggle Item" });
 		await user.click(checkboxItem);
 
 		expect(onCheckedChange).toHaveBeenCalledWith(true);
 	});
 
-	it('accepts additional props', async () => {
+	it("accepts additional props", async () => {
 		const user = userEvent.setup();
 		const onCheckedChange = vi.fn();
 
@@ -102,17 +105,17 @@ describe('MenuCheckboxItem Component', () => {
 					value="checkbox"
 					checked={false}
 					onCheckedChange={onCheckedChange}
-					data-testid="custom-checkbox-item"
+					testId="custom-checkbox-item"
 				>
 					Custom Checkbox
 				</MenuCheckboxItem>
-			</MenuWrapper>
+			</MenuWrapper>,
 		);
 
-		await user.click(screen.getByRole('button'));
+		await user.click(screen.getByRole("button"));
 
 		await waitFor(() => {
-			expect(screen.getByTestId('custom-checkbox-item')).toBeVisible();
+			expect(screen.getByTestId("custom-checkbox-item")).toBeVisible();
 		});
 	});
 });

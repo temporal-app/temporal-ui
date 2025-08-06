@@ -9,8 +9,10 @@ export interface MenuItemProps extends Assign<ComponentPropsWithoutRef<'div'>, B
 
 export function MenuItem(props: MenuItemProps) {
 
+	const { testId, ...rest } = props;
+
 	return (
-		<ArkMenu.Item {...props}>
+		<ArkMenu.Item {...rest} data-testid={testId}>
 			{props.children}
 		</ArkMenu.Item>
 	);

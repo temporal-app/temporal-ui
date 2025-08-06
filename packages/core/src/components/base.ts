@@ -7,6 +7,8 @@ export interface BaseComponent<T = unknown> {
 	className?: string;
 	/** The content of the component */
 	children?: T;
+	/** The test ID for the component */
+	testId?: string;
 }
 
 export type PlacementSide = "top" | "bottom" | "left" | "right";

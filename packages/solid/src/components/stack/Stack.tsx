@@ -1,31 +1,29 @@
 import type { HTMLProps } from "@ark-ui/solid";
 import type { StackProps as CoreStackProps } from "@temporal-ui/core/stack";
-import { children, splitProps, type JSX } from "solid-js";
-import { Box } from "../box";
 import { cx } from "@temporal-ui/core/utils/cx";
+import { splitProps, type JSX } from "solid-js";
+import { Box } from "../box";
 
 export interface StackProps extends CoreStackProps<JSX.Element>, HTMLProps<"div"> {}
 
 export function Stack(_props: StackProps) {
+	const [props, elementProps] = splitProps(_props, [
+		"children",
+		"row",
+		"reverse",
+		"center",
+		"gap",
+		"align",
+		"justify",
+		"className",
+		"class",
+		"style",
+		"testId",
+	]);
 
-	const [ props, elementProps ] = splitProps(
-		_props,
-		[
-			"children",
-			"row",
-			"reverse",
-			"center",
-			"gap",
-			"align",
-			"justify",
-			"className",
-			"class",
-			"style"
-		]
-	)
-
-	const baseClass = props.center ? "stack-center" : [ "stack", props.row && "row", props.reverse && "reverse" ]
-		.filter(Boolean).join("-");
+	const baseClass = props.center
+		? "stack-center"
+		: ["stack", props.row && "row", props.reverse && "reverse"].filter(Boolean).join("-");
 
 	const style: JSX.CSSProperties = {};
 
@@ -45,10 +43,11 @@ export function Stack(_props: StackProps) {
 			class={cx(baseClass, props.className, props.class)}
 			style={{
 				...style,
-				...(props.style as JSX.CSSProperties)
+				...(props.style as JSX.CSSProperties),
 			}}
+			testId={props.testId}
 		>
-			{children(() => props.children)}
+			{props.children}
 		</Box>
 	);
 }

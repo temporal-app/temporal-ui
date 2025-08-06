@@ -16,6 +16,7 @@ export function Textarea(_props: TextareaProps) {
 		"readOnly",
 		"disabled",
 		"classes",
+		"testId"
 	], [
 		"className",
 		"class",
@@ -30,10 +31,12 @@ export function Textarea(_props: TextareaProps) {
 			disabled={fieldProps.disabled}
 			readOnly={fieldProps.readOnly}
 			classes={fieldProps.classes}
+			testId={fieldProps.testId ? `${fieldProps.testId}-field` : undefined}
 		>
 			<ArkField.Textarea
 				{...restProps}
 				class={cx("textarea", textareaProps.className, textareaProps.class)}
+				data-testid={fieldProps.testId ? `${fieldProps.testId}--input` : undefined}
 			/>
 		</Field>
 	);

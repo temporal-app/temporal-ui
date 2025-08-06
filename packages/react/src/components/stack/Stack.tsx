@@ -14,6 +14,7 @@ export function Stack({
 	gap,
 	align,
 	justify,
+	testId,
 	...rest
 }: StackProps) {
 
@@ -37,6 +38,7 @@ export function Stack({
 			{...rest}
 			className={cx(baseClass, className)}
 			style={{ ...style, ...rest.style }}
+			data-testid={testId}
 		>
 			{children}
 		</Box>

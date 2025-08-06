@@ -4,17 +4,22 @@ import type { MenuRadioItemProps as CoreMenuRadioItemProps } from "@temporal-ui/
 import type { JSX } from "solid-js";
 import type { ComponentProps } from "solid-js";
 
-interface BaseMenuRadioItemProps extends CoreMenuRadioItemProps<JSX.Element> { }
-export interface MenuRadioItemProps extends Assign<ComponentProps<'div'>, BaseMenuRadioItemProps> { }
+interface BaseMenuRadioItemProps extends CoreMenuRadioItemProps<JSX.Element> {}
+export interface MenuRadioItemProps extends Assign<ComponentProps<"div">, BaseMenuRadioItemProps> {}
 
 export function MenuRadioItem(props: MenuRadioItemProps) {
-
 	return (
-		<ArkMenu.RadioItem {...props} class={props.className}>
-			<ArkMenu.ItemIndicator>
+		<ArkMenu.RadioItem
+			{...props}
+			class={props.className}
+			data-testid={props.testId}
+		>
+			<ArkMenu.ItemIndicator
+				data-testid={props.testId ? `${props.testId}--indicator` : undefined}
+			>
 				<div data-part="item-radio-indicator" />
 			</ArkMenu.ItemIndicator>
-			<ArkMenu.ItemText>
+			<ArkMenu.ItemText data-testid={props.testId ? `${props.testId}--text` : undefined}>
 				{props.children}
 			</ArkMenu.ItemText>
 		</ArkMenu.RadioItem>

@@ -6,12 +6,13 @@ export interface LoaderProps extends CoreLoaderProps<React.ReactNode>, React.HTM
 
 export function Loader(props: LoaderProps) {
 
-	const { size = "md", className, ...rest } = props;
+	const { size = "md", className, testId, ...rest } = props;
 	const baseClass = [ "loader", size !== "md" ? size : "" ].filter(Boolean).join("-");
 
 	return (
 		<div
 			className={cx(baseClass, className)}
+			data-testid={testId}
 			{...rest}
 		/>
 	);

@@ -10,6 +10,6 @@ export interface MenuItemSeparatorProps extends Assign<ComponentPropsWithoutRef<
 export function MenuItemSeparator(props: MenuItemSeparatorProps) {
 
 	return (
-		<ArkMenu.Separator {...props} />
+		<ArkMenu.Separator {...props} data-testid={props.testId} />
 	);
 }

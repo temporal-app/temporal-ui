@@ -6,8 +6,8 @@ import { Field } from "../field";
 import { cx } from "@temporal-ui/core/utils/cx";
 
 export interface TextInputProps
-	extends CoreTextInputProps<React.ReactNode>, React.InputHTMLAttributes<HTMLInputElement> {
-}
+	extends CoreTextInputProps<React.ReactNode>,
+		React.InputHTMLAttributes<HTMLInputElement> {}
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
 	const {
@@ -21,6 +21,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
 		startSection,
 		endSection,
 		className,
+		testId,
 		...rest
 	} = props;
 
@@ -33,19 +34,29 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
 			readOnly={readOnly}
 			error={error}
 			disabled={disabled}
+			testId={testId ? `${testId}-field` : undefined}
 		>
 			<div
 				className={"input-wrapper"}
 				data-start-section={startSection ? true : undefined}
 				data-end-section={endSection ? true : undefined}
+				data-testid={testId ? `${testId}--wrapper` : undefined}
 			>
 				{startSection && (
-					<div className={"input-start-section"} data-position={"start"}>
+					<div
+						className={"input-start-section"}
+						data-position={"start"}
+						data-testid={testId ? `${testId}--start-section` : undefined}
+					>
 						{startSection}
 					</div>
 				)}
 				{endSection && (
-					<div className={"input-end-section"} data-position={"end"}>
+					<div
+						className={"input-end-section"}
+						data-position={"end"}
+						data-testid={testId ? `${testId}--end-section` : undefined}
+					>
 						{endSection}
 					</div>
 				)}
@@ -54,6 +65,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
 					ref={ref}
 					className={cx("input", className)}
 					aria-invalid={error ? true : undefined}
+					data-testid={testId ? `${testId}--input` : undefined}
 				/>
 			</div>
 		</Field>

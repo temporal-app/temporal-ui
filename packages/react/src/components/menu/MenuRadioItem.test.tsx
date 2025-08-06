@@ -1,12 +1,15 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { Menu, type MenuProps } from './Menu';
-import { MenuRadioItem } from './MenuRadioItem';
-import { MenuRadioItemGroup } from './MenuRadioItemGroup';
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { Menu, type MenuProps } from "./Menu";
+import { MenuRadioItem } from "./MenuRadioItem";
+import { MenuRadioItemGroup } from "./MenuRadioItemGroup";
 
-describe('MenuRadioItem Component', () => {
-	const MenuWrapper = ({ children, ...props }: Omit<MenuProps, 'trigger'>) => (
-		<Menu trigger={<button type="button">Trigger</button>} {...props}>
+describe("MenuRadioItem Component", () => {
+	const MenuWrapper = ({ children, ...props }: Omit<MenuProps, "trigger">) => (
+		<Menu
+			trigger={<button type="button">Trigger</button>}
+			{...props}
+		>
 			{children}
 		</Menu>
 	);
@@ -15,58 +18,61 @@ describe('MenuRadioItem Component', () => {
 		cleanup();
 	});
 
-	it('renders radio menu item correctly', async () => {
+	it("renders radio menu item correctly", async () => {
 		const user = userEvent.setup();
 		render(
 			<MenuWrapper>
 				<MenuRadioItemGroup value="option1">
 					<MenuRadioItem value="option1">Option 1</MenuRadioItem>
 				</MenuRadioItemGroup>
-			</MenuWrapper>
+			</MenuWrapper>,
 		);
 
-		await user.click(screen.getByRole('button'));
+		await user.click(screen.getByRole("button"));
 
 		await waitFor(() => {
-			expect(screen.getByRole('menuitemradio', { name: 'Option 1' })).toBeVisible();
+			expect(screen.getByRole("menuitemradio", { name: "Option 1" })).toBeVisible();
 		});
 	});
 
-	it('shows radio indicator when selected', async () => {
+	it("shows radio indicator when selected", async () => {
 		const user = userEvent.setup();
 		render(
 			<MenuWrapper>
 				<MenuRadioItemGroup value="option1">
 					<MenuRadioItem value="option1">Selected Option</MenuRadioItem>
 				</MenuRadioItemGroup>
-			</MenuWrapper>
+			</MenuWrapper>,
 		);
 
-		await user.click(screen.getByRole('button'));
+		await user.click(screen.getByRole("button"));
 
 		await waitFor(() => {
-			const radioItem = screen.getByRole('menuitemradio', { name: 'Selected Option' });
+			const radioItem = screen.getByRole("menuitemradio", { name: "Selected Option" });
 			expect(radioItem).toBeVisible();
-			expect(radioItem).toHaveAttribute('data-state', 'checked');
+			expect(radioItem).toHaveAttribute("data-state", "checked");
 		});
 	});
 
-	it('accepts additional props', async () => {
+	it("accepts additional props", async () => {
 		const user = userEvent.setup();
 		render(
 			<MenuWrapper>
 				<MenuRadioItemGroup value="option1">
-					<MenuRadioItem value="option1" data-testid="custom-radio-item">
+					<MenuRadioItem
+						value="option1"
+						testId="custom-radio-item"
+					>
 						Custom Radio
 					</MenuRadioItem>
 				</MenuRadioItemGroup>
-			</MenuWrapper>
+			</MenuWrapper>,
 		);
 
-		await user.click(screen.getByRole('button'));
+		await user.click(screen.getByRole("button"));
 
 		await waitFor(() => {
-			expect(screen.getByTestId('custom-radio-item')).toBeVisible();
+			expect(screen.getByTestId("custom-radio-item")).toBeVisible();
 		});
 	});
 });

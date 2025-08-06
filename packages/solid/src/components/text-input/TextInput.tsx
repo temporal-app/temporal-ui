@@ -16,13 +16,7 @@ export function TextInput(_props: TextInputProps & HTMLProps<"input">) {
 
 	return (
 		<Field
-			label={fieldProps.label}
-			hint={fieldProps.hint}
-			classes={fieldProps.classes}
-			required={fieldProps.required}
-			readOnly={fieldProps.readOnly}
-			error={fieldProps.error}
-			disabled={fieldProps.disabled}
+			{...fieldProps}
 			testId={fieldProps.testId ? `${fieldProps.testId}-field` : undefined}
 		>
 			<div

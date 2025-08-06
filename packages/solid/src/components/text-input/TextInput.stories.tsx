@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
 import { AtSign } from "lucide-solid";
-import { TextInput } from "./TextInput.tsx";
+import { TextInput } from "./TextInput";
 
 const meta = {
 	title: "Solid/Text Input",

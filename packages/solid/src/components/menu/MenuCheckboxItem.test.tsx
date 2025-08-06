@@ -1,12 +1,15 @@
-import { cleanup, render, screen, waitFor } from '@solidjs/testing-library';
-import userEvent from '@testing-library/user-event';
-import { Menu, type MenuProps } from './Menu';
-import { MenuCheckboxItem } from './MenuCheckboxItem';
-import { Button } from '../button';
+import { cleanup, render, screen, waitFor } from "@solidjs/testing-library";
+import userEvent from "@testing-library/user-event";
+import { Button } from "../button";
+import { Menu, type MenuProps } from "./Menu";
+import { MenuCheckboxItem } from "./MenuCheckboxItem";
 
-describe('MenuCheckboxItem Component', () => {
-	const MenuWrapper = (props: Omit<MenuProps, 'trigger'>) => (
-		<Menu {...props} trigger={props => <Button {...props}>Trigger</Button>}>
+describe("MenuCheckboxItem Component", () => {
+	const MenuWrapper = (props: Omit<MenuProps, "trigger">) => (
+		<Menu
+			{...props}
+			trigger={(props) => <Button {...props}>Trigger</Button>}
+		>
 			{props.children}
 		</Menu>
 	);
@@ -15,12 +18,12 @@ describe('MenuCheckboxItem Component', () => {
 		cleanup();
 	});
 
-	it('renders checkbox menu item correctly', async () => {
+	it("renders checkbox menu item correctly", async () => {
 		const user = userEvent.setup();
 		const onCheckedChange = vi.fn();
 
-		render(
-			() => <MenuWrapper>
+		render(() => (
+			<MenuWrapper>
 				<MenuCheckboxItem
 					value="checkbox"
 					checked={false}
@@ -29,21 +32,21 @@ describe('MenuCheckboxItem Component', () => {
 					Checkbox Item
 				</MenuCheckboxItem>
 			</MenuWrapper>
-		);
+		));
 
-		await user.click(screen.getByRole('button'));
+		await user.click(screen.getByRole("button"));
 
 		await waitFor(() => {
-			expect(screen.getByRole('menuitemcheckbox', { name: 'Checkbox Item' })).toBeVisible();
+			expect(screen.getByRole("menuitemcheckbox", { name: "Checkbox Item" })).toBeVisible();
 		});
 	});
 
-	it('shows check indicator when checked', async () => {
+	it("shows check indicator when checked", async () => {
 		const user = userEvent.setup();
 		const onCheckedChange = vi.fn();
 
-		render(
-			() => <MenuWrapper>
+		render(() => (
+			<MenuWrapper>
 				<MenuCheckboxItem
 					value="checkbox"
 					checked={true}
@@ -52,23 +55,23 @@ describe('MenuCheckboxItem Component', () => {
 					Checked Item
 				</MenuCheckboxItem>
 			</MenuWrapper>
-		);
+		));
 
-		await user.click(screen.getByRole('button'));
+		await user.click(screen.getByRole("button"));
 
 		await waitFor(() => {
-			const checkboxItem = screen.getByRole('menuitemcheckbox', { name: 'Checked Item' });
+			const checkboxItem = screen.getByRole("menuitemcheckbox", { name: "Checked Item" });
 			expect(checkboxItem).toBeVisible();
-			expect(checkboxItem).toHaveAttribute('data-state', 'checked');
+			expect(checkboxItem).toHaveAttribute("data-state", "checked");
 		});
 	});
 
-	it('toggles checked state when clicked', async () => {
+	it("toggles checked state when clicked", async () => {
 		const user = userEvent.setup();
 		const onCheckedChange = vi.fn();
 
-		render(
-			() => <MenuWrapper closeOnSelect={false}>
+		render(() => (
+			<MenuWrapper closeOnSelect={false}>
 				<MenuCheckboxItem
 					value="checkbox"
 					checked={false}
@@ -77,41 +80,41 @@ describe('MenuCheckboxItem Component', () => {
 					Toggle Item
 				</MenuCheckboxItem>
 			</MenuWrapper>
-		);
+		));
 
-		await user.click(screen.getByRole('button'));
+		await user.click(screen.getByRole("button"));
 
 		await waitFor(() => {
-			expect(screen.getByRole('menuitemcheckbox', { name: 'Toggle Item' })).toBeVisible();
+			expect(screen.getByRole("menuitemcheckbox", { name: "Toggle Item" })).toBeVisible();
 		});
 
-		const checkboxItem = screen.getByRole('menuitemcheckbox', { name: 'Toggle Item' });
+		const checkboxItem = screen.getByRole("menuitemcheckbox", { name: "Toggle Item" });
 		await user.click(checkboxItem);
 
 		expect(onCheckedChange).toHaveBeenCalledWith(true);
 	});
 
-	it('accepts additional props', async () => {
+	it("accepts additional props", async () => {
 		const user = userEvent.setup();
 		const onCheckedChange = vi.fn();
 
-		render(
-			() => <MenuWrapper>
+		render(() => (
+			<MenuWrapper>
 				<MenuCheckboxItem
 					value="checkbox"
 					checked={false}
 					onCheckedChange={onCheckedChange}
-					data-testid="custom-checkbox-item"
+					testId="custom-checkbox-item"
 				>
 					Custom Checkbox
 				</MenuCheckboxItem>
 			</MenuWrapper>
-		);
+		));
 
-		await user.click(screen.getByRole('button'));
+		await user.click(screen.getByRole("button"));
 
 		await waitFor(() => {
-			expect(screen.getByTestId('custom-checkbox-item')).toBeVisible();
+			expect(screen.getByTestId("custom-checkbox-item")).toBeVisible();
 		});
 	});
 });

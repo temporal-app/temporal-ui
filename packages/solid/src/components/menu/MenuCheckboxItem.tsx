@@ -14,7 +14,7 @@ export function MenuCheckboxItem(props: MenuCheckboxItemProps) {
 		<ArkMenu.CheckboxItem
 			{...props}
 			class={props.className}
-			data-testid={props.testId ? `${props.testId}--item` : undefined}
+			data-testid={props.testId}
 		>
 			<ArkMenu.ItemIndicator
 				data-testid={props.testId ? `${props.testId}--indicator` : undefined}

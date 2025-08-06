@@ -14,7 +14,7 @@ export function MenuRadioItemGroup(props: MenuRadioItemGroupProps) {
 			{...props}
 			class={props.className}
 			onValueChange={(details) => props.onValueChange?.(details.value)}
-			data-testid={props.testId ? `${props.testId}--group` : undefined}
+			data-testid={props.testId}
 		>
 			{props.label && (
 				<ArkMenu.ItemGroupLabel

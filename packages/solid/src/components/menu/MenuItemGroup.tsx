@@ -12,7 +12,7 @@ export function MenuItemGroup(props: MenuItemGroupProps) {
 		<ArkMenu.ItemGroup
 			{...props}
 			class={props.className}
-			data-testid={props.testId ? `${props.testId}--group` : undefined}
+			data-testid={props.testId}
 		>
 			{props.label && (
 				<ArkMenu.ItemGroupLabel

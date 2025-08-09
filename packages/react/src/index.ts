@@ -7,6 +7,7 @@ export * from './components/card';
 export * from "./components/checkbox";
 export * from './components/field';
 export * from './components/loader';
+export * from './components/notifications';
 export * from './components/popover';
 export * from "./components/radio-group";
 export * from './components/stack';

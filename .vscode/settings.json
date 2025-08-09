@@ -1,5 +1,8 @@
 {
 	"files.associations": {
 		"*.css": "tailwindcss"
+	},
+	"explorer.fileNesting.patterns": {
+		"*.tsx": "${capture}.ts, ${capture}.test.tsx, ${capture}.stories.tsx, ${capture}.module.css"
 	}
 }

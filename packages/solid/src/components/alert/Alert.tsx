@@ -2,31 +2,33 @@ import type { HTMLProps } from "@ark-ui/solid";
 import type { AlertProps as CoreAlertProps } from "@temporal-ui/core/alert";
 import { cx } from "@temporal-ui/core/utils/cx";
 import { CircleCheck, CircleX, Info, TriangleAlert } from "lucide-solid";
-import { type JSX, mergeProps, splitProps } from "solid-js";
+import { type Accessor, type JSX, mergeProps, splitProps } from "solid-js";
 
-export interface AlertProps extends CoreAlertProps<JSX.Element>, HTMLProps<"div"> {}
+export interface AlertProps extends CoreAlertProps<JSX.Element>, HTMLProps<"div"> {
+	icon?: Accessor<JSX.Element>;
+}
 
-const icons: Record<string, JSX.Element> = {
-	default: null,
-	info: (
+const icons: Record<string, Accessor<JSX.Element>> = {
+	default: () => null,
+	info: () =>(
 		<Info
 			data-scope="alert"
 			data-part="icon"
 		/>
 	),
-	success: (
+	success: () => (
 		<CircleCheck
 			data-scope="alert"
 			data-part="icon"
 		/>
 	),
-	warning: (
+	warning: () => (
 		<TriangleAlert
 			data-scope="alert"
 			data-part="icon"
 		/>
 	),
-	error: (
+	error: () => (
 		<CircleX
 			data-scope="alert"
 			data-part="icon"
@@ -54,7 +56,7 @@ export function Alert(_props: AlertProps) {
 			class={cx(baseClass, props.className)}
 			data-testid={props.testId}
 		>
-			{props.icon !== undefined ? props.icon : icons[props.variant]}
+			{props.icon !== undefined ? props.icon(): icons[props.variant]?.()}
 			{props.title && (
 				<h2
 					data-scope="alert"

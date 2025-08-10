@@ -20,7 +20,6 @@ export const Default: Story = {
 		variant: "default",
 		title: "You've got 1 new message!",
 		description: "This is an alert with title and description.",
-		icon: <Mail/>
 	}
 };
 

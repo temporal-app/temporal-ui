@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Alert } from "./Alert";
-import { AlarmClockCheck, Mail } from "lucide-react";
+import { AlarmClockCheck } from "lucide-react";
 import { Stack } from "../stack";
 import { Button } from "../button";
 

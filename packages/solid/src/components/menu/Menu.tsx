@@ -20,14 +20,16 @@ export function Menu(menuProps: MenuProps) {
 				data-testid={menuProps.testId ? `${menuProps.testId}--trigger` : undefined}
 			/>
 			<Portal>
-				<ArkMenu.Positioner data-testid={menuProps.testId ? `${menuProps.testId}--positioner` : undefined}>
-					<ArkMenu.Content
-						class={menuProps.className}
-						data-testid={menuProps.testId ? `${menuProps.testId}--content` : undefined}
-					>
-						{menuProps.children}
-					</ArkMenu.Content>
-				</ArkMenu.Positioner>
+				<ArkMenu.Positioner
+				data-testid={menuProps.testId ? `${menuProps.testId}--positioner` : undefined}
+			>
+				<ArkMenu.Content
+					class={menuProps.className}
+					data-testid={menuProps.testId ? `${menuProps.testId}--content` : undefined}
+				>
+					{menuProps.children}
+				</ArkMenu.Content>
+			</ArkMenu.Positioner>
 			</Portal>
 		</ArkMenu.Root>
 	);

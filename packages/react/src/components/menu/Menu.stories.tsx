@@ -12,7 +12,6 @@ import { MenuItemSeparator } from "./MenuItemSeparator";
 import { MenuRadioItem } from "./MenuRadioItem";
 import { CreditCard, LogOut, Settings, UserIcon, UserPlus, UsersIcon } from "lucide-react";
 import { MenuRadioItemGroup } from "./MenuRadioItemGroup";
-import { Box } from "../box";
 
 const meta = {
 	title: "React/Menu",

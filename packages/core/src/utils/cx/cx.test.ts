@@ -53,7 +53,9 @@ describe('cx utility', () => {
 		const expectedClasses = ['button', 'button-dark', 'p-4', 'm-2', 'button-error', 'another-class'];
 		const resultArray = result.split(' ');
 		expect(resultArray.length).toBe(expectedClasses.length);
-		expectedClasses.forEach(cls => expect(resultArray).toContain(cls));
+		expectedClasses.forEach(cls => {
+			expect(resultArray).toContain(cls);
+		});
 	});
 
 	it('should handle numbers as class names', () => {
@@ -95,7 +97,9 @@ describe('cx utility', () => {
 		const expectedClasses = ['base', 'p-2', 'm-4', 'text-lg', 'font-bold', 'another'];
 		const resultArray = result.split(' ');
 		expect(resultArray.length).toBe(expectedClasses.length);
-		expectedClasses.forEach(cls => expect(resultArray).toContain(cls));
+		expectedClasses.forEach(cls => {
+			expect(resultArray).toContain(cls);
+		});
 	});
 
 	it('should correctly handle object keys that are numbers', () => {

@@ -3,9 +3,10 @@ import userEvent from '@testing-library/user-event';
 import { Menu } from './Menu';
 import { MenuItem } from './MenuItem';
 import { Button } from '../button';
+import type { JSX } from 'solid-js';
 
 describe('Menu Component', () => {
-	const MenuWrapper = (props: { children?: any; onSelect?: (value: string) => void; closeOnSelect?: boolean; className?: string }) => (
+	const MenuWrapper = (props: { children?: JSX.Element; onSelect?: (value: string) => void; closeOnSelect?: boolean; className?: string }) => (
 		<Menu
 			trigger={(triggerProps: Record<string, unknown>) => <Button {...triggerProps}>Open Menu</Button>}
 			{...props}

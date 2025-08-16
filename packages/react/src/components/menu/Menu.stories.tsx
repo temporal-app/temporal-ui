@@ -12,6 +12,7 @@ import { MenuItemSeparator } from "./MenuItemSeparator";
 import { MenuRadioItem } from "./MenuRadioItem";
 import { CreditCard, LogOut, Settings, UserIcon, UserPlus, UsersIcon } from "lucide-react";
 import { MenuRadioItemGroup } from "./MenuRadioItemGroup";
+import { Box } from "../box";
 
 const meta = {
 	title: "React/Menu",
@@ -197,50 +198,131 @@ export const PositionTop: Story = {
 		position: {
 			placement: "top"
 		}
-	}
-};
-
-export const PositionRight: Story = {
-	args: {
-		...Default.args,
-		position: {
-			placement: "right"
-		}
-	}
-};
-
-export const PositionLeft: Story = {
-	args: {
-		...Default.args,
-		position: {
-			placement: "left"
-		}
-	}
+	},
+	render: (args) => (
+		<Stack center h="50vh">
+			<Menu {...args} />
+		</Stack>
+	)
 };
 
 export const PositionTopStart: Story = {
+	...PositionTop,
 	args: {
 		...Default.args,
 		position: {
-			placement: "top-start"
-		}
-	}
+			placement: "top-start",
+		},
+	},
+};
+
+export const PositionTopEnd: Story = {
+	...PositionTop,
+	args: {
+		...Default.args,
+		position: {
+			placement: "top-end",
+		},
+	},
+};
+
+export const PositionRight: Story = {
+	...PositionTop,
+	args: {
+		...Default.args,
+		position: {
+			placement: "right",
+		},
+	},
+};
+
+export const PositionRightStart: Story = {
+	...PositionTop,
+	args: {
+		...Default.args,
+		position: {
+			placement: "right-start",
+		},
+	},
+};
+
+export const PositionRightEnd: Story = {
+	...PositionTop,
+	args: {
+		...Default.args,
+		position: {
+			placement: "right-end",
+		},
+	},
+};
+
+export const PositionBottom: Story = {
+	...PositionTop,
+	args: {
+		...Default.args,
+		position: {
+			placement: "bottom",
+		},
+	},
+};
+
+export const PositionBottomStart: Story = {
+	...PositionTop,
+	args: {
+		...Default.args,
+		position: {
+			placement: "bottom-start",
+		},
+	},
 };
 
 export const PositionBottomEnd: Story = {
+	...PositionTop,
 	args: {
 		...Default.args,
 		position: {
-			placement: "bottom-end"
-		}
-	}
+			placement: "bottom-end",
+		},
+	},
+};
+
+
+
+export const PositionLeft: Story = {
+	...PositionTop,
+	args: {
+		...Default.args,
+		position: {
+			placement: "left",
+		},
+	},
+};
+
+export const PositionLeftStart: Story = {
+	...PositionTop,
+	args: {
+		...Default.args,
+		position: {
+			placement: "left-start",
+		},
+	},
+};
+
+export const PositionLeftEnd: Story = {
+	...PositionTop,
+	args: {
+		...Default.args,
+		position: {
+			placement: "left-end",
+		},
+	},
 };
 
 export const NoAutoClose: Story = {
 	args: {
 		...Default.args,
-		closeOnSelect: false
-	}
+		closeOnSelect: false,
+	},
 };
 
 export const WithOffset: Story = {
@@ -250,10 +332,10 @@ export const WithOffset: Story = {
 			placement: "bottom-start",
 			offset: {
 				mainAxis: 10,
-				crossAxis: 5
-			}
-		}
-	}
+				crossAxis: 5,
+			},
+		},
+	},
 };
 
 export const SingleItems: Story = {

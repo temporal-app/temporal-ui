@@ -13,6 +13,7 @@
 @import "./components/notifications/notifications.css";
 @import "./components/popover/popover.css";
 @import "./components/radio-group/radio.css";
+@import "./components/sidebar/sidebar.css";
 @import "./components/text-input/text-input.css";
 @import "./components/textarea/textarea.css";
 @import "./components/label/label.css";

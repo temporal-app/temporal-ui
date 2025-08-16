@@ -9,6 +9,7 @@
 	"exports": {
 		".": "./src/index.ts",
 		"./*": "./src/components/*/index.ts",
+		"./hooks/*": "./src/hooks/*/index.ts",
 		"./styles.css": "./src/styles.css",
 		"./package.json": "./package.json"
 	},
@@ -22,7 +23,8 @@
 		"build": "tsup",
 		"dev": "bun run storybook",
 		"lint": "biome lint ./src",
-		"test": "vitest",
+		"test": "vitest run",
+		"test:watch": "vitest",
 		"test:coverage": "vitest run --coverage",
 		"test:ci": "vitest run",
 		"typecheck": "tsc --noEmit",

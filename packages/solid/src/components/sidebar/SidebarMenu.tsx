@@ -1,0 +1,145 @@
+import type { HTMLProps } from "@ark-ui/solid";
+import type {
+	SidebarMenuButtonProps as CoreSidebarMenuButtonProps,
+	SidebarMenuLinkProps as CoreSidebarMenuLinkProps,
+	SidebarMenuSubButtonProps as CoreSidebarMenuSubButtonProps,
+} from "@temporal-ui/core/sidebar";
+import { cx } from "@temporal-ui/core/utils/cx";
+import { mergeProps, splitProps } from "solid-js";
+
+export interface SidebarMenuProps extends HTMLProps<"ul"> {}
+
+export function SidebarMenu(props: SidebarMenuProps) {
+	return (
+		<ul
+			{...props}
+			data-scope="sidebar"
+			data-part="menu"
+		/>
+	);
+}
+
+export interface SidebarMenuItemProps extends HTMLProps<"li"> {}
+
+export function SidebarMenuItem(_props: SidebarMenuItemProps) {
+	const [props, elementProps] = splitProps(_props, ["class"]);
+	
+	return (
+		<li
+			{...elementProps}
+			data-scope="sidebar"
+			data-part="menu-item"
+			class={cx("group/menu-item", props.class)}
+		/>
+	);
+}
+
+export interface SidebarMenuButtonProps extends HTMLProps<"button">, CoreSidebarMenuButtonProps {}
+
+export function SidebarMenuButton(_props: SidebarMenuButtonProps) {
+	const [props, elementProps] = splitProps(
+		mergeProps({ variant: "default", size: "default" }, _props),
+		["variant", "size", "isActive"],
+	);
+
+	return (
+		<button
+			{...elementProps}
+			data-scope="sidebar"
+			data-part="menu-button"
+			data-variant={props.variant}
+			data-size={props.size}
+			data-active={props.isActive}
+		/>
+	);
+}
+
+export interface SidebarMenuLinkProps extends HTMLProps<"a">, CoreSidebarMenuLinkProps {}
+
+export function SidebarMenuLink(_props: SidebarMenuLinkProps) {
+	const [props, elementProps] = splitProps(_props, ["isActive"]);
+
+	return (
+		<a
+			{...elementProps}
+			data-scope="sidebar"
+			data-part="menu-link"
+			data-active={props.isActive}
+		/>
+	);
+}
+
+export interface SidebarMenuActionProps extends HTMLProps<"button"> {
+	showOnHover?: boolean;
+}
+
+export function SidebarMenuAction(_props: SidebarMenuActionProps) {
+	const [props, elementProps] = splitProps(_props, ["showOnHover"]);
+	
+	return (
+		<button
+			{...elementProps}
+			data-scope="sidebar"
+			data-part="menu-action"
+			data-show-on-hover={props.showOnHover}
+		/>
+	);
+}
+
+export interface SidebarMenuBadgeProps extends HTMLProps<"div"> {}
+
+export function SidebarMenuBadge(props: SidebarMenuBadgeProps) {
+	return (
+		<div
+			{...props}
+			data-scope="sidebar"
+			data-part="menu-badge"
+		/>
+	);
+}
+
+export interface SidebarMenuSubProps extends HTMLProps<"ul"> {}
+
+export function SidebarMenuSub(props: SidebarMenuSubProps) {
+	return (
+		<ul
+			{...props}
+			data-scope="sidebar"
+			data-part="menu-sub"
+		/>
+	);
+}
+
+export interface SidebarMenuSubItemProps extends HTMLProps<"li"> {}
+
+export function SidebarMenuSubItem(_props: SidebarMenuSubItemProps) {
+	const [props, elementProps] = splitProps(_props, ["class"]);
+	
+	return (
+		<li
+			{...elementProps}
+			data-scope="sidebar"
+			data-part="menu-sub-item"
+			class={cx("group/menu-sub-item", props.class)}
+		/>
+	);
+}
+
+export interface SidebarMenuSubButtonProps extends HTMLProps<"a">, CoreSidebarMenuSubButtonProps {}
+
+export function SidebarMenuSubButton(_props: SidebarMenuSubButtonProps) {
+	const [props, elementProps] = splitProps(
+		mergeProps({ size: "md" }, _props),
+		["size", "isActive"],
+	);
+
+	return (
+		<a
+			{...elementProps}
+			data-scope="sidebar"
+			data-part="menu-sub-button"
+			data-size={props.size}
+			data-active={props.isActive}
+		/>
+	);
+}

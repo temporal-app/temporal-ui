@@ -5,28 +5,32 @@ import { MenuItem } from './MenuItem';
 import { Button } from '../button';
 
 describe('Menu Component', () => {
-	const defaultProps = {
-		trigger: (props: Record<string, unknown>) => <Button {...props}>Open Menu</Button>,
-		children: () => (
-			<>
-				<MenuItem value="item1">Item 1</MenuItem>
-				<MenuItem value="item2">Item 2</MenuItem>
-			</>
-		),
-	};
+	const MenuWrapper = (props: { children?: any; onSelect?: (value: string) => void; closeOnSelect?: boolean; className?: string }) => (
+		<Menu
+			trigger={(triggerProps: Record<string, unknown>) => <Button {...triggerProps}>Open Menu</Button>}
+			{...props}
+		>
+			{props.children || (
+				<>
+					<MenuItem value="item1">Item 1</MenuItem>
+					<MenuItem value="item2">Item 2</MenuItem>
+				</>
+			)}
+		</Menu>
+	);
 
 	beforeEach(() => {
 		cleanup();
 	});
 
 	it('renders trigger correctly', () => {
-		render(() => <Menu {...defaultProps} />);
+		render(() => <MenuWrapper />);
 		expect(screen.getByRole('button', { name: 'Open Menu' })).toBeInTheDocument();
 	});
 
 	it('opens menu when trigger is clicked', async () => {
 		const user = userEvent.setup();
-		render(() => <Menu {...defaultProps} />);
+		render(() => <MenuWrapper />);
 
 		const trigger = screen.getByRole('button', { name: 'Open Menu' });
 		await user.click(trigger);
@@ -38,7 +42,7 @@ describe('Menu Component', () => {
 
 	it('renders menu items when opened', async () => {
 		const user = userEvent.setup();
-		render(() => <Menu {...defaultProps} />);
+		render(() => <MenuWrapper />);
 
 		const trigger = screen.getByRole('button', { name: 'Open Menu' });
 		await user.click(trigger);
@@ -53,7 +57,7 @@ describe('Menu Component', () => {
 	it('calls onSelect when menu item is clicked', async () => {
 		const user = userEvent.setup();
 		const onSelect = vi.fn();
-		render(() => <Menu {...defaultProps} onSelect={onSelect} />);
+		render(() => <MenuWrapper onSelect={onSelect} />);
 
 		const trigger = screen.getByRole('button', { name: 'Open Menu' });
 		await user.click(trigger);
@@ -70,7 +74,7 @@ describe('Menu Component', () => {
 
 	it('closes menu after item selection when closeOnSelect is true', async () => {
 		const user = userEvent.setup();
-		render(() => <Menu {...defaultProps} closeOnSelect />);
+		render(() => <MenuWrapper closeOnSelect />);
 
 		const trigger = screen.getByRole('button', { name: 'Open Menu' });
 		await user.click(trigger);
@@ -89,7 +93,7 @@ describe('Menu Component', () => {
 
 	it('keeps menu open after item selection when closeOnSelect is false', async () => {
 		const user = userEvent.setup();
-		render(() => <Menu {...defaultProps} closeOnSelect={false} />);
+		render(() => <MenuWrapper closeOnSelect={false} />);
 
 		const trigger = screen.getByRole('button', { name: 'Open Menu' });
 		await user.click(trigger);
@@ -107,7 +111,7 @@ describe('Menu Component', () => {
 
 	it('applies custom className to menu content', async () => {
 		const user = userEvent.setup();
-		render(() => <Menu {...defaultProps} className="custom-menu-class" />);
+		render(() => <MenuWrapper className="custom-menu-class" />);
 
 		const trigger = screen.getByRole('button', { name: 'Open Menu' });
 		await user.click(trigger);
@@ -120,7 +124,7 @@ describe('Menu Component', () => {
 
 	it('closes menu on escape key', async () => {
 		const user = userEvent.setup();
-		render(() => <Menu {...defaultProps} />);
+		render(() => <MenuWrapper />);
 
 		const trigger = screen.getByRole('button', { name: 'Open Menu' });
 		await user.click(trigger);

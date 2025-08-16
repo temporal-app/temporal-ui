@@ -1,0 +1,46 @@
+export { SidebarProvider, type SidebarProviderProps, useSidebar } from "./SidebarProvider";
+export {
+	SidebarMenu,
+	type SidebarMenuProps,
+	SidebarMenuItem,
+	type SidebarMenuItemProps,
+	SidebarMenuButton,
+	type SidebarMenuButtonProps,
+	SidebarMenuAction,
+	type SidebarMenuActionProps,
+	SidebarMenuBadge,
+	type SidebarMenuBadgeProps,
+	SidebarMenuSub,
+	type SidebarMenuSubProps,
+	SidebarMenuSubItem,
+	type SidebarMenuSubItemProps,
+	SidebarMenuSubButton,
+	type SidebarMenuSubButtonProps,
+	SidebarMenuLink,
+	type SidebarMenuLinkProps,
+} from "./SidebarMenu";
+export { SidebarRail, type SidebarRailProps } from "./SidebarRail";
+export {
+	SidebarHeader,
+	type SidebarHeaderProps,
+	SidebarInput,
+	type SidebarInputProps,
+	SidebarFooter,
+	type SidebarFooterProps,
+	SidebarInset,
+	type SidebarInsetProps,
+	SidebarSeparator,
+	type SidebarSeparatorProps,
+	SidebarContent,
+	type SidebarContentProps,
+	SidebarGroup,
+	type SidebarGroupProps,
+	SidebarGroupLabel,
+	type SidebarGroupLabelProps,
+	SidebarGroupAction,
+	type SidebarGroupActionProps,
+	SidebarGroupContent,
+	type SidebarGroupContentProps,
+} from "./SidebarComponent";
+export { Sidebar, type SidebarProps } from "./Sidebar";
+export { SidebarTrigger, type SidebarTriggerProps } from "./SidebarTrigger";

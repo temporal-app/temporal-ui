@@ -131,7 +131,7 @@ describe("Alert Component", () => {
 		render(() => (
 			<Alert
 				title="Alert with custom icon"
-				icon={<svg data-testid="custom-icon" />}
+				icon={() => <svg data-testid="custom-icon" />}
 			/>
 		));
 
@@ -211,7 +211,7 @@ describe("Alert Component", () => {
 				variant="warning"
 				title="Complex Alert"
 				description="This alert has everything"
-				icon={<svg data-testid="complex-icon" />}
+				icon={() => <svg data-testid="complex-icon" />}
 				className="complex-alert"
 				testId="complex-alert"
 			>

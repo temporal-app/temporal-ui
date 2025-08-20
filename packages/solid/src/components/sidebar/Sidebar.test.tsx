@@ -120,7 +120,7 @@ describe("SidebarProvider", () => {
 	it("useSidebar throws error when used outside provider", () => {
 		const TestComponent = () => {
 			const sidebar = useSidebar();
-			return <div>{sidebar.state}</div>;
+			return <div>{sidebar.state()}</div>;
 		};
 
 		expect(() => render(() => <TestComponent />)).toThrow("useSidebar must be used within a SidebarProvider.");

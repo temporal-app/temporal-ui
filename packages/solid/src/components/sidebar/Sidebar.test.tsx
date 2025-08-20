@@ -92,9 +92,9 @@ describe("SidebarProvider", () => {
 			const { state, open, isMobile, toggleSidebar } = useSidebar();
 			return (
 				<div>
-					<span data-testid="state">{state}</span>
-					<span data-testid="open">{open.toString()}</span>
-					<span data-testid="is-mobile">{isMobile.toString()}</span>
+					<span data-testid="state">{state()}</span>
+					<span data-testid="open">{open().toString()}</span>
+					<span data-testid="is-mobile">{isMobile().toString()}</span>
 					<button
 						type="button"
 						data-testid="toggle"
@@ -162,7 +162,7 @@ describe("SidebarTrigger", () => {
 		cleanup();
 	});
 
-	it("calls toggleSidebar when clicked", () => {
+	it("renders with correct attributes", () => {
 		render(() => (
 			<SidebarProvider>
 				<SidebarTrigger />
@@ -173,6 +173,61 @@ describe("SidebarTrigger", () => {
 		expect(button).toBeInTheDocument();
 		expect(button).toHaveAttribute("data-scope", "sidebar");
 		expect(button).toHaveAttribute("data-part", "trigger");
+	});
+
+	it("collapses sidebar when trigger is clicked", async () => {
+		const user = userEvent.setup();
+		
+		const TestComponent = () => {
+			const { state } = useSidebar();
+			return (
+				<div>
+					<div data-testid="sidebar-state">{state()}</div>
+					<SidebarTrigger />
+					<Sidebar>
+						<div data-testid="sidebar-content">Content</div>
+					</Sidebar>
+				</div>
+			);
+		};
+
+		render(() => (
+			<SidebarProvider>
+				<TestComponent />
+			</SidebarProvider>
+		));
+
+		// Initially expanded
+		expect(screen.getByTestId("sidebar-state")).toHaveTextContent("expanded");
+		
+		// Find the sidebar root element to check data-state
+		const sidebarRoot = screen.getByTestId("sidebar-content").closest('[data-scope="sidebar"][data-part="root"]');
+		expect(sidebarRoot).toHaveAttribute("data-state", "expanded");
+
+		// Click the trigger button
+		const trigger = screen.getByRole("button");
+		await user.click(trigger);
+
+		// Should be collapsed after click
+		await waitFor(() => {
+			expect(screen.getByTestId("sidebar-state")).toHaveTextContent("collapsed");
+		});
+		
+		await waitFor(() => {
+			expect(sidebarRoot).toHaveAttribute("data-state", "collapsed");
+		});
+
+		// Click again to expand
+		await user.click(trigger);
+
+		// Should be expanded again
+		await waitFor(() => {
+			expect(screen.getByTestId("sidebar-state")).toHaveTextContent("expanded");
+		});
+		
+		await waitFor(() => {
+			expect(sidebarRoot).toHaveAttribute("data-state", "expanded");
+		});
 	});
 });
 

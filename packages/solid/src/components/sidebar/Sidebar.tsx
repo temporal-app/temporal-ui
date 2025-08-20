@@ -31,13 +31,12 @@ export function Sidebar(_props: SidebarProps) {
 		<div
 			data-scope="sidebar"
 			data-part="root"
-			data-state={state}
-			data-collapsible={state === "collapsed" ? props.collapsible : ""}
+			data-state={state()}
+			data-collapsible={state()=== "collapsed" ? props.collapsible : ""}
 			data-variant={props.variant}
 			data-side={props.side}
 			class="group peer"
 		>
-			{/* This is what handles the sidebar gap on desktop */}
 			<div
 				data-scope="sidebar"
 				data-part="gap"

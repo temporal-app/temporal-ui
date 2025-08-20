@@ -1,11 +1,12 @@
 import type { HTMLProps } from "@ark-ui/solid";
+import { ark } from '@ark-ui/solid/factory';
 import type {
 	SidebarMenuButtonProps as CoreSidebarMenuButtonProps,
 	SidebarMenuLinkProps as CoreSidebarMenuLinkProps,
 	SidebarMenuSubButtonProps as CoreSidebarMenuSubButtonProps,
 } from "@temporal-ui/core/sidebar";
 import { cx } from "@temporal-ui/core/utils/cx";
-import { mergeProps, splitProps } from "solid-js";
+import { mergeProps, splitProps, type JSX, type ParentProps } from "solid-js";
 
 export interface SidebarMenuProps extends HTMLProps<"ul"> {}
 
@@ -54,17 +55,20 @@ export function SidebarMenuButton(_props: SidebarMenuButtonProps) {
 	);
 }
 
-export interface SidebarMenuLinkProps extends HTMLProps<"a">, CoreSidebarMenuLinkProps {}
+export interface SidebarMenuLinkProps extends HTMLProps<"a">, CoreSidebarMenuLinkProps {
+	component?: (props: ParentProps<any>) => JSX.Element
+}
 
 export function SidebarMenuLink(_props: SidebarMenuLinkProps) {
-	const [props, elementProps] = splitProps(_props, ["isActive"]);
+	const [props, elementProps] = splitProps(_props, ["isActive", "component"]);
 
 	return (
-		<a
+		<ark.a
 			{...elementProps}
 			data-scope="sidebar"
 			data-part="menu-link"
 			data-active={props.isActive}
+			asChild={props.component}
 		/>
 	);
 }

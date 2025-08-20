@@ -12,11 +12,11 @@
 		}
 
 		[data-part="item-group-label"] {
-			@apply flex px-2 py-1.5 text-sm font-medium;
+			@apply flex px-2 py-1.5 text-xs font-medium text-muted-foreground;
 		}
 
 		[data-part="separator"] {
-			@apply border-border -mx-1 my-1;
+			@apply border-border;
 		}
 
 		[data-part="item"] {

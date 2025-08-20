@@ -3,7 +3,6 @@ import {
 	SIDEBAR_KEYBOARD_SHORTCUT,
 	SIDEBAR_STORAGE_KEY,
 	type SidebarProviderProps as CoreSidebarProviderProps,
-	type SidebarContextProps,
 } from "@temporal-ui/core/sidebar";
 import { cx } from "@temporal-ui/core/utils/cx";
 import type { JSX } from "solid-js";
@@ -11,11 +10,19 @@ import { createContext, createEffect, createMemo, createSignal, splitProps, useC
 import { useIsMobile } from "../../hooks/is-mobile";
 import { Box } from "../box";
 
-export interface SidebarProviderProps
-	extends CoreSidebarProviderProps<JSX.Element>,
-		HTMLProps<"div"> {}
+export interface SidebarProviderProps extends CoreSidebarProviderProps<JSX.Element>, HTMLProps<"div"> {}
 
-const SidebarContext = createContext<SidebarContextProps | null>(null);
+interface SolidSidebarContextProps {
+	state: () => "expanded" | "collapsed";
+	open: () => boolean;
+	setOpen: (open: boolean | ((open: boolean) => boolean)) => void;
+	openMobile: () => boolean;
+	setOpenMobile: (open: boolean | ((open: boolean) => boolean)) => void;
+	isMobile: () => boolean;
+	toggleSidebar: () => void;
+}
+
+const SidebarContext = createContext<SolidSidebarContextProps | null>(null);
 
 export function SidebarProvider(_props: SidebarProviderProps) {
 	const isMobile = useIsMobile();
@@ -31,10 +38,10 @@ export function SidebarProvider(_props: SidebarProviderProps) {
 	]);
 
 	const defaultOpen = () => props.defaultOpen ?? true;
-	
+
 	const [_open, _setOpen] = createSignal(defaultOpen());
-	const open = () => props.open ?? _open();
-	
+	const open = createMemo(() => props.open ?? _open());
+
 	const setOpen = (value: boolean | ((value: boolean) => boolean)) => {
 		const openState = typeof value === "function" ? value(open()) : value;
 		if (props.onOpenChange) {
@@ -64,18 +71,18 @@ export function SidebarProvider(_props: SidebarProviderProps) {
 
 	const state = createMemo(() => (open() ? "expanded" : "collapsed"));
 
-	const contextValue = createMemo<SidebarContextProps>(() => ({
-		state: state(),
-		open: open(),
+	const contextValue = {
+		state,
+		open,
 		setOpen,
-		isMobile: isMobile(),
-		openMobile: openMobile(),
+		isMobile,
+		openMobile,
 		setOpenMobile,
 		toggleSidebar,
-	}));
+	};
 
 	return (
-		<SidebarContext.Provider value={contextValue()}>
+		<SidebarContext.Provider value={contextValue}>
 			<Box
 				{...boxProps}
 				data-scope="sidebar"

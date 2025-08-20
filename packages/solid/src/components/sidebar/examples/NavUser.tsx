@@ -1,7 +1,7 @@
-import { MenuItem, MenuItemGroup, MenuSeparator } from "@ark-ui/solid";
+import { MenuItem, MenuItemGroup } from "@ark-ui/solid";
 import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from "lucide-solid";
 import { Avatar } from "../../avatar";
-import { Menu } from "../../menu";
+import { Menu, MenuItemSeparator } from "../../menu";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../SidebarMenu";
 
 export function NavUser(props: {
@@ -42,14 +42,14 @@ export function NavUser(props: {
 							</div>
 						</div>
 					</MenuItemGroup>
-					<MenuSeparator />
+					<MenuItemSeparator />
 					<MenuItemGroup>
 						<MenuItem value="upgrade">
 							<Sparkles />
 							Upgrade to Pro
 						</MenuItem>
 					</MenuItemGroup>
-					<MenuSeparator />
+					<MenuItemSeparator />
 					<MenuItemGroup>
 						<MenuItem value="account">
 							<BadgeCheck />
@@ -64,7 +64,7 @@ export function NavUser(props: {
 							Notifications
 						</MenuItem>
 					</MenuItemGroup>
-					<MenuSeparator />
+					<MenuItemSeparator />
 					<MenuItem value="logout">
 						<LogOut />
 						Log out

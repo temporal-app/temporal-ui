@@ -18,3 +18,6 @@ export * from './components/textarea';
 
 // Hooks
 export * from './hooks/is-mobile';
+
+// Re-export from Ark UI
+export * from '@ark-ui/react/collapsible';

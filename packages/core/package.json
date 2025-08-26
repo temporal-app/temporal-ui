@@ -6,6 +6,7 @@
 	"license": "MIT",
 	"exports": {
 		"./*": "./src/components/*/index.ts",
+		"./base": "./src/components/base.ts",
 		"./utils/*": "./src/utils/*/index.ts",
 		"./styles.css": "./src/styles.css"
 	},

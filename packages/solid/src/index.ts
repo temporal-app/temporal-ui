@@ -1,3 +1,4 @@
+// Components
 export * from './components/alert';
 export * from './components/avatar';
 export * from './components/badge';
@@ -13,6 +14,7 @@ export * from './components/popover';
 export * from './components/radio-group';
 export * from './components/sidebar';
 export * from './components/stack';
+export * from './components/table';
 export * from './components/text-input';
 export * from './components/textarea';
 
@@ -21,3 +23,4 @@ export * from './hooks/is-mobile';
 
 // Re-export from Ark UI
 export * from '@ark-ui/solid/collapsible';
+

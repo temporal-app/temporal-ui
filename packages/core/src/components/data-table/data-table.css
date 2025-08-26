@@ -1,0 +1,5 @@
+@layer components {
+	[data-scope="data-table"] {
+		@apply overflow-hidden rounded-md border;
+	}
+}

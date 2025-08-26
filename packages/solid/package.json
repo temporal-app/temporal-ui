@@ -39,6 +39,7 @@
 	],
 	"dependencies": {
 		"@ark-ui/solid": "5.21.0",
+		"@tanstack/solid-table": "8.21.3",
 		"@temporal-ui/core": "workspace:*"
 	},
 	"devDependencies": {

@@ -3,7 +3,6 @@ import { type JSX, splitProps } from "solid-js";
 import type { HTMLProps } from "@ark-ui/solid";
 import { Field as ArkField } from "@ark-ui/solid/field";
 import { Field } from "../field";
-import { cx } from "@temporal-ui/core/utils/cx";
 
 export interface TextInputProps extends CoreTextInputProps<JSX.Element>, HTMLProps<"input"> {}
 
@@ -11,7 +10,7 @@ export function TextInput(_props: TextInputProps & HTMLProps<"input">) {
 	const [fieldProps, inputProps, restProps] = splitProps(
 		_props,
 		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],
-		["startSection", "endSection", "className", "class"],
+		["startSection", "endSection"],
 	);
 
 	return (
@@ -20,32 +19,32 @@ export function TextInput(_props: TextInputProps & HTMLProps<"input">) {
 			testId={fieldProps.testId ? `${fieldProps.testId}-field` : undefined}
 		>
 			<div
-				class={"input-wrapper"}
+				data-scope={"field"}
+				data-part={"input-wrapper"}
 				data-start-section={inputProps.startSection ? true : undefined}
 				data-end-section={inputProps.endSection ? true : undefined}
 				data-testid={fieldProps.testId ? `${fieldProps.testId}--wrapper` : undefined}
 			>
 				{inputProps.startSection && (
 					<div
-						class={"input-start-section"}
-						data-position={"start"}
-						data-testid={`${fieldProps.testId}--start-section`}
+						data-scope={"field"}
+						data-part={"input-start-section"}
+						data-testid={fieldProps.testId ? `${fieldProps.testId}--start-section` : undefined}
 					>
 						{inputProps.startSection}
 					</div>
 				)}
 				{inputProps.endSection && (
 					<div
-						class={"input-end-section"}
-						data-position={"end"}
-						data-testid={`${fieldProps.testId}--end-section`}
+						data-scope={"field"}
+						data-part={"input-end-section"}
+						data-testid={fieldProps.testId ? `${fieldProps.testId}--end-section` : undefined}
 					>
 						{inputProps.endSection}
 					</div>
 				)}
 				<ArkField.Input
 					{...restProps}
-					class={cx("input", inputProps.className, inputProps.class)}
 					aria-invalid={fieldProps.error ? true : undefined}
 					data-testid={fieldProps.testId ? `${fieldProps.testId}--input` : undefined}
 				/>

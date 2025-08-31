@@ -56,6 +56,7 @@ export function SidebarMenuButton(_props: SidebarMenuButtonProps) {
 }
 
 export interface SidebarMenuLinkProps extends HTMLProps<"a">, CoreSidebarMenuLinkProps {
+	// biome-ignore lint/suspicious/noExplicitAny: temporary solution
 	component?: (props: ParentProps<any>) => JSX.Element
 }
 

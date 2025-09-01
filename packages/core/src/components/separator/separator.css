@@ -1,0 +1,12 @@
+@layer components {
+	[data-scope="separator"] {
+		@apply bg-border shrink-0;
+
+		&[data-orientation="horizontal"] {
+			@apply h-px w-full;
+		}
+		&[data-orientation="vertical"] {
+			@apply h-full w-px;
+		}
+	}
+}

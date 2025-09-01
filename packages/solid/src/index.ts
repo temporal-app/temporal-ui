@@ -12,6 +12,7 @@ export * from './components/menu';
 export * from './components/notifications';
 export * from './components/popover';
 export * from './components/radio-group';
+export * from './components/select';
 export * from './components/sidebar';
 export * from './components/stack';
 export * from './components/table';

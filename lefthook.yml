@@ -17,11 +17,15 @@
 #         - security
 #       run: bundle audit
 #
-# pre-commit:
-#   parallel: true
-#   jobs:
-#     - run: yarn eslint {staged_files}
-#       glob: "*.{js,ts,jsx,tsx}"
+pre-commit:
+  parallel: true
+  jobs:
+    - run: bun run lint
+      stage_fixed: true
+      glob: "*.{js,ts,jsx,tsx,css}"
+
+    - run: bun run typecheck
+      glob: "*.{js,ts,jsx,tsx}"
 #
 #     - name: rubocop
 #       glob: "*.rb"

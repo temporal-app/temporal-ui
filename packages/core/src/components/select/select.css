@@ -1,0 +1,59 @@
+@layer components {
+	[data-scope="select"][data-part="trigger"] {
+		@apply border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4;
+
+		&[data-placeholder-shown] [data-part="value-text"] {
+			@apply text-muted-foreground;
+		}
+	}
+
+	[data-scope="select"][data-part="indicator"] {
+		@apply size-4 opacity-50;
+	}
+
+	[data-scope="select"][data-part="content"] {
+		@apply bg-popover text-popover-foreground relative z-50 max-h-(--available-height) overflow-x-hidden overflow-y-auto rounded-md border shadow-md p-1 w-full scroll-my-1 min-w-[var(--reference-width)] origin-(--transform-origin);
+
+		&[data-state="open"] {
+			@apply animate-in fade-in-0 zoom-in-95;
+		}
+
+		&[data-state="closed"] {
+			@apply animate-out fade-out-0 zoom-out-95;
+		}
+
+		&[data-placement*="bottom"] {
+			@apply slide-in-from-top-2 translate-y-1;
+		}
+
+		&[data-placement*="top"] {
+			@apply slide-in-from-bottom-2 translate-y-1;
+		}
+
+		&[data-placement*="left"] {
+			@apply slide-in-from-right-2 translate-x-1;
+		}
+
+		&[data-placement*="right"] {
+			@apply slide-in-from-left-2 translate-x-1;
+		}
+	}
+
+	[data-scope="select"][data-part="item-group"] {
+		[data-part="item-group-label"] {
+			@apply text-muted-foreground px-2 py-1.5 text-xs;
+		}
+
+		[data-part="item"] {
+			@apply [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4;
+
+			&[data-highlighted] {
+				@apply bg-accent text-accent-foreground;
+			}
+
+			[data-part="item-indicator"] {
+				@apply absolute right-2 flex size-3.5 items-center justify-center;
+			}
+		}
+	}
+}

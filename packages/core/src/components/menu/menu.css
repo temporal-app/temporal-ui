@@ -43,7 +43,7 @@
 
 @layer theme {
 	[data-scope="menu"][data-part="item-indicator"][data-state="unchecked"][hidden] {
-		display: initial !important;
+		display: initial;
 		visibility: hidden;
 	}
 }

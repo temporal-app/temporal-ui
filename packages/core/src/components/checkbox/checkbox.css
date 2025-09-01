@@ -17,6 +17,9 @@
 			&[data-focus-visible] {
 				@apply border-ring ring-ring/50 ring-[3px];
 			}
+			&[data-state="checked"] {
+				@apply bg-primary dark:bg-primary border-primary;
+			}
 			&[data-hover]:not([data-readonly]) {
 				&:not([data-state="checked"]) {
 					@apply bg-primary/5 dark:bg-primary/5;
@@ -24,9 +27,6 @@
 				&[data-state="checked"] {
 					@apply bg-primary/80 dark:bg-primary/80;
 				}
-			}
-			&[data-state="checked"] {
-				@apply bg-primary dark:bg-primary border-primary;
 			}
 			svg {
 				@apply size-[.9em] text-primary-foreground;

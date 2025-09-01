@@ -3,7 +3,6 @@ import type { TextInputProps as CoreTextInputProps } from "@temporal-ui/core/tex
 import type React from "react";
 import { forwardRef } from "react";
 import { Field } from "../field";
-import { cx } from "@temporal-ui/core/utils/cx";
 
 export interface TextInputProps
 	extends CoreTextInputProps<React.ReactNode>,
@@ -20,7 +19,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
 		classes,
 		startSection,
 		endSection,
-		className,
 		testId,
 		...rest
 	} = props;
@@ -37,15 +35,16 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
 			testId={testId ? `${testId}-field` : undefined}
 		>
 			<div
-				className={"input-wrapper"}
+				data-scope={"field"}
+				data-part={"input-wrapper"}
 				data-start-section={startSection ? true : undefined}
 				data-end-section={endSection ? true : undefined}
 				data-testid={testId ? `${testId}--wrapper` : undefined}
 			>
 				{startSection && (
 					<div
-						className={"input-start-section"}
-						data-position={"start"}
+						data-scope={"field"}
+						data-part={"input-start-section"}
 						data-testid={testId ? `${testId}--start-section` : undefined}
 					>
 						{startSection}
@@ -53,8 +52,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
 				)}
 				{endSection && (
 					<div
-						className={"input-end-section"}
-						data-position={"end"}
+						data-scope={"field"}
+						data-part={"input-end-section"}
 						data-testid={testId ? `${testId}--end-section` : undefined}
 					>
 						{endSection}
@@ -63,7 +62,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
 				<ArkField.Input
 					{...rest}
 					ref={ref}
-					className={cx("input", className)}
 					aria-invalid={error ? true : undefined}
 					data-testid={testId ? `${testId}--input` : undefined}
 				/>

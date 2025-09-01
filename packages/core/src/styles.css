@@ -1,5 +1,6 @@
 @import "./css/base.css";
 @import "./css/theme.css";
+@import "./css/animations.css";
 
 @import "./components/alert/alert.css";
 @import "./components/avatar/avatar.css";
@@ -16,6 +17,7 @@
 @import "./components/popover/popover.css";
 @import "./components/radio-group/radio.css";
 @import "./components/sidebar/sidebar.css";
+@import "./components/select/select.css";
 @import "./components/text-input/text-input.css";
 @import "./components/textarea/textarea.css";
 @import "./components/label/label.css";

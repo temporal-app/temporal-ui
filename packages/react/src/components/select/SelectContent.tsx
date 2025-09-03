@@ -1,14 +1,16 @@
-import { type createListCollection, Select } from "@ark-ui/react/select";
-import type { SelectItem } from "@temporal-ui/core/select";
+import { type ListCollection, Select } from "@ark-ui/react/select";
+import type { SelectItem as CoreSelectItem } from "@temporal-ui/core/select";
 import { Check } from "lucide-react";
 
-export interface SelectContentProps {
-		testId?: string;
-		collection: ReturnType<typeof createListCollection<SelectItem<React.ReactNode>>>;
-		renderItem?: (item: SelectItem<React.ReactNode>) => React.ReactNode;
-	}
+export type SelectItem<M = unknown> = CoreSelectItem<M, React.ReactNode>;
 
-export function SelectContent(props: SelectContentProps) {
+export interface SelectContentProps<M = unknown> {
+	testId?: string;
+	collection: ListCollection<SelectItem<M>>;
+	renderItem?: (item: SelectItem<M>) => React.ReactNode;
+}
+
+export function SelectContent<M = unknown>(props: SelectContentProps<M>) {
 	const { testId, collection, renderItem } = props;
 
 	return (
@@ -22,7 +24,9 @@ export function SelectContent(props: SelectContentProps) {
 								key={item.value}
 								item={item}
 							>
-								{renderItem?.(item) ?? (
+								{renderItem ? (
+									<div style={{ pointerEvents: "none" }}>{renderItem(item)}</div>
+								) : (
 									<>
 										{item.icon}
 										<Select.ItemText>{item.label}</Select.ItemText>

@@ -1,17 +1,17 @@
 import { Select, useSelectContext } from "@ark-ui/react/select";
-import type { SelectItem } from "@temporal-ui/core/select";
 import { ChevronsUpDown } from "lucide-react";
 import { Stack } from "../stack";
+import type { SelectItem } from "./SelectContent";
 
-export interface SelectTriggerProps {
+export interface SelectTriggerProps<M = unknown> {
 	className?: string;
 	testId?: string;
 	placeholder?: string;
 	indicator?: React.ReactNode;
-	renderItem?: (item: SelectItem<React.ReactNode>) => React.ReactNode;
+	renderItem?: (item: SelectItem<M>) => React.ReactNode;
 }
 
-export function SelectTrigger({ className, testId, placeholder, indicator, renderItem }: SelectTriggerProps) {
+export function SelectTrigger<M = unknown>({ className, testId, placeholder, indicator, renderItem }: SelectTriggerProps<M>) {
 	const context = useSelectContext();
 
 	return (

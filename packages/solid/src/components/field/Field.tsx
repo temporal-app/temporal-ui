@@ -19,6 +19,7 @@ export function Field(props: FieldProps) {
 			{props.label && (
 				<ArkField.Label
 					class={cx("field-label", props.classes?.label)}
+					aria-disabled={props.disabled}
 					data-testid={props.testId ? `${props.testId}--label` : undefined}
 				>
 					{props.label}

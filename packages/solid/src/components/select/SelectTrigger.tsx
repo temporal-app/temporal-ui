@@ -1,19 +1,19 @@
 import { Select, useSelectContext } from "@ark-ui/solid/select";
-import type { SelectItem } from "@temporal-ui/core/select";
 import type { JSX } from "solid-js";
 import { Stack } from "../stack";
 import { ChevronsUpDown } from "lucide-solid";
+import type { SelectItem } from "./SelectContent";
 
-export interface SelectTriggerProps {
+export interface SelectTriggerProps<M> {
 	className?: string;
 	class?: string;
 	testId?: string;
 	placeholder?: string;
 	indicator?: JSX.Element;
-	renderItem?: (item: SelectItem<JSX.Element>) => JSX.Element;
+	renderItem?: (item: SelectItem<M>) => JSX.Element;
 }
 
-export function SelectTrigger(props: SelectTriggerProps) {
+export function SelectTrigger<M = unknown>(props: SelectTriggerProps<M>) {
 	const context = useSelectContext();
 
 	return (
@@ -24,7 +24,9 @@ export function SelectTrigger(props: SelectTriggerProps) {
 			>
 				{context().hasSelectedItems &&
 					context().selectedItems[0] &&
-					(props.renderItem?.(context().selectedItems[0]) ?? (
+					(props.renderItem ? (
+						<div style={{ "pointer-events": "none" }}>{props.renderItem(context().selectedItems[0])}</div>
+					) : (
 						<Stack
 							row
 							align="center"

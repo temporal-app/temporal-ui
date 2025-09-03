@@ -1,15 +1,15 @@
 import { Portal } from "@ark-ui/react/portal";
-import { Select as ArkSelect, createListCollection } from "@ark-ui/react/select";
-import type { SelectProps as CoreSelectProps, SelectItem } from "@temporal-ui/core/select";
+import { Select as ArkSelect, createListCollection, type ListCollection } from "@ark-ui/react/select";
+import type { SelectProps as CoreSelectProps } from "@temporal-ui/core/select";
 import React, { forwardRef } from "react";
 import { Field } from "../field";
-import { SelectContent } from "./SelectContent";
+import { SelectContent, type SelectItem } from "./SelectContent";
 import { SelectTrigger } from "./SelectTrigger";
 
-export interface SelectProps
-	extends CoreSelectProps<React.ReactNode>,
-		Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "defaultValue" | "value"> {
-	collection?: ReturnType<typeof createListCollection<SelectItem<React.ReactNode>>>;
+export interface SelectProps<M = unknown>
+	extends CoreSelectProps<M, React.ReactNode>,
+		Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "defaultValue" | "value" | "onBlur"> {
+	collection?: ListCollection<SelectItem<M>>;
 }
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
@@ -31,6 +31,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 		defaultValue,
 		value,
 		className,
+		onBlur,
 		onValueChange,
 		renderItem,
 		...rest
@@ -61,13 +62,14 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 				data-testid={testId ? `${testId}--root` : undefined}
 				collection={listCollection}
 				deselectable={deselectable}
-				value={value}
-				defaultValue={defaultValue}
+				value={value ? [value] : undefined}
+				defaultValue={defaultValue ? [defaultValue] : undefined}
 				disabled={disabled}
 				invalid={!!error}
 				required={required}
 				readOnly={readOnly}
-				onValueChange={onValueChange ? (details) => onValueChange?.(details.value) : undefined}
+				onFocusOutside={onBlur}
+				onValueChange={onValueChange ? (details) => onValueChange?.(details.value[0]) : undefined}
 				positioning={{
 					offset: {
 						mainAxis: 0,

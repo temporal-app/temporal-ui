@@ -1,15 +1,17 @@
-import { type createListCollection, Select } from "@ark-ui/solid/select";
-import type { SelectItem } from "@temporal-ui/core/select";
+import { type ListCollection, Select } from "@ark-ui/solid/select";
+import type { SelectItem as CoreSelectItem } from "@temporal-ui/core/select";
 import { CheckIcon } from "lucide-solid";
 import { For, type JSX } from "solid-js";
 
-export interface SelectContentProps {
+export type SelectItem<M = unknown> = CoreSelectItem<M, JSX.Element>;
+
+export interface SelectContentProps<M = unknown> {
 	testId?: string;
-	collection: ReturnType<typeof createListCollection<SelectItem<JSX.Element>>>;
-	renderItem?: (item: SelectItem<JSX.Element>) => JSX.Element;
+	collection: ListCollection<SelectItem<M>>;
+	renderItem?: (item: SelectItem<M>) => JSX.Element;
 }
 
-export function SelectContent(props: SelectContentProps) {
+export function SelectContent<M = unknown>(props: SelectContentProps<M>) {
 	return (
 		<Select.Positioner data-testid={props.testId ? `${props.testId}--positioner` : undefined}>
 			<Select.Content data-testid={props.testId ? `${props.testId}--content` : undefined}>

@@ -1,10 +1,8 @@
 // noinspection JSUnusedGlobalSymbols
 
 import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
-import type { SelectItem } from "@temporal-ui/core/select";
-import { createListCollection } from ".";
+import { createListCollection, type SelectItem } from ".";
 import { Select } from "./Select";
-import type { JSX } from "solid-js";
 import { Banana } from "lucide-solid";
 
 const meta = {
@@ -18,7 +16,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const collection = createListCollection<SelectItem<JSX.Element>>({
+const collection = createListCollection<SelectItem>({
 	items: [
 		{ value: "apple", label: "Apple" },
 		{ value: "banana", label: "Banana", group: "Favorites", icon: <Banana /> },

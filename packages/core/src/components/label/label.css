@@ -1,8 +1,13 @@
 @layer components {
 	.form label,
-	.label {
+	.label,
+	.field-label {
 		@apply flex items-center gap-2 text-sm leading-none font-medium select-none;
 		@apply peer-disabled:pointer-events-none peer-disabled:opacity-50;
+
+		&[aria-disabled="true"] {
+			@apply opacity-50 pointer-events-none;
+		}
 
 		&:has(>*:disabled),
 		&:has(+*:disabled),

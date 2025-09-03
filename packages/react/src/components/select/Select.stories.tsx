@@ -3,8 +3,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Select } from "./Select";
 import { createListCollection } from ".";
-import type { SelectItem } from "@temporal-ui/core/select";
 import { Banana } from "lucide-react";
+import type { SelectItem } from "./SelectContent";
 
 const meta = {
 	title: "React/Select",
@@ -17,7 +17,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const collection = createListCollection<SelectItem<React.ReactNode>>({
+const collection = createListCollection<SelectItem>({
 	items: [
 		{ value: "apple", label: "Apple" },
 		{ value: "banana", label: "Banana", group: "Favorites", icon: <Banana /> },
@@ -34,7 +34,7 @@ const collection = createListCollection<SelectItem<React.ReactNode>>({
 		{ value: "peach", label: "Peach" },
 	],
 	groupBy: (item) => item.group ?? "Default",
-	groupSort: "desc"
+	groupSort: "desc",
 });
 
 export const Default: Story = {

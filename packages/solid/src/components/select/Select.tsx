@@ -1,27 +1,28 @@
-import { Select as ArkSelect, createListCollection } from "@ark-ui/solid/select";
-import type { SelectProps as CoreSelectProps, SelectItem } from "@temporal-ui/core/select";
+import { Select as ArkSelect, createListCollection, type ListCollection } from "@ark-ui/solid/select";
+import type { SelectProps as CoreSelectProps } from "@temporal-ui/core/select";
 import { mergeProps, splitProps, type JSX } from "solid-js";
 import { Portal } from "solid-js/web";
 import { Field } from "../field";
-import { SelectContent } from "./SelectContent";
+import { SelectContent, type SelectItem } from "./SelectContent";
 import { SelectTrigger } from "./SelectTrigger";
+import type { HTMLProps } from "@ark-ui/solid";
 
-export interface SelectProps extends CoreSelectProps<JSX.Element> {
-	collection?: ReturnType<typeof createListCollection<SelectItem<JSX.Element>>>;
+export interface SelectProps<M> extends CoreSelectProps<M, JSX.Element>, Omit<HTMLProps<'select'>, 'onBlur' | 'defaultValue' | 'value'> {
+	collection?: ListCollection<SelectItem<M>>;
 	class?: string;
 }
 
-export function Select(_props: SelectProps) {
+export function Select<M = unknown>(_props: SelectProps<M>) {
 	const [fieldProps, rootProps, triggerProps, selectProps] = splitProps(
 		mergeProps({ portal: true }, _props),
 		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],
-		["collection", "data", "portal", "deselectable", "defaultValue", "value", "onValueChange"],
+		["collection", "data", "portal", "deselectable", "defaultValue", "value", "onValueChange", "onBlur"],
 		["className", "class", "placeholder", "indicator", "renderItem"],
 	);
 
 	const listCollection = () =>
 		rootProps.collection ??
-		createListCollection<SelectItem<JSX.Element>>({
+		createListCollection({
 			items: rootProps.data ?? [],
 			groupBy: (item) => item.group ?? "",
 			isItemDisabled: (item) => item.disabled ?? false,
@@ -40,7 +41,10 @@ export function Select(_props: SelectProps) {
 				invalid={!!fieldProps.error}
 				required={fieldProps.required}
 				readOnly={fieldProps.readOnly}
-				onValueChange={(details) => rootProps.onValueChange?.(details.value)}
+				value={rootProps.value ? [rootProps.value] : undefined}
+				defaultValue={rootProps.defaultValue ? [rootProps.defaultValue] : undefined}
+				onValueChange={(details) => rootProps.onValueChange?.(details.value[0])}
+				onFocusOutside={rootProps.onBlur}
 				positioning={{
 					offset: {
 						mainAxis: 0,

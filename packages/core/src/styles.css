@@ -10,6 +10,7 @@
 @import "./components/checkbox/checkbox.css";
 @import "./components/collapsible/collapsible.css";
 @import "./components/data-table/data-table.css";
+@import "./components/dialog/dialog.css";
 @import "./components/field/field.css";
 @import "./components/label/label.css";
 @import "./components/loader/loader.css";

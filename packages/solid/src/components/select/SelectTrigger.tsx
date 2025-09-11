@@ -11,6 +11,7 @@ export interface SelectTriggerProps<M> {
 	placeholder?: string;
 	indicator?: JSX.Element;
 	renderItem?: (item: SelectItem<M>) => JSX.Element;
+	startSection?: JSX.Element;
 }
 
 export function SelectTrigger<M = unknown>(props: SelectTriggerProps<M>) {
@@ -32,7 +33,7 @@ export function SelectTrigger<M = unknown>(props: SelectTriggerProps<M>) {
 							align="center"
 							gap={2}
 						>
-							{context().selectedItems[0]?.icon}
+							{context().selectedItems[0]?.icon ?? props.startSection}
 							<Select.ValueText />
 						</Stack>
 					))}

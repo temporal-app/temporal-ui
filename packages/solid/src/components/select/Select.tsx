@@ -17,7 +17,7 @@ export function Select<M = unknown>(_props: SelectProps<M>) {
 		mergeProps({ portal: true }, _props),
 		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],
 		["collection", "data", "portal", "deselectable", "defaultValue", "value", "onValueChange", "onBlur"],
-		["className", "class", "placeholder", "indicator", "renderItem"],
+		["className", "class", "placeholder", "indicator", "renderItem", "startSection"],
 	);
 
 	const listCollection = () =>

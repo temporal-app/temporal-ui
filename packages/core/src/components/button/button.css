@@ -16,6 +16,9 @@
 		.loading {
 			@apply absolute;
 		}
+		.inner {
+			@apply flex gap-1 items-center;
+		}
 
 	}
 	/* Default button size (medium) */

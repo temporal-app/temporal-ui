@@ -9,9 +9,17 @@ export interface SelectTriggerProps<M = unknown> {
 	placeholder?: string;
 	indicator?: React.ReactNode;
 	renderItem?: (item: SelectItem<M>) => React.ReactNode;
+	startSection?: React.ReactNode;
 }
 
-export function SelectTrigger<M = unknown>({ className, testId, placeholder, indicator, renderItem }: SelectTriggerProps<M>) {
+export function SelectTrigger<M = unknown>({
+	className,
+	testId,
+	placeholder,
+	indicator,
+	renderItem,
+	startSection,
+}: SelectTriggerProps<M>) {
 	const context = useSelectContext();
 
 	return (
@@ -22,8 +30,12 @@ export function SelectTrigger<M = unknown>({ className, testId, placeholder, ind
 			>
 				{context.hasSelectedItems &&
 					(renderItem?.(context.selectedItems[0]) ?? (
-						<Stack row align="center" gap={2}>
-							{context.selectedItems[0]?.icon}
+						<Stack
+							row
+							align="center"
+							gap={2}
+						>
+							{context.selectedItems[0]?.icon ?? startSection}
 							<Select.ValueText />
 						</Stack>
 					))}

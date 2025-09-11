@@ -34,6 +34,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 		onBlur,
 		onValueChange,
 		renderItem,
+		startSection,
 		...rest
 	} = props;
 
@@ -83,6 +84,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 					placeholder={placeholder}
 					indicator={indicator}
 					renderItem={renderItem}
+					startSection={startSection}
 				/>
 				{portal && (
 					<Portal>

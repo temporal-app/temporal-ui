@@ -36,7 +36,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
 		>
 			<div
 				data-scope={"field"}
-				data-part={"input-wrapper"}
+				data-part={"text-input-wrapper"}
 				data-start-section={startSection ? true : undefined}
 				data-end-section={endSection ? true : undefined}
 				data-testid={testId ? `${testId}--wrapper` : undefined}

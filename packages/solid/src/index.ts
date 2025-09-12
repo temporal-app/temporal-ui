@@ -11,6 +11,7 @@ export * from './components/field';
 export * from './components/loader';
 export * from './components/menu';
 export * from './components/notifications';
+export * from './components/number-input';
 export * from './components/popover';
 export * from './components/radio-group';
 export * from './components/select';

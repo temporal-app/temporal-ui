@@ -19,7 +19,7 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "tsup",
+		"build": "tsdown",
 		"dev": "bun run storybook",
 		"lint": "biome lint ./src",
 		"test": "vitest run",

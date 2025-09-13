@@ -18,6 +18,7 @@ export * from './components/radio-group';
 export * from './components/select';
 export * from './components/separator';
 export * from './components/sidebar';
+export * from './components/slider';
 export * from './components/stack';
 export * from './components/table';
 export * from './components/text-input';

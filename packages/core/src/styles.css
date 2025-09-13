@@ -9,6 +9,7 @@
 @import "./components/card/card.css";
 @import "./components/checkbox/checkbox.css";
 @import "./components/collapsible/collapsible.css";
+@import "./components/color-input/color-input.css";
 @import "./components/data-table/data-table.css";
 @import "./components/dialog/dialog.css";
 @import "./components/field/field.css";

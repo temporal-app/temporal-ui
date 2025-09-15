@@ -1,0 +1,11 @@
+{
+	"mcpServers": {
+		"ark-ui": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@ark-ui/mcp"
+			]
+		}
+	}
+}

@@ -3,7 +3,6 @@ import type { TextareaProps as CoreTextareaProps } from "@temporal-ui/core/texta
 import type React from "react";
 import { forwardRef } from "react";
 import { Field } from "../field";
-import { cx } from "@temporal-ui/core/utils/cx";
 
 export type TextareaProps = CoreTextareaProps<React.ReactNode> & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
@@ -15,7 +14,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, r
 		required,
 		disabled,
 		readOnly,
-		className,
 		classes,
 		testId,
 		...rest
@@ -33,9 +31,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, r
 			testId={testId ? `${testId}-field` : undefined}
 		>
 			<ArkField.Textarea
-				ref={ref}
+				data-scope={"textarea"}
 				{...rest}
-				className={cx("textarea", className)}
+				ref={ref}
+				aria-invalid={error ? true : undefined}
 				data-testid={testId ? `${testId}--textarea` : undefined}
 			/>
 		</Field>

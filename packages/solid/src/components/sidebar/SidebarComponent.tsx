@@ -1,6 +1,6 @@
 import type { HTMLProps } from "@ark-ui/solid";
 import { splitProps } from "solid-js";
-import { TextInput } from "../text-input";
+import { TextInput, type TextInputProps } from "../text-input";
 
 type SidebarComponentType =
 	| "header"
@@ -90,7 +90,7 @@ export function SidebarGroupAction(props: SidebarGroupActionProps) {
 	);
 }
 
-export interface SidebarInputProps extends HTMLProps<"input"> {}
+export interface SidebarInputProps extends TextInputProps {}
 
 export function SidebarInput(props: SidebarInputProps) {
 	return (

@@ -5,4 +5,7 @@ export interface NumberInputProps<T> extends FieldProps<T> {
 	max?: number;
 	step?: number;
 	startSection?: T;
+	value?: number;
+	defaultValue?: number;
+	onValueChange?: (value: number) => void;
 }

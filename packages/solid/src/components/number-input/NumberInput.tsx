@@ -7,13 +7,13 @@ import { ChevronDown, ChevronUp } from "lucide-solid";
 
 export interface NumberInputProps
 	extends CoreNumberInputProps<JSX.Element>,
-		Omit<HTMLProps<"input">, "max" | "min" | "step"> {}
+		Omit<HTMLProps<"input">, "max" | "min" | "step" | "value"> {}
 
 export function NumberInput(_props: NumberInputProps) {
 	const [fieldProps, rootProps, inputProps] = splitProps(
 		_props,
 		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],
-		["startSection", "min", "max", "step"],
+		["startSection", "min", "max", "step", "onValueChange", "value", "defaultValue"],
 	);
 
 	return (
@@ -25,7 +25,10 @@ export function NumberInput(_props: NumberInputProps) {
 				min={rootProps.min}
 				max={rootProps.max}
 				step={rootProps.step}
-				data-start-section={rootProps.startSection ? true : undefined}
+				value={rootProps.value ? String(rootProps.value) : undefined}
+				defaultValue={rootProps.defaultValue ? String(rootProps.defaultValue) : undefined}
+				onValueChange={(details) => rootProps.onValueChange?.(details.valueAsNumber)}
+				data-with-start-section={rootProps.startSection || undefined}
 				data-testid={fieldProps.testId ? `${fieldProps.testId}--root` : undefined}
 			>
 				<ArkNumberInput.Control>
@@ -40,7 +43,7 @@ export function NumberInput(_props: NumberInputProps) {
 					)}
 					<ArkNumberInput.Input
 						{...inputProps}
-						data-start-section={rootProps.startSection ? true : undefined}
+						data-with-start-section={rootProps.startSection || undefined}
 						data-testid={fieldProps.testId ? `${fieldProps.testId}--input` : undefined}
 					/>
 					<ArkNumberInput.IncrementTrigger>

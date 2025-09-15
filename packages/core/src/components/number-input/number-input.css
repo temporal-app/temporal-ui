@@ -7,7 +7,7 @@
 		}
 
 		[data-part="input"] {
-			@apply appearance-none placeholder:text-muted-foreground bg-transparent dark:bg-input/30 flex w-16 data-start-section:w-24 data-start-section:ps-9 pe-9 min-w-0 px-3 py-1 text-base shadow-xs transition selection:bg-primary selection:text-primary-foreground outline-none md:text-sm disabled:opacity-50 row-span-2 border-r ;
+			@apply appearance-none placeholder:text-muted-foreground bg-transparent dark:bg-input/30 flex w-16 data-with-start-section:w-24 data-with-start-section:ps-9 pe-9 min-w-0 px-3 py-1 text-base shadow-xs transition selection:bg-primary selection:text-primary-foreground outline-none md:text-sm disabled:opacity-50 row-span-2 border-r ;
 		}
 
 		[data-part="increment-trigger"] {

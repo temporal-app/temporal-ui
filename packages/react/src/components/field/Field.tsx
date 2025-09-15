@@ -1,6 +1,5 @@
 import { Field as ArkField } from "@ark-ui/react/field";
 import type { FieldProps as CoreFieldProps } from "@temporal-ui/core/field";
-import { cx } from "@temporal-ui/core/utils/cx";
 import type React from "react";
 
 export type FieldProps = CoreFieldProps<React.ReactNode>;
@@ -10,7 +9,7 @@ export function Field(props: FieldProps) {
 
 	return (
 		<ArkField.Root
-			className={cx("field-root", classes?.root)}
+			className={classes?.root}
 			invalid={!!error}
 			data-testid={testId ? `${testId}--root` : undefined}
 			disabled={disabled}
@@ -19,7 +18,7 @@ export function Field(props: FieldProps) {
 		>
 			{label && (
 				<ArkField.Label
-					className={cx("field-label", classes?.label)}
+					className={classes?.label}
 					data-testid={testId ? `${testId}--label` : undefined}
 				>
 					{label}
@@ -27,7 +26,7 @@ export function Field(props: FieldProps) {
 			)}
 			{hint && (
 				<ArkField.HelperText
-					className={cx("field-hint", classes?.hint)}
+					className={classes?.hint}
 					aria-disabled={disabled}
 					data-testid={testId ? `${testId}--hint` : undefined}
 				>
@@ -37,7 +36,7 @@ export function Field(props: FieldProps) {
 			{children}
 			{error && (
 				<ArkField.ErrorText
-					className={cx("field-error", classes?.error)}
+					className={classes?.error}
 					data-testid={testId ? `${testId}--error` : undefined}
 				>
 					{error}

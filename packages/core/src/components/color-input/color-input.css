@@ -1,14 +1,14 @@
 @layer components {
 	[data-scope="color-input"] {
 		[data-part="trigger"] {
-			@apply relative border border-input rounded-md aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px] disabled:cursor-not-allowed transition-colors;
+			@apply relative border border-input rounded-md aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px] disabled:cursor-not-allowed transition-colors h-9;
 
 			[data-part="swatch"] {
-				@apply size-4 rounded-sm shrink-0 absolute top-1 left-1 border border-input;
+				@apply size-5 rounded-sm shrink-0 absolute top-2 left-2 border border-input;
 			}
 
 			[data-part="channel-input"] {
-				@apply ps-6 w-24 disabled:cursor-not-allowed disabled:opacity-50 disabled:pointer-events-none outline-none;
+				@apply ps-9 w-28 disabled:cursor-not-allowed disabled:opacity-50 disabled:pointer-events-none outline-none;
 			}
 		}
 		[data-part="content"] {

@@ -6,7 +6,7 @@ import { Field } from "../field";
 
 export interface TextInputProps
 	extends CoreTextInputProps<React.ReactNode>,
-		React.InputHTMLAttributes<HTMLInputElement> {}
+		Omit<React.InputHTMLAttributes<HTMLInputElement>, "defaultValue" | "value"> {}
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
 	const {
@@ -20,6 +20,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
 		startSection,
 		endSection,
 		testId,
+		onValueChange,
 		...rest
 	} = props;
 
@@ -35,16 +36,13 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
 			testId={testId ? `${testId}-field` : undefined}
 		>
 			<div
-				data-scope={"field"}
-				data-part={"text-input-wrapper"}
-				data-start-section={startSection ? true : undefined}
-				data-end-section={endSection ? true : undefined}
-				data-testid={testId ? `${testId}--wrapper` : undefined}
+				data-scope={"text-input"}
+				data-part={"wrapper"}
 			>
 				{startSection && (
 					<div
-						data-scope={"field"}
-						data-part={"input-start-section"}
+						data-scope={"text-input"}
+						data-part={"start-section"}
 						data-testid={testId ? `${testId}--start-section` : undefined}
 					>
 						{startSection}
@@ -52,17 +50,24 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
 				)}
 				{endSection && (
 					<div
-						data-scope={"field"}
-						data-part={"input-end-section"}
+						data-scope={"text-input"}
+						data-part={"end-section"}
 						data-testid={testId ? `${testId}--end-section` : undefined}
 					>
 						{endSection}
 					</div>
 				)}
 				<ArkField.Input
+					data-scope={"text-input"}
 					{...rest}
 					ref={ref}
+					onInput={(e) => {
+						onValueChange?.(e.currentTarget.value);
+						rest.onInput?.(e);
+					}}
 					aria-invalid={error ? true : undefined}
+					data-with-start-section={startSection ? true : undefined}
+					data-with-end-section={endSection ? true : undefined}
 					data-testid={testId ? `${testId}--input` : undefined}
 				/>
 			</div>

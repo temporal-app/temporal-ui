@@ -1,6 +1,5 @@
 import { Field as ArkField } from "@ark-ui/solid/field";
 import type { FieldProps as CoreFieldProps } from "@temporal-ui/core/field";
-import { cx } from "@temporal-ui/core/utils/cx";
 import type { JSX } from "solid-js";
 
 export type FieldProps = CoreFieldProps<JSX.Element>;
@@ -9,7 +8,7 @@ export function Field(props: FieldProps) {
 
 	return (
 		<ArkField.Root
-			class={cx("field-root", props.classes?.root)}
+			class={props.classes?.root}
 			invalid={!!props.error}
 			disabled={props.disabled}
 			readOnly={props.readOnly}
@@ -18,7 +17,7 @@ export function Field(props: FieldProps) {
 		>
 			{props.label && (
 				<ArkField.Label
-					class={cx("field-label", props.classes?.label)}
+					class={props.classes?.label}
 					aria-disabled={props.disabled}
 					data-testid={props.testId ? `${props.testId}--label` : undefined}
 				>
@@ -27,7 +26,7 @@ export function Field(props: FieldProps) {
 			)}
 			{props.hint && (
 				<ArkField.HelperText
-					class={cx("field-hint", props.classes?.hint)}
+					class={props.classes?.hint}
 					aria-disabled={props.disabled}
 					data-testid={props.testId ? `${props.testId}--hint` : undefined}
 				>
@@ -37,7 +36,7 @@ export function Field(props: FieldProps) {
 			{props.children}
 			{props.error && (
 				<ArkField.ErrorText
-					class={cx("field-error", props.classes?.error)}
+					class={props.classes?.error}
 					data-testid={props.testId ? `${props.testId}--error` : undefined}
 				>
 					{props.error}

@@ -4,13 +4,15 @@ import type { HTMLProps } from "@ark-ui/solid";
 import { Field as ArkField } from "@ark-ui/solid/field";
 import { Field } from "../field";
 
-export interface TextInputProps extends CoreTextInputProps<JSX.Element>, HTMLProps<"input"> {}
+export interface TextInputProps extends CoreTextInputProps<JSX.Element>, Omit<HTMLProps<"input">, "value"> {
+	onInput?: (e: InputEvent & { currentTarget: HTMLInputElement, target: HTMLInputElement }) => void;
+}
 
-export function TextInput(_props: TextInputProps & HTMLProps<"input">) {
+export function TextInput(_props: TextInputProps) {
 	const [fieldProps, inputProps, restProps] = splitProps(
 		_props,
 		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],
-		["startSection", "endSection"],
+		["startSection", "endSection", "onValueChange"],
 	);
 
 	return (
@@ -19,16 +21,13 @@ export function TextInput(_props: TextInputProps & HTMLProps<"input">) {
 			testId={fieldProps.testId ? `${fieldProps.testId}-field` : undefined}
 		>
 			<div
-				data-scope={"field"}
-				data-part={"input-wrapper"}
-				data-start-section={inputProps.startSection ? true : undefined}
-				data-end-section={inputProps.endSection ? true : undefined}
-				data-testid={fieldProps.testId ? `${fieldProps.testId}--wrapper` : undefined}
+				data-scope={"text-input"}
+				data-part={"wrapper"}
 			>
 				{inputProps.startSection && (
 					<div
-						data-scope={"field"}
-						data-part={"input-start-section"}
+						data-scope={"text-input"}
+						data-part={"start-section"}
 						data-testid={fieldProps.testId ? `${fieldProps.testId}--start-section` : undefined}
 					>
 						{inputProps.startSection}
@@ -36,15 +35,22 @@ export function TextInput(_props: TextInputProps & HTMLProps<"input">) {
 				)}
 				{inputProps.endSection && (
 					<div
-						data-scope={"field"}
-						data-part={"input-end-section"}
+						data-scope={"text-input"}
+						data-part={"end-section"}
 						data-testid={fieldProps.testId ? `${fieldProps.testId}--end-section` : undefined}
 					>
 						{inputProps.endSection}
 					</div>
 				)}
 				<ArkField.Input
+					data-scope={"text-input"}
 					{...restProps}
+					onInput={(e) => {
+						inputProps.onValueChange?.(e.currentTarget.value);
+						restProps.onInput?.(e);
+					}}
+					data-with-start-section={inputProps.startSection || undefined}
+					data-with-end-section={inputProps.endSection || undefined}
 					aria-invalid={fieldProps.error ? true : undefined}
 					data-testid={fieldProps.testId ? `${fieldProps.testId}--input` : undefined}
 				/>

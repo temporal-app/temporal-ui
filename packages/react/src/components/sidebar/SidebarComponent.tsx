@@ -1,4 +1,4 @@
-import { TextInput } from "../text-input";
+import { TextInput, type TextInputProps } from "../text-input";
 
 type SidebarComponentType =
 	| "header"
@@ -86,7 +86,7 @@ export function SidebarGroupAction(props: SidebarGroupActionProps) {
 	);
 }
 
-export interface SidebarInputProps extends React.ComponentProps<"input"> {}
+export interface SidebarInputProps extends TextInputProps {}
 
 export function SidebarInput(props: SidebarInputProps) {
 	return (

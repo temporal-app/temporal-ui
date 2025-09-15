@@ -1,10 +1,22 @@
 @layer components {
 
-	.field-root {
-		@apply flex flex-col gap-1;
+	[data-scope="field"][data-part="root"] {
+		@apply relative flex flex-col gap-1;
 	}
 
-	.field-hint {
+	[data-scope="field"][data-part="label"] {
+		@apply flex items-center gap-2 text-sm leading-none font-medium select-none;
+		@apply peer-disabled:pointer-events-none peer-disabled:opacity-50;
+
+		&:has(>*:disabled),
+		&:has(+*:disabled),
+		&:has(+*>*:disabled),
+		&[aria-disabled="true"] {
+			@apply opacity-50 pointer-events-none;
+		}
+	}
+
+	[data-scope="field"][data-part="helper-text"] {
 		@apply text-xs text-muted-foreground dark:text-muted-foreground;
 
 		&[aria-disabled="true"] {
@@ -12,7 +24,11 @@
 		}
 	}
 
-	.field-error {
+	[data-scope="field"][data-part="error-text"] {
 		@apply text-xs text-destructive;
+
+		&[aria-disabled="true"] {
+			@apply opacity-50 pointer-events-none;
+		}
 	}
 }

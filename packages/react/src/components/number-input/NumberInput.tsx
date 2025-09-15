@@ -7,11 +7,27 @@ import { forwardRef } from "react";
 
 export interface NumberInputProps
 	extends CoreNumberInputProps<React.ReactNode>,
-		Omit<React.InputHTMLAttributes<HTMLInputElement>, "max" | "min" | "step"> {}
+		Omit<React.InputHTMLAttributes<HTMLInputElement>, "max" | "min" | "step" | "defaultValue" | "value"> {}
 
 export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>((props, ref) => {
-	const { label, hint, error, required, readOnly, disabled, classes, startSection, min, max, step, testId, ...rest } =
-		props;
+	const {
+		label,
+		hint,
+		error,
+		required,
+		readOnly,
+		disabled,
+		classes,
+		startSection,
+		min,
+		max,
+		step,
+		testId,
+		value,
+		defaultValue,
+		onValueChange,
+		...rest
+	} = props;
 	return (
 		<Field
 			label={label}
@@ -27,7 +43,10 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>((props
 				min={min}
 				max={max}
 				step={step}
-				data-start-section={startSection ? true : undefined}
+				value={value ? String(value) : undefined}
+				defaultValue={defaultValue ? String(defaultValue) : undefined}
+				onValueChange={(details) => onValueChange?.(details.valueAsNumber)}
+				data-with-start-section={startSection ? true : undefined}
 				data-testid={testId ? `${testId}--root` : undefined}
 			>
 				<ArkNumberInput.Control>
@@ -43,7 +62,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>((props
 					<ArkNumberInput.Input
 						ref={ref}
 						{...rest}
-						data-start-section={startSection ? true : undefined}
+						data-with-start-section={startSection ? true : undefined}
 						data-testid={testId ? `${testId}--input` : undefined}
 					/>
 					<ArkNumberInput.IncrementTrigger>

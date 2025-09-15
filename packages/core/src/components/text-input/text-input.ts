@@ -7,4 +7,7 @@ export interface TextInputProps<T> extends FieldProps<T> {
 	startSection?: T;
 	/** The end section of the input. */
 	endSection?: T;
+	value?: string;
+	defaultValue?: string;
+	onValueChange?: (value: string) => void;
 }

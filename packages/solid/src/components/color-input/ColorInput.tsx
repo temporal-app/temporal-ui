@@ -7,9 +7,7 @@ import { splitProps } from "solid-js";
 import { Field } from "../field";
 import { Portal } from "solid-js/web";
 
-export interface ColorInputProps extends CoreColorInputProps<JSX.Element>, Omit<HTMLProps<"input">, "value"> {
-	defaultValue?: string;
-}
+export interface ColorInputProps extends CoreColorInputProps<JSX.Element>, Omit<HTMLProps<"input">, "value"> {}
 
 export function ColorInput(_props: ColorInputProps) {
 	const [fieldProps, rootProps, inputProps] = splitProps(

@@ -1,5 +1,5 @@
 import type { NumberInputProps as CoreNumberInputProps } from "@temporal-ui/core/number-input";
-import { type JSX, splitProps } from "solid-js";
+import { type JSX, Show, splitProps } from "solid-js";
 import type { HTMLProps } from "@ark-ui/solid";
 import { NumberInput as ArkNumberInput } from "@ark-ui/solid/number-input";
 import { Field } from "../field";
@@ -25,14 +25,14 @@ export function NumberInput(_props: NumberInputProps) {
 				min={rootProps.min}
 				max={rootProps.max}
 				step={rootProps.step}
-				value={rootProps.value ? String(rootProps.value) : undefined}
-				defaultValue={rootProps.defaultValue ? String(rootProps.defaultValue) : undefined}
+				value={rootProps.value !== undefined ? String(rootProps.value) : undefined}
+				defaultValue={rootProps.defaultValue !== undefined ? String(rootProps.defaultValue) : undefined}
 				onValueChange={(details) => rootProps.onValueChange?.(details.valueAsNumber)}
 				data-with-start-section={rootProps.startSection || undefined}
 				data-testid={fieldProps.testId ? `${fieldProps.testId}--root` : undefined}
 			>
 				<ArkNumberInput.Control>
-					{rootProps.startSection && (
+					<Show when={rootProps.startSection}>
 						<div
 							data-scope={"number-input"}
 							data-part={"start-section"}
@@ -40,7 +40,7 @@ export function NumberInput(_props: NumberInputProps) {
 						>
 							{rootProps.startSection}
 						</div>
-					)}
+					</Show>
 					<ArkNumberInput.Input
 						{...inputProps}
 						data-with-start-section={rootProps.startSection || undefined}

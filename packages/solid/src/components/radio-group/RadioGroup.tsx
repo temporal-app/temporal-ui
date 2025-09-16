@@ -9,10 +9,8 @@ export interface RadioGroupProps extends CoreRadioGroupProps<JSX.Element> {}
 export type { RadioGroupItem } from "@temporal-ui/core/radio-group";
 
 export function RadioGroup(_props: RadioGroupProps) {
-	const [fieldProps, rootProps] = splitProps(
-		_props,
+	const [fieldProps, rootProps] = splitProps(_props,
 		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],
-		["items", "orientation", "defaultValue", "value", "onValueChange"],
 	);
 
 	return (
@@ -26,23 +24,29 @@ export function RadioGroup(_props: RadioGroupProps) {
 				data-testid={fieldProps.testId ? `${fieldProps.testId}--group` : undefined}
 			>
 				<Index each={rootProps.items}>
-					{(item, i) => (
+					{(item) => (
 						<ArkRadioGroup.Item
 							value={item().value}
 							disabled={item().disabled}
 							invalid={!!fieldProps.error}
-							data-testid={fieldProps.testId ? `${fieldProps.testId}--item-${i}` : undefined}
+							data-testid={fieldProps.testId ? `${fieldProps.testId}--item-${item().value}` : undefined}
 						>
 							<ArkRadioGroup.ItemControl
-								data-testid={fieldProps.testId ? `${fieldProps.testId}--item-control-${i}` : undefined}
+								data-testid={
+									fieldProps.testId ? `${fieldProps.testId}--item-control-${item().value}` : undefined
+								}
 							/>
 							<ArkRadioGroup.ItemText
-								data-testid={fieldProps.testId ? `${fieldProps.testId}--item-text-${i}` : undefined}
+								data-testid={
+									fieldProps.testId ? `${fieldProps.testId}--item-text-${item().value}` : undefined
+								}
 							>
 								{item().label}
 							</ArkRadioGroup.ItemText>
 							<ArkRadioGroup.ItemHiddenInput
-								data-testid={fieldProps.testId ? `${fieldProps.testId}--item-input-${i}` : undefined}
+								data-testid={
+									fieldProps.testId ? `${fieldProps.testId}--item-input-${item().value}` : undefined
+								}
 							/>
 						</ArkRadioGroup.Item>
 					)}

@@ -31,20 +31,20 @@ export function RadioGroup(props: RadioGroupProps) {
 				data-testid={testId ? `${testId}--root` : undefined}
 			>
 				<ArkRadioGroup.Indicator />
-				{items.map((item, i) => (
+				{items.map((item) => (
 					<ArkRadioGroup.Item
 						key={item.value}
 						value={item.value}
 						disabled={item.disabled}
 						invalid={!!error}
-						data-testid={testId ? `${testId}--item-${i}` : undefined}
+						data-testid={testId ? `${testId}--item-${item.value}` : undefined}
 					>
-						<ArkRadioGroup.ItemControl data-testid={testId ? `${testId}--item-control-${i}` : undefined} />
-						<ArkRadioGroup.ItemText data-testid={testId ? `${testId}--item-text-${i}` : undefined}>
+						<ArkRadioGroup.ItemControl data-testid={testId ? `${testId}--item-control-${item.value}` : undefined} />
+						<ArkRadioGroup.ItemText data-testid={testId ? `${testId}--item-text-${item.value}` : undefined}>
 							{item.label}
 						</ArkRadioGroup.ItemText>
 						<ArkRadioGroup.ItemHiddenInput
-							data-testid={testId ? `${testId}--item-input-${i}` : undefined}
+							data-testid={testId ? `${testId}--item-input-${item.value}` : undefined}
 						/>
 					</ArkRadioGroup.Item>
 				))}

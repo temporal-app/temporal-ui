@@ -22,6 +22,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>((props, 
 		defaultValue,
 		onValueChange,
 		className,
+		position,
 		...inputProps
 	} = props;
 	return (
@@ -41,6 +42,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>((props, 
 				data-testid={testId ? `${testId}--root` : undefined}
 				data-scope={"color-input"}
 				openAutoFocus={false}
+				positioning={{ placement: "bottom-start", ...position }}
 			>
 				<ColorPicker.Control data-scope={"color-input"}>
 					<ColorPicker.Trigger

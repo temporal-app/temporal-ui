@@ -13,7 +13,7 @@ export function ColorInput(_props: ColorInputProps) {
 	const [fieldProps, rootProps, inputProps] = splitProps(
 		_props,
 		["label", "hint", "error", "required", "readOnly", "disabled", "testId"],
-		["value", "onValueChange", "defaultValue", "className", "class"],
+		["value", "onValueChange", "defaultValue", "className", "class", "position"],
 	);
 
 	return (
@@ -28,6 +28,7 @@ export function ColorInput(_props: ColorInputProps) {
 				data-testid={fieldProps.testId ? `${fieldProps.testId}--root` : undefined}
 				data-scope={"color-input"}
 				openAutoFocus={false}
+				positioning={{ placement: "bottom-start", ...rootProps.position }}
 			>
 				<ColorPicker.Control data-scope={"color-input"}>
 					<ColorPicker.Trigger

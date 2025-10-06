@@ -5,12 +5,14 @@ import { defineConfig } from "tsdown";
 export default defineConfig({
 	entry: [
 		"src/index.ts",
-		"src/styles.ts",
 		"src/components/*/index.ts",
-	],
-	noExternal: [
-		"@temporal-ui/core"
+		"src/hooks/*/index.ts",
 	],
 	dts: true,
-	sourcemap: false,
+	platform: "browser",
+	outExtensions: () => {
+		return {
+			js: ".jsx",
+		};
+	},
 });

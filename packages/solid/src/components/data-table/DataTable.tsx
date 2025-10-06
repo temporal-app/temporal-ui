@@ -1,4 +1,4 @@
-import { createSolidTable, flexRender, getCoreRowModel, type TableOptions } from "@tanstack/solid-table";
+import { createSolidTable, flexRender, getCoreRowModel, getFilteredRowModel, type TableOptions } from "@tanstack/solid-table";
 import type { BaseComponent } from "@temporal-ui/core/base";
 import { For, type JSX } from "solid-js";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../table";
@@ -9,26 +9,30 @@ export interface DataTableProps<TData>
 	getCoreRowModel?: TableOptions<TData>["getCoreRowModel"];
 }
 
-export function DataTable<TData>({ testId, ...props }: DataTableProps<TData>) {
+export function DataTable<TData>(props: DataTableProps<TData>) {
 	const table = createSolidTable({
 		getCoreRowModel: getCoreRowModel(),
+		getFilteredRowModel: getFilteredRowModel(),
 		...props,
+		get data() {
+			return props.data;
+		},
 	});
 
 	return (
 		<div
 			data-scope="data-table"
 			data-part="container"
-			data-testid={testId ? `${testId}--container` : undefined}
+			data-testid={props.testId ? `${props.testId}--container` : undefined}
 		>
-			<Table testId={testId ? `${testId}--table` : undefined}>
-				<TableHeader testId={testId ? `${testId}--thead` : undefined}>
+			<Table testId={props.testId ? `${props.testId}--table` : undefined}>
+				<TableHeader testId={props.testId ? `${props.testId}--thead` : undefined}>
 					<For each={table.getHeaderGroups()}>
 						{(headerGroup) => (
-							<TableRow testId={testId ? `${testId}--tr` : undefined}>
+							<TableRow testId={props.testId ? `${props.testId}--tr` : undefined}>
 								<For each={headerGroup.headers}>
 									{(header) => (
-										<TableHead testId={testId ? `${testId}--th` : undefined}>
+										<TableHead testId={props.testId ? `${props.testId}--th` : undefined}>
 											{header.isPlaceholder
 												? null
 												: flexRender(header.column.columnDef.header, header.getContext())}
@@ -39,17 +43,17 @@ export function DataTable<TData>({ testId, ...props }: DataTableProps<TData>) {
 						)}
 					</For>
 				</TableHeader>
-				<TableBody testId={testId ? `${testId}--tbody` : undefined}>
+				<TableBody testId={props.testId ? `${props.testId}--tbody` : undefined}>
 					{table.getRowModel().rows?.length ? (
 						<For each={table.getRowModel().rows}>
 							{(row) => (
 								<TableRow
 									data-state={row.getIsSelected() && "selected"}
-									testId={testId ? `${testId}--tr` : undefined}
+									testId={props.testId ? `${props.testId}--tr` : undefined}
 								>
 									<For each={row.getVisibleCells()}>
 										{(cell) => (
-											<TableCell testId={testId ? `${testId}--td` : undefined}>
+											<TableCell testId={props.testId ? `${props.testId}--td` : undefined}>
 												{flexRender(cell.column.columnDef.cell, cell.getContext())}
 											</TableCell>
 										)}
@@ -58,7 +62,7 @@ export function DataTable<TData>({ testId, ...props }: DataTableProps<TData>) {
 							)}
 						</For>
 					) : (
-						<TableRow testId={testId ? `${testId}--row` : undefined}>
+						<TableRow testId={props.testId ? `${props.testId}--row` : undefined}>
 							<TableCell
 								colSpan={props.columns.length}
 								className="h-24 text-center"

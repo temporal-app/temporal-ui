@@ -1,16 +1,28 @@
 {
 	"name": "@temporal-ui/react",
 	"version": "0.1.0",
-	"description": "React bindings for Temporal UI components.",
+	"description": "React bindings for Temporal UI components",
 	"license": "MIT",
-	"main": "./dist/index.js",
-	"module": "./dist/index.mjs",
-	"types": "./dist/index.d.ts",
+	"type": "module",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.mts",
 	"exports": {
-		".": "./src/index.ts",
-		"./*": "./src/components/*/index.ts",
-		"./hooks/*": "./src/hooks/*/index.ts",
-		"./styles.css": "./src/styles.css",
+		".": {
+			"types": "./dist/index.d.mts",
+			"import": "./dist/index.js",
+			"default": "./dist/index.js"
+		},
+		"./hooks/*": {
+			"types": "./dist/hooks/*/index.d.mts",
+			"import": "./dist/hooks/*/index.js",
+			"default": "./dist/hooks/*/index.js"
+		},
+		"./*": {
+			"types": "./dist/components/*/index.d.mts",
+			"import": "./dist/components/*/index.js",
+			"default": "./dist/components/*/index.js"
+		},
+		"./styles.css": "./dist/styles.css",
 		"./package.json": "./package.json"
 	},
 	"bugs": {
@@ -20,7 +32,7 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "tsdown",
+		"build": "tsdown && node ../../scripts/copy-core-styles.mjs",
 		"dev": "bun run storybook",
 		"lint": "biome lint ./src",
 		"format": "biome format ./src",

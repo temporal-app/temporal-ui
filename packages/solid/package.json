@@ -1,15 +1,28 @@
 {
 	"name": "@temporal-ui/solid",
 	"version": "0.1.0",
-	"description": "Solid.JS bindings for Temporal UI components.",
+	"description": "Solid.JS bindings for Temporal UI components",
 	"license": "MIT",
-	"main": "./dist/index.js",
-	"module": "./dist/index.mjs",
-	"types": "./dist/index.d.ts",
+	"type": "module",
+	"module": "./dist/index.jsx",
+	"types": "./dist/index.d.mts",
 	"exports": {
-		".": "./src/index.ts",
-		"./*": "./src/components/*/index.ts",
-		"./styles.css": "./src/styles.css",
+		".": {
+			"types": "./dist/index.d.mts",
+			"solid": "./dist/index.jsx",
+			"default": "./dist/index.jsx"
+		},
+		"./hooks/*": {
+			"types": "./dist/hooks/*/index.d.mts",
+			"solid": "./dist/hooks/*/index.jsx",
+			"default": "./dist/hooks/*/index.jsx"
+		},
+		"./*": {
+			"types": "./dist/components/*/index.d.mts",
+			"solid": "./dist/components/*/index.jsx",
+			"default": "./dist/components/*/index.jsx"
+		},
+		"./styles.css": "./dist/styles.css",
 		"./package.json": "./package.json"
 	},
 	"bugs": {
@@ -19,7 +32,7 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "tsdown",
+		"build": "tsdown && node ../../scripts/copy-core-styles.mjs",
 		"dev": "bun run storybook",
 		"lint": "biome lint ./src",
 		"test": "vitest run",

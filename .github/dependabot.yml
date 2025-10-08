@@ -14,7 +14,15 @@ updates:
     groups:
       npm-non-major-updates:
         applies-to: version-updates
+        dependency-type: production
         update-types:
+          - minor
+          - patch
+      dev-dependencies-all:
+        applies-to: version-updates
+        dependency-type: development
+        update-types:
+          - major
           - minor
           - patch
 

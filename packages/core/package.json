@@ -1,6 +1,6 @@
 {
 	"name": "@temporal-ui/core",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Framework-agnostic core definitions, utils and styles for Temporal UI components",
 	"license": "MIT",
 	"type": "module",
@@ -32,8 +32,8 @@
 		"format": "biome format ./src",
 		"check": "biome check ./src",
 		"typecheck": "tsc --noEmit",
-		"prepack": "clean-package",
-		"postpack": "clean-package restore",
+		"prepack": "bunx clean-package",
+		"postpack": "bunx clean-package restore",
 		"clean": "rimraf dist"
 	},
 	"devDependencies": {

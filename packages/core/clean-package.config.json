@@ -1,0 +1,26 @@
+{
+  "indent": 4,
+	"replace": {
+		"module": "./dist/index.js",
+		"types": "./dist/index.d.mts",
+		"exports": {
+			"./*": {
+				"types": "./dist/components/*/index.d.mts",
+				"import": "./dist/components/*/index.js",
+				"default": "./dist/components/*/index.js"
+			},
+			"./base": {
+				"types": "./dist/components/base.d.mts",
+				"import": "./dist/components/base.js",
+				"default": "./dist/components/base.js"
+			},
+			"./utils/*": {
+				"types": "./dist/utils/*/index.d.mts",
+				"import": "./dist/utils/*/index.js",
+				"default": "./dist/utils/*/index.js"
+			},
+			"./styles.css": "./dist/styles.css",
+			"./package.json": "./package.json"
+		}
+	}
+}

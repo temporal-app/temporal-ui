@@ -17,6 +17,7 @@
       "name": "@temporal-ui/core",
       "version": "0.1.0",
       "devDependencies": {
+        "clean-package": "2.2.0",
         "rimraf": "6.0.1",
         "tsdown": "0.15.1",
         "typescript": "5.9.2",
@@ -660,6 +661,8 @@
 
     "chromatic": ["chromatic@12.2.0", "", { "peerDependencies": { "@chromatic-com/cypress": "^0.*.* || ^1.0.0", "@chromatic-com/playwright": "^0.*.* || ^1.0.0" }, "optionalPeers": ["@chromatic-com/cypress", "@chromatic-com/playwright"], "bin": { "chroma": "dist/bin.js", "chromatic": "dist/bin.js", "chromatic-cli": "dist/bin.js" } }, "sha512-GswmBW9ZptAoTns1BMyjbm55Z7EsIJnUvYKdQqXIBZIKbGErmpA+p4c0BYA+nzw5B0M+rb3Iqp1IaH8TFwIQew=="],
 
+    "clean-package": ["clean-package@2.2.0", "", { "dependencies": { "dot-prop": "^6.0.1" }, "bin": { "clean-package": "bin/main.js" } }, "sha512-vLv8kRqvh4smPDpqAYFPLEijTppAd/cfCz4yBcUGoVl/JKu6ZWKhlo+G/cAmwlSa29RudfBeuyiNEzas8bTwEQ=="],
+
     "color-convert": ["color-convert@2.0.1", "", { "dependencies": { "color-name": "~1.1.4" } }, "sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ=="],
 
     "color-name": ["color-name@1.1.4", "", {}, "sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA=="],
@@ -689,6 +692,8 @@
     "doctrine": ["doctrine@3.0.0", "", { "dependencies": { "esutils": "^2.0.2" } }, "sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w=="],
 
     "dom-accessibility-api": ["dom-accessibility-api@0.6.3", "", {}, "sha512-7ZgogeTnjuHbo+ct10G9Ffp0mif17idi0IyWNVA/wcwcm7NPOD/WEHVP3n7n3MhXqxoIYm8d6MuZohYWIZ4T3w=="],
+
+    "dot-prop": ["dot-prop@6.0.1", "", { "dependencies": { "is-obj": "^2.0.0" } }, "sha512-tE7ztYzXHIeyvc7N+hR3oi7FIbf/NIjVP9hmAt3yMXzrQ072/fpjGLx2GxNxGxUl5V73MEqYzioOMoVhGMJ5cA=="],
 
     "dts-resolver": ["dts-resolver@2.1.2", "", { "peerDependencies": { "oxc-resolver": ">=11.0.0" }, "optionalPeers": ["oxc-resolver"] }, "sha512-xeXHBQkn2ISSXxbJWD828PFjtyg+/UrMDo7W4Ffcs7+YWCquxU8YjV1KoxuiL+eJ5pg3ll+bC6flVv61L3LKZg=="],
 
@@ -755,6 +760,8 @@
     "is-docker": ["is-docker@2.2.1", "", { "bin": { "is-docker": "cli.js" } }, "sha512-F+i2BKsFrH66iaUFc0woD8sLy8getkwTwtOBjvs56Cx4CgJDeKQeqfz8wAYiSb8JOprWhHH5p77PbmYCvvUuXQ=="],
 
     "is-fullwidth-code-point": ["is-fullwidth-code-point@3.0.0", "", {}, "sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg=="],
+
+    "is-obj": ["is-obj@2.0.0", "", {}, "sha512-drqDG3cbczxxEJRoOXcOjtdp1J/lyp1mNn0xaznRs8+muBhgQcrnbspox5X5fOw0HnMnbfDzvnEMEtqDEJEo8w=="],
 
     "is-what": ["is-what@4.1.16", "", {}, "sha512-ZhMwEosbFJkA0YhFnNDgTM4ZxDRsS6HqTo7qsZM08fehyRYIYa0yHu5R6mgo1n/8MgaPBXiPimPD77baVFYg+A=="],
 

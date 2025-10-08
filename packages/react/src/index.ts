@@ -21,6 +21,7 @@ export * from './components/sidebar';
 export * from './components/slider';
 export * from './components/stack';
 export * from './components/table';
+export * from './components/tabs';
 export * from './components/text-input';
 export * from './components/textarea';
 

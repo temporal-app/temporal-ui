@@ -39,6 +39,7 @@
 	},
 	"scripts": {
 		"build": "tsdown",
+		"build:watch": "tsdown --watch",
 		"test": "vitest run",
 		"test:watch": "vitest",
 		"lint": "biome lint ./src",

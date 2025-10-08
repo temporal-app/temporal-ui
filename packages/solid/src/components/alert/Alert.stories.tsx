@@ -92,11 +92,11 @@ export const WithChildren: Story = {
 	args: {
 		...Default.args,
 		title: "Alert with children",
-		children: () => (
-			<Stack row gap={1} mt={1}>
-				<Button variant="primary" size="xs">Action</Button>
-				<Button variant="secondary" size="xs">Secondary</Button>
-			</Stack>
-		)
-	}
+	},
+	render: () => (
+		<Stack row gap={1} mt={1}>
+			<Button variant="primary" size="xs">Action</Button>
+			<Button variant="secondary" size="xs">Secondary</Button>
+		</Stack>
+	)
 };

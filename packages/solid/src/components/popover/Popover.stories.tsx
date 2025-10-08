@@ -64,9 +64,9 @@ function SampleForm() {
 export const Default: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		children: () => <SampleForm />,
 		p: 3
-	}
+	},
+	render: () => <SampleForm />
 };
 
 export const WithTitle: Story = {

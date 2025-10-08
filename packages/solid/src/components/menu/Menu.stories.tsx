@@ -172,22 +172,22 @@ function SampleMixedMenuItems() {
 export const Default: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		children: () => <SampleMenuItems />
-	}
+	},
+	render: () => <SampleMenuItems />
 };
 
 export const WithGroups: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		children: () => <SampleComplexMenuItems />
-	}
+	},
+	render: () => <SampleComplexMenuItems />
 };
 
 export const UserMenu: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		children: () => <SampleFormMenuItems />
-	}
+	},
+	render: () => <SampleFormMenuItems />
 };
 
 export const PositionTop: Story = {
@@ -258,38 +258,39 @@ export const WithOffset: Story = {
 export const SingleItems: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		children: () => (
-			<>
-				<MenuItem value="action1">Action 1</MenuItem>
-				<MenuItem value="action2">Action 2</MenuItem>
-				<MenuItem value="action3">Action 3</MenuItem>
-			</>
-		)
-	}
+	},
+	render: () => (
+		<>
+			<MenuItem value="action1">Action 1</MenuItem>
+			<MenuItem value="action2">Action 2</MenuItem>
+			<MenuItem value="action3">Action 3</MenuItem>
+		</>
+	)
 };
 
 export const WithSeparators: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		children: () =>(
-			<>
-				<MenuItem value="first">First Item</MenuItem>
-				<MenuItem value="second">Second Item</MenuItem>
-				<MenuItemSeparator />
-				<MenuItem value="third">Third Item</MenuItem>
-				<MenuItem value="fourth">Fourth Item</MenuItem>
-				<MenuItemSeparator />
-				<MenuItem value="fifth">Fifth Item</MenuItem>
-			</>
-		)
-	}
+	},
+	render: () => (
+		<>
+			<MenuItem value="first">First Item</MenuItem>
+			<MenuItem value="second">Second Item</MenuItem>
+			<MenuItemSeparator />
+			<MenuItem value="third">Third Item</MenuItem>
+			<MenuItem value="fourth">Fourth Item</MenuItem>
+			<MenuItemSeparator />
+			<MenuItem value="fifth">Fifth Item</MenuItem>
+		</>
+	)
 };
 
 export const MultipleGroups: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		children: () =>(
-			<>
+	},
+	render: () => (
+		<>
 				<MenuItemGroup label="Documents">
 					<MenuItem value="recent">Recent Files</MenuItem>
 					<MenuItem value="templates">Templates</MenuItem>
@@ -307,63 +308,54 @@ export const MultipleGroups: Story = {
 					<MenuItem value="shortcuts">Keyboard Shortcuts</MenuItem>
 				</MenuItemGroup>
 			</>
-		)
-	}
+	)
 };
 
 export const WithCheckboxItems: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		children: () =><SampleCheckboxMenuItems />
-	}
+	},
+	render: () => <SampleCheckboxMenuItems />
 };
 
 export const WithRadioItems: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		children: () => <SampleRadioMenuItems />
-	}
+	},
+	render: () => <SampleRadioMenuItems />
 };
 
 export const MixedItemTypes: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		children: () => <SampleMixedMenuItems />
-	}
+	},
+	render: () => <SampleMixedMenuItems />
 };
 
 export const CheckboxOnly: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		children: () => (
-			<>
-				<MenuCheckboxItem value="option1" checked={true} onCheckedChange={fn()}>
-					Option 1
-				</MenuCheckboxItem>
-				<MenuCheckboxItem value="option2" checked={false} onCheckedChange={fn()}>
-					Option 2
-				</MenuCheckboxItem>
-				<MenuCheckboxItem value="option3" checked={true} onCheckedChange={fn()}>
-					Option 3
-				</MenuCheckboxItem>
-				<MenuCheckboxItem value="option4" checked={false} onCheckedChange={fn()}>
-					Option 4
-				</MenuCheckboxItem>
-			</>
-		)
-	}
+	},
+	render: () => (
+		<>
+			<MenuCheckboxItem value="option1" checked={true} onCheckedChange={fn()}>Option 1</MenuCheckboxItem>
+			<MenuCheckboxItem value="option2" checked={false} onCheckedChange={fn()}>Option 2</MenuCheckboxItem>
+			<MenuCheckboxItem value="option3" checked={true} onCheckedChange={fn()}>Option 3</MenuCheckboxItem>
+			<MenuCheckboxItem value="option4" checked={false} onCheckedChange={fn()}>Option 4</MenuCheckboxItem>
+		</>
+	)
 };
 
 export const RadioOnly: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		children: () => (
-			<MenuRadioItemGroup value="option1" onValueChange={fn()}>
-				<MenuRadioItem value="option1">Option 1</MenuRadioItem>
-				<MenuRadioItem value="option2">Option 2</MenuRadioItem>
-				<MenuRadioItem value="option3">Option 3</MenuRadioItem>
-				<MenuRadioItem value="option4">Option 4</MenuRadioItem>
-			</MenuRadioItemGroup>
-		)
-	}
+	},
+	render: () => (
+		<MenuRadioItemGroup value="option1" onValueChange={fn()}>
+			<MenuRadioItem value="option1">Option 1</MenuRadioItem>
+			<MenuRadioItem value="option2">Option 2</MenuRadioItem>
+			<MenuRadioItem value="option3">Option 3</MenuRadioItem>
+			<MenuRadioItem value="option4">Option 4</MenuRadioItem>
+		</MenuRadioItemGroup>
+	)
 };

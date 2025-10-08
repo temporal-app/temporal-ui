@@ -33,6 +33,7 @@ const columns: ColumnDef<Person>[] = [
 ];
 
 export const Default: Story = {
+	args: { columns, data },
 	render: () => (
 		<DataTable<Person>
 			columns={columns}

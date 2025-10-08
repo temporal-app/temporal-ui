@@ -37,8 +37,8 @@ function SampleContent() {
 export const Default: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		children: () => <SampleContent />,
 		title: "Dialog Title",
 		description: "Dialog Description",
 	},
+	render: () => <SampleContent />
 };

@@ -5,7 +5,6 @@ import type { JSX } from "solid-js";
 export type FieldProps = CoreFieldProps<JSX.Element>;
 
 export function Field(props: FieldProps) {
-
 	return (
 		<ArkField.Root
 			class={props.classes?.root}
@@ -45,3 +44,8 @@ export function Field(props: FieldProps) {
 		</ArkField.Root>
 	);
 }
+
+export const FieldRoot = ArkField.Root;
+export const FieldLabel = ArkField.Label;
+export const FieldHint = ArkField.HelperText;
+export const FieldError = ArkField.ErrorText;

@@ -45,3 +45,8 @@ export function Field(props: FieldProps) {
 		</ArkField.Root>
 	);
 }
+
+export const FieldRoot = ArkField.Root;
+export const FieldLabel = ArkField.Label;
+export const FieldHint = ArkField.HelperText;
+export const FieldError = ArkField.ErrorText;

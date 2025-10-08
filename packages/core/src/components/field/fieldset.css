@@ -1,0 +1,5 @@
+@layer components {
+	[data-scope="fieldset"][data-part="root"] {
+		@apply border rounded-sm px-4 pb-4 flex flex-col gap-4;
+	}
+}

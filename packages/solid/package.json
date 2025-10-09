@@ -1,6 +1,6 @@
 {
 	"name": "@temporal-ui/solid",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"description": "Solid.JS bindings for Temporal UI components",
 	"license": "MIT",
 	"type": "module",
@@ -44,7 +44,7 @@
 		"storybook": "storybook dev -p 6007",
 		"build-storybook": "storybook build",
 		"prepack": "node ../../scripts/replace-protocols.mjs",
-		"postpack": "node ../../scripts/restore-protocols.mjs"
+		"postpublish": "node ../../scripts/restore-protocols.mjs"
 	},
 	"publishConfig": {
 		"access": "public"

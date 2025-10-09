@@ -46,7 +46,7 @@
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
 		"prepack": "node ../../scripts/replace-protocols.mjs",
-		"postpack": "node ../../scripts/restore-protocols.mjs"
+		"postpublish": "node ../../scripts/restore-protocols.mjs"
 	},
 	"publishConfig": {
 		"access": "public"

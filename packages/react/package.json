@@ -1,6 +1,6 @@
 {
 	"name": "@temporal-ui/react",
-	"version": "0.2.1",
+	"version": "0.3.1",
 	"description": "React bindings for Temporal UI components",
 	"license": "MIT",
 	"type": "module",
@@ -44,7 +44,9 @@
 		"typecheck": "tsc --noEmit",
 		"clean": "rimraf dist node_modules",
 		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build"
+		"build-storybook": "storybook build",
+		"prepack": "node ../../scripts/replace-protocols.mjs",
+		"postpack": "node ../../scripts/restore-protocols.mjs"
 	},
 	"publishConfig": {
 		"access": "public"

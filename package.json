@@ -15,11 +15,18 @@
 		"solid": "turbo run dev -F=@temporal-ui/solid...",
 		"lint": "turbo run lint",
 		"format": "turbo run write",
-		"check": "turbo run check"
+		"check": "turbo run check",
+		"changeset": "bunx @changesets/cli",
+		"version": "bunx @changesets/cli version",
+		"publish": "bunx @changesets/cli publish"
 	},
 	"workspaces": [
 		"packages/*"
 	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/temporal-app/temporal-ui.git"
+	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.5",
 		"@types/bun": "1.2.23",
@@ -29,7 +36,7 @@
 		"turbo": "2.5.8",
 		"typescript": "5.9.3"
 	},
-	"packageManager": "bun@1.2.18",
+	"packageManager": "bun@1.2.23",
 	"trustedDependencies": [
 		"@tailwindcss/oxide"
 	]

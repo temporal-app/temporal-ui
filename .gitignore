@@ -4,6 +4,11 @@ packages/**/node_modules
 packages/**/dist
 .turbo
 
+# Various files
+.npmrc
+*storybook.log
+storybook-static
+
 # Yarn Berry
 .pnp.*
 .yarn/*
@@ -46,6 +51,3 @@ packages/**/dist
 
 # Ignore custom settings for run/debug configurations
 .idea/runConfigurations/
-
-*storybook.log
-storybook-static

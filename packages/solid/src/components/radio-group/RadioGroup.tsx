@@ -20,9 +20,13 @@ export function RadioGroup(_props: RadioGroupProps) {
 		>
 			<ArkRadioGroup.Root
 				{...rootProps}
+				disabled={fieldProps.disabled}
+				readOnly={fieldProps.readOnly}
+				aria-required={fieldProps.required}
 				onValueChange={(details) => rootProps.onValueChange?.(details.value)}
 				data-testid={fieldProps.testId ? `${fieldProps.testId}--group` : undefined}
 			>
+				<ArkRadioGroup.Indicator />
 				<Index each={rootProps.items}>
 					{(item) => (
 						<ArkRadioGroup.Item

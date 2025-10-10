@@ -10,6 +10,6 @@ export default defineConfig({
 	test: {
 		globals: true,
 		environment: "happy-dom",
-		setupFiles: ["../../node_modules/@testing-library/jest-dom/vitest"],
+		setupFiles: ["../../node_modules/@testing-library/jest-dom"],
 	},
 });

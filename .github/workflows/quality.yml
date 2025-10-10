@@ -40,15 +40,6 @@ jobs:
       - name: Build packages
         run: bun run build
 
-      - name: Ls root
-        run: ls -la /home/runner/work/temporal-ui/temporal-ui
-
-      - name: Ls node_modules
-        run: ls -la /home/runner/work/temporal-ui/temporal-ui/node_modules
-
-      - name: Ls @testing-library/jest-dom
-        run: ls -la /home/runner/work/temporal-ui/temporal-ui/node_modules/@testing-library/jest-dom
-
       - name: Run tests
         run: bun run test
 

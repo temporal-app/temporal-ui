@@ -42,7 +42,7 @@
 		"test:coverage": "vitest run --coverage",
 		"test:ci": "vitest run",
 		"typecheck": "tsc --noEmit",
-		"clean": "rimraf dist node_modules",
+		"clean": "rimraf dist node_modules .turbo",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
 		"prepack": "node ../../scripts/replace-protocols.mjs",

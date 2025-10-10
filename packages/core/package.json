@@ -34,7 +34,7 @@
 		"typecheck": "tsc --noEmit",
 		"prepack": "clean-package",
 		"postpack": "clean-package restore",
-		"clean": "rimraf dist"
+		"clean": "rimraf dist .turbo"
 	},
 	"devDependencies": {
 		"clean-package": "2.2.0",

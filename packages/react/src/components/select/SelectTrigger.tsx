@@ -1,14 +1,14 @@
 import { Select, useSelectContext } from "@ark-ui/react/select";
 import { ChevronsUpDown } from "lucide-react";
 import { Stack } from "../stack";
-import type { SelectItem } from "./SelectContent";
+import type { RenderItemFn } from "./SelectContent";
 
 export interface SelectTriggerProps<M = unknown> {
 	className?: string;
 	testId?: string;
 	placeholder?: string;
 	indicator?: React.ReactNode;
-	renderItem?: (item: SelectItem<M>) => React.ReactNode;
+	renderItem?: RenderItemFn<M>;
 	startSection?: React.ReactNode;
 }
 
@@ -29,7 +29,7 @@ export function SelectTrigger<M = unknown>({
 				data-testid={testId ? `${testId}--trigger` : undefined}
 			>
 				{context.hasSelectedItems &&
-					(renderItem?.(context.selectedItems[0]) ?? (
+					(renderItem?.(context.selectedItems[0], "trigger") ?? (
 						<Stack
 							row
 							align="center"

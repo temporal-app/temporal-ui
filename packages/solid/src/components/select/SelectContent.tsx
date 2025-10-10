@@ -1,14 +1,15 @@
 import { type ListCollection, Select } from "@ark-ui/solid/select";
-import type { SelectItem as CoreSelectItem } from "@temporal-ui/core/select";
+import type { RenderItemFn as CoreRenderItemFn, SelectItem as CoreSelectItem } from "@temporal-ui/core/select";
 import { CheckIcon } from "lucide-solid";
 import { For, type JSX } from "solid-js";
 
 export type SelectItem<M = unknown> = CoreSelectItem<M, JSX.Element>;
+export type RenderItemFn<M = unknown> = CoreRenderItemFn<M, JSX.Element>;
 
 export interface SelectContentProps<M = unknown> {
 	testId?: string;
 	collection: ListCollection<SelectItem<M>>;
-	renderItem?: (item: SelectItem<M>) => JSX.Element;
+	renderItem?: RenderItemFn<M>;
 }
 
 export function SelectContent<M = unknown>(props: SelectContentProps<M>) {
@@ -22,7 +23,7 @@ export function SelectContent<M = unknown>(props: SelectContentProps<M>) {
 							<For each={group}>
 								{(item) => (
 									<Select.Item item={item}>
-										{props.renderItem?.(item) ?? (
+										{props.renderItem?.(item, "option") ?? (
 											<>
 												{item.icon}
 												<Select.ItemText>{item.label}</Select.ItemText>

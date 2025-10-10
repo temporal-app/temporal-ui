@@ -14,6 +14,8 @@ export interface SelectItem<M = unknown, T = unknown> {
 	data?: M;
 }
 
+export type RenderItemFn<M = unknown, T = unknown> = (item: SelectItem<M, T>, component: "option" | "trigger") => T;
+
 export interface SelectProps<M = unknown, T = unknown> extends FieldProps<T> {
 	name?: string;
 	/** The start section of the select. */
@@ -35,5 +37,5 @@ export interface SelectProps<M = unknown, T = unknown> extends FieldProps<T> {
 	onBlur?: () => void;
 	onValueChange?: (value?: string) => void;
 	/** Custom function to render the item. */
-	renderItem?: (item: SelectItem<M, T>) => T;
+	renderItem?: RenderItemFn<M, T>;
 }

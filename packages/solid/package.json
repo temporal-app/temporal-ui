@@ -73,6 +73,7 @@
 		"lucide-solid": "0.545.0",
 		"storybook": "9.1.10",
 		"tailwindcss": "4.1.14",
+		"tsdown": "0.15.6",
 		"vite": "^7.1.5",
 		"vite-plugin-solid": "2.11.9",
 		"vitest": "3.2.4"

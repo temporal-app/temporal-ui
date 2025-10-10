@@ -40,6 +40,9 @@ jobs:
       - name: Build packages
         run: bun run build
 
+      - name: Ls Vitest
+        run: ls -la node_modules/@testing-library/jest-dom
+
       - name: Run tests
         run: bun run test
 

@@ -63,14 +63,14 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 				data-testid={testId ? `${testId}--root` : undefined}
 				collection={listCollection}
 				deselectable={deselectable}
-				value={value ? [value] : undefined}
-				defaultValue={defaultValue ? [defaultValue] : undefined}
+				value={value ? [value] : value === null ? [] : undefined}
+				defaultValue={defaultValue ? [defaultValue] : defaultValue === null ? [] : undefined}
 				disabled={disabled}
 				invalid={!!error}
 				required={required}
 				readOnly={readOnly}
 				onFocusOutside={onBlur}
-				onValueChange={onValueChange ? (details) => onValueChange?.(details.value[0]) : undefined}
+				onValueChange={onValueChange ? (details) => onValueChange?.(details.value[0] ?? null) : undefined}
 				positioning={{
 					offset: {
 						mainAxis: 0,

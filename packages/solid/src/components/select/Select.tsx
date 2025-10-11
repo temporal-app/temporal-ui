@@ -41,9 +41,9 @@ export function Select<M = unknown>(_props: SelectProps<M>) {
 				invalid={!!fieldProps.error}
 				required={fieldProps.required}
 				readOnly={fieldProps.readOnly}
-				value={rootProps.value ? [rootProps.value] : undefined}
-				defaultValue={rootProps.defaultValue ? [rootProps.defaultValue] : undefined}
-				onValueChange={(details) => rootProps.onValueChange?.(details.value[0])}
+				value={rootProps.value ? [rootProps.value] : rootProps.value === null ? [] : undefined}
+				defaultValue={rootProps.defaultValue ? [rootProps.defaultValue] : rootProps.defaultValue === null ? [] : undefined}
+				onValueChange={(details) => rootProps.onValueChange?.(details.value[0] ?? null)}
 				onFocusOutside={rootProps.onBlur}
 				positioning={{
 					offset: {

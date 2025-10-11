@@ -31,11 +31,11 @@ export interface SelectProps<M = unknown, T = unknown> extends FieldProps<T> {
 	/** Whether to allow deselecting the selected item. */
 	deselectable?: boolean;
 	/** The default value of the select in uncontrolled mode. */
-	defaultValue?: string;
+	defaultValue?: string | null;
 	/** The value of the select in controlled mode. */
-	value?: string;
+	value?: string | null;
 	onBlur?: () => void;
-	onValueChange?: (value?: string) => void;
+	onValueChange?: (value?: string | null) => void;
 	/** Custom function to render the item. */
 	renderItem?: RenderItemFn<M, T>;
 }

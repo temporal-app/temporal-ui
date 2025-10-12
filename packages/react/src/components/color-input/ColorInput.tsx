@@ -44,35 +44,63 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>((props, 
 				openAutoFocus={false}
 				positioning={{ placement: "bottom-start", ...position }}
 			>
-				<ColorPicker.Control data-scope={"color-input"}>
+				<ColorPicker.Control
+					data-scope={"color-input"}
+					data-testid={testId ? `${testId}--control` : undefined}
+				>
 					<ColorPicker.Trigger
 						data-scope={"color-input"}
 						className={className}
 						aria-invalid={error ? true : undefined}
+						data-testid={testId ? `${testId}--trigger` : undefined}
 					>
 						<ColorPicker.ChannelInput
 							channel="hex"
 							data-scope={"color-input"}
+							data-testid={testId ? `${testId}--channel-input` : undefined}
 						/>
 						<ColorPicker.ValueSwatch
 							style={{ position: "absolute" }}
 							data-scope={"color-input"}
+							data-testid={testId ? `${testId}--swatch` : undefined}
 						/>
 					</ColorPicker.Trigger>
 				</ColorPicker.Control>
 				<Portal>
-					<ColorPicker.Positioner data-scope={"color-input"}>
-						<ColorPicker.Content data-scope={"color-input"}>
-							<ColorPicker.Area data-scope={"color-input"}>
-								<ColorPicker.AreaBackground data-scope={"color-input"} />
-								<ColorPicker.AreaThumb data-scope={"color-input"} />
+					<ColorPicker.Positioner
+						data-scope={"color-input"}
+						data-testid={testId ? `${testId}--positioner` : undefined}
+					>
+						<ColorPicker.Content
+							data-scope={"color-input"}
+							data-testid={testId ? `${testId}--content` : undefined}
+						>
+							<ColorPicker.Area
+								data-scope={"color-input"}
+								data-testid={testId ? `${testId}--area` : undefined}
+							>
+								<ColorPicker.AreaBackground
+									data-scope={"color-input"}
+									data-testid={testId ? `${testId}--area-background` : undefined}
+								/>
+								<ColorPicker.AreaThumb
+									data-scope={"color-input"}
+									data-testid={testId ? `${testId}--area-thumb` : undefined}
+								/>
 							</ColorPicker.Area>
 							<ColorPicker.ChannelSlider
 								channel="hue"
 								data-scope={"color-input"}
+								data-testid={testId ? `${testId}--channel-slider` : undefined}
 							>
-								<ColorPicker.ChannelSliderTrack data-scope={"color-input"} />
-								<ColorPicker.ChannelSliderThumb data-scope={"color-input"} />
+								<ColorPicker.ChannelSliderTrack
+									data-scope={"color-input"}
+									data-testid={testId ? `${testId}--channel-slider-track` : undefined}
+								/>
+								<ColorPicker.ChannelSliderThumb
+									data-scope={"color-input"}
+									data-testid={testId ? `${testId}--channel-slider-thumb` : undefined}
+								/>
 							</ColorPicker.ChannelSlider>
 						</ColorPicker.Content>
 					</ColorPicker.Positioner>

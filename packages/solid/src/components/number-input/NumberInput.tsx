@@ -25,9 +25,13 @@ export function NumberInput(_props: NumberInputProps) {
 				min={rootProps.min}
 				max={rootProps.max}
 				step={rootProps.step}
-				value={rootProps.value !== undefined ? String(rootProps.value) : undefined}
+				value={
+					rootProps.value !== undefined ? String(rootProps.value != null ? rootProps.value : "") : undefined
+				}
 				defaultValue={rootProps.defaultValue !== undefined ? String(rootProps.defaultValue) : undefined}
-				onValueChange={(details) => rootProps.onValueChange?.(details.valueAsNumber)}
+				onValueChange={(details) => {
+					rootProps.onValueChange?.(details.value !== "" ? details.valueAsNumber : null);
+				}}
 				data-with-start-section={rootProps.startSection || undefined}
 				data-testid={fieldProps.testId ? `${fieldProps.testId}--root` : undefined}
 			>

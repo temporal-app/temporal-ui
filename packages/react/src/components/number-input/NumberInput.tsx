@@ -43,9 +43,9 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>((props
 				min={min}
 				max={max}
 				step={step}
-				value={value ? String(value) : undefined}
-				defaultValue={defaultValue ? String(defaultValue) : undefined}
-				onValueChange={(details) => onValueChange?.(details.valueAsNumber)}
+				value={value !== undefined ? String(value != null ? value : "") : undefined}
+				defaultValue={defaultValue !== undefined ? String(defaultValue) : undefined}
+				onValueChange={(details) => onValueChange?.(details.value !== "" ? details.valueAsNumber : null)}
 				data-with-start-section={startSection ? true : undefined}
 				data-testid={testId ? `${testId}--root` : undefined}
 			>

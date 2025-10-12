@@ -24,7 +24,7 @@ export function ColorInput(_props: ColorInputProps) {
 			<ColorPicker.Root
 				value={rootProps.value ? parseColor(String(rootProps.value)) : undefined}
 				defaultValue={rootProps.defaultValue ? parseColor(String(rootProps.defaultValue)) : undefined}
-				onValueChange={(details) => rootProps.onValueChange?.(details.valueAsString)}
+				onValueChange={(details) => rootProps.onValueChange?.(details.value.toString("hex"))}
 				data-testid={fieldProps.testId ? `${fieldProps.testId}--root` : undefined}
 				data-scope={"color-input"}
 				openAutoFocus={false}

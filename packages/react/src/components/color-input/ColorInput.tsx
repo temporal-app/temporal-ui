@@ -38,7 +38,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>((props, 
 			<ColorPicker.Root
 				value={value ? parseColor(String(value)) : undefined}
 				defaultValue={defaultValue ? parseColor(String(defaultValue)) : undefined}
-				onValueChange={(details) => onValueChange?.(details.valueAsString)}
+				onValueChange={(details) => onValueChange?.(details.value.toString("hex"))}
 				data-testid={testId ? `${testId}--root` : undefined}
 				data-scope={"color-input"}
 				openAutoFocus={false}

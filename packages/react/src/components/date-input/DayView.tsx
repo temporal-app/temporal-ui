@@ -47,6 +47,7 @@ export function DayView(props: DayViewProps) {
 														data-scope={"date-input"}
 														key={id}
 														value={day}
+														visibleRange={offset.visibleRange}
 														className="group"
 													>
 														<DatePicker.TableCellTrigger data-scope={"date-input"}>

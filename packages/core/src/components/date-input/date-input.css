@@ -9,7 +9,7 @@
 	}
 
 	[data-scope="date-input"][data-part="content"] {
-		@apply p-3 border rounded-md bg-popover text-popover-foreground flex flex-col gap-3;
+		@apply min-w-64 p-3 border rounded-md bg-popover text-popover-foreground flex flex-col gap-3;
 	}
 
 	[data-scope="date-input"][data-part="view-control"] {
@@ -35,11 +35,7 @@
 	}
 
 	[data-scope="date-input"][data-part="table-cell"] {
-		@apply relative w-full h-full p-0 text-center aspect-square select-none aria-selected:bg-accent [&:first-child[aria-selected=true]]:rounded-l-md [&:last-child[aria-selected=true]]:rounded-r-md;
-	}
-
-	[data-scope="date-input"][data-part="table-body"][data-view="day"] [data-scope="date-input"][data-part="table-cell"] {
-		@apply w-8;
+		@apply min-w-8 relative w-full h-full p-0 text-center aspect-square select-none aria-selected:bg-accent [&:first-child[aria-selected=true]]:rounded-l-md [&:last-child[aria-selected=true]]:rounded-r-md;
 	}
 
 	[data-scope="date-input"][data-part="table-cell-trigger"] {

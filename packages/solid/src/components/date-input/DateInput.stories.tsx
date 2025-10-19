@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
 import { DateInput, Calendar } from ".";
 import { createSignal } from "solid-js";
+import { CalendarIcon } from "lucide-solid";
 
 const meta = {
 	title: "Solid/Date Input",
@@ -48,6 +49,18 @@ export const InputRange: Story = {
 		numOfMonths: 2,
 		fixedWeeks: true,
 		outsideDaySelectable: true,
+	},
+};
+
+export const WithStartSection: Story = {
+	args: {
+		startSection: <CalendarIcon class="size-5" />,
+	},
+};
+
+export const WithEndSection: Story = {
+	args: {
+		endSection: <CalendarIcon class="size-5" />,
 	},
 };
 

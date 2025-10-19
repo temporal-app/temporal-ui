@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DateInput, Calendar } from ".";
 import React from "react";
+import { CalendarIcon } from "lucide-react";
 
 const meta = {
 	title: "React/Date Input",
@@ -48,6 +49,18 @@ export const InputRange: Story = {
 		numOfMonths: 2,
 		fixedWeeks: true,
 		outsideDaySelectable: true,
+	},
+};
+
+export const WithStartSection: Story = {
+	args: {
+		startSection: <CalendarIcon className="size-5" />,
+	},
+};
+
+export const WithEndSection: Story = {
+	args: {
+		endSection: <CalendarIcon className="size-5" />,
 	},
 };
 

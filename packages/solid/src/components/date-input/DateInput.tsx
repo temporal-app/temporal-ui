@@ -29,7 +29,7 @@ export function DateInput(props: DateInputProps) {
 	const [fieldProps, controlProps, rootProps] = splitProps(
 		props,
 		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],
-		["placeholder", "value", "defaultValue", "onValueChange", "position"],
+		["placeholder", "value", "defaultValue", "onValueChange", "position", "startSection", "endSection"],
 	);
 	return (
 		<Field
@@ -45,12 +45,32 @@ export function DateInput(props: DateInputProps) {
 				data-testid={fieldProps.testId ? `${fieldProps.testId}--root` : undefined}
 			>
 				<DateInputControl data-testid={fieldProps.testId ? `${fieldProps.testId}--control` : undefined}>
+					{controlProps.startSection && (
+						<div
+							data-scope={"date-input"}
+							data-part={"start-section"}
+							data-testid={fieldProps.testId ? `${fieldProps.testId}--start-section` : undefined}
+						>
+							{controlProps.startSection}
+						</div>
+					)}
+					{controlProps.endSection && (
+						<div
+							data-scope={"date-input"}
+							data-part={"end-section"}
+							data-testid={fieldProps.testId ? `${fieldProps.testId}--end-section` : undefined}
+						>
+							{controlProps.endSection}
+						</div>
+					)}
 					<DateInputContext>
 						{(datePicker) => {
 							return (
 								<DateInputTrigger
 									data-placeholder={datePicker().valueAsString.length === 0}
 									data-testid={fieldProps.testId ? `${fieldProps.testId}--trigger` : undefined}
+									data-with-start-section={controlProps.startSection ? true : undefined}
+									data-with-end-section={controlProps.endSection ? true : undefined}
 								>
 									{datePicker().valueAsString.length
 										? datePicker().valueAsString.join(" - ")

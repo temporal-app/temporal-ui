@@ -39,6 +39,8 @@ export function DateInput(props: DateInputProps) {
 		defaultValue,
 		onValueChange,
 		position,
+		startSection,
+		endSection,
 		...rootProps
 	} = props;
 	return (
@@ -61,12 +63,32 @@ export function DateInput(props: DateInputProps) {
 				data-testid={testId ? `${testId}--root` : undefined}
 			>
 				<DateInputControl data-testid={testId ? `${testId}--control` : undefined}>
+					{startSection && (
+						<div
+							data-scope={"date-input"}
+							data-part={"start-section"}
+							data-testid={testId ? `${testId}--start-section` : undefined}
+						>
+							{startSection}
+						</div>
+					)}
+					{endSection && (
+						<div
+							data-scope={"date-input"}
+							data-part={"end-section"}
+							data-testid={testId ? `${testId}--end-section` : undefined}
+						>
+							{endSection}
+						</div>
+					)}
 					<DateInputContext>
 						{(datePicker) => {
 							return (
 								<DateInputTrigger
 									data-placeholder={datePicker.valueAsString.length === 0}
 									data-testid={testId ? `${testId}--trigger` : undefined}
+									data-with-start-section={startSection ? true : undefined}
+									data-with-end-section={endSection ? true : undefined}
 								>
 									{datePicker.valueAsString.length
 										? datePicker.valueAsString.join(" - ")

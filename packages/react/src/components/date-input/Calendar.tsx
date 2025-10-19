@@ -1,4 +1,4 @@
-import { DatePicker } from "@ark-ui/react/date-picker";
+import { DatePicker, parseDate } from "@ark-ui/react/date-picker";
 import type { DateInputProps } from "@temporal-ui/core/date-input";
 import { DayView } from "./DayView";
 import { MonthView } from "./MonthView";
@@ -12,11 +12,14 @@ import {
 	DateInputViewTrigger,
 } from "./Components";
 
-export function Calendar(props: DateInputProps<React.ReactNode> & React.ComponentProps<typeof DatePicker.Root>) {
-	const { testId, ...rootProps } = props;
+export function Calendar(props: DateInputProps<React.ReactNode> & Omit<React.ComponentProps<typeof DatePicker.Root>, "value" | "defaultValue" | "onValueChange">) {
+	const { testId, value, defaultValue, onValueChange, ...rootProps } = props;
 	return (
 		<DateInputRoot
 			{...rootProps}
+			value={value?.map((date) => parseDate(date))}
+			defaultValue={defaultValue?.map((date) => parseDate(date))}
+			onValueChange={(details) => onValueChange?.(details.value.map((date) => date.toString()))}
 			inline
 			data-testid={testId ? `${testId}--root` : undefined}
 		>

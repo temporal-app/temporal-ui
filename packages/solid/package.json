@@ -1,6 +1,6 @@
 {
 	"name": "@temporal-ui/solid",
-	"version": "0.3.9",
+	"version": "0.4.0",
 	"description": "Solid.JS bindings for Temporal UI components",
 	"license": "MIT",
 	"type": "module",

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
 import { DateInput, Calendar } from ".";
+import { createSignal } from "solid-js";
 
 const meta = {
 	title: "Solid/Date Input",
@@ -24,6 +25,20 @@ export const Default: Story = {
 		numOfMonths: 1,
 		outsideDaySelectable: false,
 		selectionMode: "single",
+	},
+};
+
+export const Controlled: Story = {
+	...Default.args,
+	render: (args) => {
+		const [value, setValue] = createSignal<string[]>(["2024-01-01"]);
+		return (
+			<DateInput
+				{...args}
+				value={value()}
+				onValueChange={setValue}
+			/>
+		);
 	},
 };
 

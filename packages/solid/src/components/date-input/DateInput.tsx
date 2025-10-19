@@ -1,4 +1,4 @@
-import { DatePicker } from "@ark-ui/solid/date-picker";
+import { DatePicker, parseDate } from "@ark-ui/solid/date-picker";
 import type { DateInputProps as CoreDateInputProps } from "@temporal-ui/core/date-input";
 import { ChevronLeft, ChevronRight } from "lucide-solid";
 import { Field } from "../field";
@@ -24,17 +24,11 @@ import { Portal } from "solid-js/web";
 export interface DateInputProps extends CoreDateInputProps<JSX.Element> {}
 
 export function DateInput(props: DateInputProps & ComponentProps<typeof DatePicker.Root>) {
-	const [fieldProps, rootProps] = splitProps(props, [
-		"label",
-		"hint",
-		"error",
-		"required",
-		"readOnly",
-		"disabled",
-		"classes",
-		"testId",
-		"placeholder",
-	]);
+	const [fieldProps, controlProps, rootProps] = splitProps(
+		props,
+		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],
+		["placeholder", "value", "defaultValue", "onValueChange", "position"],
+	);
 	return (
 		<Field
 			{...fieldProps}
@@ -42,7 +36,10 @@ export function DateInput(props: DateInputProps & ComponentProps<typeof DatePick
 		>
 			<DateInputRoot
 				{...rootProps}
-				positioning={{ placement: "bottom-start", ...rootProps.positioning }}
+				value={controlProps.value?.map((date) => parseDate(date))}
+				defaultValue={controlProps.defaultValue?.map((date) => parseDate(date))}
+				onValueChange={(details) => controlProps.onValueChange?.(details.value.map((date) => date.toString()))}
+				positioning={{ placement: "bottom-start", ...controlProps.position }}
 				data-testid={fieldProps.testId ? `${fieldProps.testId}--root` : undefined}
 			>
 				<DateInputControl data-testid={fieldProps.testId ? `${fieldProps.testId}--control` : undefined}>
@@ -55,7 +52,7 @@ export function DateInput(props: DateInputProps & ComponentProps<typeof DatePick
 								>
 									{datePicker().valueAsString.length
 										? datePicker().valueAsString.join(" - ")
-										: (fieldProps.placeholder ??
+										: (controlProps.placeholder ??
 											`Select a date${rootProps.selectionMode === "range" ? " range" : ""}...`)}
 								</DateInputTrigger>
 							);

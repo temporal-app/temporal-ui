@@ -1,6 +1,9 @@
+import type { Position } from "../base";
 import type { FieldProps } from "../field";
 
 export interface DateInputProps<T> extends FieldProps<T> {
-	/** The placeholder of the date input. */
-	placeholder?: string;
+	value?: string[];
+	defaultValue?: string[];
+	onValueChange?: (value: string[]) => void;
+	position?: Position;
 }

@@ -1,4 +1,4 @@
-import { DatePicker } from "@ark-ui/react/date-picker";
+import { DatePicker, parseDate } from "@ark-ui/react/date-picker";
 import { Portal } from "@ark-ui/react/portal";
 import type { DateInputProps as CoreDateInputProps } from "@temporal-ui/core/date-input";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -22,8 +22,26 @@ import {
 
 export interface DateInputProps extends CoreDateInputProps<React.ReactNode> {}
 
-export function DateInput(props: DateInputProps & React.ComponentProps<typeof DatePicker.Root>) {
-	const { label, hint, error, required, readOnly, disabled, classes, testId, placeholder, ...rootProps } = props;
+export function DateInput(
+	props: DateInputProps &
+		Omit<React.ComponentProps<typeof DatePicker.Root>, "value" | "defaultValue" | "onValueChange">,
+) {
+	const {
+		label,
+		hint,
+		error,
+		required,
+		readOnly,
+		disabled,
+		classes,
+		testId,
+		placeholder,
+		value,
+		defaultValue,
+		onValueChange,
+		position,
+		...rootProps
+	} = props;
 	return (
 		<Field
 			label={label}
@@ -37,7 +55,10 @@ export function DateInput(props: DateInputProps & React.ComponentProps<typeof Da
 		>
 			<DateInputRoot
 				{...rootProps}
-				positioning={{ placement: "bottom-start", ...rootProps.positioning }}
+				value={value?.map((date) => parseDate(date))}
+				defaultValue={defaultValue?.map((date) => parseDate(date))}
+				onValueChange={(details) => onValueChange?.(details.value.map((date) => date.toString()))}
+				positioning={{ placement: "bottom-start", ...position }}
 				data-testid={testId ? `${testId}--root` : undefined}
 			>
 				<DateInputControl data-testid={testId ? `${testId}--control` : undefined}>

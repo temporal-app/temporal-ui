@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DateInput, Calendar } from ".";
+import React from "react";
 
 const meta = {
 	title: "React/Date Input",
@@ -24,6 +25,20 @@ export const Default: Story = {
 		numOfMonths: 1,
 		outsideDaySelectable: false,
 		selectionMode: "single",
+	},
+};
+
+export const Controlled: Story = {
+	...Default.args,
+	render: (args) => {
+		const [value, setValue] = React.useState<string[]>(["2024-01-01"]);
+		return (
+			<DateInput
+				{...args}
+				value={value}
+				onValueChange={setValue}
+			/>
+		);
 	},
 };
 

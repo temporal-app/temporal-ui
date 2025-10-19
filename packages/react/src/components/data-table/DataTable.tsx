@@ -1,17 +1,19 @@
 import { flexRender, getCoreRowModel, useReactTable, type TableOptions } from "@tanstack/react-table";
-import type { BaseComponent } from "@temporal-ui/core/base";
+import type { DataTableProps as CoreDataTableProps } from "@temporal-ui/core/data-table";
+import { Loader } from "../loader";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../table";
 
 export interface DataTableProps<TData>
-	extends BaseComponent<React.ReactNode>,
+	extends CoreDataTableProps<React.ReactNode>,
 		Omit<TableOptions<TData>, "getCoreRowModel"> {
 	getCoreRowModel?: TableOptions<TData>["getCoreRowModel"];
 }
 
-export function DataTable<TData>({ testId, ...props }: DataTableProps<TData>) {
+export function DataTable<TData>(props: DataTableProps<TData>) {
+	const { loading, testId, ...tableProps } = props;
 	const table = useReactTable({
 		getCoreRowModel: getCoreRowModel(),
-		...props,
+		...tableProps,
 	});
 
 	return (
@@ -20,7 +22,10 @@ export function DataTable<TData>({ testId, ...props }: DataTableProps<TData>) {
 			data-part="container"
 			data-testid={testId ? `${testId}--container` : undefined}
 		>
-			<Table testId={testId ? `${testId}--table` : undefined}>
+			<Table
+				data-scope="data-table"
+				testId={testId ? `${testId}--table` : undefined}
+			>
 				<TableHeader testId={testId ? `${testId}--thead` : undefined}>
 					{table.getHeaderGroups().map((headerGroup) => (
 						<TableRow
@@ -72,6 +77,18 @@ export function DataTable<TData>({ testId, ...props }: DataTableProps<TData>) {
 					)}
 				</TableBody>
 			</Table>
+			{loading && (
+				<div
+					data-scope="data-table"
+					data-part="loading"
+					data-testid={testId ? `${testId}--loading` : undefined}
+				>
+					<Loader
+						size="xl"
+						testId={testId ? `${testId}--loader` : undefined}
+					/>
+				</div>
+			)}
 		</div>
 	);
 }

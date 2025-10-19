@@ -1,21 +1,23 @@
 import { createSolidTable, flexRender, getCoreRowModel, getFilteredRowModel, type TableOptions } from "@tanstack/solid-table";
-import type { BaseComponent } from "@temporal-ui/core/base";
-import { For, type JSX } from "solid-js";
+import type { DataTableProps as CoreDataTableProps } from "@temporal-ui/core/data-table";
+import { For, splitProps, type JSX } from "solid-js";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../table";
+import { Loader } from "../loader";
 
 export interface DataTableProps<TData>
-	extends BaseComponent<JSX.Element>,
+	extends CoreDataTableProps<JSX.Element>,
 		Omit<TableOptions<TData>, "getCoreRowModel"> {
 	getCoreRowModel?: TableOptions<TData>["getCoreRowModel"];
 }
 
 export function DataTable<TData>(props: DataTableProps<TData>) {
+	const [controlProps, tableProps] = splitProps(props, ["loading", "testId"]);
 	const table = createSolidTable({
 		getCoreRowModel: getCoreRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
-		...props,
+		...tableProps,
 		get data() {
-			return props.data;
+			return tableProps.data;
 		},
 	});
 
@@ -25,7 +27,10 @@ export function DataTable<TData>(props: DataTableProps<TData>) {
 			data-part="container"
 			data-testid={props.testId ? `${props.testId}--container` : undefined}
 		>
-			<Table testId={props.testId ? `${props.testId}--table` : undefined}>
+			<Table
+				data-scope="data-table"
+				testId={props.testId ? `${props.testId}--table` : undefined}
+			>
 				<TableHeader testId={props.testId ? `${props.testId}--thead` : undefined}>
 					<For each={table.getHeaderGroups()}>
 						{(headerGroup) => (
@@ -73,6 +78,19 @@ export function DataTable<TData>(props: DataTableProps<TData>) {
 					)}
 				</TableBody>
 			</Table>
+
+			{controlProps.loading && (
+				<div
+					data-scope="data-table"
+					data-part="loading"
+					data-testid={props.testId ? `${props.testId}--loading` : undefined}
+				>
+					<Loader
+						size="xl"
+						testId={props.testId ? `${props.testId}--loader` : undefined}
+					/>
+				</div>
+			)}
 		</div>
 	);
 }

@@ -40,3 +40,7 @@ const columns: ColumnDef<Person>[] = [
 export const Default: Story = {
 	args: { columns, data },
 };
+
+export const Loading: Story = {
+	args: { columns, data, loading: true },
+};

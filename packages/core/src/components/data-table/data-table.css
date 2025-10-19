@@ -1,5 +1,9 @@
 @layer components {
-	[data-scope="data-table"] {
-		@apply overflow-hidden rounded-md border;
+	[data-scope="data-table"][data-part="container"] {
+		@apply overflow-hidden rounded-md border relative;
+	}
+
+	[data-scope="data-table"][data-part="loading"] {
+		@apply absolute inset-0 flex items-center justify-center bg-background/50 backdrop-blur-xs z-10;
 	}
 }

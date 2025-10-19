@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
 import { For } from "solid-js";
-import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "./Table";
+import { Table } from "./Table";
 
 const meta = {
 	title: "Solid/Table",
@@ -23,34 +23,34 @@ const data = [
 export const Default: Story = {
 	render: () => (
 		<Table>
-			<TableCaption>A list of users.</TableCaption>
-			<TableHeader>
-				<TableRow>
-					<TableHead>Name</TableHead>
-					<TableHead>Title</TableHead>
-					<TableHead>Email</TableHead>
-					<TableHead>Role</TableHead>
-				</TableRow>
-			</TableHeader>
-			<TableBody>
+			<caption>A list of users.</caption>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Title</th>
+					<th>Email</th>
+					<th>Role</th>
+				</tr>
+			</thead>
+			<tbody>
 				<For each={data}>
 					{(item) => (
-						<TableRow>
-							<TableCell>{item.name}</TableCell>
-							<TableCell>{item.title}</TableCell>
-							<TableCell>{item.email}</TableCell>
-							<TableCell>{item.role}</TableCell>
-						</TableRow>
+						<tr>
+							<td>{item.name}</td>
+							<td>{item.title}</td>
+							<td>{item.email}</td>
+							<td>{item.role}</td>
+						</tr>
 					)}
 				</For>
-			</TableBody>
-			<TableFooter>
-				<TableRow>
-					<TableCell colSpan={4}>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colSpan={4}>
 						Showing {data.length} of {data.length}
-					</TableCell>
-				</TableRow>
-			</TableFooter>
+					</td>
+				</tr>
+			</tfoot>
 		</Table>
 	),
 };

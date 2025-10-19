@@ -9,7 +9,7 @@ export default defineConfig({
 	plugins: [solid(), tailwindcss()],
 	test: {
 		globals: true,
-		environment: "happy-dom",
-		setupFiles: ["./node_modules/@testing-library/jest-dom/vitest"],
+		environment: "jsdom",
+		setupFiles: ["./node_modules/@testing-library/jest-dom/vitest", "./vitest.setup.ts"],
 	},
 });

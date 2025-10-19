@@ -21,9 +21,11 @@ import {
 import { splitProps, type ComponentProps, type JSX } from "solid-js";
 import { Portal } from "solid-js/web";
 
-export interface DateInputProps extends CoreDateInputProps<JSX.Element> {}
+export interface DateInputProps
+	extends CoreDateInputProps<JSX.Element>,
+		Omit<ComponentProps<typeof DatePicker.Root>, "value" | "defaultValue" | "onValueChange"> {}
 
-export function DateInput(props: DateInputProps & ComponentProps<typeof DatePicker.Root>) {
+export function DateInput(props: DateInputProps) {
 	const [fieldProps, controlProps, rootProps] = splitProps(
 		props,
 		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],

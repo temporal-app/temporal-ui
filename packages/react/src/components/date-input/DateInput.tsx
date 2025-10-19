@@ -20,12 +20,11 @@ import {
 	DateInputViewTrigger,
 } from "./Components";
 
-export interface DateInputProps extends CoreDateInputProps<React.ReactNode> {}
+export interface DateInputProps
+	extends CoreDateInputProps<React.ReactNode>,
+		Omit<React.ComponentProps<typeof DatePicker.Root>, "value" | "defaultValue" | "onValueChange"> {}
 
-export function DateInput(
-	props: DateInputProps &
-		Omit<React.ComponentProps<typeof DatePicker.Root>, "value" | "defaultValue" | "onValueChange">,
-) {
+export function DateInput(props: DateInputProps) {
 	const {
 		label,
 		hint,

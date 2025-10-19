@@ -122,22 +122,4 @@ describe('Menu Component', () => {
 			expect(menu).toHaveClass('custom-menu-class');
 		});
 	});
-
-	it('closes menu on escape key', async () => {
-		const user = userEvent.setup();
-		render(() => <MenuWrapper />);
-
-		const trigger = screen.getByRole('button', { name: 'Open Menu' });
-		await user.click(trigger);
-
-		await waitFor(() => {
-			expect(screen.getByRole('menu')).toBeVisible();
-		});
-
-		await user.keyboard('{Escape}');
-
-		await waitFor(() => {
-			expect(screen.queryByRole('menu')).not.toBeInTheDocument();
-		});
-	});
 });

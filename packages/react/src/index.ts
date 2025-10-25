@@ -16,6 +16,7 @@ export * from './components/notifications';
 export * from './components/number-input';
 export * from './components/popover';
 export * from "./components/radio-group";
+export * from "./components/scroll-area";
 export * from "./components/select";
 export * from "./components/separator";
 export * from './components/sidebar';

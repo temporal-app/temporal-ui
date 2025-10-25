@@ -1,0 +1,37 @@
+@layer components {
+	[data-scope='scroll-area'][data-part='viewport'] {
+		scrollbar-width: none;
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	[data-scope='scroll-area'][data-part='root'] {
+		@apply relative;
+	}
+
+	[data-scope='scroll-area'][data-part='viewport'] {
+		@apply focus-visible:ring-ring/50 size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1;
+	}
+
+	[data-scope='scroll-area'][data-part='scrollbar'] {
+		@apply flex touch-none p-px transition-[color,opacity] select-none opacity-0;
+
+		&[data-hover],
+		&[data-scrolling] {
+			@apply opacity-100;
+		}
+
+		&[data-orientation='vertical'] {
+			@apply h-full w-2.5 border-l border-l-transparent;
+		}
+
+		&[data-orientation='horizontal'] {
+			@apply h-2.5 flex-col border-t border-t-transparent;
+		}
+	}
+
+	[data-scope='scroll-area'][data-part='thumb'] {
+		@apply bg-border relative flex-1 rounded-full;
+	}
+}

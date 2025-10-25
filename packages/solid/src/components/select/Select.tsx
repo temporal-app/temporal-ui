@@ -13,11 +13,12 @@ export interface SelectProps<M> extends CoreSelectProps<M, JSX.Element>, Omit<HT
 }
 
 export function Select<M = unknown>(_props: SelectProps<M>) {
-	const [fieldProps, rootProps, triggerProps, selectProps] = splitProps(
+	const [fieldProps, rootProps, triggerProps, contentProps, selectProps] = splitProps(
 		mergeProps({ portal: true }, _props),
 		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],
 		["collection", "data", "portal", "deselectable", "defaultValue", "value", "onValueChange", "onBlur"],
 		["className", "class", "placeholder", "indicator", "renderItem", "startSection"],
+		["maxDropdownHeight"],
 	);
 
 	const listCollection = () =>
@@ -61,6 +62,7 @@ export function Select<M = unknown>(_props: SelectProps<M>) {
 							testId={fieldProps.testId}
 							collection={listCollection()}
 							renderItem={triggerProps.renderItem}
+							maxHeight={contentProps.maxDropdownHeight}
 						/>
 					</Portal>
 				) : (
@@ -68,6 +70,7 @@ export function Select<M = unknown>(_props: SelectProps<M>) {
 						testId={fieldProps.testId}
 						collection={listCollection()}
 						renderItem={triggerProps.renderItem}
+						maxHeight={contentProps.maxDropdownHeight}
 					/>
 				)}
 				<ArkSelect.HiddenSelect

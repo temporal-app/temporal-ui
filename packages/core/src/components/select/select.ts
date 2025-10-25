@@ -38,4 +38,5 @@ export interface SelectProps<M = unknown, T = unknown> extends FieldProps<T> {
 	onValueChange?: (value?: string | null) => void;
 	/** Custom function to render the item. */
 	renderItem?: RenderItemFn<M, T>;
+	maxDropdownHeight?: number;
 }

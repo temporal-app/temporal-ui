@@ -35,6 +35,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 		onValueChange,
 		renderItem,
 		startSection,
+		maxDropdownHeight,
 		...rest
 	} = props;
 
@@ -92,6 +93,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 							testId={testId}
 							collection={listCollection}
 							renderItem={renderItem}
+							maxHeight={maxDropdownHeight}
 						/>
 					</Portal>
 				)}
@@ -100,6 +102,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 						testId={testId}
 						collection={listCollection}
 						renderItem={renderItem}
+						maxHeight={maxDropdownHeight}
 					/>
 				)}
 				<ArkSelect.HiddenSelect

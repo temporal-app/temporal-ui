@@ -32,6 +32,21 @@ const collection = createListCollection<SelectItem>({
 		{ value: "kiwi", label: "Kiwi" },
 		{ value: "pear", label: "Pear" },
 		{ value: "peach", label: "Peach" },
+		{ value: "pear", label: "Pear" },
+		{ value: "blueberry", label: "Blueberry" },
+		{ value: "raspberry", label: "Raspberry" },
+		{ value: "blackberry", label: "Blackberry" },
+		{ value: "lemon", label: "Lemon" },
+		{ value: "lime", label: "Lime" },
+		{ value: "coconut", label: "Coconut" },
+		{ value: "papaya", label: "Papaya" },
+		{ value: "plum", label: "Plum" },
+		{ value: "pomegranate", label: "Pomegranate" },
+		{ value: "apricot", label: "Apricot" },
+		{ value: "guava", label: "Guava" },
+		{ value: "fig", label: "Fig" },
+		{ value: "dragonfruit", label: "Dragonfruit" },
+		{ value: "passionfruit", label: "Passionfruit" },
 	],
 	groupBy: (item) => item.group ?? "Default",
 	groupSort: "desc",
@@ -44,5 +59,16 @@ export const Default: Story = {
 		label: "Fruits",
 		portal: true,
 		deselectable: true,
+	},
+};
+
+export const MaxDropdownHeight: Story = {
+	args: {
+		className: "min-w-[200px]",
+		collection,
+		label: "Fruits",
+		portal: true,
+		deselectable: true,
+		maxDropdownHeight: 150,
 	},
 };

@@ -1,31 +1,43 @@
 import type { ScrollAreaProps as CoreScrollAreaProps } from "@temporal-ui/core/scroll-area";
 import { ScrollArea as ArkScrollArea } from "@ark-ui/solid/scroll-area";
 import { mergeProps, Show, splitProps, type JSX } from "solid-js";
+import type { HTMLProps } from "@ark-ui/solid";
 
-export interface ScrollAreaProps extends CoreScrollAreaProps<JSX.Element> {}
+export interface ScrollAreaProps extends CoreScrollAreaProps<JSX.Element>, HTMLProps<"div"> {}
 
 export function ScrollArea(props: ScrollAreaProps) {
 	const [controlProps, boxProps] = splitProps(mergeProps({ orientation: "vertical" }, props), [
 		"orientation",
-		"width",
-		"height",
+		"classes",
+		"children",
 	]);
 	return (
-		<ArkScrollArea.Root style={{ width: controlProps.width, height: controlProps.height }}>
-			<ArkScrollArea.Viewport style={{ height: "100%" }}>
-				<ArkScrollArea.Content {...boxProps} />
+		<ArkScrollArea.Root {...boxProps}>
+			<ArkScrollArea.Viewport
+				class={controlProps.classes?.viewport}
+				style={{ height: "100%" }}
+			>
+				<ArkScrollArea.Content class={controlProps.classes?.content}>
+					{controlProps.children}
+				</ArkScrollArea.Content>
 			</ArkScrollArea.Viewport>
 			<Show when={["vertical", "both"].includes(controlProps.orientation)}>
-				<ArkScrollArea.Scrollbar orientation="vertical">
-					<ArkScrollArea.Thumb />
+				<ArkScrollArea.Scrollbar
+					orientation="vertical"
+					class={controlProps.classes?.scrollbar}
+				>
+					<ArkScrollArea.Thumb class={controlProps.classes?.thumb} />
 				</ArkScrollArea.Scrollbar>
 			</Show>
 			<Show when={["horizontal", "both"].includes(controlProps.orientation)}>
-				<ArkScrollArea.Scrollbar orientation="horizontal">
-					<ArkScrollArea.Thumb />
+				<ArkScrollArea.Scrollbar
+					orientation="horizontal"
+					class={controlProps.classes?.scrollbar}
+				>
+					<ArkScrollArea.Thumb class={controlProps.classes?.thumb} />
 				</ArkScrollArea.Scrollbar>
 			</Show>
-			<ArkScrollArea.Corner />
+			<ArkScrollArea.Corner class={controlProps.classes?.corner} />
 		</ArkScrollArea.Root>
 	);
 }

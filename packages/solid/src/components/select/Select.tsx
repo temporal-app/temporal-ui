@@ -36,6 +36,7 @@ export function Select<M = unknown>(_props: SelectProps<M>) {
 		>
 			<ArkSelect.Root
 				{...rootProps}
+				class={fieldProps.classes?.selectRoot}
 				data-testid={fieldProps.testId ? `${fieldProps.testId}--root` : undefined}
 				collection={listCollection()}
 				disabled={fieldProps.disabled}

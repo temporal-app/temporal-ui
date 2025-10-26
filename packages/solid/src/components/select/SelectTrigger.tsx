@@ -12,13 +12,18 @@ export interface SelectTriggerProps<M> {
 	indicator?: JSX.Element;
 	renderItem?: RenderItemFn<M>;
 	startSection?: JSX.Element;
+	classes?: {
+		control?: string;
+		valueText?: string;
+		indicator?: string;
+	};
 }
 
 export function SelectTrigger<M = unknown>(props: SelectTriggerProps<M>) {
 	const context = useSelectContext();
 
 	return (
-		<Select.Control>
+		<Select.Control class={props.classes?.control}>
 			<Select.Trigger
 				class={props.className ?? props.class}
 				data-testid={props.testId ? `${props.testId}--trigger` : undefined}
@@ -36,13 +41,18 @@ export function SelectTrigger<M = unknown>(props: SelectTriggerProps<M>) {
 							gap={2}
 						>
 							{context().selectedItems[0]?.icon ?? props.startSection}
-							<Select.ValueText />
+							<Select.ValueText class={props.classes?.valueText} />
 						</Stack>
 					))}
 				{!context().hasSelectedItems && (
-					<Select.ValueText placeholder={props.placeholder ?? "Select an option..."} />
+					<Select.ValueText
+						class={props.classes?.valueText}
+						placeholder={props.placeholder ?? "Select an option..."}
+					/>
 				)}
-				<Select.Indicator>{props.indicator ?? <ChevronsUpDown />}</Select.Indicator>
+				<Select.Indicator class={props.classes?.indicator}>
+					{props.indicator ?? <ChevronsUpDown />}
+				</Select.Indicator>
 			</Select.Trigger>
 		</Select.Control>
 	);

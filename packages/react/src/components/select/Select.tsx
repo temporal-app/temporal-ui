@@ -61,6 +61,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 			testId={testId ? `${testId}-field` : undefined}
 		>
 			<ArkSelect.Root
+				className={classes?.selectRoot}
 				data-testid={testId ? `${testId}--root` : undefined}
 				collection={listCollection}
 				deselectable={deselectable}
@@ -78,7 +79,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 					},
 				}}
 			>
-				<ArkSelect.Label>{label}</ArkSelect.Label>
+				<ArkSelect.Label className={classes?.label}>{label}</ArkSelect.Label>
 				<SelectTrigger
 					className={className}
 					testId={testId}

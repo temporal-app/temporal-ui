@@ -17,26 +17,42 @@ export interface SelectItem<M = unknown, T = unknown> {
 export type RenderItemFn<M = unknown, T = unknown> = (item: SelectItem<M, T>, component: "option" | "trigger") => T;
 
 export interface SelectProps<M = unknown, T = unknown> extends FieldProps<T> {
-	name?: string;
-	/** The start section of the select. */
-	startSection?: T;
-	/** The indicator of the select. */
-	indicator?: T;
-	/** The data of the select. */
-	data?: SelectItem<M, T>[];
-	/** The placeholder of the select. */
-	placeholder?: string;
-	/** Whether to portal the select. */
-	portal?: boolean;
-	/** Whether to allow deselecting the selected item. */
-	deselectable?: boolean;
-	/** The default value of the select in uncontrolled mode. */
-	defaultValue?: string | null;
-	/** The value of the select in controlled mode. */
-	value?: string | null;
-	onBlur?: () => void;
-	onValueChange?: (value?: string | null) => void;
-	/** Custom function to render the item. */
-	renderItem?: RenderItemFn<M, T>;
-	maxDropdownHeight?: number;
-}
+		name?: string;
+		/** The start section of the select. */
+		startSection?: T;
+		/** The indicator of the select. */
+		indicator?: T;
+		/** The data of the select. */
+		data?: SelectItem<M, T>[];
+		/** The placeholder of the select. */
+		placeholder?: string;
+		/** Whether to portal the select. */
+		portal?: boolean;
+		/** Whether to allow deselecting the selected item. */
+		deselectable?: boolean;
+		/** The default value of the select in uncontrolled mode. */
+		defaultValue?: string | null;
+		/** The value of the select in controlled mode. */
+		value?: string | null;
+		onBlur?: () => void;
+		onValueChange?: (value?: string | null) => void;
+		/** Custom function to render the item. */
+		renderItem?: RenderItemFn<M, T>;
+		maxDropdownHeight?: number;
+		classes?: {
+			root?: string;
+			label?: string;
+			hint?: string;
+			error?: string;
+			selectRoot?: string;
+			positioner?: string;
+			scrollArea?: string;
+			content?: string;
+			control?: string;
+			itemGroup?: string;
+			itemIndicator?: string;
+			item?: string;
+			indicator?: string;
+			valueText?: string;
+		};
+	}

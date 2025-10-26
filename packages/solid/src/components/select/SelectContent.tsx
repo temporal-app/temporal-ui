@@ -12,27 +12,55 @@ export interface SelectContentProps<M = unknown> {
 	collection: ListCollection<SelectItem<M>>;
 	renderItem?: RenderItemFn<M>;
 	maxHeight?: number;
+	classes?: {
+		content?: string;
+		itemGroup?: string;
+		itemGroupLabel?: string;
+		item?: string;
+		itemText?: string;
+		itemIndicator?: string;
+		positioner?: string;
+		scrollArea?: string;
+	};
 }
 
 export function SelectContent<M = unknown>(props: SelectContentProps<M>) {
 	return (
-		<Select.Positioner data-testid={props.testId ? `${props.testId}--positioner` : undefined}>
-			<Select.Content data-testid={props.testId ? `${props.testId}--content` : undefined}>
-				<ScrollArea style={{ height: `${props.maxHeight ?? 300}px` }}>
+		<Select.Positioner
+			class={props.classes?.positioner}
+			data-testid={props.testId ? `${props.testId}--positioner` : undefined}
+		>
+			<Select.Content
+				class={props.classes?.content}
+				data-testid={props.testId ? `${props.testId}--content` : undefined}
+			>
+				<ScrollArea
+					class={props.classes?.scrollArea}
+					style={{ height: `${props.maxHeight ?? 300}px` }}
+				>
 					<For each={props.collection.group()}>
 						{([type, group]) => (
-							<Select.ItemGroup>
-								{type && <Select.ItemGroupLabel>{type}</Select.ItemGroupLabel>}
+							<Select.ItemGroup class={props.classes?.itemGroup}>
+								{type && (
+									<Select.ItemGroupLabel class={props.classes?.itemGroupLabel}>
+										{type}
+									</Select.ItemGroupLabel>
+								)}
 								<For each={group}>
 									{(item) => (
-										<Select.Item item={item}>
+										<Select.Item
+											class={props.classes?.item}
+											item={item}
+										>
 											{props.renderItem?.(item, "option") ?? (
 												<>
 													{item.icon}
-													<Select.ItemText>{item.label}</Select.ItemText>
+													<Select.ItemText class={props.classes?.itemText}>
+														{item.label}
+													</Select.ItemText>
 												</>
 											)}
-											<Select.ItemIndicator>
+											<Select.ItemIndicator class={props.classes?.itemIndicator}>
 												<CheckIcon />
 											</Select.ItemIndicator>
 										</Select.Item>

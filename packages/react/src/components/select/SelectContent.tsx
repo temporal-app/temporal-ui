@@ -19,7 +19,7 @@ export function SelectContent<M = unknown>(props: SelectContentProps<M>) {
 	return (
 		<Select.Positioner data-testid={testId ? `${testId}--positioner` : undefined}>
 			<Select.Content data-testid={testId ? `${testId}--content` : undefined}>
-				<ScrollArea height={`${maxHeight}px`}>
+				<ScrollArea style={{ height: `${maxHeight}px` }}>
 					{collection.group().map(([type, group]) => (
 						<Select.ItemGroup key={type}>
 							{type && <Select.ItemGroupLabel>{type}</Select.ItemGroupLabel>}

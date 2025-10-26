@@ -12,11 +12,10 @@ type Story = StoryObj<typeof ScrollArea>;
 
 export const Default: Story = {
   args: {
-    width: "300px",
-    height: "200px",
+    className: "w-[300px] h-[200px]",
     orientation: "vertical",
     children: (
-      <div className="w-full h-600 bg-card">
+      <div className="w-full h-[600px] bg-card">
         <p className="m-0 p-4">Scroll me vertically. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dignissim, velit vitae cursus consequat, enim erat molestie odio, fringilla placerat erat neque ac enim. Pellentesque viverra vulputate laoreet. Phasellus massa felis, aliquam vel eros et, pretium tempor lorem.</p>
         <p className="m-0 p-4">Another paragraph for demonstration purposes. Vivamus feugiat, nisl eu dictum facilisis, ipsum lacus eleifend enim, quis aliquam tellus quam ac dui. Pellentesque vulputate justo arcu, eu aliquam nunc ornare sit amet.</p>
       </div>
@@ -26,8 +25,7 @@ export const Default: Story = {
 
 export const Horizontal: Story = {
   args: {
-    width: "400px",
-    height: "120px",
+    className: "w-[400px] h-[120px]",
     orientation: "horizontal",
     children: (
       <div className="flex p-4 items-center border bg-card">
@@ -46,8 +44,7 @@ export const Horizontal: Story = {
 
 export const Both: Story = {
   args: {
-    width: "300px",
-    height: "200px",
+    className: "w-[300px] h-[200px]",
     orientation: "both",
     children: (
       <div className="w-96 h-96 p-4 border bg-card">

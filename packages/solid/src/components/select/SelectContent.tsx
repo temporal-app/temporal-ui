@@ -18,7 +18,7 @@ export function SelectContent<M = unknown>(props: SelectContentProps<M>) {
 	return (
 		<Select.Positioner data-testid={props.testId ? `${props.testId}--positioner` : undefined}>
 			<Select.Content data-testid={props.testId ? `${props.testId}--content` : undefined}>
-				<ScrollArea height={`${props.maxHeight ?? 300}px`}>
+				<ScrollArea style={{ height: `${props.maxHeight ?? 300}px` }}>
 					<For each={props.collection.group()}>
 						{([type, group]) => (
 							<Select.ItemGroup>

@@ -11,9 +11,9 @@ export interface SelectItem<D = unknown, T = unknown> {
 
 export type RenderItemFn<D = unknown, T = unknown> = (item: SelectItem<D, T>, component: "option" | "trigger") => T;
 
-export interface SelectProps<T> extends FieldProps<T> {
+export interface SelectProps<D = unknown, T = unknown> extends FieldProps<T> {
 	portal?: boolean;
-	renderItem?: RenderItemFn<SelectItem, T>;
+	renderItem?: RenderItemFn<SelectItem<D, T>, T>;
 	icon?: T;
 	maxDropdownHeight?: number;
 	searchable?: boolean;

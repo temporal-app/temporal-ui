@@ -13,7 +13,7 @@ export type RenderItemFn<D = unknown, T = unknown> = (item: SelectItem<D, T>, co
 
 export interface SelectProps<D = unknown, T = unknown> extends FieldProps<T> {
 	portal?: boolean;
-	renderItem?: RenderItemFn<SelectItem<D, T>, T>;
+	renderItem?: RenderItemFn<D, T>;
 	icon?: T;
 	maxDropdownHeight?: number;
 	searchable?: boolean;

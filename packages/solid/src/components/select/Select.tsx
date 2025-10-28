@@ -1,4 +1,4 @@
-import { Combobox } from "@ark-ui/solid/combobox";
+import { Combobox, type CollectionItem } from "@ark-ui/solid/combobox";
 import type { SelectProps as CoreSelectProps } from "@temporal-ui/core/select";
 import { mergeProps, splitProps, type JSX } from "solid-js";
 import { Portal } from "solid-js/web";
@@ -7,9 +7,9 @@ import { SelectContent } from "./SelectContent";
 import { SelectControl } from "./SelectControl";
 import { cx } from "@temporal-ui/core/utils/cx";
 
-export interface SelectProps<D = unknown> extends CoreSelectProps<D, JSX.Element> {};
+export interface SelectProps<D = unknown> extends CoreSelectProps<D, JSX.Element>, Combobox.RootProps<CollectionItem> {}
 
-export const Select: Combobox.RootComponent<SelectProps> = (_props) => {
+export function Select<D = unknown>(_props: SelectProps<D>) {
 	const [fieldProps, controlProps, rootProps] = splitProps(
 		mergeProps({ portal: true }, _props),
 		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],

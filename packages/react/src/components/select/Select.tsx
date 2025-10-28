@@ -1,4 +1,4 @@
-import { Combobox } from "@ark-ui/react/combobox";
+import { Combobox, type CollectionItem } from "@ark-ui/react/combobox";
 import { Portal } from "@ark-ui/react/portal";
 import type { SelectProps as CoreSelectProps } from "@temporal-ui/core/select";
 import { Field } from "../field";
@@ -6,9 +6,9 @@ import { SelectContent } from "./SelectContent";
 import { SelectControl } from "./SelectControl";
 import { cx } from "@temporal-ui/core/utils/cx";
 
-export interface SelectProps<D = unknown> extends CoreSelectProps<D, React.ReactNode> {}
+export interface SelectProps<D = unknown> extends CoreSelectProps<D, React.ReactNode>, Combobox.RootProps<CollectionItem> {}
 
-export const Select: Combobox.RootComponent<SelectProps> = (props) => {
+export function Select<D = unknown>(props: SelectProps<D>) {
 	const {
 		label,
 		hint,

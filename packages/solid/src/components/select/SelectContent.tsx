@@ -1,17 +1,17 @@
-import { type ListCollection, Select } from "@ark-ui/solid/select";
+import { Combobox, useComboboxContext } from "@ark-ui/solid/combobox";
 import type { RenderItemFn as CoreRenderItemFn, SelectItem as CoreSelectItem } from "@temporal-ui/core/select";
-import { CheckIcon } from "lucide-solid";
-import { For, type JSX } from "solid-js";
-import { ScrollArea } from "../scroll-area";
+import { CheckIcon, Search } from "lucide-solid";
+import { For, mergeProps, Show, type JSX } from "solid-js";
 
-export type SelectItem<M = unknown> = CoreSelectItem<M, JSX.Element>;
-export type RenderItemFn<M = unknown> = CoreRenderItemFn<M, JSX.Element>;
+export type SelectItem<D = unknown> = CoreSelectItem<D, JSX.Element>;
+export type RenderItemFn<D = unknown> = CoreRenderItemFn<D, JSX.Element>;
 
 export interface SelectContentProps<M = unknown> {
 	testId?: string;
-	collection: ListCollection<SelectItem<M>>;
 	renderItem?: RenderItemFn<M>;
 	maxHeight?: number;
+	showSearch?: boolean;
+	searchPlaceholder?: string;
 	classes?: {
 		content?: string;
 		itemGroup?: string;
@@ -21,56 +21,75 @@ export interface SelectContentProps<M = unknown> {
 		itemIndicator?: string;
 		positioner?: string;
 		scrollArea?: string;
+		input?: string;
 	};
 }
 
-export function SelectContent<M = unknown>(props: SelectContentProps<M>) {
+export function SelectContent<M = unknown>(_props: SelectContentProps<M>) {
+	const props = mergeProps({ maxHeight: 500, searchPlaceholder: "Search options..." }, _props);
+	const context = useComboboxContext();
 	return (
-		<Select.Positioner
+		<Combobox.Positioner
 			class={props.classes?.positioner}
 			data-testid={props.testId ? `${props.testId}--positioner` : undefined}
 		>
-			<Select.Content
+			<Combobox.Content
 				class={props.classes?.content}
 				data-testid={props.testId ? `${props.testId}--content` : undefined}
+				style={{ "max-height": `${props.maxHeight}px` }}
 			>
-				<ScrollArea
-					class={props.classes?.scrollArea}
-					style={{ height: `${props.maxHeight ?? 300}px` }}
+				<Show when={props.showSearch}>
+					<div
+						data-scope="combobox"
+						data-part="input-wrapper"
+					>
+						<Search />
+						<Combobox.Input
+							class={props.classes?.input}
+							placeholder={props.searchPlaceholder}
+						/>
+					</div>
+				</Show>
+				<div
+					data-scope="combobox"
+					data-part="content-list"
 				>
-					<For each={props.collection.group()}>
+					<For each={context().collection.group()}>
 						{([type, group]) => (
-							<Select.ItemGroup class={props.classes?.itemGroup}>
-								{type && (
-									<Select.ItemGroupLabel class={props.classes?.itemGroupLabel}>
+							<Combobox.ItemGroup class={props.classes?.itemGroup}>
+								<Show when={type}>
+									<Combobox.ItemGroupLabel class={props.classes?.itemGroupLabel}>
 										{type}
-									</Select.ItemGroupLabel>
-								)}
+									</Combobox.ItemGroupLabel>
+								</Show>
 								<For each={group}>
 									{(item) => (
-										<Select.Item
+										<Combobox.Item
 											class={props.classes?.item}
 											item={item}
 										>
-											{props.renderItem?.(item, "option") ?? (
-												<>
-													{item.icon}
-													<Select.ItemText class={props.classes?.itemText}>
-														{item.label}
-													</Select.ItemText>
-												</>
-											)}
-											<Select.ItemIndicator class={props.classes?.itemIndicator}>
+											<Show when={props.renderItem}>
+												<div style={{ "pointer-events": "none" }}>
+													{props.renderItem?.(item, "option")}
+												</div>
+											</Show>
+											<Show when={!props.renderItem}>
+												<Show when={item.icon}>{item.icon}</Show>
+												<Combobox.ItemText class={props.classes?.itemText}>
+													{item.label}
+												</Combobox.ItemText>
+											</Show>
+											<Combobox.ItemIndicator class={props.classes?.itemIndicator}>
 												<CheckIcon />
-											</Select.ItemIndicator>
-										</Select.Item>
+											</Combobox.ItemIndicator>
+										</Combobox.Item>
 									)}
 								</For>
-							</Select.ItemGroup>
+							</Combobox.ItemGroup>
 						)}
 					</For>
-				</ScrollArea>
-			</Select.Content>
-		</Select.Positioner>
+				</div>
+			</Combobox.Content>
+		</Combobox.Positioner>
 	);
 }

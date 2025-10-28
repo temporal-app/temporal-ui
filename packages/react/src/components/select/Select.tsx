@@ -1,18 +1,14 @@
+import { Combobox } from "@ark-ui/react/combobox";
 import { Portal } from "@ark-ui/react/portal";
-import { Select as ArkSelect, createListCollection, type ListCollection } from "@ark-ui/react/select";
 import type { SelectProps as CoreSelectProps } from "@temporal-ui/core/select";
-import React, { forwardRef } from "react";
 import { Field } from "../field";
-import { SelectContent, type SelectItem } from "./SelectContent";
-import { SelectTrigger } from "./SelectTrigger";
+import { SelectContent } from "./SelectContent";
+import { SelectControl } from "./SelectControl";
+import { cx } from "@temporal-ui/core/utils/cx";
 
-export interface SelectProps<M = unknown>
-	extends CoreSelectProps<M, React.ReactNode>,
-		Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "defaultValue" | "value" | "onBlur"> {
-	collection?: ListCollection<SelectItem<M>>;
-}
+export interface SelectProps extends CoreSelectProps<React.ReactNode> {}
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
+export const Select: Combobox.RootComponent<SelectProps> = (props) => {
 	const {
 		label,
 		hint,
@@ -22,36 +18,19 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 		disabled,
 		classes,
 		testId,
-		collection,
-		data,
+		icon,
 		placeholder,
-		indicator,
 		portal,
-		deselectable,
-		defaultValue,
-		value,
-		className,
-		onBlur,
-		onValueChange,
 		renderItem,
-		startSection,
+		className,
 		maxDropdownHeight,
+		searchable,
 		...rest
 	} = props;
 
-	const listCollection = React.useMemo(
-		() =>
-			collection ??
-			createListCollection({
-				items: data ?? [],
-				groupBy: (item) => item.group ?? "",
-				isItemDisabled: (item) => item.disabled ?? false,
-			}),
-		[data, collection],
-	);
-
 	return (
 		<Field
+			label={label}
 			hint={hint}
 			classes={classes}
 			required={required}
@@ -60,58 +39,46 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 			disabled={disabled}
 			testId={testId ? `${testId}-field` : undefined}
 		>
-			<ArkSelect.Root
-				className={classes?.selectRoot}
-				data-testid={testId ? `${testId}--root` : undefined}
-				collection={listCollection}
-				deselectable={deselectable}
-				value={value ? [value] : value === null ? [] : undefined}
-				defaultValue={defaultValue ? [defaultValue] : defaultValue === null ? [] : undefined}
+			<Combobox.Root
 				disabled={disabled}
 				invalid={!!error}
 				required={required}
 				readOnly={readOnly}
-				onFocusOutside={onBlur}
-				onValueChange={onValueChange ? (details) => onValueChange?.(details.value[0] ?? null) : undefined}
-				positioning={{
-					offset: {
-						mainAxis: 0,
-					},
-				}}
+				{...rest}
+				className={cx(className, classes?.selectRoot)}
+				data-testid={testId ? `${testId}--root` : undefined}
 			>
-				<ArkSelect.Label className={classes?.label}>{label}</ArkSelect.Label>
-				<SelectTrigger
-					className={className}
+				<SelectControl
+					icon={icon}
 					testId={testId}
 					placeholder={placeholder}
-					indicator={indicator}
 					renderItem={renderItem}
-					startSection={startSection}
+					classes={{
+						...classes,
+						control: cx(className, classes?.control),
+					}}
 				/>
 				{portal && (
 					<Portal>
 						<SelectContent
 							testId={testId}
-							collection={listCollection}
 							renderItem={renderItem}
 							maxHeight={maxDropdownHeight}
+							showSearch={searchable}
+							classes={classes}
 						/>
 					</Portal>
 				)}
 				{!portal && (
 					<SelectContent
 						testId={testId}
-						collection={listCollection}
 						renderItem={renderItem}
 						maxHeight={maxDropdownHeight}
+						showSearch={searchable}
+						classes={classes}
 					/>
 				)}
-				<ArkSelect.HiddenSelect
-					ref={ref}
-					data-testid={testId ? `${testId}--input` : undefined}
-					{...rest}
-				/>
-			</ArkSelect.Root>
+			</Combobox.Root>
 		</Field>
 	);
-});
+};

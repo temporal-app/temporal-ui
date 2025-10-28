@@ -1,16 +1,16 @@
-import { type ListCollection, Select } from "@ark-ui/react/select";
+import { Combobox, useComboboxContext } from "@ark-ui/react/combobox";
 import type { RenderItemFn as CoreRenderItemFn, SelectItem as CoreSelectItem } from "@temporal-ui/core/select";
-import { Check } from "lucide-react";
-import { ScrollArea } from "../scroll-area";
+import { Check, Search } from "lucide-react";
 
-export type SelectItem<M = unknown> = CoreSelectItem<M, React.ReactNode>;
-export type RenderItemFn<M = unknown> = CoreRenderItemFn<M, React.ReactNode>;
+export type SelectItem<D = unknown> = CoreSelectItem<D, React.ReactNode>;
+export type RenderItemFn<D = unknown> = CoreRenderItemFn<D, React.ReactNode>;
 
 export interface SelectContentProps<M = unknown> {
 	testId?: string;
-	collection: ListCollection<SelectItem<M>>;
 	renderItem?: RenderItemFn<M>;
 	maxHeight?: number;
+	showSearch?: boolean;
+	searchPlaceholder?: string;
 	classes?: {
 		content?: string;
 		itemGroup?: string;
@@ -20,37 +20,48 @@ export interface SelectContentProps<M = unknown> {
 		itemIndicator?: string;
 		positioner?: string;
 		scrollArea?: string;
+		input?: string;
 	};
 }
 
 export function SelectContent<M = unknown>(props: SelectContentProps<M>) {
-	const { testId, collection, maxHeight = 300, classes, renderItem } = props;
-
+	const { testId, maxHeight = 500, classes, renderItem, showSearch, searchPlaceholder } = props;
+	const context = useComboboxContext();
 	return (
-		<Select.Positioner
+		<Combobox.Positioner
 			className={classes?.positioner}
 			data-testid={testId ? `${testId}--positioner` : undefined}
 		>
-			<Select.Content
+			<Combobox.Content
 				className={classes?.content}
 				data-testid={testId ? `${testId}--content` : undefined}
+				style={{ maxHeight: `${maxHeight}px` }}
 			>
-				<ScrollArea
-					className={classes?.scrollArea}
-					style={{ height: `${maxHeight}px` }}
+				{showSearch && (
+					<div data-scope="combobox" data-part="input-wrapper">
+						<Search />
+						<Combobox.Input
+							className={classes?.input}
+							placeholder={searchPlaceholder ?? "Search options..."}
+						/>
+					</div>
+				)}
+				<div
+					data-scope="combobox"
+					data-part="content-list"
 				>
-					{collection.group().map(([type, group]) => (
-						<Select.ItemGroup
+					{context.collection.group().map(([type, group]) => (
+						<Combobox.ItemGroup
 							key={type}
 							className={classes?.itemGroup}
 						>
 							{type && (
-								<Select.ItemGroupLabel className={classes?.itemGroupLabel}>
+								<Combobox.ItemGroupLabel className={classes?.itemGroupLabel}>
 									{type}
-								</Select.ItemGroupLabel>
+								</Combobox.ItemGroupLabel>
 							)}
 							{group.map((item) => (
-								<Select.Item
+								<Combobox.Item
 									key={item.value}
 									item={item}
 									className={classes?.item}
@@ -60,20 +71,20 @@ export function SelectContent<M = unknown>(props: SelectContentProps<M>) {
 									) : (
 										<>
 											{item.icon}
-											<Select.ItemText className={classes?.itemText}>
+											<Combobox.ItemText className={classes?.itemText}>
 												{item.label}
-											</Select.ItemText>
+											</Combobox.ItemText>
 										</>
 									)}
-									<Select.ItemIndicator className={classes?.itemIndicator}>
+									<Combobox.ItemIndicator className={classes?.itemIndicator}>
 										<Check />
-									</Select.ItemIndicator>
-								</Select.Item>
+									</Combobox.ItemIndicator>
+								</Combobox.Item>
 							))}
-						</Select.ItemGroup>
+						</Combobox.ItemGroup>
 					))}
-				</ScrollArea>
-			</Select.Content>
-		</Select.Positioner>
+				</div>
+			</Combobox.Content>
+		</Combobox.Positioner>
 	);
 }

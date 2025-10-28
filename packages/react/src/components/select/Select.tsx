@@ -6,9 +6,9 @@ import { SelectContent } from "./SelectContent";
 import { SelectControl } from "./SelectControl";
 import { cx } from "@temporal-ui/core/utils/cx";
 
-export interface SelectProps<D = unknown, T = unknown> extends CoreSelectProps<D, T> {}
+export interface SelectProps<D = unknown> extends CoreSelectProps<D, React.ReactNode> {}
 
-export const Select: Combobox.RootComponent<SelectProps<unknown, React.ReactNode>> = (props) => {
+export const Select: Combobox.RootComponent<SelectProps> = (props) => {
 	const {
 		label,
 		hint,

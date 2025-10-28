@@ -6,9 +6,9 @@ import { For, mergeProps, Show, type JSX } from "solid-js";
 export type SelectItem<D = unknown> = CoreSelectItem<D, JSX.Element>;
 export type RenderItemFn<D = unknown> = CoreRenderItemFn<D, JSX.Element>;
 
-export interface SelectContentProps<M = unknown> {
+export interface SelectContentProps<D = unknown> {
 	testId?: string;
-	renderItem?: RenderItemFn<M>;
+	renderItem?: RenderItemFn<D>;
 	maxHeight?: number;
 	showSearch?: boolean;
 	searchPlaceholder?: string;

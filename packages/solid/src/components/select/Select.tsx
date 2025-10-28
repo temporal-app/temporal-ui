@@ -7,9 +7,9 @@ import { SelectContent } from "./SelectContent";
 import { SelectControl } from "./SelectControl";
 import { cx } from "@temporal-ui/core/utils/cx";
 
-export interface SelectProps<D = unknown, T = unknown> extends CoreSelectProps<D, T> {};
+export interface SelectProps<D = unknown> extends CoreSelectProps<D, JSX.Element> {};
 
-export const Select: Combobox.RootComponent<SelectProps<unknown, JSX.Element>> = (_props) => {
+export const Select: Combobox.RootComponent<SelectProps> = (_props) => {
 	const [fieldProps, controlProps, rootProps] = splitProps(
 		mergeProps({ portal: true }, _props),
 		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],

@@ -29,7 +29,7 @@ export function SelectControl<M = unknown>(_props: SelectControlProps<M>) {
 				data-placeholder={!context().valueAsString}
 				onClick={() => context().setOpen(true)}
 			>
-				<Show when={context().hasSelectedItems}>
+				<Show when={!!context().selectedItems[0]}>
 					<Show when={!!props.renderItem}>
 						<div style={{ "pointer-events": "none" }}>
 							{props.renderItem?.(context().selectedItems[0], "trigger")}
@@ -46,7 +46,7 @@ export function SelectControl<M = unknown>(_props: SelectControlProps<M>) {
 						</Stack>
 					</Show>
 				</Show>
-				<Show when={!context().hasSelectedItems}>{props.placeholder}</Show>
+				<Show when={!context().selectedItems[0]}>{props.placeholder}</Show>
 			</button>
 			<Combobox.ClearTrigger data-testid={props.testId ? `${props.testId}--clear-trigger` : undefined}>
 				<X />

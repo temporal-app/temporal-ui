@@ -1,24 +1,24 @@
 {
 	"name": "@temporal-ui/solid",
-	"version": "0.5.7",
+	"version": "0.5.8",
 	"description": "Solid.JS bindings for Temporal UI components",
 	"license": "MIT",
 	"type": "module",
 	"module": "./dist/index.jsx",
-	"types": "./dist/index.d.mts",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
-			"types": "./dist/index.d.mts",
+			"types": "./dist/index.d.ts",
 			"solid": "./dist/index.jsx",
 			"default": "./dist/index.jsx"
 		},
 		"./hooks/*": {
-			"types": "./dist/hooks/*/index.d.mts",
+			"types": "./dist/hooks/*/index.d.ts",
 			"solid": "./dist/hooks/*/index.jsx",
 			"default": "./dist/hooks/*/index.jsx"
 		},
 		"./*": {
-			"types": "./dist/components/*/index.d.mts",
+			"types": "./dist/components/*/index.d.ts",
 			"solid": "./dist/components/*/index.jsx",
 			"default": "./dist/components/*/index.jsx"
 		},

@@ -1,24 +1,24 @@
 {
 	"name": "@temporal-ui/react",
-	"version": "0.5.7",
+	"version": "0.5.8",
 	"description": "React bindings for Temporal UI components",
 	"license": "MIT",
 	"type": "module",
 	"module": "./dist/index.js",
-	"types": "./dist/index.d.mts",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
-			"types": "./dist/index.d.mts",
+			"types": "./dist/index.d.ts",
 			"import": "./dist/index.js",
 			"default": "./dist/index.js"
 		},
 		"./hooks/*": {
-			"types": "./dist/hooks/*/index.d.mts",
+			"types": "./dist/hooks/*/index.d.ts",
 			"import": "./dist/hooks/*/index.js",
 			"default": "./dist/hooks/*/index.js"
 		},
 		"./*": {
-			"types": "./dist/components/*/index.d.mts",
+			"types": "./dist/components/*/index.d.ts",
 			"import": "./dist/components/*/index.js",
 			"default": "./dist/components/*/index.js"
 		},

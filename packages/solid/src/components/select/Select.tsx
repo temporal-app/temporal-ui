@@ -1,5 +1,5 @@
-import { Combobox, type CollectionItem } from "@ark-ui/solid/combobox";
-import type { SelectProps as CoreSelectProps } from "@temporal-ui/core/select";
+import { Combobox } from "@ark-ui/solid/combobox";
+import type { SelectProps as CoreSelectProps, SelectItem } from "@temporal-ui/core/select";
 import { mergeProps, splitProps, type JSX } from "solid-js";
 import { Portal } from "solid-js/web";
 import { Field } from "../field";
@@ -7,13 +7,15 @@ import { SelectContent } from "./SelectContent";
 import { SelectControl } from "./SelectControl";
 import { cx } from "@temporal-ui/core/utils/cx";
 
-export interface SelectProps<D = unknown> extends CoreSelectProps<D, JSX.Element>, Combobox.RootProps<CollectionItem> {}
+export interface SelectProps<D extends object = never>
+	extends CoreSelectProps<D, JSX.Element>,
+		Combobox.RootProps<SelectItem<D, JSX.Element>> {}
 
-export function Select<D = unknown>(_props: SelectProps<D>) {
+export function Select<D extends object>(_props: SelectProps<D>) {
 	const [fieldProps, controlProps, rootProps] = splitProps(
 		mergeProps({ portal: true }, _props),
 		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],
-		["portal", "icon", "renderItem", "maxDropdownHeight", "searchable", "className", "searchPlaceholder"]
+		["portal", "icon", "renderItem", "maxDropdownHeight", "searchable", "className", "searchPlaceholder", "class"],
 	);
 
 	return (
@@ -37,7 +39,7 @@ export function Select<D = unknown>(_props: SelectProps<D>) {
 					renderItem={controlProps.renderItem}
 					classes={{
 						...fieldProps.classes,
-						control: cx(controlProps.className, fieldProps.classes?.control),
+						control: cx(controlProps.className, controlProps.class, fieldProps.classes?.control),
 					}}
 				/>
 				{controlProps.portal ? (
@@ -64,4 +66,4 @@ export function Select<D = unknown>(_props: SelectProps<D>) {
 			</Combobox.Root>
 		</Field>
 	);
-};
+}

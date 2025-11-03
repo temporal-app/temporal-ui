@@ -6,9 +6,11 @@ import { SelectContent } from "./SelectContent";
 import { SelectControl } from "./SelectControl";
 import { cx } from "@temporal-ui/core/utils/cx";
 
-export interface SelectProps<D = unknown> extends CoreSelectProps<D, React.ReactNode>, Combobox.RootProps<CollectionItem> {}
+export interface SelectProps<D extends CollectionItem = never>
+	extends CoreSelectProps<D, React.ReactNode>,
+		Combobox.RootProps<D> {}
 
-export function Select<D = unknown>(props: SelectProps<D>) {
+export function Select<D extends CollectionItem>(props: SelectProps<D>) {
 	const {
 		label,
 		hint,
@@ -81,4 +83,4 @@ export function Select<D = unknown>(props: SelectProps<D>) {
 			</Combobox.Root>
 		</Field>
 	);
-};
+}

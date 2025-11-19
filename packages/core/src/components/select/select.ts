@@ -18,6 +18,7 @@ export interface SelectProps<D = unknown, T = unknown> extends FieldProps<T> {
 	maxDropdownHeight?: number;
 	searchable?: boolean;
 	searchPlaceholder?: string;
+	deselectable?: boolean;
 	classes?: {
 		root?: string;
 		label?: string;

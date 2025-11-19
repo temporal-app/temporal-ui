@@ -7,7 +7,7 @@ export interface SliderProps
 	extends CoreSliderProps<React.ReactNode>,
 		Omit<React.InputHTMLAttributes<HTMLInputElement>, "max" | "min" | "step"> {}
 
-export const Slider = forwardRef<HTMLInputElement, SliderProps>((props, ref) => {
+export const Slider = forwardRef<HTMLInputElement, SliderProps & ArkSlider.RootProps>((props, ref) => {
 	const {
 		label,
 		hint,
@@ -15,14 +15,11 @@ export const Slider = forwardRef<HTMLInputElement, SliderProps>((props, ref) => 
 		required,
 		readOnly,
 		disabled,
-		min,
-		max,
-		step,
 		testId,
 		showValue,
 		marks,
 		showMarkDashes,
-		...inputProps
+		...rootProps
 	} = props;
 	return (
 		<Field
@@ -35,9 +32,7 @@ export const Slider = forwardRef<HTMLInputElement, SliderProps>((props, ref) => 
 			testId={props.testId ? `${props.testId}-field` : undefined}
 		>
 			<ArkSlider.Root
-				min={min}
-				max={max}
-				step={step}
+				{...rootProps}
 				readOnly={readOnly}
 				disabled={disabled}
 				data-testid={testId ? `${testId}--root` : undefined}
@@ -48,7 +43,6 @@ export const Slider = forwardRef<HTMLInputElement, SliderProps>((props, ref) => 
 					</ArkSlider.Track>
 					<ArkSlider.Thumb index={0}>
 						<ArkSlider.HiddenInput
-							{...inputProps}
 							ref={ref}
 							data-testid={testId ? `${testId}--input` : undefined}
 						/>

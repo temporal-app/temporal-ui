@@ -90,3 +90,26 @@ export const Searchable: Story = {
 		searchable: true,
 	},
 };
+
+export const Deselectable: Story = {
+	...Default,
+	args: {
+		...Default.args,
+		deselectable: true,
+	},
+};
+
+export const LargeDataset: Story = {
+	...Default,
+	render: (args) => {
+		const collection = createListCollection({
+			items: Array.from({ length: 1000 }, (_, index) => ({ value: `item-${index}`, label: `Item ${index}` })),
+		});
+		return (
+			<Select
+				{...args}
+				collection={collection}
+			/>
+		);
+	},
+};

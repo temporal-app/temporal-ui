@@ -7,6 +7,8 @@ export interface SelectControlProps<D = unknown> {
 	icon?: React.ReactNode;
 	testId?: string;
 	placeholder?: string;
+	deselectable?: boolean;
+	invalid?: boolean;
 	renderItem?: RenderItemFn<D>;
 	classes?: {
 		control?: string;
@@ -16,19 +18,20 @@ export interface SelectControlProps<D = unknown> {
 }
 
 export function SelectControl<M = unknown>(props: SelectControlProps<M>) {
-	const { testId, placeholder, renderItem, classes } = props;
+	const { testId, placeholder, renderItem, classes, deselectable, invalid } = props;
 	const context = useComboboxContext();
 
 	return (
 		<Combobox.Control
 			className={classes?.control}
-			onClick={() => context.setOpen(true)}
+			aria-invalid={invalid}
 		>
 			<button
 				type="button"
 				data-scope="combobox"
 				data-part="value-text"
 				data-placeholder={!context.valueAsString}
+				onClick={() => context.setOpen(true)}
 			>
 				{context.hasSelectedItems &&
 					(renderItem?.(context.selectedItems[0], "trigger") || (
@@ -43,9 +46,11 @@ export function SelectControl<M = unknown>(props: SelectControlProps<M>) {
 					))}
 				{!context.hasSelectedItems && (placeholder ?? "Select option...")}
 			</button>
-			<Combobox.ClearTrigger data-testid={testId ? `${testId}--clear-trigger` : undefined}>
-				<X />
-			</Combobox.ClearTrigger>
+			{deselectable && (
+				<Combobox.ClearTrigger data-testid={testId ? `${testId}--clear-trigger` : undefined}>
+					<X />
+				</Combobox.ClearTrigger>
+			)}
 			<Combobox.Trigger data-testid={testId ? `${testId}--trigger` : undefined}>
 				<ChevronsUpDown />
 			</Combobox.Trigger>

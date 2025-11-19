@@ -87,3 +87,28 @@ export const Searchable: Story = {
 		searchable: true,
 	},
 };
+
+export const Deselectable: Story = {
+	...Default,
+	args: {
+		...Default.args,
+		deselectable: true,
+	},
+};
+
+export const Invalid: Story = {
+	...Default,
+	args: {
+		...Default.args,
+		error: "This is an error",
+	},
+};
+
+export const LargeDataset: Story = {
+	args: {
+		...Default.args,
+		searchable: true,
+		searchPlaceholder: "Search items...",
+		collection: createListCollection({ items: Array.from({ length: 1000 }, (_, index) => ({ value: `item-${index}`, label: `Item ${index}` })) }),
+	},
+};

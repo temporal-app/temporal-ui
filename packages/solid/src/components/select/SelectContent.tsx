@@ -38,18 +38,17 @@ export function SelectContent<M = unknown>(_props: SelectContentProps<M>) {
 				data-testid={props.testId ? `${props.testId}--content` : undefined}
 				style={{ "max-height": `${props.maxHeight}px` }}
 			>
-				<Show when={props.showSearch}>
-					<div
-						data-scope="combobox"
-						data-part="input-wrapper"
-					>
-						<Search />
-						<Combobox.Input
-							class={props.classes?.input}
-							placeholder={props.searchPlaceholder}
-						/>
-					</div>
-				</Show>
+				<div
+					data-scope="combobox"
+					data-part="input-wrapper"
+					hidden={!props.showSearch}
+				>
+					<Search />
+					<Combobox.Input
+						class={props.classes?.input}
+						placeholder={props.searchPlaceholder}
+					/>
+				</div>
 				<div
 					data-scope="combobox"
 					data-part="content-list"

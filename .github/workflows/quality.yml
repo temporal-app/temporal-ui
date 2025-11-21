@@ -40,15 +40,6 @@ jobs:
       - name: Build packages
         run: bun run build
 
-      - name: Debug directory 3
-        run: ls -la /home/runner/work/temporal-ui/temporal-ui/packages/react/node_modules
-
-      - name: Debug directory 2
-        run: ls -la /home/runner/work/temporal-ui/temporal-ui/packages/react/node_modules/@testing-library
-
-      - name: Debug directory 1
-        run: ls -la /home/runner/work/temporal-ui/temporal-ui/packages/react/node_modules/@testing-library/jest-dom
-
       - name: Run tests
         run: bun run test
 

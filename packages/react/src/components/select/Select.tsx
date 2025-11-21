@@ -27,6 +27,7 @@ export function Select<D extends CollectionItem>(props: SelectProps<D>) {
 		className,
 		maxDropdownHeight,
 		searchable,
+		deselectable,
 		...rest
 	} = props;
 
@@ -55,6 +56,8 @@ export function Select<D extends CollectionItem>(props: SelectProps<D>) {
 					testId={testId}
 					placeholder={placeholder}
 					renderItem={renderItem}
+					deselectable={deselectable}
+					invalid={!!error}
 					classes={{
 						...classes,
 						control: cx(className, classes?.control),

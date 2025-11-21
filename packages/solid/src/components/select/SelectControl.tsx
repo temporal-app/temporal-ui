@@ -8,6 +8,8 @@ export interface SelectControlProps<D = unknown> {
 	icon?: JSX.Element;
 	testId?: string;
 	placeholder?: string;
+	deselectable?: boolean;
+	invalid?: boolean;
 	renderItem?: RenderItemFn<D>;
 	classes?: {
 		control?: string;
@@ -21,7 +23,10 @@ export function SelectControl<M = unknown>(_props: SelectControlProps<M>) {
 	const context = useComboboxContext();
 
 	return (
-		<Combobox.Control class={props.classes?.control}>
+		<Combobox.Control
+			class={props.classes?.control}
+			aria-invalid={props.invalid}
+		>
 			<button
 				type="button"
 				data-scope="combobox"
@@ -48,9 +53,11 @@ export function SelectControl<M = unknown>(_props: SelectControlProps<M>) {
 				</Show>
 				<Show when={!context().selectedItems[0]}>{props.placeholder}</Show>
 			</button>
-			<Combobox.ClearTrigger data-testid={props.testId ? `${props.testId}--clear-trigger` : undefined}>
-				<X />
-			</Combobox.ClearTrigger>
+			<Show when={props.deselectable}>
+				<Combobox.ClearTrigger data-testid={props.testId ? `${props.testId}--clear-trigger` : undefined}>
+					<X />
+				</Combobox.ClearTrigger>
+			</Show>
 			<Combobox.Trigger data-testid={props.testId ? `${props.testId}--trigger` : undefined}>
 				<ChevronsUpDown />
 			</Combobox.Trigger>

@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
 import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
-import { createListCollection, useFilter, useListCollection} from ".";
+import { createListCollection, useFilter, useListCollection } from ".";
 import { Select } from "./Select";
 import { Banana } from "lucide-solid";
 
@@ -85,5 +85,48 @@ export const Searchable: Story = {
 	args: {
 		...Default.args,
 		searchable: true,
+	},
+};
+
+export const Deselectable: Story = {
+	...Default,
+	args: {
+		...Default.args,
+		deselectable: true,
+	},
+};
+
+export const Invalid: Story = {
+	...Default,
+	args: {
+		...Default.args,
+		error: "This is an error",
+	},
+};
+
+export const LargeDataset: Story = {
+	args: {
+		...Default.args,
+		searchable: true,
+		searchPlaceholder: "Search items...",
+		collection: createListCollection({
+			items: Array.from({ length: 1000 }, (_, index) => ({ value: `item-${index}`, label: `Item ${index}` })),
+		}),
+	},
+};
+
+export const LargeDatasetWithGroups: Story = {
+	args: {
+		...Default.args,
+		searchable: true,
+		searchPlaceholder: "Search items...",
+		collection: createListCollection({
+			items: Array.from({ length: 1000 }, (_, index) => ({
+				value: `item-${index}`,
+				label: `Item ${index}`,
+				group: `Group ${Math.floor(index / 10) + 1}`,
+			})),
+			groupBy: (item) => item.group,
+		}),
 	},
 };

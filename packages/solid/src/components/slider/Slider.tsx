@@ -1,14 +1,13 @@
 import type { SliderProps as CoreSliderProps } from "@temporal-ui/core/slider";
 import { Slider as ArkSlider } from "@ark-ui/solid/slider";
 import { Field } from "../field";
-import type { HTMLProps } from "@ark-ui/solid/factory";
 import { For, Show, splitProps, type JSX } from "solid-js";
-export interface SliderProps extends CoreSliderProps<JSX.Element>, Omit<HTMLProps<"input">, "max" | "min" | "step"> {}
+export interface SliderProps extends CoreSliderProps<JSX.Element> {}
 
-export function Slider(props: SliderProps) {
-	const [fieldProps, rootProps, extraProps, inputProps] = splitProps(props,
-		["label", "hint", "error", "required", "readOnly", "disabled", "testId"],
-		["min", "max", "step"],
+export function Slider(props: SliderProps & ArkSlider.RootProps) {
+	const [fieldProps, controlProps, rootProps] = splitProps(
+		props,
+		["label", "hint", "error", "required", "readOnly", "disabled", "testId", "classes"],
 		["showValue", "marks", "showMarkDashes"],
 	);
 	return (
@@ -22,23 +21,22 @@ export function Slider(props: SliderProps) {
 				disabled={fieldProps.disabled}
 				data-testid={fieldProps.testId ? `${fieldProps.testId}--root` : undefined}
 			>
-				<ArkSlider.Control data-with-value={extraProps.showValue}>
+				<ArkSlider.Control data-with-value={controlProps.showValue}>
 					<ArkSlider.Track>
 						<ArkSlider.Range />
 					</ArkSlider.Track>
 					<ArkSlider.Thumb index={0}>
 						<ArkSlider.HiddenInput
-							{...inputProps}
 							data-testid={fieldProps.testId ? `${fieldProps.testId}--input` : undefined}
 						/>
-						<Show when={extraProps.showValue}>
+						<Show when={controlProps.showValue}>
 							<ArkSlider.ValueText />
 						</Show>
 					</ArkSlider.Thumb>
 				</ArkSlider.Control>
-				<Show when={extraProps.marks}>
-					<ArkSlider.MarkerGroup data-with-dashes={extraProps.showMarkDashes ? true : undefined}>
-						<For each={Object.entries(extraProps.marks || {})}>
+				<Show when={controlProps.marks}>
+					<ArkSlider.MarkerGroup data-with-dashes={controlProps.showMarkDashes ? true : undefined}>
+						<For each={Object.entries(controlProps.marks || {})}>
 							{([value, label]) => <ArkSlider.Marker value={Number(value)}>{label}</ArkSlider.Marker>}
 						</For>
 					</ArkSlider.MarkerGroup>

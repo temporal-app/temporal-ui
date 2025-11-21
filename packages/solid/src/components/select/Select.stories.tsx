@@ -109,9 +109,28 @@ export const LargeDataset: Story = {
 		...Default.args,
 		searchable: true,
 		searchPlaceholder: "Search items...",
-		collection: createListCollection({
-			items: Array.from({ length: 1000 }, (_, index) => ({ value: `item-${index}`, label: `Item ${index}` })),
-		}),
+		collection: createListCollection({items: []}),
+	},
+	render: (args) => {
+		const filterFn = useFilter({ sensitivity: "base" });
+
+		const { collection, filter } = useListCollection({
+			initialItems: Array.from({ length: 1000 }, (_, index) => ({
+				value: `item-${index}`,
+				label: `Item ${index}`,
+			})),
+			filter: filterFn().contains,
+		});
+
+		return (
+			<Select
+				{...args}
+				collection={collection()}
+				onInputValueChange={(details) => {
+					filter(details.inputValue);
+				}}
+			/>
+		);
 	},
 };
 

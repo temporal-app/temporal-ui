@@ -58,7 +58,9 @@ export function SelectContent<M = unknown>(_props: SelectContentProps<M>) {
 		getScrollElement: () => parentRef,
 		estimateSize: (i) => (flattenedItems()[i]?.type === "group" ? 30 : 35),
 		...props.virtualizerOptions,
-		count: flattenedItems().length,
+		get count() {
+			return flattenedItems().length;
+		},
 	});
 
 	return (
@@ -97,8 +99,7 @@ export function SelectContent<M = unknown>(_props: SelectContentProps<M>) {
 						<Combobox.ItemGroup class={props.classes?.itemGroup}>
 							<For each={rowVirtualizer.getVirtualItems()}>
 								{(virtualItem) => {
-									const item = flattenedItems()[virtualItem.index];
-									if (!item) return null;
+									const item = () => flattenedItems()[virtualItem.index];
 									return (
 										<div
 											style={{
@@ -110,30 +111,32 @@ export function SelectContent<M = unknown>(_props: SelectContentProps<M>) {
 												transform: `translateY(${virtualItem.start}px)`,
 											}}
 										>
-											<Show when={item?.type === "group" && item.label}>
+											<Show
+												when={item()?.type === "group" && (item() as FlattenedItemGroup).label}
+											>
 												<Combobox.ItemGroupLabel class={props.classes?.itemGroupLabel}>
-													{(item as FlattenedItemGroup).label}
+													{(item() as FlattenedItemGroup).label}
 												</Combobox.ItemGroupLabel>
 											</Show>
-											<Show when={item?.type === "item"}>
+											<Show when={item()?.type === "item"}>
 												<Combobox.Item
 													class={props.classes?.item}
-													item={(item as FlattenedItemItem<M>).item}
+													item={(item() as FlattenedItemItem<M>).item}
 												>
 													<Show when={props.renderItem}>
 														<div style={{ "pointer-events": "none" }}>
 															{props.renderItem?.(
-																(item as FlattenedItemItem<M>).item,
+																(item() as FlattenedItemItem<M>).item,
 																"option",
 															)}
 														</div>
 													</Show>
 													<Show when={!props.renderItem}>
-														<Show when={(item as FlattenedItemItem<M>).item.icon}>
-															{(item as FlattenedItemItem<M>).item.icon}
+														<Show when={(item() as FlattenedItemItem<M>).item.icon}>
+															{(item() as FlattenedItemItem<M>).item.icon}
 														</Show>
 														<Combobox.ItemText class={props.classes?.itemText}>
-															{(item as FlattenedItemItem<M>).item.label}
+															{(item() as FlattenedItemItem<M>).item.label}
 														</Combobox.ItemText>
 													</Show>
 													<Combobox.ItemIndicator class={props.classes?.itemIndicator}>

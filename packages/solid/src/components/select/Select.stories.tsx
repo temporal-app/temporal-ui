@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
 import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
-import { createListCollection, useFilter, useListCollection} from ".";
+import { createListCollection, useFilter, useListCollection } from ".";
 import { Select } from "./Select";
 import { Banana } from "lucide-solid";
 
@@ -109,6 +109,24 @@ export const LargeDataset: Story = {
 		...Default.args,
 		searchable: true,
 		searchPlaceholder: "Search items...",
-		collection: createListCollection({ items: Array.from({ length: 1000 }, (_, index) => ({ value: `item-${index}`, label: `Item ${index}` })) }),
+		collection: createListCollection({
+			items: Array.from({ length: 1000 }, (_, index) => ({ value: `item-${index}`, label: `Item ${index}` })),
+		}),
+	},
+};
+
+export const LargeDatasetWithGroups: Story = {
+	args: {
+		...Default.args,
+		searchable: true,
+		searchPlaceholder: "Search items...",
+		collection: createListCollection({
+			items: Array.from({ length: 1000 }, (_, index) => ({
+				value: `item-${index}`,
+				label: `Item ${index}`,
+				group: `Group ${Math.floor(index / 10) + 1}`,
+			})),
+			groupBy: (item) => item.group,
+		}),
 	},
 };

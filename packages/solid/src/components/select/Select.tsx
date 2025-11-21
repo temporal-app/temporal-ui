@@ -6,10 +6,13 @@ import { Field } from "../field";
 import { SelectContent } from "./SelectContent";
 import { SelectControl } from "./SelectControl";
 import { cx } from "@temporal-ui/core/utils/cx";
+import type { VirtualizerOptions } from "@tanstack/solid-virtual";
 
 export interface SelectProps<D extends object = never>
 	extends CoreSelectProps<D, JSX.Element>,
-		Combobox.RootProps<SelectItem<D, JSX.Element>> {}
+		Combobox.RootProps<SelectItem<D, JSX.Element>> {
+	virtualizerOptions?: VirtualizerOptions<HTMLDivElement, HTMLDivElement>;
+}
 
 export function Select<D extends object>(_props: SelectProps<D>) {
 	const [fieldProps, controlProps, rootProps] = splitProps(
@@ -62,6 +65,7 @@ export function Select<D extends object>(_props: SelectProps<D>) {
 							maxHeight={controlProps.maxDropdownHeight}
 							showSearch={controlProps.searchable}
 							searchPlaceholder={controlProps.searchPlaceholder}
+							virtualizerOptions={rootProps.virtualizerOptions}
 							classes={fieldProps.classes}
 						/>
 					</Portal>
@@ -72,6 +76,7 @@ export function Select<D extends object>(_props: SelectProps<D>) {
 						maxHeight={controlProps.maxDropdownHeight}
 						showSearch={controlProps.searchable}
 						searchPlaceholder={controlProps.searchPlaceholder}
+						virtualizerOptions={rootProps.virtualizerOptions}
 						classes={fieldProps.classes}
 					/>
 				)}

@@ -1,14 +1,14 @@
-import { Combobox, type CollectionItem } from "@ark-ui/react/combobox";
+import { Select as ArkSelect, useSelect, type CollectionItem } from "@ark-ui/react/select";
 import { Portal } from "@ark-ui/react/portal";
 import type { SelectProps as CoreSelectProps } from "@temporal-ui/core/select";
 import { Field } from "../field";
-import { SelectContent } from "./SelectContent";
-import { SelectControl } from "./SelectControl";
-import { cx } from "@temporal-ui/core/utils/cx";
+import { SelectContent, type SelectItem } from "./SelectContent";
+import { testId } from "@temporal-ui/core/utils/string";
+import { ChevronsUpDown, X } from "lucide-react";
 
 export interface SelectProps<D extends CollectionItem = never>
-	extends CoreSelectProps<D, React.ReactNode>,
-		Combobox.RootProps<D> {}
+	extends CoreSelectProps<React.ReactNode>,
+		ArkSelect.RootProps<SelectItem<D>> {}
 
 export function Select<D extends CollectionItem>(props: SelectProps<D>) {
 	const {
@@ -19,17 +19,25 @@ export function Select<D extends CollectionItem>(props: SelectProps<D>) {
 		readOnly,
 		disabled,
 		classes,
-		testId,
+		testId: testIdProp,
 		icon,
 		placeholder,
 		portal,
-		renderItem,
 		className,
 		maxDropdownHeight,
-		searchable,
 		deselectable,
-		...rest
+		...rootProps
 	} = props;
+
+	const select = useSelect({
+		...rootProps,
+		disabled,
+		invalid: !!error,
+		required,
+		readOnly,
+	});
+
+	const tid = testId(testIdProp);
 
 	return (
 		<Field
@@ -40,50 +48,50 @@ export function Select<D extends CollectionItem>(props: SelectProps<D>) {
 			readOnly={readOnly}
 			error={error}
 			disabled={disabled}
-			testId={testId ? `${testId}-field` : undefined}
+			testId={tid("-field")}
 		>
-			<Combobox.Root
-				disabled={disabled}
-				invalid={!!error}
-				required={required}
-				readOnly={readOnly}
-				{...rest}
-				className={cx(className, classes?.selectRoot)}
-				data-testid={testId ? `${testId}--root` : undefined}
+			<ArkSelect.RootProvider
+				value={select}
+				className={classes?.selectRoot}
+				data-testid={tid("--root")}
 			>
-				<SelectControl
-					icon={icon}
-					testId={testId}
-					placeholder={placeholder}
-					renderItem={renderItem}
-					deselectable={deselectable}
-					invalid={!!error}
-					classes={{
-						...classes,
-						control: cx(className, classes?.control),
-					}}
-				/>
+				<ArkSelect.Control
+					aria-invalid={!!error}
+					className={className}
+					data-testid={tid("--control")}
+				>
+					<ArkSelect.Trigger data-testid={tid("--trigger")}>
+						{select.selectedItems[0]?.icon || icon}
+						<ArkSelect.ValueText
+							placeholder={placeholder}
+							data-testid={tid("--value-text")}
+						/>
+						{(!deselectable || !select.hasSelectedItems) && <ChevronsUpDown />}
+					</ArkSelect.Trigger>
+					{deselectable && select.hasSelectedItems && (
+						<ArkSelect.ClearTrigger data-testid={tid("--clear-trigger")}>
+							<X />
+						</ArkSelect.ClearTrigger>
+					)}
+				</ArkSelect.Control>
 				{portal && (
 					<Portal>
 						<SelectContent
-							testId={testId}
-							renderItem={renderItem}
+							tid={tid}
 							maxHeight={maxDropdownHeight}
-							showSearch={searchable}
 							classes={classes}
 						/>
 					</Portal>
 				)}
 				{!portal && (
 					<SelectContent
-						testId={testId}
-						renderItem={renderItem}
+						tid={tid}
 						maxHeight={maxDropdownHeight}
-						showSearch={searchable}
 						classes={classes}
 					/>
 				)}
-			</Combobox.Root>
+				<ArkSelect.HiddenSelect data-testid={tid("--input")} />
+			</ArkSelect.RootProvider>
 		</Field>
 	);
 }

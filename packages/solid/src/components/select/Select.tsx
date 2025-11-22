@@ -1,86 +1,86 @@
-import { Combobox } from "@ark-ui/solid/combobox";
-import type { SelectProps as CoreSelectProps, SelectItem } from "@temporal-ui/core/select";
-import { splitProps, type JSX } from "solid-js";
+import { Select as ArkSelect, useSelect } from "@ark-ui/solid/select";
+import type { SelectProps as CoreSelectProps } from "@temporal-ui/core/select";
+import { testId } from "@temporal-ui/core/utils/string";
+import { ChevronsUpDown, X } from "lucide-solid";
+import { Show, splitProps, type JSX } from "solid-js";
 import { Portal } from "solid-js/web";
-import { Field } from "../field";
-import { SelectContent } from "./SelectContent";
-import { SelectControl } from "./SelectControl";
-import { cx } from "@temporal-ui/core/utils/cx";
-import type { VirtualizerOptions } from "@tanstack/solid-virtual";
+import { Field, fieldAttributes } from "../field";
+import { SelectContent, type SelectItem } from "./SelectContent";
 
-export interface SelectProps<D extends object = never>
-	extends CoreSelectProps<D, JSX.Element>,
-		Combobox.RootProps<SelectItem<D, JSX.Element>> {
-	virtualizerOptions?: VirtualizerOptions<HTMLDivElement, HTMLDivElement>;
-}
+export interface SelectProps<D = unknown>
+	extends CoreSelectProps<JSX.Element>,
+		ArkSelect.RootProps<SelectItem<D>> {}
 
-export function Select<D extends object>(_props: SelectProps<D>) {
-	const [fieldProps, controlProps, rootProps] = splitProps(
-		_props,
-		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],
-		[
-			"portal",
-			"icon",
-			"renderItem",
-			"maxDropdownHeight",
-			"searchable",
-			"className",
-			"searchPlaceholder",
-			"class",
-			"deselectable",
-		],
-	);
+export function Select<D = unknown>(_props: SelectProps<D>) {
+	const [fieldProps, controlProps, rootProps] = splitProps(_props, fieldAttributes, [
+		"portal",
+		"icon",
+		"maxDropdownHeight",
+		"className",
+		"class",
+		"deselectable",
+		"placeholder",
+	]);
+
+	const select = useSelect({
+		...rootProps,
+		disabled: fieldProps.disabled,
+		invalid: !!fieldProps.error,
+		required: fieldProps.required,
+		readOnly: fieldProps.readOnly,
+	});
+
+	const tid = testId(fieldProps.testId);
 
 	return (
 		<Field
 			{...fieldProps}
-			testId={fieldProps.testId ? `${fieldProps.testId}-field` : undefined}
+			testId={tid("-field")}
 		>
-			<Combobox.Root
-				disabled={fieldProps.disabled}
-				invalid={!!fieldProps.error}
-				required={fieldProps.required}
-				readOnly={fieldProps.readOnly}
-				{...rootProps}
-				class={cx(controlProps.className, fieldProps.classes?.selectRoot)}
-				data-testid={fieldProps.testId ? `${fieldProps.testId}--root` : undefined}
+			<ArkSelect.RootProvider
+				value={select}
+				class={fieldProps.classes?.selectRoot}
+				data-testid={tid("--root")}
 			>
-				<SelectControl
-					icon={controlProps.icon}
-					testId={fieldProps.testId}
-					placeholder={rootProps.placeholder}
-					renderItem={controlProps.renderItem}
-					deselectable={controlProps.deselectable}
-					invalid={!!fieldProps.error}
-					classes={{
-						...fieldProps.classes,
-						control: cx(controlProps.className, controlProps.class, fieldProps.classes?.control),
-					}}
-				/>
-				{controlProps.portal ? (
+				<ArkSelect.Control
+					aria-invalid={!!fieldProps.error}
+					class={controlProps.class}
+					data-testid={tid("--control")}
+				>
+					<ArkSelect.Trigger data-testid={tid("--trigger")}>
+						{select().selectedItems[0]?.icon || controlProps.icon}
+						<ArkSelect.ValueText
+							placeholder={controlProps.placeholder}
+							data-testid={tid("--value-text")}
+						/>
+						<Show when={!controlProps.deselectable || !select().hasSelectedItems}>
+							<ChevronsUpDown />
+						</Show>
+					</ArkSelect.Trigger>
+					<Show when={controlProps.deselectable && select().hasSelectedItems}>
+						<ArkSelect.ClearTrigger data-testid={tid("--clear-trigger")}>
+							<X />
+						</ArkSelect.ClearTrigger>
+					</Show>
+				</ArkSelect.Control>
+				<Show when={controlProps.portal}>
 					<Portal>
 						<SelectContent
-							testId={fieldProps.testId}
-							renderItem={controlProps.renderItem}
+							tid={tid}
 							maxHeight={controlProps.maxDropdownHeight}
-							showSearch={controlProps.searchable}
-							searchPlaceholder={controlProps.searchPlaceholder}
-							virtualizerOptions={rootProps.virtualizerOptions}
 							classes={fieldProps.classes}
 						/>
 					</Portal>
-				) : (
+				</Show>
+				<Show when={!controlProps.portal}>
 					<SelectContent
-						testId={fieldProps.testId}
-						renderItem={controlProps.renderItem}
+						tid={tid}
 						maxHeight={controlProps.maxDropdownHeight}
-						showSearch={controlProps.searchable}
-						searchPlaceholder={controlProps.searchPlaceholder}
-						virtualizerOptions={rootProps.virtualizerOptions}
 						classes={fieldProps.classes}
 					/>
-				)}
-			</Combobox.Root>
+				</Show>
+				<ArkSelect.HiddenSelect data-testid={tid("--input")} />
+			</ArkSelect.RootProvider>
 		</Field>
 	);
 }

@@ -31,3 +31,25 @@ export interface FieldsetProps<T> extends FieldBaseProps<T> {
 	legend?: string;
 	variant?: "default";
 }
+
+export const fieldAttributes = [
+	"label",
+	"hint",
+	"error",
+	"required",
+	"invalid",
+	"readOnly",
+	"disabled",
+	"classes",
+	"testId",
+] as const;
+export const fieldsetAttributes = [
+	"legend",
+	"variant",
+	"hint",
+	"error",
+	"invalid",
+	"disabled",
+	"classes",
+	"testId",
+] as const;

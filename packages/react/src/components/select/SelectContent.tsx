@@ -1,16 +1,12 @@
-import { Combobox, useComboboxContext } from "@ark-ui/react/combobox";
-import type { RenderItemFn as CoreRenderItemFn, SelectItem as CoreSelectItem } from "@temporal-ui/core/select";
-import { Check, Search } from "lucide-react";
+import { Select as ArkSelect, useSelectContext } from "@ark-ui/react/select";
+import type { SelectItem as CoreSelectItem } from "@temporal-ui/core/select";
+import { CheckIcon } from "lucide-react";
 
 export type SelectItem<D = unknown> = CoreSelectItem<D, React.ReactNode>;
-export type RenderItemFn<D = unknown> = CoreRenderItemFn<D, React.ReactNode>;
 
-export interface SelectContentProps<D = unknown> {
-	testId?: string;
-	renderItem?: RenderItemFn<D>;
+export interface SelectContentProps {
+	tid: (str: string) => string | undefined;
 	maxHeight?: number;
-	showSearch?: boolean;
-	searchPlaceholder?: string;
 	classes?: {
 		content?: string;
 		itemGroup?: string;
@@ -24,69 +20,64 @@ export interface SelectContentProps<D = unknown> {
 	};
 }
 
-export function SelectContent<M = unknown>(props: SelectContentProps<M>) {
-	const { testId, maxHeight = 500, classes, renderItem, showSearch, searchPlaceholder } = props;
-	const context = useComboboxContext();
+export function SelectContent(props: SelectContentProps) {
+	const { tid, maxHeight = 500, classes } = props;
+	const context = useSelectContext();
 	return (
-		<Combobox.Positioner
+		<ArkSelect.Positioner
 			className={classes?.positioner}
-			data-testid={testId ? `${testId}--positioner` : undefined}
+			data-testid={tid("--positioner")}
 		>
-			<Combobox.Content
+			<ArkSelect.Content
 				className={classes?.content}
-				data-testid={testId ? `${testId}--content` : undefined}
+				data-testid={tid("--content")}
 				style={{ maxHeight: `${maxHeight}px` }}
 			>
 				<div
-					data-scope="combobox"
-					data-part="input-wrapper"
-					hidden={!showSearch}
-				>
-					<Search />
-					<Combobox.Input
-						className={classes?.input}
-						placeholder={searchPlaceholder ?? "Search options..."}
-					/>
-				</div>
-				<div
-					data-scope="combobox"
+					data-scope="select"
 					data-part="content-list"
+					data-testid={tid("--content-list")}
 				>
 					{context.collection.group().map(([type, group]) => (
-						<Combobox.ItemGroup
+						<ArkSelect.ItemGroup
 							key={type}
 							className={classes?.itemGroup}
+							data-testid={tid("--item-group")}
 						>
 							{type && (
-								<Combobox.ItemGroupLabel className={classes?.itemGroupLabel}>
+								<ArkSelect.ItemGroupLabel
+									className={classes?.itemGroupLabel}
+									data-testid={tid("--item-group-label")}
+								>
 									{type}
-								</Combobox.ItemGroupLabel>
+								</ArkSelect.ItemGroupLabel>
 							)}
 							{group.map((item) => (
-								<Combobox.Item
+								<ArkSelect.Item
 									key={item.value}
-									item={item}
 									className={classes?.item}
+									data-testid={tid("--item")}
+									item={item}
 								>
-									{renderItem ? (
-										<div style={{ pointerEvents: "none" }}>{renderItem(item, "option")}</div>
-									) : (
-										<>
-											{item.icon}
-											<Combobox.ItemText className={classes?.itemText}>
-												{item.label}
-											</Combobox.ItemText>
-										</>
-									)}
-									<Combobox.ItemIndicator className={classes?.itemIndicator}>
-										<Check />
-									</Combobox.ItemIndicator>
-								</Combobox.Item>
+									{item.icon}
+									<ArkSelect.ItemText
+										className={classes?.itemText}
+										data-testid={tid("--item-text")}
+									>
+										{item.label}
+									</ArkSelect.ItemText>
+									<ArkSelect.ItemIndicator
+										className={classes?.itemIndicator}
+										data-testid={tid("--item-indicator")}
+									>
+										<CheckIcon />
+									</ArkSelect.ItemIndicator>
+								</ArkSelect.Item>
 							))}
-						</Combobox.ItemGroup>
+						</ArkSelect.ItemGroup>
 					))}
 				</div>
-			</Combobox.Content>
-		</Combobox.Positioner>
+			</ArkSelect.Content>
+		</ArkSelect.Positioner>
 	);
 }

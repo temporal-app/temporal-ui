@@ -9,16 +9,12 @@ export interface SelectItem<D = unknown, T = unknown> {
 	data?: D;
 }
 
-export type RenderItemFn<D = unknown, T = unknown> = (item: SelectItem<D, T>, component: "option" | "trigger") => T;
-
-export interface SelectProps<D = unknown, T = unknown> extends FieldProps<T> {
+export interface SelectProps<T = unknown> extends FieldProps<T> {
 	portal?: boolean;
-	renderItem?: RenderItemFn<D, T>;
 	icon?: T;
 	maxDropdownHeight?: number;
-	searchable?: boolean;
-	searchPlaceholder?: string;
 	deselectable?: boolean;
+	placeholder?: string;
 	classes?: {
 		root?: string;
 		label?: string;

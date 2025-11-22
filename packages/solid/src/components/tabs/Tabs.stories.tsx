@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
 import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger, type TabsProps } from ".";
-import { fn } from "storybook/internal/test";
 
 const meta = {
 	title: "Solid/Tabs",
@@ -8,7 +7,6 @@ const meta = {
 	tags: ["autodocs"],
 	args: {
 		variant: "default",
-		onValueChange: fn(),
 	},
 	argTypes: {
 		variant: {

@@ -1,6 +1,6 @@
 {
 	"name": "@temporal-ui/core",
-	"version": "0.5.7",
+	"version": "0.6.0",
 	"description": "Framework-agnostic core definitions, utils and styles for Temporal UI components",
 	"license": "MIT",
 	"type": "module",
@@ -38,9 +38,9 @@
 	},
 	"devDependencies": {
 		"clean-package": "2.2.0",
-		"rimraf": "6.0.1",
-		"tsdown": "0.15.8",
+		"rimraf": "6.1.2",
+		"tsdown": "0.16.6",
 		"typescript": "5.9.3",
-		"vitest": "3.2.4"
+		"vitest": "4.0.13"
 	}
 }

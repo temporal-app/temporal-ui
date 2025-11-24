@@ -7,6 +7,7 @@ export default defineConfig({
 		"src/index.ts",
 		"src/components/*/index.ts",
 		"src/hooks/*/index.ts",
+		"src/utils/*/index.ts",
 	],
 	dts: true,
 	platform: "browser"

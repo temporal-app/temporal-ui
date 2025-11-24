@@ -17,6 +17,11 @@
 			"import": "./dist/hooks/*/index.js",
 			"default": "./dist/hooks/*/index.js"
 		},
+		"./utils/*": {
+			"types": "./dist/utils/*/index.d.ts",
+			"import": "./dist/utils/*/index.js",
+			"default": "./dist/utils/*/index.js"
+		},
 		"./*": {
 			"types": "./dist/components/*/index.d.ts",
 			"import": "./dist/components/*/index.js",

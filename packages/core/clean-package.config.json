@@ -6,18 +6,18 @@
 		"exports": {
 			"./*": {
 				"types": "./dist/components/*/index.d.mts",
-				"import": "./dist/components/*/index.js",
-				"default": "./dist/components/*/index.js"
+				"import": "./dist/components/*/index.mjs",
+				"default": "./dist/components/*/index.mjs"
 			},
 			"./base": {
 				"types": "./dist/components/base.d.mts",
-				"import": "./dist/components/base.js",
-				"default": "./dist/components/base.js"
+				"import": "./dist/components/base.mjs",
+				"default": "./dist/components/base.mjs"
 			},
 			"./utils/*": {
 				"types": "./dist/utils/*/index.d.mts",
-				"import": "./dist/utils/*/index.js",
-				"default": "./dist/utils/*/index.js"
+				"import": "./dist/utils/*/index.mjs",
+				"default": "./dist/utils/*/index.mjs"
 			},
 			"./styles.css": "./dist/styles.css",
 			"./package.json": "./package.json"

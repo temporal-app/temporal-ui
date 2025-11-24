@@ -24,6 +24,9 @@ export function Select<D = unknown>(_props: SelectProps<D>) {
 
 	const select = useSelect({
 		...rootProps,
+		get value() {
+			return rootProps.value;
+		},
 		disabled: fieldProps.disabled,
 		invalid: !!fieldProps.error,
 		required: fieldProps.required,

@@ -1,6 +1,6 @@
 {
 	"name": "@temporal-ui/react",
-	"version": "0.6.0",
+	"version": "0.6.1",
 	"description": "React bindings for Temporal UI components",
 	"license": "MIT",
 	"type": "module",
@@ -16,6 +16,11 @@
 			"types": "./dist/hooks/*/index.d.ts",
 			"import": "./dist/hooks/*/index.js",
 			"default": "./dist/hooks/*/index.js"
+		},
+		"./utils/*": {
+			"types": "./dist/utils/*/index.d.ts",
+			"import": "./dist/utils/*/index.js",
+			"default": "./dist/utils/*/index.js"
 		},
 		"./*": {
 			"types": "./dist/components/*/index.d.ts",

@@ -6,9 +6,10 @@ import {
 	type TableOptions,
 } from "@tanstack/solid-table";
 import type { DataTableProps as CoreDataTableProps } from "@temporal-ui/core/data-table";
-import { For, splitProps, type JSX } from "solid-js";
+import { For, Show, splitProps, type JSX } from "solid-js";
 import { Loader } from "../loader";
 import { Table } from "../table";
+import { testId } from "@temporal-ui/core/utils/string";
 
 export interface DataTableProps<TData>
 	extends CoreDataTableProps<JSX.Element>,
@@ -27,23 +28,32 @@ export function DataTable<TData>(props: DataTableProps<TData>) {
 		},
 	});
 
+	const tid = testId(props.testId);
+
 	return (
 		<div
 			data-scope="data-table"
 			data-part="container"
-			data-testid={props.testId ? `${props.testId}--container` : undefined}
+			data-testid={tid("--container")}
 		>
-			<Table testId={props.testId ? `${props.testId}--table` : undefined}>
-				<thead data-testid={props.testId ? `${props.testId}--thead` : undefined}>
+			<Table
+				testId={tid("--table")}
+				data-rows={table.getRowModel().rows?.length}
+			>
+				<thead data-testid={tid("--head")}>
 					<For each={table.getHeaderGroups()}>
-						{(headerGroup) => (
-							<tr data-testid={props.testId ? `${props.testId}--tr` : undefined}>
+						{(headerGroup, index) => (
+							<tr
+								data-testid={tid(`--header-row-${headerGroup.id}`)}
+								data-row-id={headerGroup.id}
+								data-row-index={index()}
+							>
 								<For each={headerGroup.headers}>
 									{(header) => (
-										<th data-testid={props.testId ? `${props.testId}--th` : undefined}>
-											{header.isPlaceholder
-												? null
-												: flexRender(header.column.columnDef.header, header.getContext())}
+										<th data-testid={tid(`--header-cell-${header.id}`)}>
+											<Show when={!header.isPlaceholder} fallback={null}>
+												{flexRender(header.column.columnDef.header, header.getContext())}
+											</Show>
 										</th>
 									)}
 								</For>
@@ -51,17 +61,23 @@ export function DataTable<TData>(props: DataTableProps<TData>) {
 						)}
 					</For>
 				</thead>
-				<tbody data-testid={props.testId ? `${props.testId}--tbody` : undefined}>
-					{table.getRowModel().rows?.length ? (
+				<tbody data-testid={tid("--body")}>
+					<Show when={table.getRowModel().rows?.length}>
 						<For each={table.getRowModel().rows}>
-							{(row) => (
+							{(row, rowIndex) => (
 								<tr
 									data-state={row.getIsSelected() && "selected"}
-									data-testid={props.testId ? `${props.testId}--tr` : undefined}
+									data-testid={tid(`--row-${row.id}`)}
+									data-row-id={row.id}
+									data-row-index={rowIndex()}
 								>
 									<For each={row.getVisibleCells()}>
-										{(cell) => (
-											<td data-testid={props.testId ? `${props.testId}--td` : undefined}>
+										{(cell, cellIndex) => (
+											<td
+												data-testid={tid(`--cell-${cell.id}`)}
+												data-cell-id={cell.id}
+												data-cell-index={cellIndex()}
+											>
 												{flexRender(cell.column.columnDef.cell, cell.getContext())}
 											</td>
 										)}
@@ -69,31 +85,38 @@ export function DataTable<TData>(props: DataTableProps<TData>) {
 								</tr>
 							)}
 						</For>
-					) : (
-						<tr data-testid={props.testId ? `${props.testId}--row` : undefined}>
+					</Show>
+					<Show when={!table.getRowModel().rows?.length}>
+						<tr data-testid={tid("--empty-row")}>
 							<td
 								colSpan={props.columns.length}
-								class="h-24 text-center"
+								data-scope="data-table"
+								data-part="empty"
+								data-testid={tid("--empty")}
 							>
-								No results.
+								<Show when={controlProps.loading}>
+									Loading...
+								</Show>
+								<Show when={!controlProps.loading}>
+									No results.
+								</Show>
 							</td>
 						</tr>
-					)}
+					</Show>
 				</tbody>
 			</Table>
-
-			{controlProps.loading && (
+			<Show when={controlProps.loading}>
 				<div
 					data-scope="data-table"
 					data-part="loading"
-					data-testid={props.testId ? `${props.testId}--loading` : undefined}
+					data-testid={tid("--loading")}
 				>
 					<Loader
 						size="xl"
-						testId={props.testId ? `${props.testId}--loader` : undefined}
+						testId={tid("--loader")}
 					/>
 				</div>
-			)}
+			</Show>
 		</div>
 	);
 }

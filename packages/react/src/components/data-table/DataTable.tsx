@@ -1,5 +1,6 @@
 import { flexRender, getCoreRowModel, useReactTable, type TableOptions } from "@tanstack/react-table";
 import type { DataTableProps as CoreDataTableProps } from "@temporal-ui/core/data-table";
+import { testId as createTestId } from "@temporal-ui/core/utils/string";
 import { Loader } from "../loader";
 import { Table } from "../table";
 
@@ -11,6 +12,8 @@ export interface DataTableProps<TData>
 
 export function DataTable<TData>(props: DataTableProps<TData>) {
 	const { loading, testId, ...tableProps } = props;
+	const tid = createTestId(testId);
+
 	const table = useReactTable({
 		getCoreRowModel: getCoreRowModel(),
 		...tableProps,
@@ -20,20 +23,25 @@ export function DataTable<TData>(props: DataTableProps<TData>) {
 		<div
 			data-scope="data-table"
 			data-part="container"
-			data-testid={testId ? `${testId}--container` : undefined}
+			data-testid={tid("--container")}
 		>
-			<Table testId={testId ? `${testId}--table` : undefined}>
-				<thead data-testid={testId ? `${testId}--thead` : undefined}>
-					{table.getHeaderGroups().map((headerGroup) => (
+			<Table
+				testId={tid("--table")}
+				data-rows={table.getRowModel().rows?.length}
+			>
+				<thead data-testid={tid("--head")}>
+					{table.getHeaderGroups().map((headerGroup, index) => (
 						<tr
 							key={headerGroup.id}
-							data-testid={testId ? `${testId}--tr` : undefined}
+							data-testid={tid(`--header-row-${headerGroup.id}`)}
+							data-row-id={headerGroup.id}
+							data-row-index={index}
 						>
 							{headerGroup.headers.map((header) => {
 								return (
 									<th
 										key={header.id}
-										data-testid={testId ? `${testId}--th` : undefined}
+										data-testid={tid(`--header-cell-${header.id}`)}
 									>
 										{header.isPlaceholder
 											? null
@@ -44,18 +52,22 @@ export function DataTable<TData>(props: DataTableProps<TData>) {
 						</tr>
 					))}
 				</thead>
-				<tbody data-testid={testId ? `${testId}--tbody` : undefined}>
+				<tbody data-testid={tid("--body")}>
 					{table.getRowModel().rows?.length ? (
-						table.getRowModel().rows.map((row) => (
+						table.getRowModel().rows.map((row, rowIndex) => (
 							<tr
 								key={row.id}
 								data-state={row.getIsSelected() && "selected"}
-								data-testid={testId ? `${testId}--tr` : undefined}
+								data-testid={tid(`--row-${row.id}`)}
+								data-row-id={row.id}
+								data-row-index={rowIndex}
 							>
-								{row.getVisibleCells().map((cell) => (
+								{row.getVisibleCells().map((cell, cellIndex) => (
 									<td
 										key={cell.id}
-										data-testid={testId ? `${testId}--td` : undefined}
+										data-testid={tid(`--cell-${cell.id}`)}
+										data-cell-id={cell.id}
+										data-cell-index={cellIndex}
 									>
 										{flexRender(cell.column.columnDef.cell, cell.getContext())}
 									</td>
@@ -63,12 +75,14 @@ export function DataTable<TData>(props: DataTableProps<TData>) {
 							</tr>
 						))
 					) : (
-						<tr data-testid={testId ? `${testId}--row` : undefined}>
+						<tr data-testid={tid("--empty-row")}>
 							<td
 								colSpan={props.columns.length}
-								className="h-24 text-center"
+								data-scope="data-table"
+								data-part="empty"
+								data-testid={tid("--empty")}
 							>
-								No results.
+								{loading ? "Loading..." : "No results."}
 							</td>
 						</tr>
 					)}
@@ -78,11 +92,11 @@ export function DataTable<TData>(props: DataTableProps<TData>) {
 				<div
 					data-scope="data-table"
 					data-part="loading"
-					data-testid={testId ? `${testId}--loading` : undefined}
+					data-testid={tid("--loading")}
 				>
 					<Loader
 						size="xl"
-						testId={testId ? `${testId}--loader` : undefined}
+						testId={tid("--loader")}
 					/>
 				</div>
 			)}

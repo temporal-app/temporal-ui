@@ -6,4 +6,8 @@
 	[data-scope="data-table"][data-part="loading"] {
 		@apply absolute inset-0 flex items-center justify-center bg-background/50 backdrop-blur-xs z-10;
 	}
+
+	[data-scope="data-table"][data-part="empty"] {
+		@apply h-24 text-center;
+	}
 }

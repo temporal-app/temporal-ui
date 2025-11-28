@@ -1,6 +1,6 @@
 {
 	"name": "temporal-ui",
-	"version": "0.1.0",
+	"version": "0.6.3",
 	"private": true,
 	"description": "Monorepo for Temporal UI Design System (React, Solid bindings)",
 	"author": "Temporal",
@@ -18,7 +18,7 @@
 		"check": "turbo run check",
 		"changeset": "bunx @changesets/cli",
 		"version": "bunx @changesets/cli version",
-		"publish": "bunx @changesets/cli publish"
+		"publish": "bun run build && bunx @changesets/cli publish"
 	},
 	"workspaces": [
 		"packages/*"

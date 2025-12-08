@@ -1,33 +1,28 @@
-// noinspection JSUnusedGlobalSymbols
-
-import type { Preview } from '@kachurun/storybook-solid-vite';
-import { withThemeByClassName } from '@storybook/addon-themes';
+import addonA11y from "@storybook/addon-a11y";
+import addonDocs from "@storybook/addon-docs";
+import { definePreview } from "storybook-solidjs-vite";
 import "../src/styles.css";
 
-const preview: Preview = {
-	tags: ['autodocs'],
+export default definePreview({
+	addons: [addonDocs(), addonA11y()],
 	parameters: {
-		// automatically create action args for all props that start with "on"
-		actions: { argTypesRegex: '^on.*' },
+		// automatically create action args for all props that start with 'on'
+		actions: {
+			argTypesRegex: "^on.*",
+		},
 		controls: {
 			matchers: {
 				color: /(background|color)$/i,
-				date: /Date$/,
+				date: /Date$/i,
 			},
 		},
-		docs: {
-			codePanel: true,
+		a11y: {
+			// 'todo' - show a11y violations in the test UI only
+			// 'error' - fail CI on a11y violations
+			// 'off' - skip a11y checks entirely
+			test: "todo",
 		},
 	},
-	decorators: [
-		withThemeByClassName({
-			themes: {
-				light: "light",
-				dark: "dark",
-			},
-			defaultTheme: "light",
-		}),
-	]
-};
-
-export default preview;
+	// All components will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
+	// tags: ['autodocs'],
+});

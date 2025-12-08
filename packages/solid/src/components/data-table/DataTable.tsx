@@ -38,7 +38,7 @@ export function DataTable<TData>(props: DataTableProps<TData>) {
 		>
 			<Table
 				testId={tid("--table")}
-				data-rows={table.getRowModel().rows?.length}
+				data-rows={controlProps.loading ? undefined : table.getRowModel().rows?.length}
 			>
 				<thead data-testid={tid("--head")}>
 					<For each={table.getHeaderGroups()}>

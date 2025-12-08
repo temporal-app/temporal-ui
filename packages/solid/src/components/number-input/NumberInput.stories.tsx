@@ -1,9 +1,9 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
 import { DollarSign } from "lucide-solid";
-import { NumberInput } from "./";
 import { createSignal } from "solid-js";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
+import { NumberInput, type NumberInputProps } from "./";
 
 const meta = {
 	title: "Solid/Number Input",
@@ -34,7 +34,7 @@ export const ControlledExample: Story = {
 		step: 1,
 		hint: "We'll never share your bonus points with anyone else.",
 	},
-	render: (args) => {
+	render: (args: NumberInputProps) => {
 		const [value, setValue] = createSignal(75);
 		return (
 			<NumberInput

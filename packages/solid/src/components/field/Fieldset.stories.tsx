@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
-import { Fieldset } from "./Fieldset";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { TextInput } from "../text-input";
+import { Fieldset } from "./Fieldset";
 
 const meta: Meta<typeof Fieldset> = {
 	title: "Solid/Fieldset",
@@ -19,8 +19,14 @@ export const Basic: Story = {
 	},
 	render: (props) => (
 		<Fieldset {...props}>
-			<TextInput label="First Name" name="firstName" />
-			<TextInput label="Last Name" name="lastName" />
+			<TextInput
+				label="First Name"
+				name="firstName"
+			/>
+			<TextInput
+				label="Last Name"
+				name="lastName"
+			/>
 		</Fieldset>
 	),
 };
@@ -33,8 +39,14 @@ export const Disabled: Story = {
 	},
 	render: (props) => (
 		<Fieldset {...props}>
-			<TextInput label="Username" name="username" />
-			<TextInput label="Email" name="email" />
+			<TextInput
+				label="Username"
+				name="username"
+			/>
+			<TextInput
+				label="Email"
+				name="email"
+			/>
 		</Fieldset>
 	),
 };
@@ -47,8 +59,11 @@ export const WithError: Story = {
 	},
 	render: (props) => (
 		<Fieldset {...props}>
-			<TextInput label="Phone" name="phone" error="Required" />
+			<TextInput
+				label="Phone"
+				name="phone"
+				error="Required"
+			/>
 		</Fieldset>
 	),
 };
-

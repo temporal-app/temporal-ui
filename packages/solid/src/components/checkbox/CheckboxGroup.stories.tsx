@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { fn } from "storybook/test";
 import type { CheckboxGroupItem } from "./CheckboxGroup";
 import { CheckboxGroup } from "./CheckboxGroup";
@@ -8,7 +8,7 @@ import { CheckboxGroup } from "./CheckboxGroup";
 const meta = {
 	title: "Solid/CheckboxGroup",
 	component: CheckboxGroup,
-	tags: [ "autodocs" ],
+	tags: ["autodocs"],
 	args: { onValuesChange: fn() },
 	argTypes: {
 		disabled: {
@@ -56,7 +56,7 @@ export const WithDefaultValues: Story = {
 	args: {
 		name: "fruits-default",
 		items: sampleItems,
-		defaultValues: [ "apple", "cherry" ],
+		defaultValues: ["apple", "cherry"],
 	},
 };
 
@@ -64,7 +64,7 @@ export const WithControlledValues: Story = {
 	args: {
 		name: "fruits-controlled",
 		items: sampleItems,
-		values: [ "banana", "date" ],
+		values: ["banana", "date"],
 	},
 };
 
@@ -81,7 +81,7 @@ export const ReadOnly: Story = {
 		...Default.args,
 		name: "fruits-readonly",
 		readOnly: true,
-		defaultValues: [ "apple" ],
+		defaultValues: ["apple"],
 	},
 };
 
@@ -126,6 +126,6 @@ export const ManyOptions: Story = {
 			{ label: "Kotlin", value: "kotlin" },
 			{ label: "Ruby", value: "ruby" },
 		],
-		defaultValues: [ "typescript", "python" ],
+		defaultValues: ["typescript", "python"],
 	},
 };

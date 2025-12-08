@@ -1,13 +1,13 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { fn } from "storybook/test";
 import { RadioGroup, type RadioGroupItem } from "./RadioGroup";
 
 const meta = {
 	title: "Solid/Radio Group",
 	component: RadioGroup,
-	tags: [ "autodocs" ],
+	tags: ["autodocs"],
 	args: { onValueChange: fn() },
 	argTypes: {
 		disabled: {
@@ -24,7 +24,7 @@ const meta = {
 		},
 		items: {
 			control: "object",
-		}
+		},
 	},
 } satisfies Meta<typeof RadioGroup>;
 
@@ -41,7 +41,7 @@ const sampleItems: RadioGroupItem[] = [
 export const Default: Story = {
 	args: {
 		items: sampleItems,
-		defaultValue: "apple"
+		defaultValue: "apple",
 	},
 };
 
@@ -49,7 +49,7 @@ export const Horizontal: Story = {
 	args: {
 		...Default.args,
 		items: sampleItems,
-		orientation: 'horizontal'
+		orientation: "horizontal",
 	},
 };
 

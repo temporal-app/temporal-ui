@@ -1,19 +1,18 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { Stack, type StackProps } from "./Stack";
 
 const meta = {
 	title: "Solid/Stack",
 	component: Stack,
-	tags: [ "autodocs" ],
+	tags: ["autodocs"],
 } satisfies Meta<typeof Stack>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-
-const Block = (props: StackProps)=> {
+const Block = (props: StackProps) => {
 	return (
 		<Stack
 			h={40}
@@ -23,8 +22,8 @@ const Block = (props: StackProps)=> {
 				background: "repeating-linear-gradient(45deg, #ccc, #ccc 10px, #eee 10px, #eee 20px)",
 			}}
 		/>
-	)
-}
+	);
+};
 
 const Wrapper = (props: StackProps) => {
 	return (
@@ -35,145 +34,195 @@ const Wrapper = (props: StackProps) => {
 				border: "2px solid oklch(67.3% 0.182 276.935)",
 			}}
 		/>
-	)
-}
+	);
+};
 
 export const Centered: Story = {
 	render: () => (
 		<Wrapper center>
-			<Block w={50}/>
+			<Block w={50} />
 		</Wrapper>
 	),
-}
+};
 
 export const GapVertical: Story = {
 	render: () => (
-		<Wrapper gap={4} h={150}>
+		<Wrapper
+			gap={4}
+			h={150}
+		>
 			<Block h={20} />
 			<Block h={20} />
 			<Block h={20} />
 			<Block h={20} />
 		</Wrapper>
 	),
-}
+};
 
 export const GapHorizontal: Story = {
 	render: () => (
-		<Wrapper row gap={4}>
+		<Wrapper
+			row
+			gap={4}
+		>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 		</Wrapper>
 	),
-}
+};
 
 export const AlignStart: Story = {
 	render: () => (
-		<Wrapper row gap={4} align={"flex-start"} h={120}>
+		<Wrapper
+			row
+			gap={4}
+			align={"flex-start"}
+			h={120}
+		>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 		</Wrapper>
 	),
-}
+};
 
 export const AlignCenter: Story = {
 	render: () => (
-		<Wrapper row gap={4} align={"center"} h={120}>
+		<Wrapper
+			row
+			gap={4}
+			align={"center"}
+			h={120}
+		>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 		</Wrapper>
 	),
-}
+};
 
 export const AlignStretch: Story = {
 	render: () => (
-		<Wrapper row gap={4} align={"stretch"} h={120}>
+		<Wrapper
+			row
+			gap={4}
+			align={"stretch"}
+			h={120}
+		>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 		</Wrapper>
 	),
-}
+};
 
 export const AlignEnd: Story = {
 	render: () => (
-		<Wrapper row gap={4} align={"flex-end"} h={120}>
+		<Wrapper
+			row
+			gap={4}
+			align={"flex-end"}
+			h={120}
+		>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 		</Wrapper>
 	),
-}
+};
 
 export const JustifyStart: Story = {
 	render: () => (
-		<Wrapper row gap={4} justify={"flex-start"}>
+		<Wrapper
+			row
+			gap={4}
+			justify={"flex-start"}
+		>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 		</Wrapper>
 	),
-}
+};
 
 export const JustifyCenter: Story = {
 	render: () => (
-		<Wrapper row gap={4} justify={"center"}>
+		<Wrapper
+			row
+			gap={4}
+			justify={"center"}
+		>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 		</Wrapper>
 	),
-}
+};
 
 export const JustifyEvenly: Story = {
 	render: () => (
-		<Wrapper row gap={4} justify={"space-evenly"}>
+		<Wrapper
+			row
+			gap={4}
+			justify={"space-evenly"}
+		>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 		</Wrapper>
 	),
-}
+};
 
 export const JustifyBetween: Story = {
 	render: () => (
-		<Wrapper row gap={4} justify={"space-between"}>
+		<Wrapper
+			row
+			gap={4}
+			justify={"space-between"}
+		>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 		</Wrapper>
 	),
-}
+};
 
 export const JustifyAround: Story = {
 	render: () => (
-		<Wrapper row gap={4} justify={"space-around"}>
+		<Wrapper
+			row
+			gap={4}
+			justify={"space-around"}
+		>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 		</Wrapper>
 	),
-}
+};
 
 export const JustifyEnd: Story = {
 	render: () => (
-		<Wrapper row gap={4} justify={"flex-end"}>
+		<Wrapper
+			row
+			gap={4}
+			justify={"flex-end"}
+		>
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 			<Block w={80} />
 		</Wrapper>
 	),
-}
+};

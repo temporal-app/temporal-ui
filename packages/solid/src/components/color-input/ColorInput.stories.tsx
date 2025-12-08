@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { ColorInput } from "./ColorInput";
 
 const meta = {

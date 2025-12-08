@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
-import { Separator } from "./Separator";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
+import { Separator, type SeparatorProps } from "./Separator";
 
 const meta = {
 	title: "Solid/Separator",
@@ -18,9 +18,9 @@ export const Vertical: Story = {
 	args: {
 		orientation: "vertical",
 	},
-	render: (args) => (
+	render: (args: SeparatorProps) => (
 		<div style={{ height: "200px" }}>
 			Item 1 <Separator {...args} /> Item 2
 		</div>
-	)
+	),
 };

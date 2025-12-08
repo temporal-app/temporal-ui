@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { Button } from "../button";
 import { Stack } from "../stack";
 import { TextInput } from "../text-input";
@@ -9,7 +9,7 @@ import { Card } from "./Card";
 const meta = {
 	title: "Solid/Card",
 	component: Card,
-	tags: [ "autodocs" ],
+	tags: ["autodocs"],
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -30,8 +30,8 @@ export const Default: Story = {
 					<p>Card Footer</p>
 				</footer>
 			</>
-		)
-	}
+		),
+	},
 };
 
 export const LoginForm: Story = {
@@ -46,19 +46,31 @@ export const LoginForm: Story = {
 				<section>
 					<Stack gap={6}>
 						<TextInput label={"Email"} />
-						<TextInput label={"Password"} type={"password"} />
+						<TextInput
+							label={"Password"}
+							type={"password"}
+						/>
 					</Stack>
 				</section>
 				<footer>
-					<Stack gap={2} className={"w-full"}>
+					<Stack
+						gap={2}
+						className={"w-full"}
+					>
 						<Button>Login</Button>
 						<Button variant={"secondary"}>Login with Google</Button>
 						<p class="mt-4 text-center text-sm">
-							Don't have an account? <a href="#123" class="underline-offset-4 hover:underline">Sign up</a>
+							Don't have an account?{" "}
+							<a
+								href="#123"
+								class="underline-offset-4 hover:underline"
+							>
+								Sign up
+							</a>
 						</p>
 					</Stack>
 				</footer>
 			</>
-		)
-	}
+		),
+	},
 };

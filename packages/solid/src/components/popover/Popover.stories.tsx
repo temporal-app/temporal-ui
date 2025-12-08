@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { fn } from "storybook/test";
 import { Button } from "../button";
 import { Stack } from "../stack";
@@ -10,39 +10,35 @@ import { Popover } from "./Popover";
 const meta = {
 	title: "Solid/Popover",
 	component: Popover,
-	tags: [ "autodocs" ],
+	tags: ["autodocs"],
 	args: { onOpenChange: fn() },
 	argTypes: {
 		position: {
-			control: "object"
-		}, 
+			control: "object",
+		},
 		modal: {
-			control: "boolean"
+			control: "boolean",
 		},
 		autoFocus: {
-			control: "boolean"
+			control: "boolean",
 		},
 		closeOnEscape: {
-			control: "boolean"
+			control: "boolean",
 		},
 		closeOnInteractOutside: {
-			control: "boolean"
+			control: "boolean",
 		},
 		defaultOpen: {
-			control: "boolean"
-		}
-	}
+			control: "boolean",
+		},
+	},
 } satisfies Meta<typeof Popover>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 function SampleTrigger(props: Record<string, unknown>) {
-	return (
-		<Button {...props}>
-			Open Popover
-		</Button>
-	);
+	return <Button {...props}>Open Popover</Button>;
 }
 
 function SampleForm() {
@@ -64,16 +60,16 @@ function SampleForm() {
 export const Default: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
-		p: 3
+		p: 3,
 	},
-	render: () => <SampleForm />
+	render: () => <SampleForm />,
 };
 
 export const WithTitle: Story = {
 	args: {
 		...Default.args,
 		title: "Enter your details to continue",
-	}
+	},
 };
 
 export const WithTitleAndDescription: Story = {
@@ -81,7 +77,7 @@ export const WithTitleAndDescription: Story = {
 		...Default.args,
 		title: "Settings",
 		description: "Configure your preferences below",
-	}
+	},
 };
 
 export const PositionTop: Story = {
@@ -89,9 +85,9 @@ export const PositionTop: Story = {
 		...Default.args,
 		title: "Top Positioned",
 		position: {
-			placement: "top"
+			placement: "top",
 		},
-	}
+	},
 };
 
 export const PositionRight: Story = {
@@ -99,9 +95,9 @@ export const PositionRight: Story = {
 		...Default.args,
 		title: "Right Positioned",
 		position: {
-			placement: "right"
+			placement: "right",
 		},
-	}
+	},
 };
 
 export const PositionLeft: Story = {
@@ -109,9 +105,9 @@ export const PositionLeft: Story = {
 		...Default.args,
 		title: "Left Positioned",
 		position: {
-			placement: "left"
+			placement: "left",
 		},
-	}
+	},
 };
 
 export const Modal: Story = {
@@ -119,7 +115,7 @@ export const Modal: Story = {
 		...Default.args,
 		title: "Modal Popover",
 		modal: true,
-	}
+	},
 };
 
 export const NoAutoFocus: Story = {
@@ -127,7 +123,7 @@ export const NoAutoFocus: Story = {
 		...Default.args,
 		title: "No Auto Focus",
 		autoFocus: false,
-	}
+	},
 };
 
 export const NoEscapeClose: Story = {
@@ -135,7 +131,7 @@ export const NoEscapeClose: Story = {
 		...Default.args,
 		title: "No Escape Close",
 		closeOnEscape: false,
-	}
+	},
 };
 
 export const NoOutsideClose: Story = {
@@ -143,7 +139,7 @@ export const NoOutsideClose: Story = {
 		...Default.args,
 		title: "No Outside Close",
 		closeOnInteractOutside: false,
-	}
+	},
 };
 
 export const DefaultOpen: Story = {
@@ -151,7 +147,7 @@ export const DefaultOpen: Story = {
 		...Default.args,
 		title: "Default Open",
 		defaultOpen: true,
-	}
+	},
 };
 
 export const WithOffset: Story = {
@@ -162,8 +158,8 @@ export const WithOffset: Story = {
 			placement: "bottom",
 			offset: {
 				mainAxis: 20,
-				crossAxis: 10
-			}
+				crossAxis: 10,
+			},
 		},
-	}
+	},
 };

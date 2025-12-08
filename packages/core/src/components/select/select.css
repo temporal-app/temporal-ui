@@ -1,7 +1,7 @@
 @layer components {
 	[data-scope="combobox"][data-part="control"],
 	[data-scope="select"][data-part="control"] {
-		@apply inline-flex items-center w-fit [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:hover:bg-input/50 justify-between rounded-md border bg-transparent text-sm whitespace-nowrap shadow-xs transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50;
+		@apply inline-flex items-center w-fit [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:hover:bg-input/50 justify-between rounded-md border bg-transparent text-sm whitespace-nowrap shadow-xs transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 h-9;
 	}
 
 	[data-scope="combobox"][data-part="value-text"],
@@ -11,7 +11,7 @@
 
 	[data-scope="combobox"][data-part="trigger"],
 	[data-scope="select"][data-part="trigger"] {
-		@apply flex items-center gap-2 pl-3 pr-2 h-9 data-placeholder-shown:text-muted-foreground w-full;
+		@apply flex items-center h-full gap-2 pl-3 pr-2 data-placeholder-shown:text-muted-foreground w-full;
 	}
 
 	[data-scope="combobox"][data-part="clear-trigger"],
@@ -59,7 +59,7 @@
 		}
 
 		[data-part="item"] {
-			@apply [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4;
+			@apply [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4;
 
 			&[data-highlighted] {
 				@apply bg-accent text-accent-foreground;

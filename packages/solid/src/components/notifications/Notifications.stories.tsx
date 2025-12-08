@@ -1,22 +1,22 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { fn } from "storybook/test";
 import { Button } from "../button";
 import { Stack } from "../stack";
-import { Notifications, showNotification } from "./Notifications";
+import { Notifications, showNotification, type NotificationsProps } from "./Notifications";
 
 const meta = {
 	title: "Solid/Notifications",
 	component: Notifications,
-	tags: [ "autodocs" ],
+	tags: ["autodocs"],
 	parameters: {
 		layout: "fullscreen",
 	},
 	argTypes: {
 		placement: {
 			control: "radio",
-			options: [ "top-start", "top-end", "bottom-start", "bottom-end" ],
+			options: ["top-start", "top-end", "bottom-start", "bottom-end"],
 		},
 		max: {
 			control: { type: "number", min: 1, max: 20 },
@@ -36,10 +36,16 @@ export const Default: Story = {
 		max: 10,
 		gap: 12,
 	},
-	render: (args) => (
-		<Stack p={5} h={600}>
+	render: (args: NotificationsProps) => (
+		<Stack
+			p={5}
+			h={600}
+		>
 			<Notifications {...args} />
-			<Stack row gap={2}>
+			<Stack
+				row
+				gap={2}
+			>
 				<Button
 					onClick={() =>
 						showNotification({
@@ -98,8 +104,12 @@ export const WithAction: Story = {
 		max: 5,
 		gap: 10,
 	},
-	render: (args) => (
-		<Stack p={5} h={600} row>
+	render: (args: NotificationsProps) => (
+		<Stack
+			p={5}
+			h={600}
+			row
+		>
 			<Notifications {...args} />
 			<Stack gap={2}>
 				<Button
@@ -129,8 +139,12 @@ export const TopStart: Story = {
 		max: 5,
 		gap: 10,
 	},
-	render: (args) => (
-		<Stack p={5} h={600} row>
+	render: (args: NotificationsProps) => (
+		<Stack
+			p={5}
+			h={600}
+			row
+		>
 			<Notifications {...args} />
 			<Stack gap={2}>
 				<Button
@@ -155,8 +169,12 @@ export const TopEnd: Story = {
 		max: 5,
 		gap: 10,
 	},
-	render: (args) => (
-		<Stack p={5} h={600} row>
+	render: (args: NotificationsProps) => (
+		<Stack
+			p={5}
+			h={600}
+			row
+		>
 			<Notifications {...args} />
 			<Stack gap={2}>
 				<Button
@@ -181,8 +199,12 @@ export const BottomStart: Story = {
 		max: 5,
 		gap: 10,
 	},
-	render: (args) => (
-		<Stack p={5} h={600} row>
+	render: (args: NotificationsProps) => (
+		<Stack
+			p={5}
+			h={600}
+			row
+		>
 			<Notifications {...args} />
 			<Stack gap={2}>
 				<Button
@@ -207,8 +229,12 @@ export const BottomEnd: Story = {
 		max: 5,
 		gap: 10,
 	},
-	render: (args) => (
-		<Stack p={5} h={600} row>
+	render: (args: NotificationsProps) => (
+		<Stack
+			p={5}
+			h={600}
+			row
+		>
 			<Notifications {...args} />
 			<Stack gap={2}>
 				<Button
@@ -227,23 +253,29 @@ export const BottomEnd: Story = {
 	),
 };
 
-
-
 export const LongDescription: Story = {
 	args: {
 		placement: "bottom-end",
 		max: 5,
 		gap: 10,
 	},
-	render: (args) => (
-		<Stack p={5} h={600} row>
+	render: (args: NotificationsProps) => (
+		<Stack
+			p={5}
+			h={600}
+			row
+		>
 			<Notifications {...args} />
-			<Stack gap={2} row>
+			<Stack
+				gap={2}
+				row
+			>
 				<Button
 					onClick={() =>
 						showNotification({
 							title: "Long Description",
-							message: "This notification has a really really long description that should wrap around to the next line, and maybe even more lines.",
+							message:
+								"This notification has a really really long description that should wrap around to the next line, and maybe even more lines.",
 							type: "info",
 						})
 					}
@@ -261,8 +293,12 @@ export const MultipleNotifications: Story = {
 		max: 3,
 		gap: 15,
 	},
-	render: (args) => (
-		<Stack p={5} h={600} row>
+	render: (args: NotificationsProps) => (
+		<Stack
+			p={5}
+			h={600}
+			row
+		>
 			<Notifications {...args} />
 			<Stack gap={2}>
 				<Button
@@ -301,8 +337,12 @@ export const CustomDuration: Story = {
 		max: 10,
 		gap: 12,
 	},
-	render: (args) => (
-		<Stack p={5} h={600} row>
+	render: (args: NotificationsProps) => (
+		<Stack
+			p={5}
+			h={600}
+			row
+		>
 			<Notifications {...args} />
 			<Stack gap={2}>
 				<Button
@@ -352,11 +392,17 @@ export const AllTypes: Story = {
 		max: 10,
 		gap: 12,
 	},
-	render: (args) => (
-		<Stack p={5} h={600}>
+	render: (args: NotificationsProps) => (
+		<Stack
+			p={5}
+			h={600}
+		>
 			<Notifications {...args} />
 			<Stack gap={2}>
-				<Stack row gap={2}>
+				<Stack
+					row
+					gap={2}
+				>
 					<Button
 						onClick={() =>
 							showNotification({
@@ -382,7 +428,10 @@ export const AllTypes: Story = {
 					</Button>
 				</Stack>
 
-				<Stack row gap={2}>
+				<Stack
+					row
+					gap={2}
+				>
 					<Button
 						onClick={() =>
 							showNotification({
@@ -408,7 +457,10 @@ export const AllTypes: Story = {
 					</Button>
 				</Stack>
 
-				<Stack row gap={2}>
+				<Stack
+					row
+					gap={2}
+				>
 					<Button
 						onClick={() =>
 							showNotification({
@@ -434,7 +486,10 @@ export const AllTypes: Story = {
 					</Button>
 				</Stack>
 
-				<Stack row gap={2}>
+				<Stack
+					row
+					gap={2}
+				>
 					<Button
 						onClick={() =>
 							showNotification({
@@ -460,7 +515,10 @@ export const AllTypes: Story = {
 					</Button>
 				</Stack>
 
-				<Stack row gap={2}>
+				<Stack
+					row
+					gap={2}
+				>
 					<Button
 						onClick={() =>
 							showNotification({
@@ -486,7 +544,10 @@ export const AllTypes: Story = {
 					</Button>
 				</Stack>
 
-				<Stack row gap={2}>
+				<Stack
+					row
+					gap={2}
+				>
 					<Button
 						onClick={() =>
 							showNotification({

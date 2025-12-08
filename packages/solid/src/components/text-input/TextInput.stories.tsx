@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
 import { AtSign } from "lucide-solid";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { TextInput } from "./TextInput";
 
 const meta = {

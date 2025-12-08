@@ -1,13 +1,13 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
 import { ArrowRight, Trash } from "lucide-solid";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { Badge } from "./Badge";
 
 const meta = {
 	title: "Solid/Badge",
 	component: Badge,
-	tags: [ "autodocs" ],
+	tags: ["autodocs"],
 } satisfies Meta<typeof Badge>;
 
 export default meta;
@@ -15,29 +15,29 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
 	args: {
-		children: "Primary"
-	}
+		children: "Primary",
+	},
 };
 
 export const Secondary: Story = {
 	args: {
 		variant: "secondary",
-		children: "Secondary"
-	}
+		children: "Secondary",
+	},
 };
 
 export const Destructive: Story = {
 	args: {
 		variant: "destructive",
-		children: "Destructive"
-	}
+		children: "Destructive",
+	},
 };
 
 export const Outline: Story = {
 	args: {
 		variant: "outline",
-		children: "Outline"
-	}
+		children: "Outline",
+	},
 };
 
 export const StartIcon: Story = {
@@ -45,11 +45,11 @@ export const StartIcon: Story = {
 		variant: "destructive",
 		children: (
 			<>
-				<Trash/>
+				<Trash />
 				Delete
 			</>
-		)
-	}
+		),
+	},
 };
 
 export const EndIcon: Story = {
@@ -60,6 +60,6 @@ export const EndIcon: Story = {
 				Open
 				<ArrowRight />
 			</>
-		)
-	}
+		),
+	},
 };

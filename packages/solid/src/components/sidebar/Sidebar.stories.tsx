@@ -1,13 +1,13 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { Box } from "../box";
+import { data } from "./examples/data";
 import { NavMain } from "./examples/NavMain";
 import { NavProjects } from "./examples/NavProjects";
 import { NavUser } from "./examples/NavUser";
 import { TeamSwitcher } from "./examples/TeamSwitcher";
-import { data } from "./examples/data";
-import { Sidebar } from "./Sidebar";
+import { Sidebar, type SidebarProps } from "./Sidebar";
 import { SidebarContent, SidebarFooter, SidebarHeader, SidebarInset } from "./SidebarComponent";
 import { SidebarProvider } from "./SidebarProvider";
 import { SidebarRail } from "./SidebarRail";
@@ -43,9 +43,7 @@ type Story = StoryObj<typeof meta>;
 
 function AppSidebar(props: Parameters<typeof Sidebar>[0]) {
 	return (
-		<Sidebar
-			{...props}
-		>
+		<Sidebar {...props}>
 			<SidebarHeader>
 				<TeamSwitcher teams={data.teams} />
 			</SidebarHeader>
@@ -67,7 +65,7 @@ export const Default: Story = {
 		variant: "sidebar",
 		collapsible: "icon",
 	},
-	render: (args) => (
+	render: (args: SidebarProps) => (
 		<Box class="">
 			<SidebarProvider class="">
 				<AppSidebar {...args} />

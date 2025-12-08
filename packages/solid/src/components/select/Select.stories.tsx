@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
+import { Banana } from "lucide-solid";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { createListCollection } from ".";
 import { Select } from "./Select";
-import { Banana } from "lucide-solid";
 
 const meta = {
 	title: "Solid/Select",

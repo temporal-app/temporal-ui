@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
 import type { ColumnDef } from "@tanstack/solid-table";
-import { DataTable } from "./DataTable";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
+import { DataTable, type DataTableProps } from "./";
 
 type Person = {
 	name: string;
@@ -34,7 +34,7 @@ const columns: ColumnDef<Person>[] = [
 
 export const Default: Story = {
 	args: { columns, data },
-	render: (args) => <DataTable<Person> {...args} />,
+	render: (args: DataTableProps<Person>) => <DataTable<Person> {...args} />,
 };
 
 export const Loading: Story = {

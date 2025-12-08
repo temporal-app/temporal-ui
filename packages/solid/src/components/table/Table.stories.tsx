@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
 import { For } from "solid-js";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { Table } from "./Table";
 
 const meta = {

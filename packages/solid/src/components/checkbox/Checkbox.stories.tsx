@@ -1,13 +1,13 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { fn } from "storybook/test";
 import { Checkbox } from "./Checkbox";
 
 const meta = {
 	title: "Solid/Checkbox",
 	component: Checkbox,
-	tags: [ "autodocs" ],
+	tags: ["autodocs"],
 	args: { onCheckedChange: fn() },
 	argTypes: {
 		disabled: {
@@ -18,9 +18,9 @@ const meta = {
 			control: {
 				type: "select",
 			},
-			options: [ undefined, true, false, "indeterminate" ],
-		}
-	}
+			options: [undefined, true, false, "indeterminate"],
+		},
+	},
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;
@@ -35,7 +35,7 @@ export const Default: Story = {
 export const Disabled: Story = {
 	args: {
 		...Default.args,
-		disabled: true
+		disabled: true,
 	},
 };
 

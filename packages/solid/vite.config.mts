@@ -1,15 +1,16 @@
-/// <reference types="vitest" />
-/// <reference types="vite/client" />
-
+/// <reference types="vitest/config" />
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import solid from "vite-plugin-solid";
 
 export default defineConfig({
 	plugins: [solid(), tailwindcss()],
+	define: {
+		"process.env": {},
+	},
 	test: {
 		globals: true,
 		environment: "jsdom",
-		setupFiles: ["./node_modules/@testing-library/jest-dom/vitest", "./vitest.setup.ts"],
+		setupFiles: ["./vitest.setup.ts"],
 	},
 });

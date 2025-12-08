@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
 import { CreditCard, LogOut, Settings, UserIcon, UserPlus, UsersIcon } from "lucide-solid";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { fn } from "storybook/test";
 import { Button } from "../button";
 import { Menu } from "./Menu";
@@ -15,19 +15,19 @@ import { MenuRadioItemGroup } from "./MenuRadioItemGroup";
 const meta = {
 	title: "Solid/Menu",
 	component: Menu,
-	tags: [ "autodocs" ],
+	tags: ["autodocs"],
 	args: {
 		className: "min-w-32",
-		onSelect: fn()
+		onSelect: fn(),
 	},
 	argTypes: {
 		position: {
-			control: "object"
+			control: "object",
 		},
 		closeOnSelect: {
-			control: "boolean"
-		}
-	}
+			control: "boolean",
+		},
+	},
 } satisfies Meta<typeof Menu>;
 
 export default meta;
@@ -35,7 +35,10 @@ type Story = StoryObj<typeof meta>;
 
 function SampleTrigger(props: Record<string, unknown>) {
 	return (
-		<Button variant="outline" {...props}>
+		<Button
+			variant="outline"
+			{...props}
+		>
 			Open Menu
 		</Button>
 	);
@@ -114,16 +117,58 @@ function SampleCheckboxMenuItems() {
 	return (
 		<>
 			<MenuItemGroup label="View Options">
-				<MenuCheckboxItem value="sidebar" checked={true} onCheckedChange={fn()}>Show Sidebar</MenuCheckboxItem>
-				<MenuCheckboxItem value="toolbar" checked={false} onCheckedChange={fn()}>Show Toolbar</MenuCheckboxItem>
-				<MenuCheckboxItem value="statusbar" checked={true} onCheckedChange={fn()}>Show Status Bar</MenuCheckboxItem>
-				<MenuCheckboxItem value="minimap" checked={false} onCheckedChange={fn()}>Show Minimap</MenuCheckboxItem>
+				<MenuCheckboxItem
+					value="sidebar"
+					checked={true}
+					onCheckedChange={fn()}
+				>
+					Show Sidebar
+				</MenuCheckboxItem>
+				<MenuCheckboxItem
+					value="toolbar"
+					checked={false}
+					onCheckedChange={fn()}
+				>
+					Show Toolbar
+				</MenuCheckboxItem>
+				<MenuCheckboxItem
+					value="statusbar"
+					checked={true}
+					onCheckedChange={fn()}
+				>
+					Show Status Bar
+				</MenuCheckboxItem>
+				<MenuCheckboxItem
+					value="minimap"
+					checked={false}
+					onCheckedChange={fn()}
+				>
+					Show Minimap
+				</MenuCheckboxItem>
 			</MenuItemGroup>
 			<MenuItemSeparator />
 			<MenuItemGroup label="Editor Options">
-				<MenuCheckboxItem value="wordwrap" checked={false} onCheckedChange={fn()}>Word Wrap</MenuCheckboxItem>
-				<MenuCheckboxItem value="linenumbers" checked={true} onCheckedChange={fn()}>Line Numbers</MenuCheckboxItem>
-				<MenuCheckboxItem value="autocomplete" checked={true} onCheckedChange={fn()}>Auto Complete</MenuCheckboxItem>
+				<MenuCheckboxItem
+					value="wordwrap"
+					checked={false}
+					onCheckedChange={fn()}
+				>
+					Word Wrap
+				</MenuCheckboxItem>
+				<MenuCheckboxItem
+					value="linenumbers"
+					checked={true}
+					onCheckedChange={fn()}
+				>
+					Line Numbers
+				</MenuCheckboxItem>
+				<MenuCheckboxItem
+					value="autocomplete"
+					checked={true}
+					onCheckedChange={fn()}
+				>
+					Auto Complete
+				</MenuCheckboxItem>
 			</MenuItemGroup>
 		</>
 	);
@@ -132,13 +177,21 @@ function SampleCheckboxMenuItems() {
 function SampleRadioMenuItems() {
 	return (
 		<>
-			<MenuRadioItemGroup label="Theme" value="light" onValueChange={() => fn()}>
+			<MenuRadioItemGroup
+				label="Theme"
+				value="light"
+				onValueChange={() => fn()}
+			>
 				<MenuRadioItem value="light">Light Theme</MenuRadioItem>
 				<MenuRadioItem value="dark">Dark Theme</MenuRadioItem>
 				<MenuRadioItem value="auto">Auto</MenuRadioItem>
 			</MenuRadioItemGroup>
 			<MenuItemSeparator />
-			<MenuRadioItemGroup label="Font Size" value="medium" onValueChange={() => fn()}>
+			<MenuRadioItemGroup
+				label="Font Size"
+				value="medium"
+				onValueChange={() => fn()}
+			>
 				<MenuRadioItem value="small">Small</MenuRadioItem>
 				<MenuRadioItem value="medium">Medium</MenuRadioItem>
 				<MenuRadioItem value="large">Large</MenuRadioItem>
@@ -155,11 +208,27 @@ function SampleMixedMenuItems() {
 			<MenuItem value="open">Open File</MenuItem>
 			<MenuItemSeparator />
 			<MenuItemGroup label="View">
-				<MenuCheckboxItem value="sidebar" checked={true} onCheckedChange={fn()}>Show Sidebar</MenuCheckboxItem>
-				<MenuCheckboxItem value="minimap" checked={false} onCheckedChange={fn()}>Show Minimap</MenuCheckboxItem>
+				<MenuCheckboxItem
+					value="sidebar"
+					checked={true}
+					onCheckedChange={fn()}
+				>
+					Show Sidebar
+				</MenuCheckboxItem>
+				<MenuCheckboxItem
+					value="minimap"
+					checked={false}
+					onCheckedChange={fn()}
+				>
+					Show Minimap
+				</MenuCheckboxItem>
 			</MenuItemGroup>
 			<MenuItemSeparator />
-			<MenuRadioItemGroup label="Theme" value="dark" onValueChange={() => fn()}>
+			<MenuRadioItemGroup
+				label="Theme"
+				value="dark"
+				onValueChange={() => fn()}
+			>
 				<MenuRadioItem value="light">Light</MenuRadioItem>
 				<MenuRadioItem value="dark">Dark</MenuRadioItem>
 			</MenuRadioItemGroup>
@@ -173,73 +242,73 @@ export const Default: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => <SampleMenuItems />
+	render: () => <SampleMenuItems />,
 };
 
 export const WithGroups: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => <SampleComplexMenuItems />
+	render: () => <SampleComplexMenuItems />,
 };
 
 export const UserMenu: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => <SampleFormMenuItems />
+	render: () => <SampleFormMenuItems />,
 };
 
 export const PositionTop: Story = {
 	args: {
 		...Default.args,
 		position: {
-			placement: "top"
-		}
-	}
+			placement: "top",
+		},
+	},
 };
 
 export const PositionRight: Story = {
 	args: {
 		...Default.args,
 		position: {
-			placement: "right"
-		}
-	}
+			placement: "right",
+		},
+	},
 };
 
 export const PositionLeft: Story = {
 	args: {
 		...Default.args,
 		position: {
-			placement: "left"
-		}
-	}
+			placement: "left",
+		},
+	},
 };
 
 export const PositionTopStart: Story = {
 	args: {
 		...Default.args,
 		position: {
-			placement: "top-start"
-		}
-	}
+			placement: "top-start",
+		},
+	},
 };
 
 export const PositionBottomEnd: Story = {
 	args: {
 		...Default.args,
 		position: {
-			placement: "bottom-end"
-		}
-	}
+			placement: "bottom-end",
+		},
+	},
 };
 
 export const NoAutoClose: Story = {
 	args: {
 		...Default.args,
-		closeOnSelect: false
-	}
+		closeOnSelect: false,
+	},
 };
 
 export const WithOffset: Story = {
@@ -249,10 +318,10 @@ export const WithOffset: Story = {
 			placement: "bottom-start",
 			offset: {
 				mainAxis: 10,
-				crossAxis: 5
-			}
-		}
-	}
+				crossAxis: 5,
+			},
+		},
+	},
 };
 
 export const SingleItems: Story = {
@@ -265,7 +334,7 @@ export const SingleItems: Story = {
 			<MenuItem value="action2">Action 2</MenuItem>
 			<MenuItem value="action3">Action 3</MenuItem>
 		</>
-	)
+	),
 };
 
 export const WithSeparators: Story = {
@@ -282,7 +351,7 @@ export const WithSeparators: Story = {
 			<MenuItemSeparator />
 			<MenuItem value="fifth">Fifth Item</MenuItem>
 		</>
-	)
+	),
 };
 
 export const MultipleGroups: Story = {
@@ -291,45 +360,45 @@ export const MultipleGroups: Story = {
 	},
 	render: () => (
 		<>
-				<MenuItemGroup label="Documents">
-					<MenuItem value="recent">Recent Files</MenuItem>
-					<MenuItem value="templates">Templates</MenuItem>
-				</MenuItemGroup>
-				<MenuItemSeparator />
-				<MenuItemGroup label="View">
-					<MenuItem value="zoom-in">Zoom In</MenuItem>
-					<MenuItem value="zoom-out">Zoom Out</MenuItem>
-					<MenuItem value="fullscreen">Full Screen</MenuItem>
-				</MenuItemGroup>
-				<MenuItemSeparator />
-				<MenuItemGroup label="Help">
-					<MenuItem value="docs">Documentation</MenuItem>
-					<MenuItem value="support">Support</MenuItem>
-					<MenuItem value="shortcuts">Keyboard Shortcuts</MenuItem>
-				</MenuItemGroup>
-			</>
-	)
+			<MenuItemGroup label="Documents">
+				<MenuItem value="recent">Recent Files</MenuItem>
+				<MenuItem value="templates">Templates</MenuItem>
+			</MenuItemGroup>
+			<MenuItemSeparator />
+			<MenuItemGroup label="View">
+				<MenuItem value="zoom-in">Zoom In</MenuItem>
+				<MenuItem value="zoom-out">Zoom Out</MenuItem>
+				<MenuItem value="fullscreen">Full Screen</MenuItem>
+			</MenuItemGroup>
+			<MenuItemSeparator />
+			<MenuItemGroup label="Help">
+				<MenuItem value="docs">Documentation</MenuItem>
+				<MenuItem value="support">Support</MenuItem>
+				<MenuItem value="shortcuts">Keyboard Shortcuts</MenuItem>
+			</MenuItemGroup>
+		</>
+	),
 };
 
 export const WithCheckboxItems: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => <SampleCheckboxMenuItems />
+	render: () => <SampleCheckboxMenuItems />,
 };
 
 export const WithRadioItems: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => <SampleRadioMenuItems />
+	render: () => <SampleRadioMenuItems />,
 };
 
 export const MixedItemTypes: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => <SampleMixedMenuItems />
+	render: () => <SampleMixedMenuItems />,
 };
 
 export const CheckboxOnly: Story = {
@@ -338,12 +407,36 @@ export const CheckboxOnly: Story = {
 	},
 	render: () => (
 		<>
-			<MenuCheckboxItem value="option1" checked={true} onCheckedChange={fn()}>Option 1</MenuCheckboxItem>
-			<MenuCheckboxItem value="option2" checked={false} onCheckedChange={fn()}>Option 2</MenuCheckboxItem>
-			<MenuCheckboxItem value="option3" checked={true} onCheckedChange={fn()}>Option 3</MenuCheckboxItem>
-			<MenuCheckboxItem value="option4" checked={false} onCheckedChange={fn()}>Option 4</MenuCheckboxItem>
+			<MenuCheckboxItem
+				value="option1"
+				checked={true}
+				onCheckedChange={fn()}
+			>
+				Option 1
+			</MenuCheckboxItem>
+			<MenuCheckboxItem
+				value="option2"
+				checked={false}
+				onCheckedChange={fn()}
+			>
+				Option 2
+			</MenuCheckboxItem>
+			<MenuCheckboxItem
+				value="option3"
+				checked={true}
+				onCheckedChange={fn()}
+			>
+				Option 3
+			</MenuCheckboxItem>
+			<MenuCheckboxItem
+				value="option4"
+				checked={false}
+				onCheckedChange={fn()}
+			>
+				Option 4
+			</MenuCheckboxItem>
 		</>
-	)
+	),
 };
 
 export const RadioOnly: Story = {
@@ -351,11 +444,14 @@ export const RadioOnly: Story = {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
 	render: () => (
-		<MenuRadioItemGroup value="option1" onValueChange={fn()}>
+		<MenuRadioItemGroup
+			value="option1"
+			onValueChange={fn()}
+		>
 			<MenuRadioItem value="option1">Option 1</MenuRadioItem>
 			<MenuRadioItem value="option2">Option 2</MenuRadioItem>
 			<MenuRadioItem value="option3">Option 3</MenuRadioItem>
 			<MenuRadioItem value="option4">Option 4</MenuRadioItem>
 		</MenuRadioItemGroup>
-	)
+	),
 };

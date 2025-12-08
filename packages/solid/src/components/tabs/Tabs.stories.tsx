@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger, type TabsProps } from ".";
 
 const meta = {
@@ -34,9 +34,14 @@ const Basic = (props: TabsProps) => (
 );
 
 export const Default: Story = {
-	render: (props) => <Basic {...props} />,
+	render: (props: TabsProps) => <Basic {...props} />,
 };
 
 export const Pills: Story = {
-	render: (props) => <Basic {...props} variant="pills" />,
+	render: (props: TabsProps) => (
+		<Basic
+			{...props}
+			variant="pills"
+		/>
+	),
 };

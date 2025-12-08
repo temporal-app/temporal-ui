@@ -1,7 +1,8 @@
-import type { Meta, StoryObj } from "@kachurun/storybook-solid-vite";
-import { DateInput, Calendar } from ".";
-import { createSignal } from "solid-js";
 import { CalendarIcon } from "lucide-solid";
+import { createSignal, type ComponentProps } from "solid-js";
+import type { Meta, StoryObj } from "storybook-solidjs-vite";
+import { Calendar, DateInput, type DateInputProps } from ".";
+import type { DatePicker } from "@ark-ui/solid/date-picker";
 
 const meta = {
 	title: "Solid/Date Input",
@@ -31,7 +32,7 @@ export const Default: Story = {
 
 export const Controlled: Story = {
 	...Default.args,
-	render: (args) => {
+	render: (args: DateInputProps) => {
 		const [value, setValue] = createSignal<string[]>(["2024-01-01"]);
 		return (
 			<DateInput
@@ -68,7 +69,7 @@ export const CalendarSingle: Story = {
 	args: {
 		className: "w-[250px]",
 	},
-	render: (args) => <Calendar {...args} />,
+	render: (args: DateInputProps & ComponentProps<typeof DatePicker.Root>) => <Calendar {...args} />,
 };
 
 export const CalendarRange: Story = {
@@ -79,5 +80,5 @@ export const CalendarRange: Story = {
 		fixedWeeks: true,
 		outsideDaySelectable: true,
 	},
-	render: (args) => <Calendar {...args} />,
+	render: (args: DateInputProps & ComponentProps<typeof DatePicker.Root>) => <Calendar {...args} />,
 };

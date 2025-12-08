@@ -81,7 +81,7 @@
 		"tsdown": "0.17.1",
 		"vite": "7.2.7",
 		"vite-plugin-solid": "2.11.10",
-		"vitest": "4.0.13"
+		"vitest": "4.0.15"
 	},
 	"peerDependencies": {
 		"solid-js": ">=1.0.0"

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger, type TabsProps } from ".";
+import { createSignal } from "solid-js";
 
 const meta = {
 	title: "Solid/Tabs",
@@ -44,4 +45,24 @@ export const Pills: Story = {
 			variant="pills"
 		/>
 	),
+};
+
+export const Controlled: Story = {
+	render: (props: TabsProps) => {
+		const [value, setValue] = createSignal<string>("vue");
+		return (
+			<Tabs
+				{...props}
+				value={value()}
+				onValueChange={setValue}
+			>
+				<TabsList>
+					<TabsTrigger value="react">React</TabsTrigger>
+					<TabsTrigger value="vue">Vue</TabsTrigger>
+					<TabsTrigger value="solid">Solid</TabsTrigger>
+					<TabsIndicator />
+				</TabsList>
+			</Tabs>
+		);
+	},
 };

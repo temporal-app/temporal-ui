@@ -1,9 +1,0 @@
-@layer components {
-	[data-scope="collapsible"][data-part="content"][data-state="open"] {
-		@apply animate-slide-down;
-	}
-
-	[data-scope="collapsible"][data-part="content"][data-state="closed"] {
-		@apply animate-slide-up;
-	}
-}

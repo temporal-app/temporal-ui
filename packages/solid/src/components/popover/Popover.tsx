@@ -1,8 +1,9 @@
 import type { PopoverProps as CorePopoverProps } from "@temporal-ui/core/popover";
 import { Popover as ArkPopover } from "@ark-ui/solid/popover";
 import { PopoverContent } from "./PopoverContent";
-import { mergeProps, splitProps, type JSX } from "solid-js";
+import { mergeProps, Show, splitProps, type JSX } from "solid-js";
 import { Portal } from "solid-js/web";
+import { testId } from "@temporal-ui/core/utils/string";
 
 export interface PopoverProps extends CorePopoverProps<JSX.Element> {
 	trigger: (props: Record<string, unknown>) => JSX.Element;
@@ -23,6 +24,8 @@ export function Popover(props: PopoverProps) {
 		"testId",
 	]);
 
+	const tid = testId(rootProps.testId);
+
 	return (
 		<ArkPopover.Root
 			portalled={rootProps.portal}
@@ -34,27 +37,27 @@ export function Popover(props: PopoverProps) {
 			closeOnEscape={rootProps.closeOnEscape}
 			closeOnInteractOutside={rootProps.closeOnInteractOutside}
 			positioning={rootProps.position}
-			data-testid={rootProps.testId ? `${rootProps.testId}--root` : undefined}
+			data-testid={tid("--root")}
 		>
 			<ArkPopover.Trigger
 				asChild={(props) => rootProps.trigger({ ...props() })}
 				class={contentProps.classes?.trigger}
-				data-testid={rootProps.testId ? `${rootProps.testId}--trigger` : undefined}
+				data-testid={tid("--trigger")}
 			/>
-			{rootProps.portal && (
-				<Portal data-testid={rootProps.testId ? `${rootProps.testId}--portal` : undefined}>
+			<Show when={rootProps.portal}>
+				<Portal data-testid={tid("--portal")}>
 					<PopoverContent
 						{...contentProps}
-						data-testid={rootProps.testId ? `${rootProps.testId}--content` : undefined}
+						testId={rootProps.testId}
 					/>
 				</Portal>
-			)}
-			{!rootProps.portal && (
+			</Show>
+			<Show when={!rootProps.portal}>
 				<PopoverContent
 					{...contentProps}
-					data-testid={rootProps.testId ? `${rootProps.testId}--content` : undefined}
+					testId={rootProps.testId}
 				/>
-			)}
+			</Show>
 		</ArkPopover.Root>
 	);
 }

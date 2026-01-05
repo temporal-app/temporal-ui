@@ -3,6 +3,7 @@ import { Popover as ArkPopover } from "@ark-ui/react/popover";
 import type React from "react";
 import { Portal } from "@ark-ui/react";
 import { PopoverContent } from "./PopoverContent";
+import { testId as testIdFn } from "@temporal-ui/core/utils/string";
 
 export interface PopoverProps extends CorePopoverProps<React.ReactNode> {
 	trigger: React.ReactNode;
@@ -24,6 +25,8 @@ export function Popover(props: PopoverProps) {
 		...contentProps
 	} = props;
 
+	const tid = testIdFn(testId);
+
 	return (
 		<ArkPopover.Root
 			portalled={portal}
@@ -35,27 +38,27 @@ export function Popover(props: PopoverProps) {
 			closeOnEscape={closeOnEscape}
 			closeOnInteractOutside={closeOnInteractOutside}
 			positioning={position}
-			data-testid={testId ? `${testId}--root` : undefined}
+			data-testid={tid("--root")}
 		>
 			<ArkPopover.Trigger
 				asChild
 				className={props.classes?.trigger}
-				data-testid={testId ? `${testId}--trigger` : undefined}
+				data-testid={tid("--trigger")}
 			>
 				{trigger}
 			</ArkPopover.Trigger>
 			{portal && (
-				<Portal data-testid={testId ? `${testId}--portal` : undefined}>
+				<Portal data-testid={tid("--portal")}>
 					<PopoverContent
 						{...contentProps}
-						data-testid={testId ? `${testId}-content` : undefined}
+						data-testid={tid("--content")}
 					/>
 				</Portal>
 			)}
 			{!portal && (
 				<PopoverContent
 					{...contentProps}
-					data-testid={testId ? `${testId}-content` : undefined}
+					data-testid={tid("--content")}
 				/>
 			)}
 		</ArkPopover.Root>

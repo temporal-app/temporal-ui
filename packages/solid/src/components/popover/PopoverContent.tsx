@@ -8,6 +8,7 @@ export interface PopoverContentProps extends HTMLProps<"div"> {
 	testId?: string;
 	title?: string;
 	description?: string;
+	className?: string;
 	classes?: {
 		content?: string;
 		title?: string;
@@ -16,7 +17,14 @@ export interface PopoverContentProps extends HTMLProps<"div"> {
 }
 
 export function PopoverContent(props: PopoverContentProps) {
-	const [contentProps, elementProps] = splitProps(props, ["title", "description", "classes", "children", "testId"]);
+	const [contentProps, elementProps] = splitProps(props, [
+		"title",
+		"description",
+		"classes",
+		"children",
+		"testId",
+		"className",
+	]);
 
 	const tid = testId(props.testId);
 
@@ -25,7 +33,7 @@ export function PopoverContent(props: PopoverContentProps) {
 			<ArkPopover.Content
 				{...elementProps}
 				data-testid={tid("--content")}
-				class={cx(contentProps.classes?.content, elementProps.class)}
+				class={cx(contentProps.classes?.content, contentProps.className)}
 			>
 				<Show when={contentProps.title}>
 					<ArkPopover.Title

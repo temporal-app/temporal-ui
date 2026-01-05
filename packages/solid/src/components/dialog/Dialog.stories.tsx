@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { fn } from "storybook/test";
 import { Button } from "../button";
 import { Stack } from "../stack";
-import { Dialog } from "./Dialog";
+import { Dialog, type DialogProps } from "./Dialog";
 
 const meta = {
 	title: "Solid/Dialog",
@@ -31,5 +31,12 @@ export const Default: Story = {
 		title: "Dialog Title",
 		description: "Dialog Description",
 	},
-	render: () => <SampleContent />,
+	render: (props: DialogProps) => (
+		<Dialog
+			{...props}
+			trigger={(props) => <SampleTrigger {...props} />}
+		>
+			<SampleContent />
+		</Dialog>
+	),
 };

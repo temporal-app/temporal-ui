@@ -3,7 +3,8 @@ import type React from "react";
 import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
 import { Portal } from "@ark-ui/react/portal";
 import { X } from "lucide-react";
-import { Box } from "../box";
+import { testId as testIdFn } from "@temporal-ui/core/utils/string";
+import { cx } from "@temporal-ui/core/utils/cx";
 
 export interface DialogProps
 	extends CoreDialogProps<React.ReactNode>,
@@ -26,8 +27,11 @@ export function Dialog(props: DialogProps) {
 		role,
 		lazyMount,
 		unmountOnExit,
+		classes,
 		...rest
 	} = props;
+
+	const tid = testIdFn(testId);
 
 	return (
 		<ArkDialog.Root
@@ -42,24 +46,52 @@ export function Dialog(props: DialogProps) {
 			unmountOnExit={unmountOnExit}
 			data-testid={testId ? `${testId}--root` : undefined}
 		>
-			<ArkDialog.Trigger asChild>{trigger}</ArkDialog.Trigger>
+			<ArkDialog.Trigger
+				asChild
+				data-testid={tid("--trigger")}
+				className={classes?.trigger}
+			>
+				{trigger}
+			</ArkDialog.Trigger>
 			<Portal>
-				<ArkDialog.Backdrop />
+				<ArkDialog.Backdrop
+					className={classes?.backdrop}
+					data-testid={tid("--backdrop")}
+				/>
 				<ArkDialog.Positioner>
-					<ArkDialog.Content>
-						<Box {...rest}>
-							<Box
-								data-scope="dialog"
-								data-part="header"
+					<ArkDialog.Content
+						{...rest}
+						className={cx(classes?.content, rest.className)}
+						data-testid={tid("--content")}
+					>
+						<div
+							data-scope="dialog"
+							data-part="header"
+						>
+							{title && (
+								<ArkDialog.Title
+									className={classes?.title}
+									data-testid={tid("--title")}
+								>
+									{title}
+								</ArkDialog.Title>
+							)}
+							{description && (
+								<ArkDialog.Description
+									className={classes?.description}
+									data-testid={tid("--description")}
+								>
+									{description}
+								</ArkDialog.Description>
+							)}
+							<ArkDialog.CloseTrigger
+								className={classes?.closeTrigger}
+								data-testid={tid("--close-trigger")}
 							>
-								{title && <ArkDialog.Title>{title}</ArkDialog.Title>}
-								{description && <ArkDialog.Description>{description}</ArkDialog.Description>}
-								<ArkDialog.CloseTrigger>
-									<X />
-								</ArkDialog.CloseTrigger>
-							</Box>
-							{props.children}
-						</Box>
+								<X />
+							</ArkDialog.CloseTrigger>
+						</div>
+						{props.children}
 					</ArkDialog.Content>
 				</ArkDialog.Positioner>
 			</Portal>

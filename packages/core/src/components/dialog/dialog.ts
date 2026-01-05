@@ -12,5 +12,13 @@ export interface DialogProps<T> extends BoxProps<T> {
 	role?: "dialog" | "alertdialog";
 	lazyMount?: boolean;
 	unmountOnExit?: boolean;
-
+	classes?: {
+		header?: string;
+		closeTrigger?: string;
+		backdrop?: string;
+		trigger?: string;
+		content?: string;
+		title?: string;
+		description?: string;
+	};
 }

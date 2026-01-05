@@ -1,8 +1,11 @@
 import { Popover as ArkPopover } from "@ark-ui/solid/popover";
-import { splitProps } from "solid-js";
-import { Box, type BoxProps } from "../box";
+import { testId } from "@temporal-ui/core/utils/string";
+import { Show, splitProps } from "solid-js";
+import { cx } from "@temporal-ui/core/utils/cx";
+import type { HTMLProps } from "@ark-ui/solid";
 
-export interface PopoverContentProps extends BoxProps {
+export interface PopoverContentProps extends HTMLProps<"div"> {
+	testId?: string;
 	title?: string;
 	description?: string;
 	classes?: {
@@ -13,44 +16,34 @@ export interface PopoverContentProps extends BoxProps {
 }
 
 export function PopoverContent(props: PopoverContentProps) {
-	const [contentProps, boxProps] = splitProps(props, [
-		"title",
-		"description",
-		"classes",
-		"children",
-		"testId",
-	]);
+	const [contentProps, elementProps] = splitProps(props, ["title", "description", "classes", "children", "testId"]);
+
+	const tid = testId(props.testId);
 
 	return (
-		<ArkPopover.Positioner
-			data-testid={props.testId ? `${props.testId}--positioner` : undefined}
-		>
-			<ArkPopover.Content data-testid={props.testId ? `${props.testId}--content` : undefined}>
-				<Box {...boxProps}>
-					{contentProps.title && (
-						<ArkPopover.Title
-							class={contentProps.classes?.title}
-							data-testid={
-								contentProps.testId ? `${contentProps.testId}--title` : undefined
-							}
-						>
-							{contentProps.title}
-						</ArkPopover.Title>
-					)}
-					{contentProps.description && (
-						<ArkPopover.Description
-							class={contentProps.classes?.description}
-							data-testid={
-								contentProps.testId
-									? `${contentProps.testId}--description`
-									: undefined
-							}
-						>
-							{contentProps.description}
-						</ArkPopover.Description>
-					)}
-					{contentProps.children}
-				</Box>
+		<ArkPopover.Positioner data-testid={tid("--positioner")}>
+			<ArkPopover.Content
+				{...elementProps}
+				data-testid={tid("--content")}
+				class={cx(contentProps.classes?.content, elementProps.class)}
+			>
+				<Show when={contentProps.title}>
+					<ArkPopover.Title
+						class={contentProps.classes?.title}
+						data-testid={tid("--title")}
+					>
+						{contentProps.title}
+					</ArkPopover.Title>
+				</Show>
+				<Show when={contentProps.description}>
+					<ArkPopover.Description
+						class={contentProps.classes?.description}
+						data-testid={tid("--description")}
+					>
+						{contentProps.description}
+					</ArkPopover.Description>
+				</Show>
+				{contentProps.children}
 			</ArkPopover.Content>
 		</ArkPopover.Positioner>
 	);

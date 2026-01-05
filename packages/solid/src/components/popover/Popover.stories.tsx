@@ -5,7 +5,7 @@ import { fn } from "storybook/test";
 import { Button } from "../button";
 import { Stack } from "../stack";
 import { TextInput } from "../text-input";
-import { Popover } from "./Popover";
+import { Popover, type PopoverProps } from "./Popover";
 
 const meta = {
 	title: "Solid/Popover",
@@ -62,7 +62,11 @@ export const Default: Story = {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 		p: 3,
 	},
-	render: () => <SampleForm />,
+	render: (props: PopoverProps) => (
+		<Popover {...props}>
+			<SampleForm />
+		</Popover>
+	),
 };
 
 export const WithTitle: Story = {
@@ -70,6 +74,11 @@ export const WithTitle: Story = {
 		...Default.args,
 		title: "Enter your details to continue",
 	},
+	render: (props: PopoverProps) => (
+		<Popover {...props}>
+			<SampleForm />
+		</Popover>
+	),
 };
 
 export const WithTitleAndDescription: Story = {
@@ -78,6 +87,11 @@ export const WithTitleAndDescription: Story = {
 		title: "Settings",
 		description: "Configure your preferences below",
 	},
+	render: (props: PopoverProps) => (
+		<Popover {...props}>
+			<SampleForm />
+		</Popover>
+	),
 };
 
 export const PositionTop: Story = {
@@ -88,6 +102,13 @@ export const PositionTop: Story = {
 			placement: "top",
 		},
 	},
+	render: (props: PopoverProps) => (
+		<div class="p-48 flex items-center justify-center">
+			<Popover {...props}>
+				<SampleForm />
+			</Popover>
+		</div>
+	),
 };
 
 export const PositionRight: Story = {
@@ -98,6 +119,13 @@ export const PositionRight: Story = {
 			placement: "right",
 		},
 	},
+	render: (props: PopoverProps) => (
+		<div class="p-32 flex items-center justify-center">
+			<Popover {...props}>
+				<SampleForm />
+			</Popover>
+		</div>
+	),
 };
 
 export const PositionLeft: Story = {
@@ -108,6 +136,13 @@ export const PositionLeft: Story = {
 			placement: "left",
 		},
 	},
+	render: (props: PopoverProps) => (
+		<div class="p-32 flex items-center justify-center">
+			<Popover {...props}>
+				<SampleForm />
+			</Popover>
+		</div>
+	),
 };
 
 export const Modal: Story = {
@@ -116,6 +151,11 @@ export const Modal: Story = {
 		title: "Modal Popover",
 		modal: true,
 	},
+	render: (props: PopoverProps) => (
+		<Popover {...props}>
+			<SampleForm />
+		</Popover>
+	),
 };
 
 export const NoAutoFocus: Story = {
@@ -124,6 +164,11 @@ export const NoAutoFocus: Story = {
 		title: "No Auto Focus",
 		autoFocus: false,
 	},
+	render: (props: PopoverProps) => (
+		<Popover {...props}>
+			<SampleForm />
+		</Popover>
+	),
 };
 
 export const NoEscapeClose: Story = {
@@ -132,6 +177,11 @@ export const NoEscapeClose: Story = {
 		title: "No Escape Close",
 		closeOnEscape: false,
 	},
+	render: (props: PopoverProps) => (
+		<Popover {...props}>
+			<SampleForm />
+		</Popover>
+	),
 };
 
 export const NoOutsideClose: Story = {
@@ -140,6 +190,11 @@ export const NoOutsideClose: Story = {
 		title: "No Outside Close",
 		closeOnInteractOutside: false,
 	},
+	render: (props: PopoverProps) => (
+		<Popover {...props}>
+			<SampleForm />
+		</Popover>
+	),
 };
 
 export const DefaultOpen: Story = {
@@ -148,6 +203,11 @@ export const DefaultOpen: Story = {
 		title: "Default Open",
 		defaultOpen: true,
 	},
+	render: (props: PopoverProps) => (
+		<Popover {...props}>
+			<SampleForm />
+		</Popover>
+	),
 };
 
 export const WithOffset: Story = {
@@ -162,4 +222,9 @@ export const WithOffset: Story = {
 			},
 		},
 	},
+	render: (props: PopoverProps) => (
+		<Popover {...props}>
+			<SampleForm />
+		</Popover>
+	),
 };

@@ -15,6 +15,9 @@ export interface FieldBaseProps<T> extends BaseComponent<T> {
 		label?: string;
 		hint?: string;
 		error?: string;
+		control?: string;
+		indicator?: string;
+		input?: string;
 	};
 }
 

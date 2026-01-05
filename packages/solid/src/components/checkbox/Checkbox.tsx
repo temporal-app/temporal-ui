@@ -1,10 +1,11 @@
 import { Checkbox as ArkCheckbox } from "@ark-ui/solid/checkbox";
 import type { CheckboxProps as CoreCheckboxProps } from "@temporal-ui/core/checkbox";
 import type { JSX } from "solid-js";
-import { splitProps } from "solid-js";
+import { Show, splitProps } from "solid-js";
 import { Field } from "../field";
 import type { HTMLProps } from "@ark-ui/solid";
 import { CheckIcon } from "lucide-solid";
+import { testId } from "@temporal-ui/core/utils/string";
 
 export interface CheckboxProps
 	extends CoreCheckboxProps<JSX.Element>,
@@ -17,6 +18,8 @@ export function Checkbox(_props: CheckboxProps) {
 		["defaultChecked", "checked", "onCheckedChange"],
 	);
 
+	const tid = testId(fieldProps.testId);
+
 	return (
 		<Field
 			label={undefined}
@@ -26,7 +29,7 @@ export function Checkbox(_props: CheckboxProps) {
 			readOnly={fieldProps.readOnly}
 			error={fieldProps.error}
 			disabled={fieldProps.disabled}
-			testId={fieldProps.testId ? `${fieldProps.testId}-field` : undefined}
+			testId={tid("-field")}
 		>
 			<ArkCheckbox.Root
 				defaultChecked={rootProps.defaultChecked}
@@ -36,28 +39,30 @@ export function Checkbox(_props: CheckboxProps) {
 				readOnly={fieldProps.readOnly}
 				invalid={!!fieldProps.error}
 				required={fieldProps.required}
-				data-testid={fieldProps.testId ? `${fieldProps.testId}--root` : undefined}
+				data-testid={tid("--root")}
 			>
 				<ArkCheckbox.Control
-					data-testid={fieldProps.testId ? `${fieldProps.testId}--control` : undefined}
+					data-testid={tid("--control")}
+					class={fieldProps.classes?.control}
 				>
 					<ArkCheckbox.Indicator
-						data-testid={
-							fieldProps.testId ? `${fieldProps.testId}--indicator` : undefined
-						}
+						data-testid={tid("--indicator")}
+						class={fieldProps.classes?.indicator}
 					>
 						<CheckIcon />
 					</ArkCheckbox.Indicator>
 				</ArkCheckbox.Control>
-				{fieldProps.label && (
+				<Show when={fieldProps.label}>
 					<ArkCheckbox.Label
-						data-testid={fieldProps.testId ? `${fieldProps.testId}--label` : undefined}
+						data-testid={tid("--label")}
+						class={fieldProps.classes?.label}
 					>
 						{fieldProps.label}
 					</ArkCheckbox.Label>
-				)}
+				</Show>
 				<ArkCheckbox.HiddenInput
-					data-testid={fieldProps.testId ? `${fieldProps.testId}--input` : undefined}
+					data-testid={tid("--input")}
+					class={fieldProps.classes?.input}
 				/>
 			</ArkCheckbox.Root>
 		</Field>

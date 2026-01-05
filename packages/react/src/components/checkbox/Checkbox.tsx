@@ -4,6 +4,7 @@ import { CheckIcon } from "lucide-react";
 import type React from "react";
 import { forwardRef } from "react";
 import { Field } from "../field";
+import { testId as testIdFn } from "@temporal-ui/core/utils/string";
 
 export interface CheckboxProps extends CoreCheckboxProps<React.ReactNode> {}
 
@@ -23,6 +24,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref)
 		...rest
 	} = props;
 
+	const tid = testIdFn(testId);
+
 	return (
 		<Field
 			label={undefined}
@@ -32,23 +35,35 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref)
 			readOnly={readOnly}
 			error={error}
 			disabled={disabled}
-			testId={testId ? `${testId}-field` : undefined}
+			testId={tid("-field")}
 		>
 			<ArkCheckbox.Root
 				defaultChecked={defaultChecked}
 				checked={checked}
 				onCheckedChange={(details) => onCheckedChange?.(details.checked)}
-				data-testid={testId ? `${testId}--root` : undefined}
+				data-testid={tid("--root")}
 			>
-				<ArkCheckbox.Control data-testid={testId ? `${testId}--control` : undefined}>
-					<ArkCheckbox.Indicator data-testid={testId ? `${testId}--indicator` : undefined}>
+				<ArkCheckbox.Control
+					data-testid={tid("--control")}
+					className={classes?.control}
+				>
+					<ArkCheckbox.Indicator
+						data-testid={tid("--indicator")}
+						className={classes?.indicator}
+					>
 						<CheckIcon />
 					</ArkCheckbox.Indicator>
 				</ArkCheckbox.Control>
-				<ArkCheckbox.Label data-testid={testId ? `${testId}--label` : undefined}>{label}</ArkCheckbox.Label>
+				<ArkCheckbox.Label
+					data-testid={tid("--label")}
+					className={classes?.label}
+				>
+					{label}
+				</ArkCheckbox.Label>
 				<ArkCheckbox.HiddenInput
 					ref={ref}
-					data-testid={testId ? `${testId}--input` : undefined}
+					data-testid={tid("--input")}
+					className={classes?.input}
 					{...rest}
 				/>
 			</ArkCheckbox.Root>

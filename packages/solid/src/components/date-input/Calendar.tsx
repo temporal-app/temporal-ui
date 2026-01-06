@@ -12,9 +12,11 @@ import {
 	DateInputViewTrigger,
 } from "./Components";
 import { splitProps, type ComponentProps, type JSX } from "solid-js";
+import { testId } from "@temporal-ui/core/utils/string";
 
 export function Calendar(props: DateInputProps<JSX.Element> & ComponentProps<typeof DatePicker.Root>) {
 	const [controlProps, rootProps] = splitProps(props, ["testId", "value", "defaultValue", "onValueChange"]);
+	const tid = testId(controlProps.testId);
 	return (
 		<DateInputRoot
 			{...rootProps}
@@ -22,23 +24,23 @@ export function Calendar(props: DateInputProps<JSX.Element> & ComponentProps<typ
 			defaultValue={controlProps.defaultValue?.map((date) => parseDate(date))}
 			onValueChange={(details) => controlProps.onValueChange?.(details.value.map((date) => date.toString()))}
 			inline
-			data-testid={controlProps.testId ? `${controlProps.testId}--root` : undefined}
+			data-testid={tid("--root")}
 		>
 			<DateInputViewControl
-				data-testid={controlProps.testId ? `${controlProps.testId}--view-control` : undefined}
+				data-testid={tid("--view-control")}
 			>
 				<DateInputPrevTrigger
-					data-testid={controlProps.testId ? `${controlProps.testId}--prev-trigger` : undefined}
+					data-testid={tid("--prev-trigger")}
 				>
 					<ChevronLeft />
 				</DateInputPrevTrigger>
 				<DateInputViewTrigger
-					data-testid={controlProps.testId ? `${controlProps.testId}--view-trigger` : undefined}
+					data-testid={tid("--view-trigger")}
 				>
 					<DatePicker.RangeText />
 				</DateInputViewTrigger>
 				<DateInputNextTrigger
-					data-testid={controlProps.testId ? `${controlProps.testId}--next-trigger` : undefined}
+					data-testid={tid("--next-trigger")}
 				>
 					<ChevronRight />
 				</DateInputNextTrigger>

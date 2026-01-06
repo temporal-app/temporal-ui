@@ -16,4 +16,4 @@ export {
 } from "./Components";
 
 // Re-export from Ark UI
-export type { DateValue } from "@ark-ui/react/date-picker";
+export { parseDate, type DateValue } from "@ark-ui/react/date-picker";

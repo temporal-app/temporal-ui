@@ -19,6 +19,7 @@ import {
 	DateInputViewControl,
 	DateInputViewTrigger,
 } from "./Components";
+import { testId as testIdFn } from "@temporal-ui/core/utils/string";
 
 export interface DateInputProps
 	extends CoreDateInputProps<React.ReactNode>,
@@ -43,6 +44,7 @@ export function DateInput(props: DateInputProps) {
 		endSection,
 		...rootProps
 	} = props;
+	const tid = testIdFn(testId);
 	return (
 		<Field
 			label={label}
@@ -52,7 +54,7 @@ export function DateInput(props: DateInputProps) {
 			readOnly={readOnly}
 			disabled={disabled}
 			classes={classes}
-			testId={testId ? `${testId}-field` : undefined}
+			testId={tid("-field")}
 		>
 			<DateInputRoot
 				{...rootProps}
@@ -60,14 +62,14 @@ export function DateInput(props: DateInputProps) {
 				defaultValue={defaultValue?.map((date) => parseDate(date))}
 				onValueChange={(details) => onValueChange?.(details.value.map((date) => date.toString()))}
 				positioning={{ placement: "bottom-start", ...position }}
-				data-testid={testId ? `${testId}--root` : undefined}
+				data-testid={tid("--root")}
 			>
-				<DateInputControl data-testid={testId ? `${testId}--control` : undefined}>
+				<DateInputControl data-testid={tid("--control")}>
 					{startSection && (
 						<div
 							data-scope={"date-input"}
 							data-part={"start-section"}
-							data-testid={testId ? `${testId}--start-section` : undefined}
+							data-testid={tid("--start-section")}
 						>
 							{startSection}
 						</div>
@@ -76,7 +78,7 @@ export function DateInput(props: DateInputProps) {
 						<div
 							data-scope={"date-input"}
 							data-part={"end-section"}
-							data-testid={testId ? `${testId}--end-section` : undefined}
+							data-testid={tid("--end-section")}
 						>
 							{endSection}
 						</div>
@@ -86,7 +88,7 @@ export function DateInput(props: DateInputProps) {
 							return (
 								<DateInputTrigger
 									data-placeholder={datePicker.valueAsString.length === 0}
-									data-testid={testId ? `${testId}--trigger` : undefined}
+									data-testid={tid("--trigger")}
 									data-with-start-section={startSection ? true : undefined}
 									data-with-end-section={endSection ? true : undefined}
 								>
@@ -99,21 +101,21 @@ export function DateInput(props: DateInputProps) {
 						}}
 					</DateInputContext>
 					<DateInputInput
-						data-testid={testId ? `${testId}--input` : undefined}
+						data-testid={tid("--input")}
 						hidden
 					/>
 				</DateInputControl>
 				<Portal>
-					<DateInputPositioner data-testid={testId ? `${testId}--positioner` : undefined}>
-						<DateInputContent data-testid={testId ? `${testId}--content` : undefined}>
-							<DateInputViewControl data-testid={testId ? `${testId}--view-control` : undefined}>
-								<DateInputPrevTrigger data-testid={testId ? `${testId}--prev-trigger` : undefined}>
+					<DateInputPositioner data-testid={tid("--positioner")}>
+						<DateInputContent data-testid={tid("--content")}>
+							<DateInputViewControl data-testid={tid("--view-control")}>
+								<DateInputPrevTrigger data-testid={tid("--prev-trigger")}>
 									<ChevronLeft />
 								</DateInputPrevTrigger>
-								<DateInputViewTrigger data-testid={testId ? `${testId}--view-trigger` : undefined}>
+								<DateInputViewTrigger data-testid={tid("--view-trigger")}>
 									<DatePicker.RangeText />
 								</DateInputViewTrigger>
-								<DateInputNextTrigger data-testid={testId ? `${testId}--next-trigger` : undefined}>
+								<DateInputNextTrigger data-testid={tid("--next-trigger")}>
 									<ChevronRight />
 								</DateInputNextTrigger>
 							</DateInputViewControl>

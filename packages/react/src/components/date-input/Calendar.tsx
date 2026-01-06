@@ -11,9 +11,14 @@ import {
 	DateInputViewControl,
 	DateInputViewTrigger,
 } from "./Components";
+import { testId as testIdFn } from "@temporal-ui/core/utils/string";
 
-export function Calendar(props: DateInputProps<React.ReactNode> & Omit<React.ComponentProps<typeof DatePicker.Root>, "value" | "defaultValue" | "onValueChange">) {
+export function Calendar(
+	props: DateInputProps<React.ReactNode> &
+		Omit<React.ComponentProps<typeof DatePicker.Root>, "value" | "defaultValue" | "onValueChange">,
+) {
 	const { testId, value, defaultValue, onValueChange, ...rootProps } = props;
+	const tid = testIdFn(testId);
 	return (
 		<DateInputRoot
 			{...rootProps}
@@ -21,16 +26,16 @@ export function Calendar(props: DateInputProps<React.ReactNode> & Omit<React.Com
 			defaultValue={defaultValue?.map((date) => parseDate(date))}
 			onValueChange={(details) => onValueChange?.(details.value.map((date) => date.toString()))}
 			inline
-			data-testid={testId ? `${testId}--root` : undefined}
+			data-testid={tid("--root")}
 		>
-			<DateInputViewControl data-testid={testId ? `${testId}--view-control` : undefined}>
-				<DateInputPrevTrigger data-testid={testId ? `${testId}--prev-trigger` : undefined}>
+			<DateInputViewControl data-testid={tid("--view-control")}>
+				<DateInputPrevTrigger data-testid={tid("--prev-trigger")}>
 					<ChevronLeft />
 				</DateInputPrevTrigger>
-				<DateInputViewTrigger data-testid={testId ? `${testId}--view-trigger` : undefined}>
+				<DateInputViewTrigger data-testid={tid("--view-trigger")}>
 					<DatePicker.RangeText />
 				</DateInputViewTrigger>
-				<DateInputNextTrigger data-testid={testId ? `${testId}--next-trigger` : undefined}>
+				<DateInputNextTrigger data-testid={tid("--next-trigger")}>
 					<ChevronRight />
 				</DateInputNextTrigger>
 			</DateInputViewControl>

@@ -5,7 +5,9 @@ import { Portal } from "@ark-ui/react";
 import { PopoverContent } from "./PopoverContent";
 import { testId as testIdFn } from "@temporal-ui/core/utils/string";
 
-export interface PopoverProps extends CorePopoverProps<React.ReactNode> {
+export interface PopoverProps
+	extends CorePopoverProps<React.ReactNode>,
+		Omit<React.ComponentProps<typeof ArkPopover.Root>, "onOpenChange"> {
 	trigger: React.ReactNode;
 }
 
@@ -30,13 +32,8 @@ export function Popover(props: PopoverProps) {
 	return (
 		<ArkPopover.Root
 			portalled={portal}
-			modal={modal}
-			autoFocus={autoFocus}
-			defaultOpen={defaultOpen}
-			open={open}
+			{...props}
 			onOpenChange={(details) => onOpenChange?.(details.open)}
-			closeOnEscape={closeOnEscape}
-			closeOnInteractOutside={closeOnInteractOutside}
 			positioning={position}
 			data-testid={tid("--root")}
 		>
@@ -48,7 +45,7 @@ export function Popover(props: PopoverProps) {
 				{trigger}
 			</ArkPopover.Trigger>
 			{portal && (
-				<Portal data-testid={tid("--portal")}>
+				<Portal>
 					<PopoverContent
 						{...contentProps}
 						data-testid={tid("--content")}

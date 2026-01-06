@@ -18,8 +18,9 @@ import {
 	DateInputViewControl,
 	DateInputViewTrigger,
 } from "./Components";
-import { splitProps, type ComponentProps, type JSX } from "solid-js";
+import { Show, splitProps, type ComponentProps, type JSX } from "solid-js";
 import { Portal } from "solid-js/web";
+import { testId } from "@temporal-ui/core/utils/string";
 
 export interface DateInputProps
 	extends CoreDateInputProps<JSX.Element>,
@@ -31,10 +32,11 @@ export function DateInput(props: DateInputProps) {
 		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],
 		["placeholder", "value", "defaultValue", "onValueChange", "position", "startSection", "endSection"],
 	);
+	const tid = testId(fieldProps.testId);
 	return (
 		<Field
 			{...fieldProps}
-			testId={fieldProps.testId ? `${fieldProps.testId}-field` : undefined}
+			testId={tid("-field")}
 		>
 			<DateInputRoot
 				{...rootProps}
@@ -42,33 +44,33 @@ export function DateInput(props: DateInputProps) {
 				defaultValue={controlProps.defaultValue?.map((date) => parseDate(date))}
 				onValueChange={(details) => controlProps.onValueChange?.(details.value.map((date) => date.toString()))}
 				positioning={{ placement: "bottom-start", ...controlProps.position }}
-				data-testid={fieldProps.testId ? `${fieldProps.testId}--root` : undefined}
+				data-testid={tid("--root")}
 			>
-				<DateInputControl data-testid={fieldProps.testId ? `${fieldProps.testId}--control` : undefined}>
-					{controlProps.startSection && (
+				<DateInputControl data-testid={tid("--control")}>
+					<Show when={controlProps.startSection || controlProps.endSection}>
 						<div
 							data-scope={"date-input"}
 							data-part={"start-section"}
-							data-testid={fieldProps.testId ? `${fieldProps.testId}--start-section` : undefined}
+							data-testid={tid("--start-section")}
 						>
 							{controlProps.startSection}
 						</div>
-					)}
-					{controlProps.endSection && (
+					</Show>
+					<Show when={controlProps.endSection}>
 						<div
 							data-scope={"date-input"}
 							data-part={"end-section"}
-							data-testid={fieldProps.testId ? `${fieldProps.testId}--end-section` : undefined}
+							data-testid={tid("--end-section")}
 						>
 							{controlProps.endSection}
 						</div>
-					)}
+					</Show>
 					<DateInputContext>
 						{(datePicker) => {
 							return (
 								<DateInputTrigger
 									data-placeholder={datePicker().valueAsString.length === 0}
-									data-testid={fieldProps.testId ? `${fieldProps.testId}--trigger` : undefined}
+									data-testid={tid("--trigger")}
 									data-with-start-section={controlProps.startSection ? true : undefined}
 									data-with-end-section={controlProps.endSection ? true : undefined}
 								>
@@ -81,31 +83,21 @@ export function DateInput(props: DateInputProps) {
 						}}
 					</DateInputContext>
 					<DateInputInput
-						data-testid={fieldProps.testId ? `${fieldProps.testId}--input` : undefined}
+						data-testid={tid("--input")}
 						hidden
 					/>
 				</DateInputControl>
 				<Portal>
-					<DateInputPositioner
-						data-testid={fieldProps.testId ? `${fieldProps.testId}--positioner` : undefined}
-					>
-						<DateInputContent data-testid={fieldProps.testId ? `${fieldProps.testId}--content` : undefined}>
-							<DateInputViewControl
-								data-testid={fieldProps.testId ? `${fieldProps.testId}--view-control` : undefined}
-							>
-								<DateInputPrevTrigger
-									data-testid={fieldProps.testId ? `${fieldProps.testId}--prev-trigger` : undefined}
-								>
+					<DateInputPositioner data-testid={tid("--positioner")}>
+						<DateInputContent data-testid={tid("--content")}>
+							<DateInputViewControl data-testid={tid("--view-control")}>
+								<DateInputPrevTrigger data-testid={tid("--prev-trigger")}>
 									<ChevronLeft />
 								</DateInputPrevTrigger>
-								<DateInputViewTrigger
-									data-testid={fieldProps.testId ? `${fieldProps.testId}--view-trigger` : undefined}
-								>
+								<DateInputViewTrigger data-testid={tid("--view-trigger")}>
 									<DatePicker.RangeText />
 								</DateInputViewTrigger>
-								<DateInputNextTrigger
-									data-testid={fieldProps.testId ? `${fieldProps.testId}--next-trigger` : undefined}
-								>
+								<DateInputNextTrigger data-testid={tid("--next-trigger")}>
 									<ChevronRight />
 								</DateInputNextTrigger>
 							</DateInputViewControl>

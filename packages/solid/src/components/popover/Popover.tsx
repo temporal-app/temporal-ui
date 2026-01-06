@@ -1,11 +1,13 @@
 import type { PopoverProps as CorePopoverProps } from "@temporal-ui/core/popover";
 import { Popover as ArkPopover } from "@ark-ui/solid/popover";
 import { PopoverContent } from "./PopoverContent";
-import { mergeProps, Show, splitProps, type JSX } from "solid-js";
+import { mergeProps, Show, splitProps, type ComponentProps, type JSX } from "solid-js";
 import { Portal } from "solid-js/web";
 import { testId } from "@temporal-ui/core/utils/string";
 
-export interface PopoverProps extends CorePopoverProps<JSX.Element> {
+export interface PopoverProps
+	extends CorePopoverProps<JSX.Element>,
+		Omit<ComponentProps<typeof ArkPopover.Root>, "onOpenChange"> {
 	trigger: (props: Record<string, unknown>) => JSX.Element;
 }
 
@@ -29,13 +31,8 @@ export function Popover(props: PopoverProps) {
 	return (
 		<ArkPopover.Root
 			portalled={rootProps.portal}
-			modal={rootProps.modal}
-			autoFocus={rootProps.autoFocus}
-			defaultOpen={rootProps.defaultOpen}
-			open={rootProps.open}
+			{...rootProps}
 			onOpenChange={(details) => rootProps.onOpenChange?.(details.open)}
-			closeOnEscape={rootProps.closeOnEscape}
-			closeOnInteractOutside={rootProps.closeOnInteractOutside}
 			positioning={rootProps.position}
 			data-testid={tid("--root")}
 		>
@@ -45,7 +42,7 @@ export function Popover(props: PopoverProps) {
 				data-testid={tid("--trigger")}
 			/>
 			<Show when={rootProps.portal}>
-				<Portal data-testid={tid("--portal")}>
+				<Portal>
 					<PopoverContent
 						{...contentProps}
 						testId={rootProps.testId}

@@ -9,6 +9,7 @@ export function Button(props: ButtonProps) {
 		variant = "primary",
 		size = "md",
 		icon = false,
+		type = "button",
 		className,
 		children,
 		disabled,
@@ -20,6 +21,7 @@ export function Button(props: ButtonProps) {
 	return (
 		<button
 			{...rest}
+			type={type}
 			className={className}
 			disabled={disabled || loading}
 			data-scope="button"

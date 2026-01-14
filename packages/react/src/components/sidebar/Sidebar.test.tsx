@@ -156,7 +156,8 @@ describe("SidebarTrigger", () => {
 
 		const button = screen.getByRole("button");
 		expect(button).toBeInTheDocument();
-		expect(button).toHaveAttribute("data-scope", "sidebar");
+		// Uses Button component, so data-scope is "button"
+		expect(button).toHaveAttribute("data-scope", "button");
 		expect(button).toHaveAttribute("data-part", "trigger");
 	});
 });

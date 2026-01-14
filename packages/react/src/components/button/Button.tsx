@@ -1,17 +1,15 @@
 import type { ButtonProps as CoreButtonProps } from "@temporal-ui/core/button";
 import type React from "react";
 import { Loader } from "../loader";
-import { cx } from "@temporal-ui/core/utils/cx";
 
-export interface ButtonProps
-	extends CoreButtonProps<React.ReactNode>,
-		React.ButtonHTMLAttributes<HTMLButtonElement> {}
+export interface ButtonProps extends CoreButtonProps<React.ReactNode>, React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 export function Button(props: ButtonProps) {
 	const {
 		variant = "primary",
 		size = "md",
 		icon = false,
+		type = "button",
 		className,
 		children,
 		disabled,
@@ -19,15 +17,17 @@ export function Button(props: ButtonProps) {
 		testId,
 		...rest
 	} = props;
-	const baseClass = ["btn", size !== "md" ? size : "", icon && "icon", variant]
-		.filter(Boolean)
-		.join("-");
 
 	return (
 		<button
 			{...rest}
-			className={cx(baseClass, className)}
+			type={type}
+			className={className}
 			disabled={disabled || loading}
+			data-scope="button"
+			data-size={size}
+			data-variant={variant}
+			data-icon={icon || undefined}
 			data-loading={loading || undefined}
 			data-testid={testId}
 		>

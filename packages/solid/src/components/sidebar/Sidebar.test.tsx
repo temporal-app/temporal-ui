@@ -1,4 +1,4 @@
-import { render, screen, cleanup, waitFor } from "@solidjs/testing-library";
+import { cleanup, render, screen, waitFor } from "@solidjs/testing-library";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { Sidebar } from "./Sidebar";
@@ -128,7 +128,7 @@ describe("SidebarProvider", () => {
 
 	it("persists sidebar state to localStorage", async () => {
 		const user = userEvent.setup();
-		
+
 		const TestComponent = () => {
 			const { setOpen } = useSidebar();
 			return (
@@ -150,7 +150,7 @@ describe("SidebarProvider", () => {
 
 		const closeButton = screen.getByTestId("close");
 		await user.click(closeButton);
-		
+
 		await waitFor(() => {
 			expect(localStorageMock.setItem).toHaveBeenCalledWith("temporal-sidebar-state", "false");
 		});
@@ -171,13 +171,14 @@ describe("SidebarTrigger", () => {
 
 		const button = screen.getByRole("button");
 		expect(button).toBeInTheDocument();
-		expect(button).toHaveAttribute("data-scope", "sidebar");
+		// Uses Button component, so data-scope is "button"
+		expect(button).toHaveAttribute("data-scope", "button");
 		expect(button).toHaveAttribute("data-part", "trigger");
 	});
 
 	it("collapses sidebar when trigger is clicked", async () => {
 		const user = userEvent.setup();
-		
+
 		const TestComponent = () => {
 			const { state } = useSidebar();
 			return (
@@ -199,7 +200,7 @@ describe("SidebarTrigger", () => {
 
 		// Initially expanded
 		expect(screen.getByTestId("sidebar-state")).toHaveTextContent("expanded");
-		
+
 		// Find the sidebar root element to check data-state
 		const sidebarRoot = screen.getByTestId("sidebar-content").closest('[data-scope="sidebar"][data-part="root"]');
 		expect(sidebarRoot).toHaveAttribute("data-state", "expanded");
@@ -212,7 +213,7 @@ describe("SidebarTrigger", () => {
 		await waitFor(() => {
 			expect(screen.getByTestId("sidebar-state")).toHaveTextContent("collapsed");
 		});
-		
+
 		await waitFor(() => {
 			expect(sidebarRoot).toHaveAttribute("data-state", "collapsed");
 		});
@@ -224,7 +225,7 @@ describe("SidebarTrigger", () => {
 		await waitFor(() => {
 			expect(screen.getByTestId("sidebar-state")).toHaveTextContent("expanded");
 		});
-		
+
 		await waitFor(() => {
 			expect(sidebarRoot).toHaveAttribute("data-state", "expanded");
 		});

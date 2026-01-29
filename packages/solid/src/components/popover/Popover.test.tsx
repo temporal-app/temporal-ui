@@ -193,4 +193,23 @@ describe('Popover Component', () => {
 		expect(screen.getByText('Paragraph content')).toBeInTheDocument();
 		expect(screen.getByRole('button', { name: 'Action' })).toBeInTheDocument();
 	});
+	it('closes on interaction outside when modal is false', async () => {
+		const user = userEvent.setup();
+		const onOpenChange = vi.fn();
+		render(() => (
+			<div>
+				<Popover {...defaultProps} modal={false} defaultOpen onOpenChange={onOpenChange} />
+				<button type="button">Outside Button</button>
+			</div>
+		));
+
+		expect(screen.getByText('Popover content')).toBeVisible();
+
+		const outsideButton = screen.getByRole('button', { name: 'Outside Button' });
+		await user.click(outsideButton);
+
+		await waitFor(() => {
+			expect(onOpenChange).toHaveBeenCalledWith(false);
+		});
+	});
 });

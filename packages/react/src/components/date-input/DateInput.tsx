@@ -42,6 +42,7 @@ export function DateInput(props: DateInputProps) {
 		position,
 		startSection,
 		endSection,
+		rangeFormat,
 		...rootProps
 	} = props;
 	const tid = testIdFn(testId);
@@ -93,7 +94,8 @@ export function DateInput(props: DateInputProps) {
 									data-with-end-section={endSection ? true : undefined}
 								>
 									{datePicker.valueAsString.length
-										? datePicker.valueAsString.join(" - ")
+										? (rangeFormat?.(datePicker.valueAsString) ??
+											datePicker.valueAsString.join(" - "))
 										: (placeholder ??
 											`Select a date${rootProps.selectionMode === "range" ? " range" : ""}...`)}
 								</DateInputTrigger>

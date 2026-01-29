@@ -30,7 +30,16 @@ export function DateInput(props: DateInputProps) {
 	const [fieldProps, controlProps, rootProps] = splitProps(
 		props,
 		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],
-		["placeholder", "value", "defaultValue", "onValueChange", "position", "startSection", "endSection"],
+		[
+			"placeholder",
+			"value",
+			"defaultValue",
+			"onValueChange",
+			"position",
+			"startSection",
+			"endSection",
+			"rangeFormat",
+		],
 	);
 	const tid = testId(fieldProps.testId);
 	return (
@@ -74,10 +83,16 @@ export function DateInput(props: DateInputProps) {
 									data-with-start-section={controlProps.startSection ? true : undefined}
 									data-with-end-section={controlProps.endSection ? true : undefined}
 								>
-									{datePicker().valueAsString.length
-										? datePicker().valueAsString.join(" - ")
-										: (controlProps.placeholder ??
-											`Select a date${rootProps.selectionMode === "range" ? " range" : ""}...`)}
+									<Show
+										when={datePicker().valueAsString.length > 0}
+										fallback={
+											controlProps.placeholder ??
+											`Select a date${rootProps.selectionMode === "range" ? " range" : ""}...`
+										}
+									>
+										{controlProps.rangeFormat?.(datePicker().valueAsString) ??
+											datePicker().valueAsString.join(" - ")}
+									</Show>
 								</DateInputTrigger>
 							);
 						}}

@@ -8,7 +8,7 @@ import { testId } from "@temporal-ui/core/utils/string";
 import { cx } from "@temporal-ui/core/utils/cx";
 
 export interface DialogProps extends CoreDialogProps<JSX.Element>, Omit<HTMLProps<"div">, "role"> {
-	trigger: (props: Record<string, unknown>) => JSX.Element;
+	trigger?: (props: Record<string, unknown>) => JSX.Element;
 }
 
 export function Dialog(props: DialogProps) {
@@ -36,11 +36,13 @@ export function Dialog(props: DialogProps) {
 			onOpenChange={(details) => rootProps.onOpenChange?.(details.open)}
 			data-testid={tid("--root")}
 		>
-			<ArkDialog.Trigger
-				data-testid={tid("--trigger")}
-				class={contentProps.classes?.trigger}
-				asChild={(props) => dialogProps.trigger({ ...props() })}
-			/>
+			<Show when={dialogProps.trigger}>
+				<ArkDialog.Trigger
+					data-testid={tid("--trigger")}
+					class={contentProps.classes?.trigger}
+					asChild={(props) => dialogProps.trigger?.({ ...props() })}
+				/>
+			</Show>
 			<Portal>
 				<ArkDialog.Backdrop
 					data-testid={tid("--backdrop")}

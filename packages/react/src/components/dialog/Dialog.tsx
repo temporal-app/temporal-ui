@@ -9,7 +9,7 @@ import { cx } from "@temporal-ui/core/utils/cx";
 export interface DialogProps
 	extends CoreDialogProps<React.ReactNode>,
 		Omit<React.HTMLAttributes<HTMLDivElement>, "role"> {
-	trigger: React.ReactNode;
+	trigger?: React.ReactNode;
 }
 
 export function Dialog(props: DialogProps) {
@@ -46,13 +46,15 @@ export function Dialog(props: DialogProps) {
 			unmountOnExit={unmountOnExit}
 			data-testid={testId ? `${testId}--root` : undefined}
 		>
-			<ArkDialog.Trigger
-				asChild
-				data-testid={tid("--trigger")}
-				className={classes?.trigger}
-			>
-				{trigger}
-			</ArkDialog.Trigger>
+			{trigger && (
+				<ArkDialog.Trigger
+					asChild
+					data-testid={tid("--trigger")}
+					className={classes?.trigger}
+				>
+					{trigger}
+				</ArkDialog.Trigger>
+			)}
 			<Portal>
 				<ArkDialog.Backdrop
 					className={classes?.backdrop}

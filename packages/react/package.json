@@ -1,6 +1,6 @@
 {
 	"name": "@temporal-ui/react",
-	"version": "0.6.12",
+	"version": "0.6.13",
 	"description": "React bindings for Temporal UI components",
 	"license": "MIT",
 	"type": "module",

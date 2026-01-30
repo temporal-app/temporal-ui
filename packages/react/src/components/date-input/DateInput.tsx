@@ -94,7 +94,7 @@ export function DateInput(props: DateInputProps) {
 									data-with-end-section={endSection ? true : undefined}
 								>
 									{datePicker.valueAsString.length
-										? (rangeFormat?.(datePicker.valueAsString) ??
+										? (rangeFormat?.(datePicker.valueAsDate) ??
 											datePicker.valueAsString.join(" - "))
 										: (placeholder ??
 											`Select a date${rootProps.selectionMode === "range" ? " range" : ""}...`)}

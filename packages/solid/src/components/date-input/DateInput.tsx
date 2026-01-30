@@ -90,7 +90,7 @@ export function DateInput(props: DateInputProps) {
 											`Select a date${rootProps.selectionMode === "range" ? " range" : ""}...`
 										}
 									>
-										{controlProps.rangeFormat?.(datePicker().valueAsString) ??
+										{controlProps.rangeFormat?.(datePicker().valueAsDate) ??
 											datePicker().valueAsString.join(" - ")}
 									</Show>
 								</DateInputTrigger>

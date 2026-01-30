@@ -11,5 +11,5 @@ export interface DateInputProps<T> extends FieldProps<T> {
 		startSection?: T;
 		/** The end section of the trigger. */
 		endSection?: T;
-		rangeFormat?: (dates: string[]) => string;
+		rangeFormat?: (dates: Date[]) => string;
 	}

@@ -50,29 +50,54 @@ function App() {
 ## 🧱 Components
 
 ### Layout & Structure
-- **Box** - Flexible container component
-- **Stack** - Vertical/horizontal layout utility  
-- **Card** - Content container with consistent styling
-- **Sidebar** - Navigation sidebar components
+| Component | Description |
+|-----------|-------------|
+| `Box` | Basic layout primitive |
+| `Stack` | Vertical/horizontal stack layout |
+| `Card` | Container with card styling |
+| `Separator` | Visual divider |
+| `Sidebar` | Collapsible sidebar navigation |
+| `ScrollArea` | Custom scrollable area |
 
-### Form Controls
-- **Button** - Primary interactive element
-- **TextInput** - Single-line text input
-- **Textarea** - Multi-line text input
-- **Checkbox** - Boolean input with grouping support
-- **RadioGroup** - Single-choice selection
-- **Field** - Form field wrapper with labels
+### Forms & Inputs
+| Component | Description |
+|-----------|-------------|
+| `Button` | Primary action button with variants |
+| `TextInput` | Text input field |
+| `Textarea` | Multi-line text input |
+| `NumberInput` | Numeric input with controls |
+| `Checkbox` | Checkbox with label support |
+| `RadioGroup` | Radio button group |
+| `Select` | Dropdown selection |
+| `Slider` | Range slider input |
+| `ColorInput` | Color picker input |
+| `DateInput` | Date picker input |
+| `Field` | Form field wrapper with label/error |
+| `Toggle` | Two-state toggle button |
 
-### Feedback & Status
-- **Alert** - Status messages and notifications
-- **Badge** - Small status indicators
-- **Loader** - Loading states and spinners
-- **Notifications** - Toast-style notifications
+### Data Display
+| Component | Description |
+|-----------|-------------|
+| `Table` | Basic table component |
+| `DataTable` | Advanced data table with features |
+| `Badge` | Status/label badge |
+| `Avatar` | User avatar display |
 
-### Navigation & Overlays
-- **Menu** - Dropdown menus with keyboard navigation
-- **Popover** - Contextual overlays
-- **Avatar** - User profile images and initials
+### Feedback & Overlays
+| Component | Description |
+|-----------|-------------|
+| `Alert` | Alert/notification banner |
+| `Dialog` | Modal dialog |
+| `Popover` | Floating popover content |
+| `Menu` | Dropdown menu |
+| `Notifications` | Toast notification system |
+| `Loader` | Loading spinner/indicator |
+
+### Navigation
+| Component | Description |
+|-----------|-------------|
+| `Tabs` | Tabbed navigation |
+| `Collapsible` | Expandable/collapsible section |
 
 ## 🛠 Development
 
@@ -101,18 +126,47 @@ bun run test       # Run all tests
 bun run typecheck  # TypeScript checking
 bun run lint       # Lint code with Biome
 bun run format     # Format code with Biome
+bun run clean      # Clean build artifacts
 ```
+
+### Storybook
+
+Explore and interact with all components using Storybook:
+
+```bash
+# React Storybook (http://localhost:6006)
+bun run react
+
+# Solid.js Storybook
+bun run solid
+```
+
+Storybook provides interactive documentation for all components with live examples, props controls, and usage guidelines.
 
 ### Project Structure
 
 ```
 temporal-ui/
 ├── packages/
-│   ├── core/          # Framework-agnostic components
-│   ├── react/         # React implementations
-│   └── solid/         # Solid.js implementations
-├── package.json       # Workspace configuration
-└── turbo.json        # Build pipeline configuration
+│   ├── core/               # Framework-agnostic components
+│   │   └── src/
+│   │       ├── components/ # Component definitions and CSS
+│   │       ├── css/        # Global styles (animations, base, theme)
+│   │       └── utils/      # Shared utilities (cx, string)
+│   ├── react/              # React implementations
+│   │   └── src/
+│   │       ├── components/ # React components with stories/tests
+│   │       ├── hooks/      # React-specific hooks
+│   │       └── utils/      # React-specific utilities
+│   └── solid/              # Solid.js implementations
+│       └── src/
+│           ├── components/ # Solid components with stories/tests
+│           └── utils/      # Solid-specific utilities
+├── scripts/                # Build and utility scripts
+├── .changeset/             # Versioning and changelog management
+├── biome.json              # Linter/formatter configuration
+├── turbo.json              # Build pipeline configuration
+└── tsconfig.json           # TypeScript configuration
 ```
 
 ## 🤝 Contributing

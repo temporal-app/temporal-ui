@@ -50,14 +50,14 @@ export const WithText: Story = {
 };
 
 export const WithIndicator: Story = {
-	args: {
-		children: (
+	render: () => (
+		<Toggle>
 			<ToggleIndicator fallback={<BoldIcon size={16} />}>
 				<BoldIcon
 					size={16}
 					stroke-width={3}
 				/>
 			</ToggleIndicator>
-		),
-	},
+		</Toggle>
+	),
 };

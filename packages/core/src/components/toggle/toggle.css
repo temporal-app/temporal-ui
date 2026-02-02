@@ -19,4 +19,29 @@
 			@apply flex items-center justify-center;
 		}
 	}
+
+	[data-scope="toggle-group"] {
+		&[data-part="root"] {
+			@apply inline-flex items-center gap-1;
+
+			&[data-orientation="vertical"] {
+				@apply flex-col;
+			}
+		}
+
+		&[data-part="item"] {
+			@apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-all;
+			@apply size-9 bg-transparent hover:bg-muted hover:text-muted-foreground;
+			@apply border border-input shadow-xs;
+			@apply focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none;
+
+			&[data-state="on"] {
+				@apply bg-accent text-accent-foreground;
+			}
+
+			&[data-disabled] {
+				@apply pointer-events-none opacity-50;
+			}
+		}
+	}
 }

@@ -1,6 +1,6 @@
 {
 	"name": "@temporal-ui/core",
-	"version": "0.7.0",
+	"version": "0.7.1",
 	"description": "Framework-agnostic core definitions, utils and styles for Temporal UI components",
 	"license": "MIT",
 	"type": "module",

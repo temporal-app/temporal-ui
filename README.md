@@ -74,6 +74,7 @@ function App() {
 | `DateInput` | Date picker input |
 | `Field` | Form field wrapper with label/error |
 | `Toggle` | Two-state toggle button |
+| `ToggleGroup` | Group of toggle buttons |
 
 ### Data Display
 | Component | Description |

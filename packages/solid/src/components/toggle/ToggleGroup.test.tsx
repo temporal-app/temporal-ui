@@ -11,9 +11,9 @@ describe("ToggleGroup", () => {
 				<ToggleGroupItem value="underline">U</ToggleGroupItem>
 			</ToggleGroup>
 		));
-		expect(screen.getByRole("button", { name: "B" })).toBeInTheDocument();
-		expect(screen.getByRole("button", { name: "I" })).toBeInTheDocument();
-		expect(screen.getByRole("button", { name: "U" })).toBeInTheDocument();
+		expect(screen.getByRole("radio", { name: "B" })).toBeInTheDocument();
+		expect(screen.getByRole("radio", { name: "I" })).toBeInTheDocument();
+		expect(screen.getByRole("radio", { name: "U" })).toBeInTheDocument();
 	});
 
 	it("should be disabled when disabled prop is true", () => {
@@ -24,9 +24,9 @@ describe("ToggleGroup", () => {
 				<ToggleGroupItem value="underline">U</ToggleGroupItem>
 			</ToggleGroup>
 		));
-		expect(screen.getByRole("button", { name: "B" })).toBeDisabled();
-		expect(screen.getByRole("button", { name: "I" })).toBeDisabled();
-		expect(screen.getByRole("button", { name: "U" })).toBeDisabled();
+		expect(screen.getByRole("radio", { name: "B" })).toBeDisabled();
+		expect(screen.getByRole("radio", { name: "I" })).toBeDisabled();
+		expect(screen.getByRole("radio", { name: "U" })).toBeDisabled();
 	});
 
 	it("should show selected state for controlled value", () => {
@@ -37,8 +37,8 @@ describe("ToggleGroup", () => {
 				<ToggleGroupItem value="underline">U</ToggleGroupItem>
 			</ToggleGroup>
 		));
-		expect(screen.getByRole("button", { name: "B" })).toHaveAttribute("data-state", "on");
-		expect(screen.getByRole("button", { name: "I" })).toHaveAttribute("data-state", "off");
+		expect(screen.getByRole("radio", { name: "B" })).toHaveAttribute("data-state", "on");
+		expect(screen.getByRole("radio", { name: "I" })).toHaveAttribute("data-state", "off");
 	});
 
 	it("should disable individual items", () => {
@@ -54,8 +54,8 @@ describe("ToggleGroup", () => {
 				<ToggleGroupItem value="underline">U</ToggleGroupItem>
 			</ToggleGroup>
 		));
-		expect(screen.getByRole("button", { name: "B" })).not.toBeDisabled();
-		expect(screen.getByRole("button", { name: "I" })).toBeDisabled();
-		expect(screen.getByRole("button", { name: "U" })).not.toBeDisabled();
+		expect(screen.getByRole("radio", { name: "B" })).not.toBeDisabled();
+		expect(screen.getByRole("radio", { name: "I" })).toBeDisabled();
+		expect(screen.getByRole("radio", { name: "U" })).not.toBeDisabled();
 	});
 });

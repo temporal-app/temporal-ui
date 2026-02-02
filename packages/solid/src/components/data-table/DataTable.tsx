@@ -6,7 +6,7 @@ import {
 	type TableOptions,
 } from "@tanstack/solid-table";
 import type { DataTableProps as CoreDataTableProps } from "@temporal-ui/core/data-table";
-import { For, Show, splitProps, type JSX } from "solid-js";
+import { For, mergeProps, Show, splitProps, type JSX } from "solid-js";
 import { Loader } from "../loader";
 import { Table } from "../table";
 import { testId } from "@temporal-ui/core/utils/string";
@@ -19,14 +19,13 @@ export interface DataTableProps<TData>
 
 export function DataTable<TData>(props: DataTableProps<TData>) {
 	const [controlProps, tableProps] = splitProps(props, ["loading", "testId"]);
-	const table = createSolidTable({
+
+	const createTableProps = mergeProps(tableProps, {
 		getCoreRowModel: getCoreRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
-		...tableProps,
-		get data() {
-			return tableProps.data;
-		},
 	});
+
+	const table = createSolidTable(createTableProps);
 
 	const tid = testId(props.testId);
 

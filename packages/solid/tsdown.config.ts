@@ -11,6 +11,7 @@ export default defineConfig({
 	],
 	dts: true,
 	platform: "browser",
+	noExternal: ["lucide-solid"],
 	outExtensions: () => {
 		return {
 			js: ".jsx",

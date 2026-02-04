@@ -10,5 +10,6 @@ export default defineConfig({
 		"src/utils/*/index.ts",
 	],
 	dts: true,
-	platform: "browser"
+	platform: "browser",
+	noExternal: ["lucide-react"],
 });

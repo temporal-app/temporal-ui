@@ -13,12 +13,26 @@ export interface DialogProps
 }
 
 export function Dialog(props: DialogProps) {
-	const { trigger, testId, open, onOpenChange, defaultOpen, classes, className, children, ...rootProps } = props;
+	const {
+		trigger,
+		testId,
+		open,
+		onOpenChange,
+		defaultOpen,
+		classes,
+		className,
+		children,
+		lazyMount = true,
+		unmountOnExit = true,
+		...rootProps
+	} = props;
 
 	const tid = testIdFn(testId);
 
 	return (
 		<ArkDialog.Root
+			lazyMount={lazyMount}
+			unmountOnExit={unmountOnExit}
 			{...rootProps}
 			onOpenChange={(details) => onOpenChange?.(details.open)}
 			data-testid={testId ? `${testId}--root` : undefined}

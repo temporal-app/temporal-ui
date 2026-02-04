@@ -15,6 +15,8 @@ export function Popover(props: PopoverProps) {
 	const {
 		trigger,
 		portal = true,
+		lazyMount = true,
+		unmountOnExit = true,
 		position,
 		testId,
 		className,
@@ -31,6 +33,8 @@ export function Popover(props: PopoverProps) {
 	return (
 		<ArkPopover.Root
 			portalled={portal}
+			lazyMount={lazyMount}
+			unmountOnExit={unmountOnExit}
 			{...rootProps}
 			onOpenChange={(details) => onOpenChange?.(details.open)}
 			positioning={position}

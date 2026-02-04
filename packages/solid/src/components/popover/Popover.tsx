@@ -12,49 +12,48 @@ export interface PopoverProps
 }
 
 export function Popover(props: PopoverProps) {
-	const [rootProps, contentProps] = splitProps(mergeProps({ portal: true }, props), [
-		"trigger",
-		"portal",
-		"modal",
-		"autoFocus",
-		"defaultOpen",
-		"open",
-		"onOpenChange",
-		"closeOnEscape",
-		"closeOnInteractOutside",
-		"position",
-		"testId",
-	]);
+	const [localProps, rootProps] = splitProps(
+		mergeProps({ portal: true, lazyMount: true, unmountOnExit: true }, props),
+		["trigger", "portal", "testId", "position", "onOpenChange", "classes", "className", "children"],
+	);
 
-	const tid = testId(rootProps.testId);
+	const tid = testId(localProps.testId);
 
 	return (
 		<ArkPopover.Root
-			portalled={rootProps.portal}
+			portalled={localProps.portal}
 			{...rootProps}
-			onOpenChange={(details) => rootProps.onOpenChange?.(details.open)}
-			positioning={rootProps.position}
+			onOpenChange={(details) => localProps.onOpenChange?.(details.open)}
+			positioning={localProps.position}
 			data-testid={tid("--root")}
 		>
-			<Show when={rootProps.trigger}>
+			<Show when={localProps.trigger}>
 				<ArkPopover.Trigger
-					asChild={(props) => rootProps.trigger?.({ ...props() })}
-					class={contentProps.classes?.trigger}
+					asChild={(props) => localProps.trigger?.({ ...props() })}
+					class={localProps.classes?.trigger}
 					data-testid={tid("--trigger")}
 				/>
 			</Show>
-			<Show when={rootProps.portal}>
+			<Show when={localProps.portal}>
 				<Portal>
 					<PopoverContent
-						{...contentProps}
-						testId={rootProps.testId}
+						title={rootProps.title}
+						description={rootProps.description}
+						className={localProps.className}
+						classes={localProps.classes}
+						testId={localProps.testId}
+						children={localProps.children}
 					/>
 				</Portal>
 			</Show>
-			<Show when={!rootProps.portal}>
+			<Show when={!localProps.portal}>
 				<PopoverContent
-					{...contentProps}
-					testId={rootProps.testId}
+					title={rootProps.title}
+					description={rootProps.description}
+					className={localProps.className}
+					classes={localProps.classes}
+					testId={localProps.testId}
+					children={localProps.children}
 				/>
 			</Show>
 		</ArkPopover.Root>

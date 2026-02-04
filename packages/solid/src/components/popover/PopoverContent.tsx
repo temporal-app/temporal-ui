@@ -1,14 +1,14 @@
 import { Popover as ArkPopover } from "@ark-ui/solid/popover";
 import { testId } from "@temporal-ui/core/utils/string";
-import { Show, splitProps } from "solid-js";
+import { Show, type JSX } from "solid-js";
 import { cx } from "@temporal-ui/core/utils/cx";
-import type { HTMLProps } from "@ark-ui/solid";
 
-export interface PopoverContentProps extends HTMLProps<"div"> {
+export interface PopoverContentProps {
 	testId?: string;
 	title?: string;
 	description?: string;
 	className?: string;
+	children?: JSX.Element;
 	classes?: {
 		content?: string;
 		title?: string;
@@ -17,41 +17,30 @@ export interface PopoverContentProps extends HTMLProps<"div"> {
 }
 
 export function PopoverContent(props: PopoverContentProps) {
-	const [contentProps, elementProps] = splitProps(props, [
-		"title",
-		"description",
-		"classes",
-		"children",
-		"testId",
-		"className",
-	]);
-
 	const tid = testId(props.testId);
-
 	return (
 		<ArkPopover.Positioner data-testid={tid("--positioner")}>
 			<ArkPopover.Content
-				{...elementProps}
 				data-testid={tid("--content")}
-				class={cx(contentProps.classes?.content, contentProps.className)}
+				class={cx(props.classes?.content, props.className)}
 			>
-				<Show when={contentProps.title}>
+				<Show when={props.title}>
 					<ArkPopover.Title
-						class={contentProps.classes?.title}
+						class={props.classes?.title}
 						data-testid={tid("--title")}
 					>
-						{contentProps.title}
+						{props.title}
 					</ArkPopover.Title>
 				</Show>
-				<Show when={contentProps.description}>
+				<Show when={props.description}>
 					<ArkPopover.Description
-						class={contentProps.classes?.description}
+						class={props.classes?.description}
 						data-testid={tid("--description")}
 					>
-						{contentProps.description}
+						{props.description}
 					</ArkPopover.Description>
 				</Show>
-				{contentProps.children}
+				{props.children}
 			</ArkPopover.Content>
 		</ArkPopover.Positioner>
 	);

@@ -1,21 +1,21 @@
 import type { DialogProps as CoreDialogProps } from "@temporal-ui/core/dialog";
 import { Dialog as ArkDialog } from "@ark-ui/solid/dialog";
 import { X } from "lucide-solid";
-import type { HTMLProps } from "@ark-ui/solid";
-import { mergeProps, Show, splitProps, type JSX } from "solid-js";
+import { mergeProps, Show, splitProps, type ComponentProps, type JSX } from "solid-js";
 import { Portal } from "solid-js/web";
 import { testId } from "@temporal-ui/core/utils/string";
 import { cx } from "@temporal-ui/core/utils/cx";
 
-export interface DialogProps extends CoreDialogProps<JSX.Element>, Omit<HTMLProps<"div">, "role"> {
+export interface DialogProps
+	extends CoreDialogProps<JSX.Element>,
+		Omit<ComponentProps<typeof ArkDialog.Root>, "onOpenChange"> {
 	trigger?: (props: Record<string, unknown>) => JSX.Element;
 }
 
 export function Dialog(props: DialogProps) {
 	const [localProps, rootProps] = splitProps(
-		mergeProps({ lazyMount: true, unmountOnExit: true }, props),
-		["testId", "onOpenChange", "className", "classes", "trigger", "children"],
-		["trigger", "title", "description"],
+		mergeProps({ lazyMount: true, unmountOnExit: true } as DialogProps, props),
+		["testId", "onOpenChange", "className", "classes", "trigger", "children", "trigger", "title", "description"],
 	);
 
 	const tid = testId(localProps.testId);
@@ -26,7 +26,7 @@ export function Dialog(props: DialogProps) {
 			onOpenChange={(details) => localProps.onOpenChange?.(details.open)}
 			data-testid={tid("--root")}
 		>
-			<Show when={rootProps.trigger}>
+			<Show when={localProps.trigger}>
 				<ArkDialog.Trigger
 					data-testid={tid("--trigger")}
 					class={localProps.classes?.trigger}
@@ -48,20 +48,20 @@ export function Dialog(props: DialogProps) {
 							data-part="header"
 							class={localProps.classes?.header}
 						>
-							<Show when={rootProps.title}>
+							<Show when={localProps.title}>
 								<ArkDialog.Title
 									class={localProps.classes?.title}
 									data-testid={tid("--title")}
 								>
-									{rootProps.title}
+									{localProps.title}
 								</ArkDialog.Title>
 							</Show>
-							<Show when={rootProps.description}>
+							<Show when={localProps.description}>
 								<ArkDialog.Description
 									class={localProps.classes?.description}
 									data-testid={tid("--description")}
 								>
-									{rootProps.description}
+									{localProps.description}
 								</ArkDialog.Description>
 							</Show>
 							<ArkDialog.CloseTrigger

@@ -6,12 +6,6 @@ export interface DialogProps<T> extends BoxProps<T> {
 	open?: boolean;
 	defaultOpen?: boolean;
 	onOpenChange?: (open: boolean) => void;
-	closeOnEscape?: boolean;
-	closeOnInteractOutside?: boolean;
-	modal?: boolean;
-	role?: "dialog" | "alertdialog";
-	lazyMount?: boolean;
-	unmountOnExit?: boolean;
 	classes?: {
 		header?: string;
 		closeTrigger?: string;

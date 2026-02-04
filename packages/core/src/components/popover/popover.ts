@@ -9,10 +9,6 @@ export interface PopoverProps<T> extends BoxProps<T> {
 	open?: boolean;
 	defaultOpen?: boolean;
 	onOpenChange?: (open: boolean) => void;
-	closeOnEscape?: boolean;
-	closeOnInteractOutside?: boolean;
-	modal?: boolean;
-	autoFocus?: boolean;
 	classes?: {
 		trigger?: string;
 		content?: string;

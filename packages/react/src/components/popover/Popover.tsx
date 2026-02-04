@@ -15,16 +15,17 @@ export function Popover(props: PopoverProps) {
 	const {
 		trigger,
 		portal = true,
-		modal,
-		autoFocus,
-		defaultOpen,
-		open,
-		onOpenChange,
-		closeOnEscape,
-		closeOnInteractOutside,
+		lazyMount = true,
+		unmountOnExit = true,
 		position,
 		testId,
-		...contentProps
+		className,
+		classes,
+		title,
+		onOpenChange,
+		description,
+		children,
+		...rootProps
 	} = props;
 
 	const tid = testIdFn(testId);
@@ -32,7 +33,9 @@ export function Popover(props: PopoverProps) {
 	return (
 		<ArkPopover.Root
 			portalled={portal}
-			{...props}
+			lazyMount={lazyMount}
+			unmountOnExit={unmountOnExit}
+			{...rootProps}
 			onOpenChange={(details) => onOpenChange?.(details.open)}
 			positioning={position}
 			data-testid={tid("--root")}
@@ -49,16 +52,26 @@ export function Popover(props: PopoverProps) {
 			{portal && (
 				<Portal>
 					<PopoverContent
-						{...contentProps}
-						data-testid={tid("--content")}
-					/>
+						testId={testId}
+						title={title}
+						description={description}
+						className={className}
+						classes={classes}
+					>
+						{children}
+					</PopoverContent>
 				</Portal>
 			)}
 			{!portal && (
 				<PopoverContent
-					{...contentProps}
-					data-testid={tid("--content")}
-				/>
+					testId={testId}
+					title={title}
+					description={description}
+					className={className}
+					classes={classes}
+				>
+					{children}
+				</PopoverContent>
 			)}
 		</ArkPopover.Root>
 	);

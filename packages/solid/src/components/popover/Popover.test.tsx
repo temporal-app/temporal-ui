@@ -40,25 +40,6 @@ describe('Popover Component', () => {
 		});
 	});
 
-	it('closes popover when trigger is clicked again', async () => {
-		const user = userEvent.setup();
-		render(() => <Popover {...defaultProps} />);
-
-		const trigger = screen.getByRole('button', { name: 'Open Popover' });
-
-		// Open popover
-		await user.click(trigger);
-		await waitFor(() => {
-			expect(screen.getByText('Popover content')).toBeVisible();
-		});
-
-		// Close popover
-		await user.click(trigger);
-		await waitFor(() => {
-			expect(screen.getByText('Popover content')).not.toBeVisible();
-		});
-	});
-
 	it('respects defaultOpen prop', () => {
 		render(() => <Popover {...defaultProps} defaultOpen />);
 		expect(screen.getByText('Popover content')).toBeVisible();

@@ -2,10 +2,12 @@ import { Popover as ArkPopover } from "@ark-ui/react/popover";
 import { cx } from "@temporal-ui/core/utils/cx";
 import { testId as testIdFn } from "@temporal-ui/core/utils/string";
 
-export interface PopoverContentProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface PopoverContentProps {
 	testId?: string;
 	title?: string;
 	description?: string;
+	className?: string;
+	children?: React.ReactNode;
 	classes?: {
 		content?: string;
 		title?: string;
@@ -14,33 +16,31 @@ export interface PopoverContentProps extends React.HTMLAttributes<HTMLDivElement
 }
 
 export function PopoverContent(props: PopoverContentProps) {
-	const { title, description, classes, children, testId, ...elementProps } = props;
-
-	const tid = testIdFn(testId);
+	const tid = testIdFn(props.testId);
 
 	return (
 		<ArkPopover.Positioner data-testid={tid("--positioner")}>
 			<ArkPopover.Content
 				data-testid={tid("--content")}
-				className={cx(classes?.content, elementProps.className)}
+				className={cx(props.classes?.content, props.className)}
 			>
-				{title && (
+				{props.title && (
 					<ArkPopover.Title
-						className={classes?.title}
+						className={props.classes?.title}
 						data-testid={tid("--title")}
 					>
-						{title}
+						{props.title}
 					</ArkPopover.Title>
 				)}
-				{description && (
+				{props.description && (
 					<ArkPopover.Description
-						className={classes?.description}
+						className={props.classes?.description}
 						data-testid={tid("--description")}
 					>
-						{description}
+						{props.description}
 					</ArkPopover.Description>
 				)}
-				{children}
+				{props.children}
 			</ArkPopover.Content>
 		</ArkPopover.Positioner>
 	);

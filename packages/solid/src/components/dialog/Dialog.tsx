@@ -2,7 +2,7 @@ import type { DialogProps as CoreDialogProps } from "@temporal-ui/core/dialog";
 import { Dialog as ArkDialog } from "@ark-ui/solid/dialog";
 import { X } from "lucide-solid";
 import type { HTMLProps } from "@ark-ui/solid";
-import { Show, splitProps, type JSX } from "solid-js";
+import { mergeProps, Show, splitProps, type JSX } from "solid-js";
 import { Portal } from "solid-js/web";
 import { testId } from "@temporal-ui/core/utils/string";
 import { cx } from "@temporal-ui/core/utils/cx";
@@ -12,77 +12,66 @@ export interface DialogProps extends CoreDialogProps<JSX.Element>, Omit<HTMLProp
 }
 
 export function Dialog(props: DialogProps) {
-	const [rootProps, dialogProps, contentProps] = splitProps(
-		props,
-		[
-			"modal",
-			"defaultOpen",
-			"open",
-			"onOpenChange",
-			"closeOnEscape",
-			"closeOnInteractOutside",
-			"lazyMount",
-			"unmountOnExit",
-			"testId",
-		],
+	const [localProps, rootProps] = splitProps(
+		mergeProps({ lazyMount: true, unmountOnExit: true }, props),
+		["testId", "onOpenChange", "className", "classes", "trigger", "children"],
 		["trigger", "title", "description"],
 	);
 
-	const tid = testId(rootProps.testId);
+	const tid = testId(localProps.testId);
 
 	return (
 		<ArkDialog.Root
 			{...rootProps}
-			onOpenChange={(details) => rootProps.onOpenChange?.(details.open)}
+			onOpenChange={(details) => localProps.onOpenChange?.(details.open)}
 			data-testid={tid("--root")}
 		>
-			<Show when={dialogProps.trigger}>
+			<Show when={rootProps.trigger}>
 				<ArkDialog.Trigger
 					data-testid={tid("--trigger")}
-					class={contentProps.classes?.trigger}
-					asChild={(props) => dialogProps.trigger?.({ ...props() })}
+					class={localProps.classes?.trigger}
+					asChild={(props) => localProps.trigger?.({ ...props() })}
 				/>
 			</Show>
 			<Portal>
 				<ArkDialog.Backdrop
 					data-testid={tid("--backdrop")}
-					class={contentProps.classes?.backdrop}
+					class={localProps.classes?.backdrop}
 				/>
 				<ArkDialog.Positioner data-testid={tid("--positioner")}>
 					<ArkDialog.Content
-						{...contentProps}
 						data-testid={tid("--content")}
-						class={cx(contentProps.classes?.content, contentProps.class)}
+						class={cx(localProps.classes?.content, localProps.className)}
 					>
 						<div
 							data-scope="dialog"
 							data-part="header"
-							class={contentProps.classes?.header}
+							class={localProps.classes?.header}
 						>
-							<Show when={dialogProps.title}>
+							<Show when={rootProps.title}>
 								<ArkDialog.Title
-									class={contentProps.classes?.title}
+									class={localProps.classes?.title}
 									data-testid={tid("--title")}
 								>
-									{dialogProps.title}
+									{rootProps.title}
 								</ArkDialog.Title>
 							</Show>
-							<Show when={dialogProps.description}>
+							<Show when={rootProps.description}>
 								<ArkDialog.Description
-									class={contentProps.classes?.description}
+									class={localProps.classes?.description}
 									data-testid={tid("--description")}
 								>
-									{dialogProps.description}
+									{rootProps.description}
 								</ArkDialog.Description>
 							</Show>
 							<ArkDialog.CloseTrigger
-								class={contentProps.classes?.closeTrigger}
+								class={localProps.classes?.closeTrigger}
 								data-testid={tid("--close-trigger")}
 							>
 								<X />
 							</ArkDialog.CloseTrigger>
 						</div>
-						{props.children}
+						{localProps.children}
 					</ArkDialog.Content>
 				</ArkDialog.Positioner>
 			</Portal>

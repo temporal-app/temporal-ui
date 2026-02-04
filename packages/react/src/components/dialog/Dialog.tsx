@@ -8,42 +8,33 @@ import { cx } from "@temporal-ui/core/utils/cx";
 
 export interface DialogProps
 	extends CoreDialogProps<React.ReactNode>,
-		Omit<React.HTMLAttributes<HTMLDivElement>, "role"> {
+		Omit<React.ComponentProps<typeof ArkDialog.Root>, "onOpenChange"> {
 	trigger?: React.ReactNode;
 }
 
 export function Dialog(props: DialogProps) {
 	const {
 		trigger,
-		title,
-		description,
 		testId,
 		open,
 		onOpenChange,
 		defaultOpen,
-		closeOnEscape,
-		closeOnInteractOutside,
-		modal,
-		role,
-		lazyMount,
-		unmountOnExit,
 		classes,
-		...rest
+		className,
+		children,
+		lazyMount = true,
+		unmountOnExit = true,
+		...rootProps
 	} = props;
 
 	const tid = testIdFn(testId);
 
 	return (
 		<ArkDialog.Root
-			open={open}
-			onOpenChange={(details) => onOpenChange?.(details.open)}
-			defaultOpen={defaultOpen}
-			closeOnEscape={closeOnEscape}
-			closeOnInteractOutside={closeOnInteractOutside}
-			modal={modal}
-			role={role}
 			lazyMount={lazyMount}
 			unmountOnExit={unmountOnExit}
+			{...rootProps}
+			onOpenChange={(details) => onOpenChange?.(details.open)}
 			data-testid={testId ? `${testId}--root` : undefined}
 		>
 			{trigger && (
@@ -62,28 +53,27 @@ export function Dialog(props: DialogProps) {
 				/>
 				<ArkDialog.Positioner>
 					<ArkDialog.Content
-						{...rest}
-						className={cx(classes?.content, rest.className)}
+						className={cx(classes?.content, className)}
 						data-testid={tid("--content")}
 					>
 						<div
 							data-scope="dialog"
 							data-part="header"
 						>
-							{title && (
+							{rootProps.title && (
 								<ArkDialog.Title
 									className={classes?.title}
 									data-testid={tid("--title")}
 								>
-									{title}
+									{rootProps.title}
 								</ArkDialog.Title>
 							)}
-							{description && (
+							{rootProps.description && (
 								<ArkDialog.Description
 									className={classes?.description}
 									data-testid={tid("--description")}
 								>
-									{description}
+									{rootProps.description}
 								</ArkDialog.Description>
 							)}
 							<ArkDialog.CloseTrigger
@@ -93,7 +83,7 @@ export function Dialog(props: DialogProps) {
 								<X />
 							</ArkDialog.CloseTrigger>
 						</div>
-						{props.children}
+						{children}
 					</ArkDialog.Content>
 				</ArkDialog.Positioner>
 			</Portal>

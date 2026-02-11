@@ -1,31 +1,43 @@
 import { Menu as ArkMenu } from "@ark-ui/solid/menu";
 import type { MenuProps as CoreMenuProps } from "@temporal-ui/core/menu";
-import type { JSX, ParentProps } from "solid-js";
+import { testId } from "@temporal-ui/core/utils/string";
+import { splitProps, type ComponentProps, type JSX, type ParentProps } from "solid-js";
 import { Portal } from "solid-js/web";
 
-export interface MenuProps extends CoreMenuProps<JSX.Element> {
+export interface MenuProps extends CoreMenuProps<JSX.Element>, Omit<ComponentProps<typeof ArkMenu.Root>, "onSelect" | "positioning"> {
 	trigger: (props: ParentProps) => JSX.Element;
 }
 
-export function Menu(menuProps: MenuProps) {
+export function Menu(_props: MenuProps) {
+	const [localProps, rootProps] = splitProps(_props, [
+		"trigger",
+		"testId",
+		"position",
+		"onSelect",
+		"className",
+		"children",
+	]);
+
+	const tid = testId(localProps.testId);
+
 	return (
 		<ArkMenu.Root
-			onSelect={(details) => menuProps.onSelect?.(details.value)}
-			closeOnSelect={menuProps.closeOnSelect}
-			positioning={menuProps.position}
-			data-testid={menuProps.testId ? `${menuProps.testId}--root` : undefined}
+			{...rootProps}
+			onSelect={(details) => localProps.onSelect?.(details.value)}
+			positioning={localProps.position}
+			data-testid={tid("--root")}
 		>
 			<ArkMenu.Trigger
-				asChild={(props) => menuProps.trigger(props())}
-				data-testid={menuProps.testId ? `${menuProps.testId}--trigger` : undefined}
+				asChild={(props) => localProps.trigger(props())}
+				data-testid={tid("--trigger")}
 			/>
 			<Portal>
-				<ArkMenu.Positioner data-testid={menuProps.testId ? `${menuProps.testId}--positioner` : undefined}>
+				<ArkMenu.Positioner data-testid={tid("--positioner")}>
 					<ArkMenu.Content
-						class={menuProps.className}
-						data-testid={menuProps.testId ? `${menuProps.testId}--content` : undefined}
+						class={localProps.className}
+						data-testid={localProps.testId}
 					>
-						{menuProps.children}
+						{localProps.children}
 					</ArkMenu.Content>
 				</ArkMenu.Positioner>
 			</Portal>

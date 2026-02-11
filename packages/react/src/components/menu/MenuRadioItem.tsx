@@ -1,27 +1,23 @@
-import type { Assign } from "@ark-ui/react";
 import { Menu as ArkMenu } from "@ark-ui/react/menu";
 import type { MenuRadioItemProps as CoreMenuRadioItemProps } from "@temporal-ui/core/menu";
 import type React from "react";
-import type { ComponentPropsWithoutRef } from "react";
+import { testId as testIdFn } from "@temporal-ui/core/utils/string";
 
-interface BaseMenuRadioItemProps extends CoreMenuRadioItemProps<React.ReactNode> {}
-export interface MenuRadioItemProps
-	extends Assign<ComponentPropsWithoutRef<"div">, BaseMenuRadioItemProps> {}
+export interface MenuRadioItemProps extends CoreMenuRadioItemProps, React.ComponentProps<typeof ArkMenu.RadioItem> {}
 
 export function MenuRadioItem(props: MenuRadioItemProps) {
-	const { testId, ...rest } = props;
+	const { testId, children, ...rest } = props;
+	const tid = testIdFn(testId);
 
 	return (
 		<ArkMenu.RadioItem
 			{...rest}
-			data-testid={testId}
+			data-testid={tid("--radio-item")}
 		>
-			<ArkMenu.ItemIndicator data-testid={testId ? `${testId}--indicator` : undefined}>
+			<ArkMenu.ItemIndicator data-testid={tid("--indicator")}>
 				<div data-part="item-radio-indicator" />
 			</ArkMenu.ItemIndicator>
-			<ArkMenu.ItemText data-testid={testId ? `${testId}--text` : undefined}>
-				{props.children}
-			</ArkMenu.ItemText>
+			<ArkMenu.ItemText data-testid={tid("--text")}>{children}</ArkMenu.ItemText>
 		</ArkMenu.RadioItem>
 	);
 }

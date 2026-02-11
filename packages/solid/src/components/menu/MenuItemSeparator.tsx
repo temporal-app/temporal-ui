@@ -1,19 +1,17 @@
-import type { MenuItemSeparatorProps as CoreMenuItemSeparatorProps } from "@temporal-ui/core/menu";
 import { Menu as ArkMenu } from "@ark-ui/solid/menu";
-import type { JSX } from "solid-js";
-import type { Assign } from "@ark-ui/solid";
+import type { MenuItemSeparatorProps as CoreMenuItemSeparatorProps } from "@temporal-ui/core/menu";
 import type { ComponentProps } from "solid-js";
+import { splitProps } from "solid-js";
 
-interface BaseMenuItemSeparatorProps extends CoreMenuItemSeparatorProps<JSX.Element> {}
-export interface MenuItemSeparatorProps
-	extends Assign<ComponentProps<"hr">, BaseMenuItemSeparatorProps> {}
+export interface MenuItemSeparatorProps extends CoreMenuItemSeparatorProps, ComponentProps<typeof ArkMenu.Separator> {}
 
 export function MenuItemSeparator(props: MenuItemSeparatorProps) {
+	const [localProps, separatorProps] = splitProps(props, ["className", "testId"]);
 	return (
 		<ArkMenu.Separator
-			{...props}
-			class={props.className}
-			data-testid={props.testId}
+			{...separatorProps}
+			class={localProps.className}
+			data-testid={localProps.testId}
 		/>
 	);
 }

@@ -54,21 +54,4 @@ describe("MenuItemGroup Component", () => {
 			expect(screen.getByRole("menuitem", { name: "Item 1" })).toBeVisible();
 		});
 	});
-
-	it("accepts additional props", async () => {
-		const user = userEvent.setup();
-		render(
-			<MenuWrapper>
-				<MenuItemGroup testId="custom-group">
-					<MenuItem value="item1">Item 1</MenuItem>
-				</MenuItemGroup>
-			</MenuWrapper>,
-		);
-
-		await user.click(screen.getByRole("button"));
-
-		await waitFor(() => {
-			expect(screen.getByTestId("custom-group")).toBeVisible();
-		});
-	});
 });

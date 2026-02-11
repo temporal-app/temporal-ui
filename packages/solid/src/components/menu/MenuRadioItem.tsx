@@ -1,25 +1,26 @@
-import type { Assign } from "@ark-ui/solid";
 import { Menu as ArkMenu } from "@ark-ui/solid/menu";
 import type { MenuRadioItemProps as CoreMenuRadioItemProps } from "@temporal-ui/core/menu";
-import type { JSX } from "solid-js";
+import { testId } from "@temporal-ui/core/utils/string";
+import { splitProps } from "solid-js";
 import type { ComponentProps } from "solid-js";
 
-interface BaseMenuRadioItemProps extends CoreMenuRadioItemProps<JSX.Element> {}
-export interface MenuRadioItemProps extends Assign<ComponentProps<"div">, BaseMenuRadioItemProps> {}
+export interface MenuRadioItemProps extends CoreMenuRadioItemProps, ComponentProps<typeof ArkMenu.RadioItem> {}
 
 export function MenuRadioItem(props: MenuRadioItemProps) {
+	const [localProps, radioItemProps] = splitProps(props, ["className", "testId"]);
+
+	const tid = testId(localProps.testId);
+
 	return (
 		<ArkMenu.RadioItem
-			{...props}
-			class={props.className}
-			data-testid={props.testId}
+			{...radioItemProps}
+			class={localProps.className}
+			data-testid={tid("--radio-item")}
 		>
-			<ArkMenu.ItemIndicator
-				data-testid={props.testId ? `${props.testId}--indicator` : undefined}
-			>
+			<ArkMenu.ItemIndicator data-testid={tid("--indicator")}>
 				<div data-part="item-radio-indicator" />
 			</ArkMenu.ItemIndicator>
-			<ArkMenu.ItemText data-testid={props.testId ? `${props.testId}--text` : undefined}>
+			<ArkMenu.ItemText data-testid={tid("--text")}>
 				{props.children}
 			</ArkMenu.ItemText>
 		</ArkMenu.RadioItem>

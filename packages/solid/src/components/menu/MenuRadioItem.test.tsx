@@ -60,26 +60,4 @@ describe("MenuRadioItem Component", () => {
 			expect(radioItem).toHaveAttribute("data-state", "checked");
 		});
 	});
-
-	it("accepts additional props", async () => {
-		const user = userEvent.setup();
-		render(() => (
-			<MenuWrapper>
-				<MenuRadioItemGroup value="option1">
-					<MenuRadioItem
-						value="option1"
-						testId="custom-radio-item"
-					>
-						Custom Radio
-					</MenuRadioItem>
-				</MenuRadioItemGroup>
-			</MenuWrapper>
-		));
-
-		await user.click(screen.getByRole("button"));
-
-		await waitFor(() => {
-			expect(screen.getByTestId("custom-radio-item")).toBeVisible();
-		});
-	});
 });

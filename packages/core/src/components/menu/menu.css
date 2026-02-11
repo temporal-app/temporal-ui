@@ -38,12 +38,13 @@
 		[data-part="item-radio-indicator"] {
 			@apply size-2 rounded-full bg-foreground;
 		}
-	}
-}
 
-@layer theme {
-	[data-scope="menu"][data-part="item-indicator"][data-state="unchecked"][hidden] {
-		display: initial;
-		visibility: hidden;
+		[data-part="item-indicator-container"] {
+			@apply flex items-center justify-center w-4 h-4 shrink-0;
+		}
+
+		[data-part="item-indicator"] {
+			@apply flex items-center justify-center w-4 h-4;
+		}
 	}
 }

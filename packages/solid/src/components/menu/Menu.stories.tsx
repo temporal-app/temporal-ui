@@ -4,7 +4,7 @@ import { CreditCard, LogOut, Settings, UserIcon, UserPlus, UsersIcon } from "luc
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { fn } from "storybook/test";
 import { Button } from "../button";
-import { Menu } from "./Menu";
+import { Menu, type MenuProps } from "./Menu";
 import { MenuCheckboxItem } from "./MenuCheckboxItem";
 import { MenuItem } from "./MenuItem";
 import { MenuItemGroup } from "./MenuItemGroup";
@@ -242,21 +242,33 @@ export const Default: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => <SampleMenuItems />,
+	render: (props: MenuProps) => (
+		<Menu {...props}>
+			<SampleMenuItems />
+		</Menu>
+	),
 };
 
 export const WithGroups: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => <SampleComplexMenuItems />,
+	render: (props: MenuProps) => (
+		<Menu {...props}>
+			<SampleComplexMenuItems />
+		</Menu>
+	),
 };
 
 export const UserMenu: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => <SampleFormMenuItems />,
+	render: (props: MenuProps) => (
+		<Menu {...props}>
+			<SampleFormMenuItems />
+		</Menu>
+	),
 };
 
 export const PositionTop: Story = {
@@ -328,12 +340,12 @@ export const SingleItems: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => (
-		<>
+	render: (props: MenuProps) => (
+		<Menu {...props}>
 			<MenuItem value="action1">Action 1</MenuItem>
 			<MenuItem value="action2">Action 2</MenuItem>
 			<MenuItem value="action3">Action 3</MenuItem>
-		</>
+		</Menu>
 	),
 };
 
@@ -341,8 +353,8 @@ export const WithSeparators: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => (
-		<>
+	render: (props: MenuProps) => (
+		<Menu {...props}>
 			<MenuItem value="first">First Item</MenuItem>
 			<MenuItem value="second">Second Item</MenuItem>
 			<MenuItemSeparator />
@@ -350,7 +362,7 @@ export const WithSeparators: Story = {
 			<MenuItem value="fourth">Fourth Item</MenuItem>
 			<MenuItemSeparator />
 			<MenuItem value="fifth">Fifth Item</MenuItem>
-		</>
+		</Menu>
 	),
 };
 
@@ -358,8 +370,8 @@ export const MultipleGroups: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => (
-		<>
+	render: (props: MenuProps) => (
+		<Menu {...props}>
 			<MenuItemGroup label="Documents">
 				<MenuItem value="recent">Recent Files</MenuItem>
 				<MenuItem value="templates">Templates</MenuItem>
@@ -376,7 +388,7 @@ export const MultipleGroups: Story = {
 				<MenuItem value="support">Support</MenuItem>
 				<MenuItem value="shortcuts">Keyboard Shortcuts</MenuItem>
 			</MenuItemGroup>
-		</>
+		</Menu>
 	),
 };
 
@@ -384,29 +396,41 @@ export const WithCheckboxItems: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => <SampleCheckboxMenuItems />,
+	render: (props: MenuProps) => (
+		<Menu {...props}>
+			<SampleCheckboxMenuItems />
+		</Menu>
+	),
 };
 
 export const WithRadioItems: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => <SampleRadioMenuItems />,
+	render: (props: MenuProps) => (
+		<Menu {...props}>
+			<SampleRadioMenuItems />
+		</Menu>
+	),
 };
 
 export const MixedItemTypes: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => <SampleMixedMenuItems />,
+	render: (props: MenuProps) => (
+		<Menu {...props}>
+			<SampleMixedMenuItems />
+		</Menu>
+	),
 };
 
 export const CheckboxOnly: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => (
-		<>
+	render: (props: MenuProps) => (
+		<Menu {...props}>
 			<MenuCheckboxItem
 				value="option1"
 				checked={true}
@@ -435,7 +459,7 @@ export const CheckboxOnly: Story = {
 			>
 				Option 4
 			</MenuCheckboxItem>
-		</>
+		</Menu>
 	),
 };
 
@@ -443,15 +467,17 @@ export const RadioOnly: Story = {
 	args: {
 		trigger: (props: Record<string, unknown>) => <SampleTrigger {...props} />,
 	},
-	render: () => (
-		<MenuRadioItemGroup
-			value="option1"
-			onValueChange={fn()}
-		>
-			<MenuRadioItem value="option1">Option 1</MenuRadioItem>
-			<MenuRadioItem value="option2">Option 2</MenuRadioItem>
-			<MenuRadioItem value="option3">Option 3</MenuRadioItem>
-			<MenuRadioItem value="option4">Option 4</MenuRadioItem>
-		</MenuRadioItemGroup>
+	render: (props: MenuProps) => (
+		<Menu {...props}>
+			<MenuRadioItemGroup
+				value="option1"
+				onValueChange={fn()}
+			>
+				<MenuRadioItem value="option1">Option 1</MenuRadioItem>
+				<MenuRadioItem value="option2">Option 2</MenuRadioItem>
+				<MenuRadioItem value="option3">Option 3</MenuRadioItem>
+				<MenuRadioItem value="option4">Option 4</MenuRadioItem>
+			</MenuRadioItemGroup>
+		</Menu>
 	),
 };

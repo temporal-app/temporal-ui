@@ -1,28 +1,24 @@
 import type { MenuRadioItemGroupProps as CoreMenuRadioItemGroupProps } from "@temporal-ui/core/menu";
 import { Menu as ArkMenu } from "@ark-ui/react/menu";
 import type React from "react";
-import type { Assign } from "@ark-ui/react";
-import type { ComponentPropsWithoutRef } from "react";
+import { testId as testIdFn } from "@temporal-ui/core/utils/string";
 
-interface BaseMenuRadioItemGroupProps extends CoreMenuRadioItemGroupProps<React.ReactNode> {}
 export interface MenuRadioItemGroupProps
-	extends Assign<ComponentPropsWithoutRef<"div">, BaseMenuRadioItemGroupProps> {}
+	extends CoreMenuRadioItemGroupProps,
+		Omit<React.ComponentProps<typeof ArkMenu.RadioItemGroup>, "onValueChange"> {}
 
 export function MenuRadioItemGroup(props: MenuRadioItemGroupProps) {
-	const { label, onValueChange, testId, ...restProps } = props;
+	const { label, onValueChange, testId, children, ...restProps } = props;
+	const tid = testIdFn(testId);
 
 	return (
 		<ArkMenu.RadioItemGroup
-			onValueChange={(details) => onValueChange?.(details.value)}
 			{...restProps}
-			data-testid={testId}
+			onValueChange={(details) => onValueChange?.(details.value)}
+			data-testid={tid("--group")}
 		>
-			{label && (
-				<ArkMenu.ItemGroupLabel data-testid={testId ? `${testId}--label` : undefined}>
-					{label}
-				</ArkMenu.ItemGroupLabel>
-			)}
-			{props.children}
+			{label && <ArkMenu.ItemGroupLabel data-testid={tid("--label")}>{label}</ArkMenu.ItemGroupLabel>}
+			{children}
 		</ArkMenu.RadioItemGroup>
 	);
 }

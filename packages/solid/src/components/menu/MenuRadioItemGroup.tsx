@@ -1,29 +1,33 @@
 import type { MenuRadioItemGroupProps as CoreMenuRadioItemGroupProps } from "@temporal-ui/core/menu";
 import { Menu as ArkMenu } from "@ark-ui/solid/menu";
-import type { JSX } from "solid-js";
-import type { Assign } from "@ark-ui/solid";
+import { Show, splitProps } from "solid-js";
 import type { ComponentProps } from "solid-js";
+import { testId } from "@temporal-ui/core/utils/string";
 
-interface BaseMenuRadioItemGroupProps extends CoreMenuRadioItemGroupProps<JSX.Element> {}
 export interface MenuRadioItemGroupProps
-	extends Assign<ComponentProps<"div">, BaseMenuRadioItemGroupProps> {}
+	extends CoreMenuRadioItemGroupProps,
+		Omit<ComponentProps<typeof ArkMenu.RadioItemGroup>, "onValueChange"> {}
 
 export function MenuRadioItemGroup(props: MenuRadioItemGroupProps) {
+	const [localProps, radioItemGroupProps] = splitProps(props, [
+		"className",
+		"testId",
+		"label",
+		"children",
+		"onValueChange",
+	]);
+	const tid = testId(localProps.testId);
 	return (
 		<ArkMenu.RadioItemGroup
-			{...props}
-			class={props.className}
-			onValueChange={(details) => props.onValueChange?.(details.value)}
-			data-testid={props.testId}
+			{...radioItemGroupProps}
+			class={localProps.className}
+			onValueChange={(details) => localProps.onValueChange?.(details.value)}
+			data-testid={tid("--group")}
 		>
-			{props.label && (
-				<ArkMenu.ItemGroupLabel
-					data-testid={props.testId ? `${props.testId}--label` : undefined}
-				>
-					{props.label}
-				</ArkMenu.ItemGroupLabel>
-			)}
-			{props.children}
+			<Show when={localProps.label}>
+				<ArkMenu.ItemGroupLabel data-testid={tid("--label")}>{localProps.label}</ArkMenu.ItemGroupLabel>
+			</Show>
+			{localProps.children}
 		</ArkMenu.RadioItemGroup>
 	);
 }

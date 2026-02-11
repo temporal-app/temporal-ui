@@ -1,27 +1,26 @@
-import type { MenuItemGroupProps as CoreMenuItemGroupProps } from "@temporal-ui/core/menu";
 import { Menu as ArkMenu } from "@ark-ui/solid/menu";
-import type { JSX } from "solid-js";
-import type { Assign } from "@ark-ui/solid";
+import { testId } from "@temporal-ui/core/utils/string";
 import type { ComponentProps } from "solid-js";
+import { Show, splitProps } from "solid-js";
+import type { MenuItemGroupProps as CoreMenuItemGroupProps } from "@temporal-ui/core/menu";
 
-interface BaseMenuItemGroupProps extends CoreMenuItemGroupProps<JSX.Element> {}
-export interface MenuItemGroupProps extends Assign<ComponentProps<"div">, BaseMenuItemGroupProps> {}
+export interface MenuItemGroupProps extends CoreMenuItemGroupProps, ComponentProps<typeof ArkMenu.ItemGroup> {}
 
 export function MenuItemGroup(props: MenuItemGroupProps) {
+	const [localProps, itemGroupProps] = splitProps(props, ["className", "testId", "label", "children"]);
+
+	const tid = testId(localProps.testId);
+
 	return (
 		<ArkMenu.ItemGroup
-			{...props}
-			class={props.className}
-			data-testid={props.testId}
+			{...itemGroupProps}
+			class={localProps.className}
+			data-testid={tid("--group")}
 		>
-			{props.label && (
-				<ArkMenu.ItemGroupLabel
-					data-testid={props.testId ? `${props.testId}--label` : undefined}
-				>
-					{props.label}
-				</ArkMenu.ItemGroupLabel>
-			)}
-			{props.children}
+			<Show when={localProps.label}>
+				<ArkMenu.ItemGroupLabel data-testid={tid("--label")}>{localProps.label}</ArkMenu.ItemGroupLabel>
+			</Show>
+			{localProps.children}
 		</ArkMenu.ItemGroup>
 	);
 }

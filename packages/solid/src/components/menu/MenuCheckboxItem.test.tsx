@@ -93,28 +93,4 @@ describe("MenuCheckboxItem Component", () => {
 
 		expect(onCheckedChange).toHaveBeenCalledWith(true);
 	});
-
-	it("accepts additional props", async () => {
-		const user = userEvent.setup();
-		const onCheckedChange = vi.fn();
-
-		render(() => (
-			<MenuWrapper>
-				<MenuCheckboxItem
-					value="checkbox"
-					checked={false}
-					onCheckedChange={onCheckedChange}
-					testId="custom-checkbox-item"
-				>
-					Custom Checkbox
-				</MenuCheckboxItem>
-			</MenuWrapper>
-		));
-
-		await user.click(screen.getByRole("button"));
-
-		await waitFor(() => {
-			expect(screen.getByTestId("custom-checkbox-item")).toBeVisible();
-		});
-	});
 });

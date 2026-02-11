@@ -1,28 +1,28 @@
 import type { MenuCheckboxItemProps as CoreMenuCheckboxItemProps } from "@temporal-ui/core/menu";
 import { Menu as ArkMenu } from "@ark-ui/react/menu";
 import type React from "react";
-import type { Assign } from "@ark-ui/react";
-import type { ComponentPropsWithoutRef } from "react";
 import { CheckIcon } from "lucide-react";
+import { testId as testIdFn } from "@temporal-ui/core/utils/string";
 
-interface BaseMenuCheckboxItemProps extends CoreMenuCheckboxItemProps<React.ReactNode> {}
 export interface MenuCheckboxItemProps
-	extends Assign<ComponentPropsWithoutRef<"div">, BaseMenuCheckboxItemProps> {}
+	extends CoreMenuCheckboxItemProps,
+		React.ComponentProps<typeof ArkMenu.CheckboxItem> {}
 
 export function MenuCheckboxItem(props: MenuCheckboxItemProps) {
 	const { testId, children, ...rest } = props;
+	const tid = testIdFn(testId);
 
 	return (
 		<ArkMenu.CheckboxItem
 			{...rest}
-			data-testid={testId}
+			data-testid={tid("--checkbox-item")}
 		>
-			<ArkMenu.ItemIndicator data-testid={testId ? `${testId}--indicator` : undefined}>
-				<CheckIcon />
-			</ArkMenu.ItemIndicator>
-			<ArkMenu.ItemText data-testid={testId ? `${testId}--text` : undefined}>
-				{children}
-			</ArkMenu.ItemText>
+			<div data-part="item-indicator-container">
+				<ArkMenu.ItemIndicator data-testid={tid("--checkbox-item-indicator")}>
+					<CheckIcon />
+				</ArkMenu.ItemIndicator>
+			</div>
+			<ArkMenu.ItemText data-testid={tid("--checkbox-item-text")}>{children}</ArkMenu.ItemText>
 		</ArkMenu.CheckboxItem>
 	);
 }

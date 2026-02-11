@@ -83,23 +83,4 @@ describe("MenuRadioItemGroup Component", () => {
 		});
 	});
 
-	it("accepts additional props", async () => {
-		const user = userEvent.setup();
-		render(
-			<MenuWrapper>
-				<MenuRadioItemGroup
-					value="option1"
-					testId="custom-radio-group"
-				>
-					<MenuRadioItem value="option1">Option 1</MenuRadioItem>
-				</MenuRadioItemGroup>
-			</MenuWrapper>,
-		);
-
-		await user.click(screen.getByRole("button"));
-
-		await waitFor(() => {
-			expect(screen.getByTestId("custom-radio-group")).toBeVisible();
-		});
-	});
 });

@@ -1,0 +1,55 @@
+@layer components {
+	[data-scope="accordion"][data-part="root"] {
+		@apply flex flex-col w-full;
+	}
+
+	[data-scope="accordion"][data-part="item"] {
+		@apply border-b;
+	}
+
+	[data-scope="accordion"][data-part="item-trigger"] {
+		@apply flex w-full items-center justify-between py-4 text-sm font-medium transition-all [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
+	}
+
+	[data-scope="accordion"][data-part="item-indicator"] {
+		@apply text-muted-foreground transition-transform duration-200;
+
+		&[data-state="open"] {
+			@apply rotate-180;
+		}
+	}
+
+	[data-scope="accordion"][data-part="item-content"] {
+		@apply overflow-hidden text-sm;
+
+		&[data-state="open"] {
+			animation: accordion-expand 250ms ease-in-out;
+		}
+
+		&[data-state="closed"] {
+			animation: accordion-collapse 250ms ease-in-out;
+		}
+	}
+}
+
+@keyframes accordion-expand {
+	from {
+		height: 0;
+		opacity: 0.01;
+	}
+	to {
+		height: var(--height);
+		opacity: 1;
+	}
+}
+
+@keyframes accordion-collapse {
+	from {
+		height: var(--height);
+		opacity: 1;
+	}
+	to {
+		height: 0;
+		opacity: 0.01;
+	}
+}

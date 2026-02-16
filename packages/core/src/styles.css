@@ -2,6 +2,7 @@
 @import "./css/theme.css";
 @import "./css/animations.css";
 
+@import "./components/accordion/accordion.css";
 @import "./components/alert/alert.css";
 @import "./components/avatar/avatar.css";
 @import "./components/badge/badge.css";

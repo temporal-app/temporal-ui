@@ -7,17 +7,14 @@ export interface AccordionProps
 		Omit<AccordionRootBaseProps, "onValueChange"> {}
 
 export function Accordion(props: AccordionProps) {
-	const merged = mergeProps({ collapsible: true, lazyMount: true, unmountOnExit: true }, props);
-	const [controlProps, rootProps] = splitProps(merged, [
-		"className",
-		"testId",
-		"onValueChange",
-	]);
+	const merged = mergeProps({ variant: "default", collapsible: true, lazyMount: true, unmountOnExit: true }, props);
+	const [controlProps, rootProps] = splitProps(merged, ["variant", "className", "testId", "onValueChange"]);
 
 	return (
 		<ArkAccordion.Root
 			class={controlProps.className}
 			data-testid={controlProps.testId}
+			data-variant={controlProps.variant}
 			onValueChange={(details) => controlProps.onValueChange?.(details.value)}
 			{...rootProps}
 		/>

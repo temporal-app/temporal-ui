@@ -15,6 +15,10 @@ const meta = {
 	component: Accordion,
 	tags: ["autodocs"],
 	argTypes: {
+		variant: {
+			control: "radio",
+			options: ["default", "boxed"],
+		},
 		collapsible: {
 			control: "boolean",
 		},
@@ -98,6 +102,16 @@ export const Disabled: Story = {
 		<AccordionDemo
 			{...props}
 			disabled
+		/>
+	),
+};
+
+export const Boxed: Story = {
+	render: (props: AccordionProps) => (
+		<AccordionDemo
+			{...props}
+			variant="boxed"
+			defaultValue={["item-1"]}
 		/>
 	),
 };

@@ -6,13 +6,22 @@ export interface AccordionProps
 		Omit<AccordionRootBaseProps, "onValueChange"> {}
 
 export function Accordion(props: AccordionProps) {
-	const { className, testId, onValueChange, collapsible = true, lazyMount = true, unmountOnExit = true, ...rest } =
-		props;
+	const {
+		variant = "default",
+		className,
+		testId,
+		onValueChange,
+		collapsible = true,
+		lazyMount = true,
+		unmountOnExit = true,
+		...rest
+	} = props;
 
 	return (
 		<ArkAccordion.Root
 			className={className}
 			data-testid={testId}
+			data-variant={variant}
 			collapsible={collapsible}
 			lazyMount={lazyMount}
 			unmountOnExit={unmountOnExit}

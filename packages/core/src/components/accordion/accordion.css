@@ -23,11 +23,28 @@
 		@apply overflow-hidden text-sm;
 
 		&[data-state="open"] {
-			animation: accordion-expand 250ms ease-in-out;
+			animation: accordion-expand 150ms ease-in-out;
 		}
 
 		&[data-state="closed"] {
-			animation: accordion-collapse 250ms ease-in-out;
+			animation: accordion-collapse 150ms ease-in-out;
+		}
+	}
+
+	/* Boxed variant */
+	[data-scope="accordion"][data-part="root"][data-variant="boxed"] {
+		@apply gap-2;
+
+		[data-scope="accordion"][data-part="item"] {
+			@apply border rounded-lg;
+		}
+
+		[data-scope="accordion"][data-part="item-trigger"] {
+			@apply px-4 hover:bg-muted/50 cursor-default;
+		}
+
+		[data-scope="accordion"][data-part="item-content"] > * {
+			@apply p-4;
 		}
 	}
 }

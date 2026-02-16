@@ -153,4 +153,16 @@ describe("Accordion", () => {
 
 		expect(screen.getByTestId("my-accordion")).toBeInTheDocument();
 	});
+
+	it("applies data-variant attribute with boxed value", () => {
+		render(<AccordionDemo variant="boxed" testId="boxed-accordion" />);
+
+		expect(screen.getByTestId("boxed-accordion")).toHaveAttribute("data-variant", "boxed");
+	});
+
+	it("applies data-variant attribute with default value by default", () => {
+		render(<AccordionDemo testId="default-accordion" />);
+
+		expect(screen.getByTestId("default-accordion")).toHaveAttribute("data-variant", "default");
+	});
 });

@@ -1,7 +1,7 @@
 import { DatePicker, parseDate } from "@ark-ui/react/date-picker";
 import { Portal } from "@ark-ui/react/portal";
 import type { DateInputProps as CoreDateInputProps } from "@temporal-ui/core/date-input";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {  ChevronLeft, ChevronRight  } from '../icons';
 import { Field } from "../field";
 import { DayView } from "./DayView";
 import { MonthView } from "./MonthView";

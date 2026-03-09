@@ -1,5 +1,5 @@
 import { Collapsible } from "@ark-ui/solid";
-import { ChevronRight, type LucideProps } from "lucide-solid";
+import {  ChevronRight, type IconProps  } from '../../icons';
 import type { Component } from "solid-js";
 import { For } from "solid-js";
 import { SidebarGroup, SidebarGroupLabel } from "../SidebarComponent";
@@ -16,7 +16,7 @@ export function NavMain(props: {
 	items: {
 		title: string;
 		url: string;
-		icon?: Component<LucideProps>;
+		icon?: Component<IconProps>;
 		isActive?: boolean;
 		items?: {
 			title: string;

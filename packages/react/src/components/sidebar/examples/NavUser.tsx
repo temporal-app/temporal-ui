@@ -1,5 +1,5 @@
 import { MenuItem, MenuSeparator } from "@ark-ui/react";
-import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from "lucide-react";
+import {  BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles  } from '../../icons';
 import { Avatar } from "../../avatar";
 import { Menu, MenuItemGroup } from "../../menu";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../SidebarMenu";

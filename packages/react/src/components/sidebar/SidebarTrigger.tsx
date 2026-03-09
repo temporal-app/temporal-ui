@@ -1,5 +1,5 @@
 import { cx } from "@temporal-ui/core/utils/cx";
-import { PanelLeft } from "lucide-react";
+import {  PanelLeft  } from '../icons';
 import { useSidebar } from "./SidebarProvider";
 import { Button } from "../button";
 

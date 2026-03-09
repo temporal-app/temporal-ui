@@ -3,7 +3,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Select } from "./Select";
 import { createListCollection, type SelectItem } from ".";
-import { Banana } from "lucide-react";
+import {  Banana  } from '../icons';
 
 const meta = {
 	title: "React/Select",

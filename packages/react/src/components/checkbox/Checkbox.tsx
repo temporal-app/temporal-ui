@@ -1,6 +1,6 @@
 import { Checkbox as ArkCheckbox } from "@ark-ui/react/checkbox";
 import type { CheckboxProps as CoreCheckboxProps } from "@temporal-ui/core/checkbox";
-import { CheckIcon } from "lucide-react";
+import {  CheckIcon  } from '../icons';
 import type React from "react";
 import { forwardRef } from "react";
 import { Field } from "../field";

@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "lucide-solid";
+import {  ChevronDownIcon  } from '../icons';
 import { createSignal } from "solid-js";
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import {

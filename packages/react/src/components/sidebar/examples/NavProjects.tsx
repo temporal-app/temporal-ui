@@ -1,4 +1,4 @@
-import { Folder, Forward, MoreHorizontal, Trash2, type LucideIcon } from "lucide-react";
+import {  Folder, Forward, MoreHorizontal, Trash2, type IconProps  } from '../../icons';
 import { Menu, MenuItem, MenuItemSeparator } from "../../menu";
 import { SidebarGroup, SidebarGroupLabel } from "../SidebarComponent";
 import { SidebarMenu, SidebarMenuAction, SidebarMenuButton, SidebarMenuLink, SidebarMenuItem } from "../SidebarMenu";
@@ -9,7 +9,7 @@ export function NavProjects({
 	projects: {
 		name: string;
 		url: string;
-		icon: LucideIcon;
+		icon: IconProps;
 	}[];
 }) {
 	return (

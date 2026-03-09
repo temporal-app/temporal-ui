@@ -1,5 +1,5 @@
 import { MenuItem, MenuItemGroup } from "@ark-ui/solid";
-import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from "lucide-solid";
+import {  BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles  } from '../../icons';
 import { Avatar } from "../../avatar";
 import { Menu, MenuItemSeparator } from "../../menu";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../SidebarMenu";

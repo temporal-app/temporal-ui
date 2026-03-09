@@ -1,7 +1,7 @@
 import { Checkbox as ArkCheckbox } from "@ark-ui/react/checkbox";
 import type { CheckboxGroupProps as CoreCheckboxGroupProps } from "@temporal-ui/core/checkbox";
 import { cx } from "@temporal-ui/core/utils/cx";
-import { CheckIcon } from "lucide-react";
+import {  CheckIcon  } from '../icons';
 import type React from "react";
 
 export interface CheckboxGroupProps extends CoreCheckboxGroupProps<React.ReactNode> {}

@@ -1,6 +1,6 @@
 import { Menu as ArkMenu } from "@ark-ui/solid/menu";
 import { testId } from "@temporal-ui/core/utils/string";
-import { CheckIcon } from "lucide-solid";
+import {  CheckIcon  } from '../icons';
 import { splitProps, type ComponentProps } from "solid-js";
 import type { MenuCheckboxItemProps as CoreMenuCheckboxItemProps } from "@temporal-ui/core/menu";
 

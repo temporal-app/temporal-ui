@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ArrowRight, Trash } from "lucide-react";
+import {  ArrowRight, Trash  } from '../icons';
 import { Badge } from "./Badge";
 
 const meta = {

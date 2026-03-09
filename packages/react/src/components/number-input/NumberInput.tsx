@@ -2,7 +2,7 @@ import type { NumberInputProps as CoreNumberInputProps } from "@temporal-ui/core
 import { NumberInput as ArkNumberInput } from "@ark-ui/react/number-input";
 import type React from "react";
 import { Field } from "../field";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import {  ChevronDown, ChevronUp  } from '../icons';
 import { forwardRef } from "react";
 
 export interface NumberInputProps

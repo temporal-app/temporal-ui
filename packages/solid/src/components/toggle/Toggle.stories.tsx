@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { BoldIcon } from "lucide-solid";
+import {  BoldIcon  } from '../icons';
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { fn } from "storybook/test";
 import { Toggle, ToggleIndicator } from "./Toggle";

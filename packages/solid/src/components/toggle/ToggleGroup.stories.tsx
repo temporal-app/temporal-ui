@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon, BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-solid";
+import {  AlignCenterIcon, AlignLeftIcon, AlignRightIcon, BoldIcon, ItalicIcon, UnderlineIcon  } from '../icons';
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { fn } from "storybook/test";
 import { ToggleGroup, ToggleGroupItem, type ToggleGroupProps } from "./ToggleGroup";

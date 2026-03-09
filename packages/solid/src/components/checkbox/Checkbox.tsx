@@ -4,7 +4,7 @@ import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Field } from "../field";
 import type { HTMLProps } from "@ark-ui/solid";
-import { CheckIcon } from "lucide-solid";
+import {  CheckIcon  } from '../icons';
 import { testId } from "@temporal-ui/core/utils/string";
 
 export interface CheckboxProps

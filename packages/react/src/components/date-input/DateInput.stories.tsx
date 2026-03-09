@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DateInput, Calendar } from ".";
 import React from "react";
-import { CalendarIcon } from "lucide-react";
+import {  CalendarIcon  } from '../icons';
 
 const meta = {
 	title: "React/Date Input",

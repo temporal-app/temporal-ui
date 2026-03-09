@@ -1,7 +1,7 @@
 import { Select as ArkSelect, useSelect } from "@ark-ui/solid/select";
 import type { SelectProps as CoreSelectProps } from "@temporal-ui/core/select";
 import { testId } from "@temporal-ui/core/utils/string";
-import { ChevronsUpDown, X } from "lucide-solid";
+import {  ChevronsUpDown, X  } from '../icons';
 import { mergeProps, Show, splitProps, type JSX } from "solid-js";
 import { Portal } from "solid-js/web";
 import { Field, fieldAttributes } from "../field";

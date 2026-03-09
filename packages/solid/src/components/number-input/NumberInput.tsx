@@ -3,7 +3,7 @@ import { type JSX, Show, splitProps } from "solid-js";
 import type { HTMLProps } from "@ark-ui/solid";
 import { NumberInput as ArkNumberInput } from "@ark-ui/solid/number-input";
 import { Field } from "../field";
-import { ChevronDown, ChevronUp } from "lucide-solid";
+import {  ChevronDown, ChevronUp  } from '../icons';
 
 export interface NumberInputProps
 	extends CoreNumberInputProps<JSX.Element>,

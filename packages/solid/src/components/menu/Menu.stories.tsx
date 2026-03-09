@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { CreditCard, LogOut, Settings, UserIcon, UserPlus, UsersIcon } from "lucide-solid";
+import {  CreditCard, LogOut, Settings, UserIcon, UserPlus, UsersIcon  } from '../icons';
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { fn } from "storybook/test";
 import { Button } from "../button";

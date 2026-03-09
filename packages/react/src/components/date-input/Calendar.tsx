@@ -3,7 +3,7 @@ import type { DateInputProps } from "@temporal-ui/core/date-input";
 import { DayView } from "./DayView";
 import { MonthView } from "./MonthView";
 import { YearView } from "./YearView";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {  ChevronLeft, ChevronRight  } from '../icons';
 import {
 	DateInputNextTrigger,
 	DateInputPrevTrigger,

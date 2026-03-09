@@ -9,7 +9,7 @@ import {
 	PieChart,
 	Settings2,
 	SquareTerminal,
-} from "lucide-solid";
+ } from '../../icons';
 
 export const data = {
 	user: {

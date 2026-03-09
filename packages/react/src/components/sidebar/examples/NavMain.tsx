@@ -1,6 +1,6 @@
 import { Collapsible } from "@ark-ui/react";
-import type { LucideIcon } from "lucide-react";
-import { ChevronRight } from "lucide-react";
+import type { IconProps } from "lucide-react";
+import {  ChevronRight  } from '../../icons';
 import { SidebarGroup, SidebarGroupLabel } from "../SidebarComponent";
 import {
 	SidebarMenu,
@@ -17,7 +17,7 @@ export function NavMain({
 	items: {
 		title: string;
 		url: string;
-		icon?: LucideIcon;
+		icon?: IconProps;
 		isActive?: boolean;
 		items?: {
 			title: string;

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { AlarmClockCheck } from "lucide-react";
+import {  AlarmClockCheck  } from '../icons';
 import { Button } from "../button";
 import { Stack } from "../stack";
 import { Alert } from "./Alert";

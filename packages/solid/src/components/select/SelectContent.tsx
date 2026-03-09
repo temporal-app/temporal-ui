@@ -1,6 +1,6 @@
 import { Select as ArkSelect, useSelectContext } from "@ark-ui/solid/select";
 import type { SelectItem as CoreSelectItem } from "@temporal-ui/core/select";
-import { CheckIcon } from "lucide-solid";
+import {  CheckIcon  } from '../icons';
 import { For, mergeProps, Show, type JSX } from "solid-js";
 
 export type SelectItem<D = unknown> = CoreSelectItem<D, JSX.Element>;

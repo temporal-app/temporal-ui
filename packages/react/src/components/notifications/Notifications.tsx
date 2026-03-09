@@ -1,6 +1,6 @@
 import { Toast, Toaster, createToaster } from "@ark-ui/react";
 import type { NotificationConfig, NotificationsProps } from "@temporal-ui/core/notifications";
-import { XIcon } from "lucide-react";
+import {  XIcon  } from '../icons';
 import { Loader } from "../loader";
 
 export type { NotificationsProps } from "@temporal-ui/core/notifications";

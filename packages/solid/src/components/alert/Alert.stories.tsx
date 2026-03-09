@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { AlarmClockCheck, Mail } from "lucide-solid";
+import {  AlarmClockCheck, Mail  } from '../icons';
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { Button } from "../button";
 import { Stack } from "../stack";

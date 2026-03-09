@@ -1,4 +1,4 @@
-import { CalendarIcon } from "lucide-solid";
+import {  CalendarIcon  } from '../icons';
 import { createSignal, type ComponentProps } from "solid-js";
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { Calendar, DateInput, type DateInputProps } from ".";

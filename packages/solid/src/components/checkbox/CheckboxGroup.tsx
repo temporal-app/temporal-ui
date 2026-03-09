@@ -1,7 +1,7 @@
 import { Checkbox as ArkCheckbox } from "@ark-ui/solid/checkbox";
 import type { CheckboxGroupProps as CoreCheckboxGroupProps } from "@temporal-ui/core/checkbox";
 import { cx } from "@temporal-ui/core/utils/cx";
-import { CheckIcon } from "lucide-solid";
+import {  CheckIcon  } from '../icons';
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
 

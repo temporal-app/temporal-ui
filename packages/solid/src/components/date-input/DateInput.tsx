@@ -1,6 +1,6 @@
 import { DatePicker, parseDate } from "@ark-ui/solid/date-picker";
 import type { DateInputProps as CoreDateInputProps } from "@temporal-ui/core/date-input";
-import { ChevronLeft, ChevronRight } from "lucide-solid";
+import {  ChevronLeft, ChevronRight  } from '../icons';
 import { Field } from "../field";
 import { DayView } from "./DayView";
 import { MonthView } from "./MonthView";

@@ -1,6 +1,6 @@
 import { Toast, Toaster, createToaster } from "@ark-ui/solid";
 import type { NotificationsProps } from "@temporal-ui/core/notifications";
-import { XIcon } from "lucide-solid";
+import {  XIcon  } from '../icons';
 import { Loader } from "../loader";
 import type { NotificationConfig } from "@temporal-ui/core/notifications";
 import { Show } from "solid-js";

@@ -1,4 +1,4 @@
-import { Folder, Forward, MoreHorizontal, Trash2, type LucideProps } from "lucide-solid";
+import {  Folder, Forward, MoreHorizontal, Trash2, type IconProps  } from '../../icons';
 import type { Component } from "solid-js";
 import { For } from "solid-js";
 import { Menu, MenuItem, MenuItemSeparator } from "../../menu";
@@ -9,7 +9,7 @@ export function NavProjects(props: {
 	projects: {
 		name: string;
 		url: string;
-		icon: Component<LucideProps>;
+		icon: Component<IconProps>;
 	}[];
 }) {
 	return (

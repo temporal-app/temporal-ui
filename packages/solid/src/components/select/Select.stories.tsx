@@ -1,4 +1,4 @@
-import { Banana } from "lucide-solid";
+import {  Banana  } from '../icons';
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { createListCollection } from ".";
 import { Select } from "./Select";

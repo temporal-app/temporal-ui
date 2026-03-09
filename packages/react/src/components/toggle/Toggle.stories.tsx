@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { BoldIcon } from "lucide-react";
+import {  BoldIcon  } from '../icons';
 import { fn } from "storybook/test";
 import { Toggle, ToggleIndicator } from "./Toggle";
 

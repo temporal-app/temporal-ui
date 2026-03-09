@@ -11,5 +11,5 @@ export default defineConfig({
 	],
 	dts: true,
 	platform: "browser",
-	noExternal: ["lucide-react"],
+	noExternal: [],
 });

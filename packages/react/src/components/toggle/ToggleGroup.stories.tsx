@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon, BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react";
+import {  AlignCenterIcon, AlignLeftIcon, AlignRightIcon, BoldIcon, ItalicIcon, UnderlineIcon  } from '../icons';
 import { fn } from "storybook/test";
 import { ToggleGroup, ToggleGroupItem } from "./ToggleGroup";
 

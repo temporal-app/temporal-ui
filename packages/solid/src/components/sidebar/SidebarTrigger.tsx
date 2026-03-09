@@ -1,6 +1,6 @@
 import type { HTMLProps } from "@ark-ui/solid";
 import { cx } from "@temporal-ui/core/utils/cx";
-import { PanelLeft } from "lucide-solid";
+import {  PanelLeft  } from '../icons';
 import { splitProps } from "solid-js";
 import { Button } from "../button";
 import { useSidebar } from "./SidebarProvider";

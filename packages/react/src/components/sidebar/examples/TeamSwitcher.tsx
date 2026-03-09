@@ -1,4 +1,4 @@
-import { ChevronsUpDown, Plus } from "lucide-react";
+import {  ChevronsUpDown, Plus  } from '../../icons';
 import React from "react";
 import { Menu, MenuItem, MenuItemGroup, MenuItemSeparator } from "../../menu";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../SidebarMenu";

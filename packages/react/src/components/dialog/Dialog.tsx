@@ -2,7 +2,7 @@ import type { DialogProps as CoreDialogProps } from "@temporal-ui/core/dialog";
 import type React from "react";
 import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
 import { Portal } from "@ark-ui/react/portal";
-import { X } from "lucide-react";
+import {  X  } from '../icons';
 import { testId as testIdFn } from "@temporal-ui/core/utils/string";
 import { cx } from "@temporal-ui/core/utils/cx";
 

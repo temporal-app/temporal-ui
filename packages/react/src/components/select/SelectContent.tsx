@@ -1,6 +1,6 @@
 import { Select as ArkSelect, useSelectContext } from "@ark-ui/react/select";
 import type { SelectItem as CoreSelectItem } from "@temporal-ui/core/select";
-import { CheckIcon } from "lucide-react";
+import {  CheckIcon  } from '../icons';
 
 export type SelectItem<D = unknown> = CoreSelectItem<D, React.ReactNode>;
 

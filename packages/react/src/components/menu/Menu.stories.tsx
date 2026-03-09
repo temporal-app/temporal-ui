@@ -10,7 +10,7 @@ import { MenuItem } from "./MenuItem";
 import { MenuItemGroup } from "./MenuItemGroup";
 import { MenuItemSeparator } from "./MenuItemSeparator";
 import { MenuRadioItem } from "./MenuRadioItem";
-import { CreditCard, LogOut, Settings, UserIcon, UserPlus, UsersIcon } from "lucide-react";
+import {  CreditCard, LogOut, Settings, UserIcon, UserPlus, UsersIcon  } from '../icons';
 import { MenuRadioItemGroup } from "./MenuRadioItemGroup";
 
 const meta = {

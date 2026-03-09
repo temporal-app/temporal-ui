@@ -1,7 +1,7 @@
 import type { HTMLProps } from "@ark-ui/solid";
 import type { AlertProps as CoreAlertProps } from "@temporal-ui/core/alert";
 import { cx } from "@temporal-ui/core/utils/cx";
-import { CircleCheck, CircleX, Info, TriangleAlert } from "lucide-solid";
+import {  CircleCheck, CircleX, Info, TriangleAlert  } from '../icons';
 import { type Accessor, type JSX, mergeProps, splitProps } from "solid-js";
 
 export interface AlertProps extends CoreAlertProps<JSX.Element>, HTMLProps<"div"> {

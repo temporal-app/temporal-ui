@@ -1,5 +1,5 @@
 import { MenuItem, MenuItemGroup, MenuSeparator } from "@ark-ui/solid";
-import { ChevronsUpDown, Plus, type LucideProps } from "lucide-solid";
+import {  ChevronsUpDown, Plus, type IconProps  } from '../../icons';
 import type { Component } from "solid-js";
 import { createSignal, For } from "solid-js";
 import { Menu } from "../../menu";
@@ -8,7 +8,7 @@ import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../SidebarMenu"
 export function TeamSwitcher(props: {
 	teams: {
 		name: string;
-		logo: Component<LucideProps>;
+		logo: Component<IconProps>;
 		plan: string;
 	}[];
 }) {

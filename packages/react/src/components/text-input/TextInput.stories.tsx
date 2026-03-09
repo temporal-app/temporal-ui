@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { AtSign } from "lucide-react";
+import {  AtSign  } from '../icons';
 import { TextInput } from "./TextInput";
 
 const meta = {

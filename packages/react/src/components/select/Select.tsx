@@ -4,7 +4,7 @@ import type { SelectProps as CoreSelectProps } from "@temporal-ui/core/select";
 import { Field } from "../field";
 import { SelectContent, type SelectItem } from "./SelectContent";
 import { testId } from "@temporal-ui/core/utils/string";
-import { ChevronsUpDown, X } from "lucide-react";
+import {  ChevronsUpDown, X  } from '../icons';
 
 export interface SelectProps<D extends CollectionItem = never>
 	extends CoreSelectProps<React.ReactNode>,

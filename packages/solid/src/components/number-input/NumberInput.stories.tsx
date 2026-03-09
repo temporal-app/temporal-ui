@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { DollarSign } from "lucide-solid";
+import {  DollarSign  } from '../icons';
 import { createSignal } from "solid-js";
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { NumberInput, type NumberInputProps } from "./";

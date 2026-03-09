@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "lucide-react";
+import {  ChevronDownIcon  } from '../icons';
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {

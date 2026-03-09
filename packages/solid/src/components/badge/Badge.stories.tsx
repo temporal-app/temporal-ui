@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { ArrowRight, Trash } from "lucide-solid";
+import {  ArrowRight, Trash  } from '../icons';
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { Badge } from "./Badge";
 

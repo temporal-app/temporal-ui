@@ -1,5 +1,5 @@
 import { Avatar as ArkAvatar } from "@ark-ui/react/avatar";
-import { UserIcon } from "lucide-react";
+import {  UserIcon  } from '../icons';
 import { forwardRef } from "react";
 import type { AvatarProps as AvatarPropsCore } from "@temporal-ui/core/avatar";
 import { cx } from "@temporal-ui/core/utils/cx";

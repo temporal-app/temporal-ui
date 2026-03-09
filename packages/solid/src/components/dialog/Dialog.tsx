@@ -1,6 +1,6 @@
 import type { DialogProps as CoreDialogProps } from "@temporal-ui/core/dialog";
 import { Dialog as ArkDialog } from "@ark-ui/solid/dialog";
-import { X } from "lucide-solid";
+import {  X  } from '../icons';
 import { mergeProps, Show, splitProps, type ComponentProps, type JSX } from "solid-js";
 import { Portal } from "solid-js/web";
 import { testId } from "@temporal-ui/core/utils/string";

@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { DollarSign } from "lucide-react";
+import {  DollarSign  } from '../icons';
 import { NumberInput } from "./NumberInput";
 import React from "react";
 

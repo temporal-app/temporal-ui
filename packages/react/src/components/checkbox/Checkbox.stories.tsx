@@ -1,4 +1,3 @@
-
 // noinspection JSUnusedGlobalSymbols
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
@@ -8,7 +7,7 @@ import { Checkbox } from "./Checkbox";
 const meta = {
 	title: "React/Checkbox",
 	component: Checkbox,
-	tags: [ "autodocs" ],
+	tags: ["autodocs"],
 	args: { onCheckedChange: fn() },
 	argTypes: {
 		disabled: {
@@ -19,9 +18,9 @@ const meta = {
 			control: {
 				type: "select",
 			},
-			options: [ undefined, true, false, "indeterminate" ],
-		}
-	}
+			options: [undefined, true, false, "indeterminate"],
+		},
+	},
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;
@@ -36,7 +35,7 @@ export const Default: Story = {
 export const Disabled: Story = {
 	args: {
 		...Default.args,
-		disabled: true
+		disabled: true,
 	},
 };
 

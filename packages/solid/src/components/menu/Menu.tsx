@@ -4,7 +4,9 @@ import { testId } from "@temporal-ui/core/utils/string";
 import { splitProps, type ComponentProps, type JSX, type ParentProps } from "solid-js";
 import { Portal } from "solid-js/web";
 
-export interface MenuProps extends CoreMenuProps<JSX.Element>, Omit<ComponentProps<typeof ArkMenu.Root>, "onSelect" | "positioning"> {
+export interface MenuProps
+	extends CoreMenuProps<JSX.Element>,
+		Omit<ComponentProps<typeof ArkMenu.Root>, "onSelect" | "positioning"> {
 	trigger: (props: ParentProps) => JSX.Element;
 }
 

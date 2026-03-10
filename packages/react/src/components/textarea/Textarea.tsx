@@ -7,17 +7,7 @@ import { Field } from "../field";
 export type TextareaProps = CoreTextareaProps<React.ReactNode> & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => {
-	const {
-		label,
-		hint,
-		error,
-		required,
-		disabled,
-		readOnly,
-		classes,
-		testId,
-		...rest
-	} = props;
+	const { label, hint, error, required, disabled, readOnly, classes, testId, ...rest } = props;
 
 	return (
 		<Field

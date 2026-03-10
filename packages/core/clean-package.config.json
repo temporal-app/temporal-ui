@@ -1,5 +1,5 @@
 {
-  "indent": 4,
+	"indent": 4,
 	"replace": {
 		"module": "./dist/index.js",
 		"types": "./dist/index.d.mts",

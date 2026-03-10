@@ -8,5 +8,5 @@ export interface ScrollAreaProps<T> extends BoxProps<T> {
 		scrollbar?: string;
 		thumb?: string;
 		corner?: string;
-	}
+	};
 }

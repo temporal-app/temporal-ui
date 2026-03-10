@@ -18,7 +18,7 @@
 	[data-scope="color-input"][data-part="area"] {
 		@apply h-[200px];
 	}
-	
+
 	[data-scope="color-input"][data-part="area-thumb"],
 	[data-scope="color-input"][data-part="channel-slider-thumb"] {
 		@apply size-4 rounded-full border-2 border-input transform-[translate(-50%,-50%)];

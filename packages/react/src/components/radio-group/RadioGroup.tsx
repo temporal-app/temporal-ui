@@ -8,7 +8,20 @@ export interface RadioGroupProps extends CoreRadioGroupProps<React.ReactNode> {}
 export type { RadioGroupItem } from "@temporal-ui/core/radio-group";
 
 export function RadioGroup(props: RadioGroupProps) {
-	const { label, hint, error, disabled, items, defaultValue, value, required, readOnly, onValueChange, orientation, testId } = props;
+	const {
+		label,
+		hint,
+		error,
+		disabled,
+		items,
+		defaultValue,
+		value,
+		required,
+		readOnly,
+		onValueChange,
+		orientation,
+		testId,
+	} = props;
 
 	return (
 		<Field
@@ -39,7 +52,9 @@ export function RadioGroup(props: RadioGroupProps) {
 						invalid={!!error}
 						data-testid={testId ? `${testId}--item-${item.value}` : undefined}
 					>
-						<ArkRadioGroup.ItemControl data-testid={testId ? `${testId}--item-control-${item.value}` : undefined} />
+						<ArkRadioGroup.ItemControl
+							data-testid={testId ? `${testId}--item-control-${item.value}` : undefined}
+						/>
 						<ArkRadioGroup.ItemText data-testid={testId ? `${testId}--item-text-${item.value}` : undefined}>
 							{item.label}
 						</ArkRadioGroup.ItemText>

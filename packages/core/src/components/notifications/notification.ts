@@ -1,7 +1,7 @@
 export type NotificationAction = {
 	label: string;
 	onClick: () => void;
-}
+};
 
 export interface NotificationConfig {
 	title?: string;

@@ -68,7 +68,7 @@ export function SidebarSeparator(props: SidebarSeparatorProps) {
 
 function SidebarComponent(_props: HTMLProps<"div"> & { type: SidebarComponentType }) {
 	const [props, elementProps] = splitProps(_props, ["type"]);
-	
+
 	return (
 		<div
 			{...elementProps}

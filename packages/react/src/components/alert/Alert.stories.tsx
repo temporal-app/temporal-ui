@@ -9,7 +9,7 @@ import { Button } from "../button";
 const meta = {
 	title: "React/Alert",
 	component: Alert,
-	tags: [ "autodocs" ],
+	tags: ["autodocs"],
 } satisfies Meta<typeof Alert>;
 
 export default meta;
@@ -20,7 +20,7 @@ export const Default: Story = {
 		variant: "default",
 		title: "You've got 1 new message!",
 		description: "This is an alert with title and description.",
-	}
+	},
 };
 
 export const Info: Story = {
@@ -28,7 +28,7 @@ export const Info: Story = {
 		variant: "info",
 		title: "Information",
 		description: "This is an info alert with title and description.",
-	}
+	},
 };
 
 export const Success: Story = {
@@ -36,7 +36,7 @@ export const Success: Story = {
 		variant: "success",
 		title: "Success",
 		description: "This is a success alert with title and description.",
-	}
+	},
 };
 
 export const Warning: Story = {
@@ -44,7 +44,7 @@ export const Warning: Story = {
 		variant: "warning",
 		title: "Warning",
 		description: "This is a warning alert with title and description.",
-	}
+	},
 };
 
 export const ErrorVariant: Story = {
@@ -53,14 +53,14 @@ export const ErrorVariant: Story = {
 		variant: "error",
 		title: "Error",
 		description: "This is an error alert with title and description.",
-	}
+	},
 };
 
 export const NoIcon: Story = {
 	args: {
 		...Default.args,
 		icon: undefined,
-	}
+	},
 };
 
 export const NoTitle: Story = {
@@ -68,7 +68,7 @@ export const NoTitle: Story = {
 		...Default.args,
 		title: undefined,
 		description: "This alert has no title but has a description.",
-	}
+	},
 };
 
 export const NoDescription: Story = {
@@ -76,7 +76,7 @@ export const NoDescription: Story = {
 		...Default.args,
 		title: "Alert without description",
 		description: undefined,
-	}
+	},
 };
 
 export const CustomIcon: Story = {
@@ -84,7 +84,7 @@ export const CustomIcon: Story = {
 		...Default.args,
 		title: "Alert with custom icon",
 		icon: <AlarmClockCheck />,
-	}
+	},
 };
 
 export const WithChildren: Story = {
@@ -92,10 +92,24 @@ export const WithChildren: Story = {
 		...Default.args,
 		title: "Alert with children",
 		children: (
-			<Stack row gap={1} mt={1}>
-				<Button variant="primary" size="xs">Action</Button>
-				<Button variant="secondary" size="xs">Secondary</Button>
+			<Stack
+				row
+				gap={1}
+				mt={1}
+			>
+				<Button
+					variant="primary"
+					size="xs"
+				>
+					Action
+				</Button>
+				<Button
+					variant="secondary"
+					size="xs"
+				>
+					Secondary
+				</Button>
 			</Stack>
-		)
-	}
+		),
+	},
 };

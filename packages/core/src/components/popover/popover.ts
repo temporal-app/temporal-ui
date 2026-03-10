@@ -14,5 +14,5 @@ export interface PopoverProps<T> extends BoxProps<T> {
 		content?: string;
 		title?: string;
 		description?: string;
-	}
+	};
 }

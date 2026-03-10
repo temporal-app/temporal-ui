@@ -26,10 +26,10 @@ export function cx(...args: ClassValue[]): string {
 
 		const argType = typeof arg;
 
-		if (argType === 'string' || argType === 'number') {
+		if (argType === "string" || argType === "number") {
 			// Handle string or number (numbers are converted to strings)
 			// Split space-separated classes and filter out empty strings
-			const individualClasses = String(arg).split(' ').filter(Boolean);
+			const individualClasses = String(arg).split(" ").filter(Boolean);
 			classes.push(...individualClasses);
 		} else if (Array.isArray(arg)) {
 			// Handle array: recursively call cx with its elements
@@ -38,21 +38,18 @@ export function cx(...args: ClassValue[]): string {
 				if (innerClassesString) {
 					// Split the string from the recursive call back into individual classes
 					// and add them to the current list for proper deduplication.
-					classes.push(...innerClassesString.split(' ').filter(Boolean));
+					classes.push(...innerClassesString.split(" ").filter(Boolean));
 				}
 			}
-		} else if (typeof arg === 'object') {
+		} else if (typeof arg === "object") {
 			// Handle an object: add keys as classes if their values are truthy
 			// This check ensures `arg` is a plain object and not null (which typeof null is 'object')
 			if (!Array.isArray(arg)) {
 				for (const key in arg as { [className: string]: unknown }) {
 					// Check if the property is an own property and its value is truthy
-					if (
-						Object.hasOwn(arg, key) &&
-						(arg as { [className: string]: unknown })[key]
-					) {
+					if (Object.hasOwn(arg, key) && (arg as { [className: string]: unknown })[key]) {
 						// Split space-separated keys and filter out empty strings
-						const individualClasses = key.split(' ').filter(Boolean);
+						const individualClasses = key.split(" ").filter(Boolean);
 						classes.push(...individualClasses);
 					}
 				}
@@ -62,5 +59,5 @@ export function cx(...args: ClassValue[]): string {
 
 	// Join all collected classes with a space.
 	// Using a Set to remove duplicates before joining.
-	return Array.from(new Set(classes)).join(' ');
+	return Array.from(new Set(classes)).join(" ");
 }

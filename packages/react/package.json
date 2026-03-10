@@ -41,6 +41,7 @@
 		"dev": "bun run storybook",
 		"lint": "biome lint ./src",
 		"format": "biome format ./src",
+		"format:fix": "biome format --write ./src",
 		"check": "biome check ./src",
 		"test": "vitest run",
 		"test:watch": "vitest",

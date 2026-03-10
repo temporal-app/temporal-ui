@@ -7,11 +7,7 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"includes": [
-			"**",
-			"!**/packages/core/src/css/animations.css",
-			"!!**/dist"
-		]
+		"includes": ["**", "!**/packages/core/src/css/animations.css", "!!**/dist"]
 	},
 	"formatter": {
 		"enabled": true,

@@ -13,7 +13,7 @@
 		{
 			"name": "Run Solid Storybook",
 			"type": "node-terminal",
-			"request": "launch",	
+			"request": "launch",
 			"command": "bun run solid"
 		}
 	]

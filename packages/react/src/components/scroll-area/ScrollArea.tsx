@@ -11,9 +11,7 @@ export function ScrollArea(props: ScrollAreaProps) {
 				className={classes?.viewport}
 				style={{ height: "100%" }}
 			>
-				<ArkScrollArea.Content className={classes?.content}>
-					{children}
-				</ArkScrollArea.Content>
+				<ArkScrollArea.Content className={classes?.content}>{children}</ArkScrollArea.Content>
 			</ArkScrollArea.Viewport>
 			{["vertical", "both"].includes(orientation) && (
 				<ArkScrollArea.Scrollbar

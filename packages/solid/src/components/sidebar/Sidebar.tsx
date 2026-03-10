@@ -32,7 +32,7 @@ export function Sidebar(_props: SidebarProps) {
 			data-scope="sidebar"
 			data-part="root"
 			data-state={state()}
-			data-collapsible={state()=== "collapsed" ? props.collapsible : ""}
+			data-collapsible={state() === "collapsed" ? props.collapsible : ""}
 			data-variant={props.variant}
 			data-side={props.side}
 			class="group peer"
@@ -50,7 +50,10 @@ export function Sidebar(_props: SidebarProps) {
 				data-side={props.side}
 				{...boxProps}
 			>
-				<div data-scope="sidebar" data-part="inner">
+				<div
+					data-scope="sidebar"
+					data-part="inner"
+				>
 					{props.children}
 				</div>
 			</Box>

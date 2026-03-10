@@ -35,14 +35,15 @@ export function NavMain(props: {
 							class="group/collapsible"
 						>
 							<SidebarMenuItem>
-								<Collapsible.Trigger asChild={(props) => (
-									<SidebarMenuButton {...props()}>
-										{item.icon && <item.icon />}
-										<span>{item.title}</span>
-										<ChevronRight class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-									</SidebarMenuButton>
-								)}>
-								</Collapsible.Trigger>
+								<Collapsible.Trigger
+									asChild={(props) => (
+										<SidebarMenuButton {...props()}>
+											{item.icon && <item.icon />}
+											<span>{item.title}</span>
+											<ChevronRight class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+										</SidebarMenuButton>
+									)}
+								></Collapsible.Trigger>
 								<Collapsible.Content>
 									<SidebarMenuSub>
 										<For each={item.items}>

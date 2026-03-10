@@ -1,5 +1,5 @@
 import type { HTMLProps } from "@ark-ui/solid";
-import { ark } from '@ark-ui/solid/factory';
+import { ark } from "@ark-ui/solid/factory";
 import type {
 	SidebarMenuButtonProps as CoreSidebarMenuButtonProps,
 	SidebarMenuLinkProps as CoreSidebarMenuLinkProps,
@@ -24,7 +24,7 @@ export interface SidebarMenuItemProps extends HTMLProps<"li"> {}
 
 export function SidebarMenuItem(_props: SidebarMenuItemProps) {
 	const [props, elementProps] = splitProps(_props, ["class"]);
-	
+
 	return (
 		<li
 			{...elementProps}
@@ -38,10 +38,11 @@ export function SidebarMenuItem(_props: SidebarMenuItemProps) {
 export interface SidebarMenuButtonProps extends HTMLProps<"button">, CoreSidebarMenuButtonProps {}
 
 export function SidebarMenuButton(_props: SidebarMenuButtonProps) {
-	const [props, elementProps] = splitProps(
-		mergeProps({ variant: "default", size: "default" }, _props),
-		["variant", "size", "isActive"],
-	);
+	const [props, elementProps] = splitProps(mergeProps({ variant: "default", size: "default" }, _props), [
+		"variant",
+		"size",
+		"isActive",
+	]);
 
 	return (
 		<button
@@ -57,7 +58,7 @@ export function SidebarMenuButton(_props: SidebarMenuButtonProps) {
 
 export interface SidebarMenuLinkProps extends HTMLProps<"a">, CoreSidebarMenuLinkProps {
 	// biome-ignore lint/suspicious/noExplicitAny: temporary solution
-	component?: (props: ParentProps<any>) => JSX.Element
+	component?: (props: ParentProps<any>) => JSX.Element;
 }
 
 export function SidebarMenuLink(_props: SidebarMenuLinkProps) {
@@ -80,7 +81,7 @@ export interface SidebarMenuActionProps extends HTMLProps<"button"> {
 
 export function SidebarMenuAction(_props: SidebarMenuActionProps) {
 	const [props, elementProps] = splitProps(_props, ["showOnHover"]);
-	
+
 	return (
 		<button
 			{...elementProps}
@@ -119,7 +120,7 @@ export interface SidebarMenuSubItemProps extends HTMLProps<"li"> {}
 
 export function SidebarMenuSubItem(_props: SidebarMenuSubItemProps) {
 	const [props, elementProps] = splitProps(_props, ["class"]);
-	
+
 	return (
 		<li
 			{...elementProps}
@@ -133,10 +134,7 @@ export function SidebarMenuSubItem(_props: SidebarMenuSubItemProps) {
 export interface SidebarMenuSubButtonProps extends HTMLProps<"a">, CoreSidebarMenuSubButtonProps {}
 
 export function SidebarMenuSubButton(_props: SidebarMenuSubButtonProps) {
-	const [props, elementProps] = splitProps(
-		mergeProps({ size: "md" }, _props),
-		["size", "isActive"],
-	);
+	const [props, elementProps] = splitProps(mergeProps({ size: "md" }, _props), ["size", "isActive"]);
 
 	return (
 		<a

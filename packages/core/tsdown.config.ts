@@ -10,9 +10,7 @@ export default defineConfig({
 		"src/components/base.ts",
 		"src/utils/*/index.ts",
 	],
-	noExternal: [
-		"@temporal-ui/core"
-	],
+	noExternal: ["@temporal-ui/core"],
 	dts: true,
 	sourcemap: false,
 });

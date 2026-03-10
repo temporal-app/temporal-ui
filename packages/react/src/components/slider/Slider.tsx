@@ -8,19 +8,8 @@ export interface SliderProps
 		Omit<React.InputHTMLAttributes<HTMLInputElement>, "max" | "min" | "step"> {}
 
 export const Slider = forwardRef<HTMLInputElement, SliderProps & ArkSlider.RootProps>((props, ref) => {
-	const {
-		label,
-		hint,
-		error,
-		required,
-		readOnly,
-		disabled,
-		testId,
-		showValue,
-		marks,
-		showMarkDashes,
-		...rootProps
-	} = props;
+	const { label, hint, error, required, readOnly, disabled, testId, showValue, marks, showMarkDashes, ...rootProps } =
+		props;
 	return (
 		<Field
 			label={label}

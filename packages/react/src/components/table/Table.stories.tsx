@@ -30,7 +30,7 @@ export const Default: Story = {
 					<th>Email</th>
 					<th>Role</th>
 				</tr>
-				</thead>
+			</thead>
 			<tbody>
 				{data.map((item) => (
 					<tr key={item.email}>

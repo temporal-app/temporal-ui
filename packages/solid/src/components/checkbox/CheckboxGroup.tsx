@@ -55,21 +55,15 @@ export function CheckboxGroup(_props: CheckboxGroupProps) {
 							value={item.value}
 							data-testid={`${fieldProps.testId}--item-${i()}`}
 						>
-							<ArkCheckbox.Control
-								data-testid={`${fieldProps.testId}--control-${i()}`}
-							>
-								<ArkCheckbox.Indicator
-									data-testid={`${fieldProps.testId}--indicator-${i()}`}
-								>
+							<ArkCheckbox.Control data-testid={`${fieldProps.testId}--control-${i()}`}>
+								<ArkCheckbox.Indicator data-testid={`${fieldProps.testId}--indicator-${i()}`}>
 									<CheckIcon />
 								</ArkCheckbox.Indicator>
 							</ArkCheckbox.Control>
 							<ArkCheckbox.Label data-testid={`${fieldProps.testId}--label-${i()}`}>
 								{item.label}
 							</ArkCheckbox.Label>
-							<ArkCheckbox.HiddenInput
-								data-testid={`${fieldProps.testId}--input-${i()}`}
-							/>
+							<ArkCheckbox.HiddenInput data-testid={`${fieldProps.testId}--input-${i()}`} />
 						</ArkCheckbox.Root>
 					)}
 				</For>

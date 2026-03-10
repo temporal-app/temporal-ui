@@ -1,5 +1,4 @@
 @layer components {
-
 	[data-scope="field"][data-part="root"],
 	[data-scope="fieldset"][data-part="root"] {
 		@apply relative flex flex-col gap-1;
@@ -9,9 +8,9 @@
 	[data-scope="fieldset"][data-part="legend"] {
 		@apply flex items-center gap-2 text-sm leading-none font-medium select-none peer-disabled:pointer-events-none peer-disabled:opacity-50 mb-px;
 
-		&:has(>*:disabled),
-		&:has(+*:disabled),
-		&:has(+*>*:disabled),
+		&:has(> *:disabled),
+		&:has(+ *:disabled),
+		&:has(+ * > *:disabled),
 		&[aria-disabled="true"] {
 			@apply opacity-50 pointer-events-none;
 		}

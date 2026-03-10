@@ -21,9 +21,7 @@ export function NavProjects({
 						key={item.name}
 						className=""
 					>
-						<SidebarMenuLink
-							href={item.url}
-						>
+						<SidebarMenuLink href={item.url}>
 							<item.icon />
 							<span>{item.name}</span>
 						</SidebarMenuLink>

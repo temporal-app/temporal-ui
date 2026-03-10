@@ -64,23 +64,15 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
 						key={item.value}
 						data-testid={testId ? `${testId}--item-${i}` : undefined}
 					>
-						<ArkCheckbox.Control
-							data-testid={testId ? `${testId}--control-${i}` : undefined}
-						>
-							<ArkCheckbox.Indicator
-								data-testid={testId ? `${testId}--indicator-${i}` : undefined}
-							>
+						<ArkCheckbox.Control data-testid={testId ? `${testId}--control-${i}` : undefined}>
+							<ArkCheckbox.Indicator data-testid={testId ? `${testId}--indicator-${i}` : undefined}>
 								<CheckIcon />
 							</ArkCheckbox.Indicator>
 						</ArkCheckbox.Control>
-						<ArkCheckbox.Label
-							data-testid={testId ? `${testId}--label-${i}` : undefined}
-						>
+						<ArkCheckbox.Label data-testid={testId ? `${testId}--label-${i}` : undefined}>
 							{item.label}
 						</ArkCheckbox.Label>
-						<ArkCheckbox.HiddenInput
-							data-testid={testId ? `${testId}--input-${i}` : undefined}
-						/>
+						<ArkCheckbox.HiddenInput data-testid={testId ? `${testId}--input-${i}` : undefined} />
 					</ArkCheckbox.Root>
 				))}
 			</ArkCheckbox.Group>

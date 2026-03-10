@@ -7,18 +7,18 @@ import { Button } from "./Button";
 const meta = {
 	title: "React/Button",
 	component: Button,
-	tags: [ "autodocs" ],
+	tags: ["autodocs"],
 	args: { onClick: fn() },
 	argTypes: {
 		variant: {
 			control: "radio",
-			options: [ "primary", "secondary", "outline", "ghost", "destructive" ]
+			options: ["primary", "secondary", "outline", "ghost", "destructive"],
 		},
 		size: {
 			control: "radio",
-			options: [ "xs", "sm", "md", "lg", "xl" ]
-		}
-	}
+			options: ["xs", "sm", "md", "lg", "xl"],
+		},
+	},
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -30,7 +30,7 @@ export const Primary: Story = {
 		variant: "primary",
 		size: "md",
 		disabled: false,
-		loading: false
+		loading: false,
 	},
 };
 
@@ -44,63 +44,63 @@ export const Secondary: Story = {
 export const Destructive: Story = {
 	args: {
 		...Primary.args,
-		variant: "destructive"
+		variant: "destructive",
 	},
 };
 
 export const Outline: Story = {
 	args: {
 		...Primary.args,
-		variant: "outline"
+		variant: "outline",
 	},
 };
 
 export const Ghost: Story = {
 	args: {
 		...Primary.args,
-		variant: "ghost"
+		variant: "ghost",
 	},
 };
 
 export const Disabled: Story = {
 	args: {
 		...Primary.args,
-		disabled: true
+		disabled: true,
 	},
 };
 
 export const Loading: Story = {
 	args: {
 		...Primary.args,
-		loading: true
+		loading: true,
 	},
 };
 
 export const SizeXS: Story = {
 	args: {
 		...Primary.args,
-		size: "xs"
+		size: "xs",
 	},
 };
 
 export const SizeSM: Story = {
 	args: {
 		...Primary.args,
-		size: "sm"
+		size: "sm",
 	},
 };
 
 export const SizeLG: Story = {
 	args: {
 		...Primary.args,
-		size: "lg"
+		size: "lg",
 	},
 };
 
 export const SizeXL: Story = {
 	args: {
 		...Primary.args,
-		size: "xl"
+		size: "xl",
 	},
 };
 
@@ -109,11 +109,20 @@ export const Icon: Story = {
 		...Primary.args,
 		icon: true,
 		children: (
-			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-			     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="24"
+				height="24"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
 				<title>Test Icon</title>
 				<path d="m9 18 6-6-6-6"></path>
 			</svg>
-		)
+		),
 	},
 };

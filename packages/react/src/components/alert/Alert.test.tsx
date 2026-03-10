@@ -18,9 +18,7 @@ describe("Alert Component", () => {
 		expect(alertElement).toHaveClass("alert-default");
 
 		expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent("Please confirm");
-		expect(
-			screen.getByText("This is an alert with title and description."),
-		).toBeInTheDocument();
+		expect(screen.getByText("This is an alert with title and description.")).toBeInTheDocument();
 	});
 
 	it("applies variant classes correctly", () => {
@@ -127,9 +125,7 @@ describe("Alert Component", () => {
 		);
 
 		expect(screen.queryByRole("heading")).not.toBeInTheDocument();
-		expect(
-			screen.getByText("This alert has no title but has a description."),
-		).toBeInTheDocument();
+		expect(screen.getByText("This alert has no title but has a description.")).toBeInTheDocument();
 	});
 
 	it("renders without description when description is not set", () => {
@@ -140,12 +136,8 @@ describe("Alert Component", () => {
 			/>,
 		);
 
-		expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
-			"Alert without description",
-		);
-		expect(
-			screen.queryByText("This is an alert with title and description."),
-		).not.toBeInTheDocument();
+		expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent("Alert without description");
+		expect(screen.queryByText("This is an alert with title and description.")).not.toBeInTheDocument();
 	});
 
 	it("renders custom icon when provided", () => {
@@ -158,9 +150,7 @@ describe("Alert Component", () => {
 		);
 
 		expect(screen.getByTestId("custom-icon")).toBeInTheDocument();
-		expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
-			"Alert with custom icon",
-		);
+		expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent("Alert with custom icon");
 	});
 
 	it("renders children content", () => {

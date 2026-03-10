@@ -3,7 +3,7 @@ import type React from "react";
 import { Box } from "../box";
 import { cx } from "@temporal-ui/core/utils/cx";
 
-export interface StackProps extends CoreStackProps<React.ReactNode>, React.HTMLAttributes<HTMLDivElement> { }
+export interface StackProps extends CoreStackProps<React.ReactNode>, React.HTMLAttributes<HTMLDivElement> {}
 
 export function Stack({
 	className,
@@ -17,14 +17,12 @@ export function Stack({
 	testId,
 	...rest
 }: StackProps) {
-
-	const baseClass = center ? "stack-center" : [ "stack", row && "row", reverse && "reverse" ]
-		.filter(Boolean).join("-");
+	const baseClass = center ? "stack-center" : ["stack", row && "row", reverse && "reverse"].filter(Boolean).join("-");
 
 	const style: React.CSSProperties = {};
 
 	if (gap) {
-		style.gap = `calc(var(--spacing) * ${ gap })`;
+		style.gap = `calc(var(--spacing) * ${gap})`;
 	}
 	if (align) {
 		style.alignItems = align;

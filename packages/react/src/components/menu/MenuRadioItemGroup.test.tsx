@@ -82,5 +82,4 @@ describe("MenuRadioItemGroup Component", () => {
 			expect(screen.getByRole("menuitemradio", { name: "Option 1" })).toBeVisible();
 		});
 	});
-
 });

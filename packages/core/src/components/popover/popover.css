@@ -6,11 +6,11 @@
 	[data-scope="popover"][data-part="content"][data-state="open"] {
 		@apply animate-fade-in;
 	}
-	
+
 	[data-scope="popover"][data-part="content"][data-state="closed"] {
 		@apply animate-fade-out;
 	}
-	
+
 	[data-scope="popover"][data-part="title"] {
 		@apply text-lg;
 	}

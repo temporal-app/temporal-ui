@@ -1,5 +1,4 @@
 @layer components {
-
 	.loader,
 	.loader-xs,
 	.loader-sm,
@@ -19,5 +18,4 @@
 	.loader-xl {
 		@apply size-8 border-4;
 	}
-
 }

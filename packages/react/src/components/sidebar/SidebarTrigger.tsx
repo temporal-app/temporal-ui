@@ -17,7 +17,7 @@ export function SidebarTrigger(props: SidebarTriggerProps) {
 			aria-label="Toggle sidebar"
 			title="Toggle sidebar"
 			className={cx("size-7", props.className)}
-			onClick={event => {
+			onClick={(event) => {
 				props.onClick?.(event);
 				toggleSidebar();
 			}}

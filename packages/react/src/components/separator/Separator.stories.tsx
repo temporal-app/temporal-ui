@@ -22,5 +22,5 @@ export const Vertical: Story = {
 		<div style={{ height: "200px" }}>
 			Item 1 <Separator {...args} /> Item 2
 		</div>
-	)
+	),
 };

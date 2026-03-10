@@ -20,8 +20,5 @@ export default defineMain({
 		getAbsolutePath("@storybook/addon-a11y"),
 		getAbsolutePath("@storybook/addon-links"),
 	],
-	stories: [
-		"../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-		"../src/**/*.mdx",
-	],
+	stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)", "../src/**/*.mdx"],
 });

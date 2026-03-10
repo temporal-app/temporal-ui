@@ -23,7 +23,6 @@ export function showNotification(props: NotificationConfig) {
 }
 
 export function Notifications(props: NotificationsProps) {
-
 	toaster.attrs.placement = props.placement ?? "bottom-end";
 	toaster.attrs.max = props.max ?? 10;
 	toaster.attrs.gap = props.gap ?? 12;

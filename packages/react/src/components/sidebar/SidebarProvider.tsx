@@ -2,7 +2,7 @@ import {
 	SIDEBAR_KEYBOARD_SHORTCUT,
 	SIDEBAR_STORAGE_KEY,
 	type SidebarProviderProps as CoreSidebarProviderProps,
-	type SidebarContextProps
+	type SidebarContextProps,
 } from "@temporal-ui/core/sidebar";
 import { cx } from "@temporal-ui/core/utils/cx";
 import React from "react";

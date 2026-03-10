@@ -20,9 +20,9 @@ export interface SidebarProviderProps<T> extends BaseComponent<T> {
 }
 
 export interface SidebarProps<T> extends BaseComponent<T> {
-	side?: 'left' | 'right';
-	variant?: "sidebar" | "floating" | "inset"
-	collapsible?: 'icon' | 'offcanvas' | 'none';
+	side?: "left" | "right";
+	variant?: "sidebar" | "floating" | "inset";
+	collapsible?: "icon" | "offcanvas" | "none";
 }
 
 export interface SidebarMenuButtonProps {

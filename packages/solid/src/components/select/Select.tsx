@@ -7,9 +7,7 @@ import { Portal } from "solid-js/web";
 import { Field, fieldAttributes } from "../field";
 import { SelectContent, type SelectItem } from "./SelectContent";
 
-export interface SelectProps<D = unknown>
-	extends CoreSelectProps<JSX.Element>,
-		ArkSelect.RootProps<SelectItem<D>> {}
+export interface SelectProps<D = unknown> extends CoreSelectProps<JSX.Element>, ArkSelect.RootProps<SelectItem<D>> {}
 
 export function Select<D = unknown>(_props: SelectProps<D>) {
 	const [fieldProps, controlProps, rootProps] = splitProps(_props, fieldAttributes, [

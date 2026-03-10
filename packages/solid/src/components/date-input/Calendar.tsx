@@ -26,22 +26,14 @@ export function Calendar(props: DateInputProps<JSX.Element> & ComponentProps<typ
 			inline
 			data-testid={tid("--root")}
 		>
-			<DateInputViewControl
-				data-testid={tid("--view-control")}
-			>
-				<DateInputPrevTrigger
-					data-testid={tid("--prev-trigger")}
-				>
+			<DateInputViewControl data-testid={tid("--view-control")}>
+				<DateInputPrevTrigger data-testid={tid("--prev-trigger")}>
 					<ChevronLeft />
 				</DateInputPrevTrigger>
-				<DateInputViewTrigger
-					data-testid={tid("--view-trigger")}
-				>
+				<DateInputViewTrigger data-testid={tid("--view-trigger")}>
 					<DatePicker.RangeText />
 				</DateInputViewTrigger>
-				<DateInputNextTrigger
-					data-testid={tid("--next-trigger")}
-				>
+				<DateInputNextTrigger data-testid={tid("--next-trigger")}>
 					<ChevronRight />
 				</DateInputNextTrigger>
 			</DateInputViewControl>

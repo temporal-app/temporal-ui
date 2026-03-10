@@ -50,7 +50,10 @@ export function DataTable<TData>(props: DataTableProps<TData>) {
 								<For each={headerGroup.headers}>
 									{(header) => (
 										<th data-testid={tid(`--header-cell-${header.id}`)}>
-											<Show when={!header.isPlaceholder} fallback={null}>
+											<Show
+												when={!header.isPlaceholder}
+												fallback={null}
+											>
 												{flexRender(header.column.columnDef.header, header.getContext())}
 											</Show>
 										</th>
@@ -93,12 +96,8 @@ export function DataTable<TData>(props: DataTableProps<TData>) {
 								data-part="empty"
 								data-testid={tid("--empty")}
 							>
-								<Show when={controlProps.loading}>
-									Loading...
-								</Show>
-								<Show when={!controlProps.loading}>
-									No results.
-								</Show>
+								<Show when={controlProps.loading}>Loading...</Show>
+								<Show when={!controlProps.loading}>No results.</Show>
 							</td>
 						</tr>
 					</Show>

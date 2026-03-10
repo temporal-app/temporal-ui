@@ -21,7 +21,7 @@ export function SidebarTrigger(_props: SidebarTriggerProps) {
 			title="Toggle sidebar"
 			class={cx("size-7", props.class)}
 			onClick={(event) => {
-				if (typeof props.onClick === 'function') {
+				if (typeof props.onClick === "function") {
 					props.onClick(event);
 				}
 				toggleSidebar();

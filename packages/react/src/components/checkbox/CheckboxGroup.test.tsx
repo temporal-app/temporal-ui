@@ -19,13 +19,19 @@ const items: CheckboxGroupItem[] = [
 		value: "option4",
 		label: "Option 4",
 	},
-]
+];
 
 describe("CheckboxGroup", () => {
 	it("should render all items", () => {
-		render(<CheckboxGroup label="Select options" items={items} name="options" />);
+		render(
+			<CheckboxGroup
+				label="Select options"
+				items={items}
+				name="options"
+			/>,
+		);
 		expect(screen.getByText("Select options")).toBeInTheDocument();
-		items.forEach(item => {
+		items.forEach((item) => {
 			expect(screen.getByLabelText(item.label)).toBeInTheDocument();
 		});
 	});
@@ -37,7 +43,7 @@ describe("CheckboxGroup", () => {
 				items={items}
 				name="options"
 				values={["option1", "option3"]}
-			/>
+			/>,
 		);
 		expect(screen.getByLabelText("Option 1")).toBeChecked();
 		expect(screen.getByLabelText("Option 3")).toBeChecked();

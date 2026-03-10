@@ -7,7 +7,7 @@ import { RadioGroup, type RadioGroupItem } from "./RadioGroup";
 const meta = {
 	title: "React/Radio Group",
 	component: RadioGroup,
-	tags: [ "autodocs" ],
+	tags: ["autodocs"],
 	args: { onValueChange: fn() },
 	argTypes: {
 		disabled: {
@@ -24,7 +24,7 @@ const meta = {
 		},
 		items: {
 			control: "object",
-		}
+		},
 	},
 } satisfies Meta<typeof RadioGroup>;
 
@@ -41,14 +41,14 @@ const sampleItems: RadioGroupItem[] = [
 export const Default: Story = {
 	args: {
 		items: sampleItems,
-		defaultValue: "apple"
+		defaultValue: "apple",
 	},
 };
 
 export const Horizontal: Story = {
 	args: {
 		...Default.args,
-		orientation: 'horizontal'
+		orientation: "horizontal",
 	},
 };
 

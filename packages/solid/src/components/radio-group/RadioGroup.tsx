@@ -9,9 +9,16 @@ export interface RadioGroupProps extends CoreRadioGroupProps<JSX.Element> {}
 export type { RadioGroupItem } from "@temporal-ui/core/radio-group";
 
 export function RadioGroup(_props: RadioGroupProps) {
-	const [fieldProps, rootProps] = splitProps(_props,
-		["label", "hint", "error", "required", "readOnly", "disabled", "classes", "testId"],
-	);
+	const [fieldProps, rootProps] = splitProps(_props, [
+		"label",
+		"hint",
+		"error",
+		"required",
+		"readOnly",
+		"disabled",
+		"classes",
+		"testId",
+	]);
 
 	return (
 		<Field

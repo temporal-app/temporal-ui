@@ -82,5 +82,4 @@ describe("string utils", () => {
 			expect(getInitials("john doe")).toBe("JD");
 		});
 	});
-
 });

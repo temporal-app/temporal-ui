@@ -5,17 +5,8 @@
 		"outDir": "./dist",
 		"rootDir": "./src",
 		"noEmit": false,
-		"types": [
-			"vite/client",
-			"vitest/globals",
-			"@testing-library/jest-dom/vitest"
-		]
+		"types": ["vite/client", "vitest/globals", "@testing-library/jest-dom/vitest"]
 	},
-	"include": [
-		"src"
-	],
-	"exclude": [
-		"node_modules",
-		"dist"
-	]
+	"include": ["src"],
+	"exclude": ["node_modules", "dist"]
 }

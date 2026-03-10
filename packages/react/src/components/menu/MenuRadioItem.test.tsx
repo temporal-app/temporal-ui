@@ -53,5 +53,4 @@ describe("MenuRadioItem Component", () => {
 			expect(radioItem).toHaveAttribute("data-state", "checked");
 		});
 	});
-
 });

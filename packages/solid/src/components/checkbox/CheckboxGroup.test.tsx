@@ -23,22 +23,28 @@ const items: CheckboxGroupItem[] = [
 
 describe("CheckboxGroup", () => {
 	it("should render all items", () => {
-		render(() => <CheckboxGroup label="Select options" items={items} name="options" />);
+		render(() => (
+			<CheckboxGroup
+				label="Select options"
+				items={items}
+				name="options"
+			/>
+		));
 		expect(screen.getByText("Select options")).toBeInTheDocument();
-		items.forEach(item => {
+		items.forEach((item) => {
 			expect(screen.getByLabelText(item.label)).toBeInTheDocument();
 		});
 	});
 
 	it("should check items when checked prop is true", () => {
-		render(
-			() => <CheckboxGroup
+		render(() => (
+			<CheckboxGroup
 				label="Select options"
 				items={items}
 				name="options"
-				values={[ "option1", "option3" ]}
+				values={["option1", "option3"]}
 			/>
-		);
+		));
 		expect(screen.getByLabelText("Option 1")).toBeChecked();
 		expect(screen.getByLabelText("Option 3")).toBeChecked();
 		expect(screen.getByLabelText("Option 2")).not.toBeChecked();

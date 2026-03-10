@@ -30,6 +30,7 @@
 		"test:watch": "vitest",
 		"lint": "biome lint ./src",
 		"format": "biome format ./src",
+		"format:fix": "biome format --write ./src",
 		"check": "biome check ./src",
 		"typecheck": "tsc --noEmit",
 		"prepack": "clean-package",

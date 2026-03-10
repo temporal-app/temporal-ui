@@ -20,9 +20,7 @@ export function MenuRadioItem(props: MenuRadioItemProps) {
 			<ArkMenu.ItemIndicator data-testid={tid("--indicator")}>
 				<div data-part="item-radio-indicator" />
 			</ArkMenu.ItemIndicator>
-			<ArkMenu.ItemText data-testid={tid("--text")}>
-				{props.children}
-			</ArkMenu.ItemText>
+			<ArkMenu.ItemText data-testid={tid("--text")}>{props.children}</ArkMenu.ItemText>
 		</ArkMenu.RadioItem>
 	);
 }

@@ -5,7 +5,7 @@ import { Field as ArkField } from "@ark-ui/solid/field";
 import { Field } from "../field";
 
 export interface TextInputProps extends CoreTextInputProps<JSX.Element>, Omit<HTMLProps<"input">, "value"> {
-	onInput?: (e: InputEvent & { currentTarget: HTMLInputElement, target: HTMLInputElement }) => void;
+	onInput?: (e: InputEvent & { currentTarget: HTMLInputElement; target: HTMLInputElement }) => void;
 }
 
 export function TextInput(_props: TextInputProps) {

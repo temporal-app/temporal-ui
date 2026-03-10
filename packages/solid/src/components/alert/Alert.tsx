@@ -10,7 +10,7 @@ export interface AlertProps extends CoreAlertProps<JSX.Element>, HTMLProps<"div"
 
 const icons: Record<string, Accessor<JSX.Element>> = {
 	default: () => null,
-	info: () =>(
+	info: () => (
 		<Info
 			data-scope="alert"
 			data-part="icon"
@@ -56,7 +56,7 @@ export function Alert(_props: AlertProps) {
 			class={cx(baseClass, props.className)}
 			data-testid={props.testId}
 		>
-			{props.icon !== undefined ? props.icon(): icons[props.variant]?.()}
+			{props.icon !== undefined ? props.icon() : icons[props.variant]?.()}
 			{props.title && (
 				<h2
 					data-scope="alert"

@@ -8,12 +8,11 @@ import React from "react";
 const meta = {
 	title: "React/Number Input",
 	component: NumberInput,
-	tags: [ "autodocs" ],
+	tags: ["autodocs"],
 } satisfies Meta<typeof NumberInput>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
 
 export const CompleteExample: Story = {
 	args: {
@@ -23,7 +22,7 @@ export const CompleteExample: Story = {
 		max: 100,
 		step: 1,
 		hint: "We'll never share your bonus points with anyone else.",
-	}
+	},
 };
 
 export const ControlledExample: Story = {
@@ -51,14 +50,14 @@ export const Invalid: Story = {
 	args: {
 		...CompleteExample.args,
 		error: "Invalid bonus points",
-	}
+	},
 };
 
 export const Disabled: Story = {
 	args: {
 		...CompleteExample.args,
-		disabled: true
-	}
+		disabled: true,
+	},
 };
 
 export const WithStartSection: Story = {
@@ -68,13 +67,13 @@ export const WithStartSection: Story = {
 		min: 0,
 		max: 100,
 		step: 1,
-		startSection: <DollarSign size={18} />
-	}
+		startSection: <DollarSign size={18} />,
+	},
 };
 
 export const ReadOnly: Story = {
 	args: {
 		...CompleteExample.args,
-		readOnly: true
-	}
+		readOnly: true,
+	},
 };

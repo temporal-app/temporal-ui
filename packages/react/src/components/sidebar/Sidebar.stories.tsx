@@ -43,9 +43,7 @@ type Story = StoryObj<typeof meta>;
 
 function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	return (
-		<Sidebar
-			{...props}
-		>
+		<Sidebar {...props}>
 			<SidebarHeader>
 				<TeamSwitcher teams={data.teams} />
 			</SidebarHeader>

@@ -6,7 +6,9 @@ export default defineConfig({
 	entry: ["src/index.ts", "src/components/*/index.ts", "src/hooks/*/index.ts", "src/utils/*/index.ts"],
 	dts: true,
 	platform: "browser",
-	noExternal: ["lucide-solid"],
+	deps: {
+		alwaysBundle: ["lucide-solid"],
+	},
 	outExtensions: () => {
 		return {
 			js: ".jsx",

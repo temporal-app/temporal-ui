@@ -81,7 +81,7 @@
 		"react": "19.2.3",
 		"react-dom": "19.2.3",
 		"rimraf": "6.1.2",
-		"storybook": "10.1.11",
+		"storybook": "10.2.10",
 		"tailwindcss": "4.1.18",
 		"tsdown": "0.18.4",
 		"typescript": "5.9.3",

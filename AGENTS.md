@@ -54,6 +54,14 @@ bun run test -- <path to file>
 
 - **Unit tests**: When creating Vitest tests, use the agent-requestable rule `.cursor/rules/unit-testing.mdc`.
 
+## Linear issues
+
+When given a Linear issue ID (e.g. `TMPRL-123`):
+
+1. **Before starting work**: Improve the issue description so it clearly captures scope, acceptance criteria, and any constraints.
+2. **Branch name**: Always include the issue ID in the git branch name (e.g. `TMPRL-123-add-feature` or `tmprl-123/add-feature`).
+3. **As you progress**: Add comments to the issue to document what you’ve done, decisions made, and any blockers or follow-ups.
+
 ## Common mistakes to avoid
 
 - Do not use `npm install`, `yarn`, or `pnpm`

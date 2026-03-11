@@ -31,5 +31,6 @@
 @import "./components/table/table.css";
 @import "./components/tabs/tabs.css";
 @import "./components/text-input/text-input.css";
+@import "./components/tooltip/tooltip.css";
 @import "./components/textarea/textarea.css";
 @import "./components/toggle/toggle.css";

@@ -1,0 +1,21 @@
+@layer components {
+	[data-scope="tooltip"][data-part="content"] {
+		@apply relative flex flex-col gap-1 bg-popover text-popover-foreground overflow-x-hidden overflow-y-auto rounded-md shadow-md border z-50 min-w-max max-w-[calc(var(--available-width)-16px)] px-3 py-2 text-sm;
+	}
+
+	[data-scope="tooltip"][data-part="content"][data-state="open"] {
+		@apply animate-fade-in;
+	}
+
+	[data-scope="tooltip"][data-part="content"][data-state="closed"] {
+		@apply animate-fade-out;
+	}
+
+	[data-scope="tooltip"][data-part="arrow"] {
+		@apply fill-popover;
+	}
+
+	[data-scope="tooltip"][data-part="arrow-tip"] {
+		@apply fill-popover;
+	}
+}

@@ -26,6 +26,7 @@ export * from "./components/stack";
 export * from "./components/table";
 export * from "./components/tabs";
 export * from "./components/text-input";
+export * from "./components/tooltip";
 export * from "./components/textarea";
 export * from "./components/toggle";
 

@@ -61,9 +61,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
 					data-scope={"text-input"}
 					{...rest}
 					ref={ref}
-					onInput={(e) => {
+					onInput={(e: React.FormEvent<HTMLInputElement>) => {
 						onValueChange?.(e.currentTarget.value);
-						rest.onInput?.(e);
+						(rest.onInput as ((e: React.FormEvent<HTMLInputElement>) => void) | undefined)?.(e);
 					}}
 					aria-invalid={error ? true : undefined}
 					data-with-start-section={startSection ? true : undefined}

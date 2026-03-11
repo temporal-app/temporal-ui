@@ -155,7 +155,7 @@ export const WithOffset: Story = {
 
 export const MultipleTooltips: Story = {
 	render: () => (
-		<Stack gap={4} direction="horizontal">
+		<Stack gap={4} row>
 			<Tooltip trigger={(p) => <Button {...p}>First</Button>}>First tooltip</Tooltip>
 			<Tooltip trigger={(p) => <Button {...p}>Second</Button>}>Second tooltip</Tooltip>
 			<Tooltip trigger={(p) => <Button {...p}>Third</Button>}>Third tooltip</Tooltip>

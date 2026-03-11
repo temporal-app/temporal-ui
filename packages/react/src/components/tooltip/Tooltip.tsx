@@ -42,7 +42,6 @@ export function Tooltip(props: TooltipProps) {
 
 	return (
 		<ArkTooltip.Root
-			portalled={portal}
 			lazyMount={lazyMount}
 			unmountOnExit={unmountOnExit}
 			{...rootProps}

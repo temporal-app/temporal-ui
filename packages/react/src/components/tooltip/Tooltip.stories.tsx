@@ -85,7 +85,7 @@ export const PositionLeft: Story = {
 		position: {
 			placement: "left",
 		},
-	};
+	},
 };
 
 export const PositionBottom: Story = {
@@ -95,7 +95,7 @@ export const PositionBottom: Story = {
 		position: {
 			placement: "bottom",
 		},
-	};
+	},
 };
 
 export const Interactive: Story = {
@@ -144,7 +144,7 @@ export const WithOffset: Story = {
 
 export const MultipleTooltips: Story = {
 	render: () => (
-		<Stack gap={4} direction="horizontal">
+		<Stack gap={4} row>
 			<Tooltip trigger={<Button>First</Button>}>First tooltip</Tooltip>
 			<Tooltip trigger={<Button>Second</Button>}>Second tooltip</Tooltip>
 			<Tooltip trigger={<Button>Third</Button>}>Third tooltip</Tooltip>

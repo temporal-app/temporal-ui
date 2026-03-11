@@ -22,7 +22,6 @@ export function Tooltip(props: TooltipProps) {
 	return (
 		<ArkTooltip.Root
 			{...rootProps}
-			portalled={localProps.portal}
 			onOpenChange={(details) => localProps.onOpenChange?.(details.open)}
 			positioning={localProps.position}
 			data-testid={tid("--root")}

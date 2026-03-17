@@ -1,7 +1,17 @@
+import { describe, expect, it, mock } from "bun:test";
 import { getInitials, getSafeString } from "./string";
 
 describe("string utils", () => {
 	describe("getSafeString", () => {
+		it("should use crypto.getRandomValues for secure randomness", () => {
+			const spy = mock(() => {});
+			const original = globalThis.crypto.getRandomValues;
+			globalThis.crypto.getRandomValues = spy as any;
+			getSafeString(10);
+			expect(spy).toHaveBeenCalled();
+			globalThis.crypto.getRandomValues = original;
+		});
+
 		it("should generate a string of the specified length", () => {
 			const length = 10;
 			const result = getSafeString(length);

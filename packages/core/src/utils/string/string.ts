@@ -4,9 +4,12 @@ export function getSafeString(length: number, letterBank: string = "ABCDEFGHIJKL
 		return "";
 	}
 
+	const randomValues = new Uint32Array(length);
+	globalThis.crypto.getRandomValues(randomValues);
+
 	let result = "";
 	for (let i = 0; i < length; i++) {
-		result += letterBank.charAt(Math.floor(Math.random() * letterBank.length));
+		result += letterBank.charAt(randomValues[i] % letterBank.length);
 	}
 	return result;
 }
